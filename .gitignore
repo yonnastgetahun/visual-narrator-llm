@@ -30,3 +30,19 @@ data/
 checkpoints/
 models/
 EOF 
+# keep heavy artifacts off GitHub
+outputs/
+data/
+models/
+checkpoints/
+*.pt
+*.bin
+*.ckpt
+*.onnx
+*.safetensors
+*.tar
+*.gz
+*.zip
+*.parquet
+*.arrow
+EOF 
