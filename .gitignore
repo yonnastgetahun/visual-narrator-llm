@@ -1,0 +1,16 @@
+# big artifacts (keep these on Hugging Face, not GitHub)
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.onnx
+*.tar
+*.gz
+*.zip
+*.parquet
+*.arrow
+outputs/
+data/
+checkpoints/
+models/
+EOF 
