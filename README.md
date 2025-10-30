@@ -63,7 +63,6 @@ model-index:
           training_time: "3m 39s"
           notes: "Phase 2 scaling + bug fix"
 ---
-YAML
 
 # Visual Narrator LLM 🎥→📝
 
@@ -119,7 +118,6 @@ After training on 1,000 Conceptual Captions examples, the model demonstrates:
 
 ## Phase 2: Scaling Up
 **Starting next:** Training on 5,000 examples with GPT2-medium (355M parameters) for improved quality and coherence.
----
 language: en
 license: apache-2.0
 library_name: transformers
@@ -128,7 +126,6 @@ tags:
 - visual-narrator
 - text-generation
 - causal-lm
----
 
 # Visual Narrator LLM 🎥→📝
 
