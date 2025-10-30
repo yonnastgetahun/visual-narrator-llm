@@ -1,17 +1,3 @@
-license: apache-2.0
-language: [en]
-library_name: transformers
-pipeline_tag: text-generation
-tags:
-- image-captioning
-- visual-narrator
-- text-generation
-- causal-lm
-model-index:
-- name: visual-narrator-llm
-  results: []
-  
-
 # Visual Narrator LLM 🎥→📝
 
 ## Project Goal
