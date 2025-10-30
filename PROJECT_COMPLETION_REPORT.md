@@ -22,8 +22,7 @@
 
 ### 🏆 Model Performance Comparison:
 
-#### Phase 1 Model:
-
+#### Phase 1 Model: 
 #### Phase 2 Fixed Model:
 ### 🔧 Technical Achievements:
 1. ✅ Built end-to-end LLM training pipeline
