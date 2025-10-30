@@ -14,3 +14,19 @@ data/
 checkpoints/
 models/
 EOF 
+# Keep large assets off GitHub — store on Hugging Face instead
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.onnx
+*.tar
+*.gz
+*.zip
+*.parquet
+*.arrow
+outputs/
+data/
+checkpoints/
+models/
+EOF 
