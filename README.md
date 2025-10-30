@@ -63,76 +63,8 @@ model-index:
           training_time: "3m 39s"
           notes: "Phase 2 scaling + bug fix"
 ---
-YAML 
-EOF
-'YAML'
+YAML
 
---- 
-license: apache-2.0
-language: [en]
-library_name: transformers
-pipeline_tag: text-generation
-base_model: gpt2
-tags:
-  - image-captioning
-  - visual-narrator
-  - text-generation
-  - causal-lm
-  - gpt2
-  - small-llm
-  - accessibility
-datasets:
-  - conceptual-captions
-metrics:
-  - loss
-  - perplexity
-model-index:
-  - name: visual-narrator-llm
-    results:
-      - task:
-          name: Text Generation
-          type: text-generation
-        dataset:
-          name: Conceptual Captions (subset)
-          type: conceptual-captions
-          split: train[:1000]
-        metrics:
-          - name: Final training loss
-            type: loss
-            value: 1.33
-            verified: false
-          - name: Initial loss
-            type: loss
-            value: 6.13
-            verified: false
-        config:
-          model: DialoGPT-small
-          parameters: 124e6
-          training_time: "1m 48s"
-          notes: "Phase 1 foundation run"
-      - task:
-          name: Text Generation
-          type: text-generation
-        dataset:
-          name: Conceptual Captions (subset)
-          type: conceptual-captions
-          split: train[:2000]
-        metrics:
-          - name: Final training loss
-            type: loss
-            value: 1.09
-            verified: false
-          - name: Initial loss
-            type: loss
-            value: 8.14
-            verified: false
-        config:
-          model: GPT-2 (small)
-          parameters: 124e6
-          training_time: "3m 39s"
-          notes: "Phase 2 scaling + bug fix"
----
-EOF 
 # Visual Narrator LLM 🎥→📝
 
 ## Project Goal
