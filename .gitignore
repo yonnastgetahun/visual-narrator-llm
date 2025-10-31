@@ -12,3 +12,8 @@ checkpoints/
 *.zip
 *.parquet
 *.arrow
+
+# Local helpers
+README.body
+README.restorepoint.*
+README_cleaned.md
