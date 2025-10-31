@@ -1,7 +1,10 @@
-# big artifacts (keep these on Hugging Face, not GitHub)
+outputs/
+data/
+models/
+checkpoints/
 *.safetensors
-*.bin
 *.pt
+*.bin
 *.ckpt
 *.onnx
 *.tar
@@ -9,40 +12,3 @@
 *.zip
 *.parquet
 *.arrow
-outputs/
-data/
-checkpoints/
-models/
-EOF 
-# Keep large assets off GitHub — store on Hugging Face instead
-*.safetensors
-*.bin
-*.pt
-*.ckpt
-*.onnx
-*.tar
-*.gz
-*.zip
-*.parquet
-*.arrow
-outputs/
-data/
-checkpoints/
-models/
-EOF 
-# keep heavy artifacts off GitHub
-outputs/
-data/
-models/
-checkpoints/
-*.pt
-*.bin
-*.ckpt
-*.onnx
-*.safetensors
-*.tar
-*.gz
-*.zip
-*.parquet
-*.arrow
-EOF 
