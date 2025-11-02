@@ -1,0 +1,14 @@
+training:
+  phase: "6.1_adjective_boost"
+  base_model: "../models/your_current_2.7b"  # Point to existing model
+  batch_size: 16
+  learning_rate: 2e-5
+  
+data:
+  adjective_sources:
+    - "../phase6/adjective_data/forced_adjectives.jsonl"
+    - "../phase6/adjective_data/multi_adjective_stacking.jsonl"
+  
+evaluation:
+  urban_scene_focus: true
+  adjective_metrics_frequency: 500
