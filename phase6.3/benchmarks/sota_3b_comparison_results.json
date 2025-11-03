@@ -1,0 +1,226 @@
+{
+  "Our Model (Phase 6.1 Complete)": {
+    "model_name": "Our Model (Phase 6.1 Complete)",
+    "average_adjectives": 3.625,
+    "average_generation_time": 2.184863418340683,
+    "total_adjectives": 29,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene: a classroom with students learning about the subject; a kitchen with appliances and people cooking meals; an athletic stadium with athletes competing in sports; or a sunset over mountains. Create a caption for this peaceful scene: a forest with trees and trees; a beach with ocean waves and beachgoers; a scenic park with colorful plants and people enjoying the outdoors; a city with buildings",
+        "adjectives_count": 3,
+        "generation_time": 2.787057876586914
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows a forest with trees and lush vegetation. This image has peaceful qualities: a concert venue with musicians playing their instruments. a beach with ocean waves crashing into the sand, or an urban park with people walking through the scene with buildings in the background.\nDescribe this image: pristine a desert with mountains towering in the distance, or an urban city with buildings towering in the foreground",
+        "adjectives_count": 3,
+        "generation_time": 2.184769630432129
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building: a classroom with students learning about the environment around them, or an urban park with people enjoying sports and activities.\nThis scene is colorful: a concert venue with musicians performing, an urban park with people exercising, a forest with trees and plants growing, or an ocean with waves breaking. Create a caption for this scene: a concerts venue with musicians performing, an",
+        "adjectives_count": 3,
+        "generation_time": 2.032909631729126
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city scene: a classroom with students taking notes on an essay, an outdoor park with people playing sports, or a beach with people swimming. caption this with romantic a concert venue with musicians performing an energetic song, a concert venue with musicians performing an energetic song, an outdoor park with people playing sports, or a beach with people swimming.\n\nDescribe this image",
+        "adjectives_count": 0,
+        "generation_time": 1.9891407489776611
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with beautiful scenic mountains.\n\nDescribe this image: pristine a forest with trees and plants towering over the landscape; lush a beach with ocean waves crashing against the shore; a historic city with landmark buildings and historic monuments; an urban park with people and activity; a concert venue with musicians performing live in a concert scene with musicians playing; an urban sports stadium with athletes competing",
+        "adjectives_count": 5,
+        "generation_time": 2.054852247238159
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a sports stadium with athletes competing in a race, an urban park with people exercising their bodies, or a beautiful sunset over mountains. This image has historic qualities such as a concert venue with musicians performing, athletes competing in a race, or students gathering in a classroom. This scene is romantic with towering buildings and beautiful scenery.\nGenerate a caption for this scene: a concert venue",
+        "adjectives_count": 4,
+        "generation_time": 2.1475014686584473
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing modern structure with historic qualities: a classroom with students learning about the historical qualities of the classroom; an urban park with people and their activities; an outdoor sports venue with athletes competing against each other; a beautiful sunset over mountains with ocean waves crashing against their cliffs; a sunset over mountains with ocean waves crashing against their cliffs; a concert venue with musicians performing a song with its historic qualities",
+        "adjectives_count": 5,
+        "generation_time": 2.188594102859497
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting buildings with people in busy urban settings is captured in this scene: a city street with buildings and people.\n\nDescribe the minimalist qualities of this scene: a city street with buildings and people.\n\nDescription: City street with buildings and people. Cities are known for their historic architecture, colorful cities parks and vibrant cultural events.This scene is peaceful: downtown with",
+        "adjectives_count": 6,
+        "generation_time": 2.0940816402435303
+      }
+    ]
+  },
+  "Phi-3 Mini (3.8B)": {
+    "model_name": "Phi-3 Mini (3.8B)",
+    "average_adjectives": 2.0,
+    "average_generation_time": 2.2014140486717224,
+    "total_adjectives": 16,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene: a bustling street market with vendors, shoppers browsing stalls full of vibrant fruits and vegetables. Craft an engaging narrative from the viewpoint of 'Anna', who is noticing for the first time how people interact in her new city environment \u2013 use expressive language to describe Anna's feelings as she obser",
+        "adjectives_count": 3,
+        "generation_time": 2.494210958480835
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows the power of geology and how it shapes our world. The Rocky Mountains were formed by tectonic forces, which pushed up folds in layers upon layers of rock over millions of years.\"\n\nSarah: \"That's amazing! I never knew that mountains could be created like this!\"\n\nMary: \"Yes, Sarah. It takes",
+        "adjectives_count": 1,
+        "generation_time": 2.4053304195404053
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building\nInput: A Romanesque church in a small French village with thick walls, rounded arched windows and doors. ",
+        "adjectives_count": 1,
+        "generation_time": 0.8268909454345703
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city?\nI saw the Eiffel Tower, which is a famous landmark. It's located on the Champ de Mars and offers stunning views of Paris from its observation deck. The tower was designed by Gustave Eiffel for the 1889 Exposition Universelle to celebrate the 100th anniversary of the French",
+        "adjectives_count": 1,
+        "generation_time": 2.319291353225708
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with a tranquil river flowing through the landscape. The sun is shining brightly, casting gentle rays of light on everything around it. As you observe this serene environment, what mood do you feel? \nAnswer: I would be feeling calm and relaxed in that moment due to the beauty and harmony present within the setting provided by nature",
+        "adjectives_count": 6,
+        "generation_time": 2.3521299362182617
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a flat, horizontal roof structure and large glass panels is the International Style.\n2) A building that utilizes renewable energy sources such as solar power for electricity generation through photovoltaic cells on its rooftop would be considered environmentally friendly due to its sustainable design approach aimed at reducing reliance on non-renewable resources like foss",
+        "adjectives_count": 1,
+        "generation_time": 2.4860243797302246
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing signs of erosion |\n| 4    | The impact on local flora and fauna due to climate change, leading to habitat loss for native species.   | Vegetation cover around ancient rock art decreasing; animal migration patterns shifting away from protected areas | \"Rising temperatures are rapidly transforming the landscape,\" says conservationist Jane Doe",
+        "adjectives_count": 1,
+        "generation_time": 2.391317129135132
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting historical events |\n| Violet hues        | Peace symbol                | Political campaign banner         | Fashion show models in blue and purple attire  | Graffiti with political messages      | Balloons at a party                           | Mural of violet flowers          |\n\nIn this table, each row represents an attribute (Color",
+        "adjectives_count": 2,
+        "generation_time": 2.3361172676086426
+      }
+    ]
+  },
+  "Qwen 2.5 3B": {
+    "model_name": "Qwen 2.5 3B",
+    "average_adjectives": 1.5,
+    "average_generation_time": 2.546297639608383,
+    "total_adjectives": 12,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene: A bustling city street at rush hour, filled with people hurrying to work or home. Cars and buses zip by on the busy roads. \n\nThe scene is set in a major metropolitan area during peak commuting hours. The air is thick with movement as thousands of individuals are rushing about, trying to get where they need to go before their time runs out. Groups of coworkers walk",
+        "adjectives_count": 4,
+        "generation_time": 2.5370421409606934
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows the ruins of a medieval castle, which was once part of an extensive fortification system. The ruins are located in the center of the picture and dominate the scene.\nThe background is dominated by dense forest, with small clearings visible here and there. In the distance, two more castles can be seen on a hilltop. To the right, we see a village with several",
+        "adjectives_count": 1,
+        "generation_time": 2.5898702144622803
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building photo\nCaption: A grand, ornate structure with intricate carvings and gilded details stands as a testament to the architectural prowess of the past. The imposing presence of this historic building is enhanced by its sweeping arches and towering columns that reach towards the sky.\n\nCaption:\nA majestic, intricately carved edifice adorned with golden embellishments serves as an enduring symbol of",
+        "adjectives_count": 1,
+        "generation_time": 2.5316057205200195
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city? A. a big shopping mall B. some tall buildings C. many people D. all of the above\nAnswer: D\n\nWhich of the following statements about the relationship between risk and return is incorrect?\nA. The higher the risk, the greater the expected rate of return.\nB. If two investment projects have different risks but the same expected returns, then",
+        "adjectives_count": 0,
+        "generation_time": 2.4517946243286133
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with a tree in bloom, birds and butterflies.\n\n# A Natural History of the Garden\n\n## The Evolutionary Ecology of Plants and Animals in Your Backyard\n\n### by Charles R. Smith Jr., Robert W. Webb, and John J. Wiens\n\n#### Overview\n\nThe garden is more than just a place to grow vegetables or flowers; it's also a window on the",
+        "adjectives_count": 2,
+        "generation_time": 2.504769802093506
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a large open floor plan, 9' ceilings, and high-end finishes throughout. The main level features an expansive living room with vaulted ceilings & a gas fireplace, spacious kitchen with stainless steel appliances, granite countertops, a center island, walk-in pantry, and a formal dining area. Upstairs the primary suite offers a sitting area, double vanity, separate shower, soaking tub,",
+        "adjectives_count": 1,
+        "generation_time": 2.6132185459136963
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing the history of a people are always interesting. This is especially true when they are located in the middle of a city or town, as it gives one an opportunity to see how our ancestors lived and interacted with their environment.\nThe ruins that we will discuss today are located in downtown Atlanta, Georgia. They were built by a group of African-Americans known as the Felt family who",
+        "adjectives_count": 1,
+        "generation_time": 2.5662689208984375
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting the life of a famous writer is a common sight in many cities. What does this reflect?\nA. The author's personal life\nB. Historical events related to the writer\nC. The cultural and artistic atmosphere of the city\nD. The reader's understanding of the writer\nAnswer: C\n\nWhich of the following statements about the functions of various parts of the eye",
+        "adjectives_count": 2,
+        "generation_time": 2.5758111476898193
+      }
+    ]
+  },
+  "OPT 2.7B Base": {
+    "model_name": "OPT 2.7B Base",
+    "average_adjectives": 1.5,
+    "average_generation_time": 1.2417056858539581,
+    "total_adjectives": 12,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene:  **Bars** : Barcade, Lucky's, O'Kelly's  **Restaurants** : Cucina Italiana, Cafe Amici, Pastaria, Joe's Pizza, Red Lobster, The Fat Chick  **Shopping** : Walmart, Target, Big Lots  **Other Things to Do** : I'm not sure\nI",
+        "adjectives_count": 1,
+        "generation_time": 1.3931376934051514
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows the best of both worlds. The stunning blue sky and dramatic mountain backdrop combine to create a scene worthy of a postcard.\n\nThe location was taken from the famous Kvitfjell ski area in Norway. It's one of those places you really need to see with your own eyes if you want to get the full effect!\n\nI was lucky enough",
+        "adjectives_count": 3,
+        "generation_time": 1.4213941097259521
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building\n\nWe will take a photo of the interior, exterior or both with your business name and logo in the foreground. Once we have received all necessary approval from you, we will email you a high resolution.jpg file containing the text and logo to be used on social media for posting.",
+        "adjectives_count": 1,
+        "generation_time": 1.1147465705871582
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city?\ni was there for a week. I love it. It is perfect.",
+        "adjectives_count": 0,
+        "generation_time": 0.342543363571167
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with a lot of plants and grass. I think the idea would be to have a garden in which you can plant flowers, or maybe some trees that produce fruits/nuts? So you could harvest them like apples/pears.  Also: You might want to consider having a few more different animals on your map, for example deer or rabbits, as they may help balance",
+        "adjectives_count": 2,
+        "generation_time": 1.3982501029968262
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a stylish interior, a large living space and spacious garden to enjoy. This property is ideally located close to all local amenities and only a short drive away from Bath's historic shopping centre.\n\nThis property is now on the market with a starting price of \u00a3450,000 and a viewing is highly recommended. For more information please contact our offices who can assist you through the purchase",
+        "adjectives_count": 2,
+        "generation_time": 1.4349730014801025
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing the impact of man on nature\n\nThe ancient sites in Egypt are famous for their rich history and cultural heritage. But did you know that many of these ancient civilizations were also responsible for altering the environment? While it may seem almost impossible to imagine today, ancient civilizations left behind incredible structures such as pyramids, temples, and tombs\u2014all designed to house humans. This has",
+        "adjectives_count": 1,
+        "generation_time": 1.4362373352050781
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting the life and culture of the city's people are spread across most walls in the Old City. The colorful murals depict scenes from the lives of local residents, including everyday life and religious ceremonies.\n\nKufa Mosque is one of many historic mosques located on this historic walled city. After a fire struck its original location in 1871, Kufa Mosque",
+        "adjectives_count": 2,
+        "generation_time": 1.3923633098602295
+      }
+    ]
+  }
+}
