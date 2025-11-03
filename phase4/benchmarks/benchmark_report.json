@@ -1,0 +1,60 @@
+{
+  "model_info": {
+    "base_model": "facebook/opt-2.7b",
+    "fine_tuning": "LoRA",
+    "trainable_parameters": 47185920,
+    "total_parameters": 2698782720,
+    "training_data_size": 5000,
+    "final_training_loss": 0.1366
+  },
+  "benchmark_results": {
+    "qualitative_evaluation": {
+      "total_tests": 40,
+      "successful_generations": 40
+    },
+    "coherence_score": {
+      "average": 1.975,
+      "max_possible": 5.0,
+      "interpretation": "Needs Improvement"
+    },
+    "performance_metrics": {
+      "avg_inference_time": 4.484020495414734,
+      "memory_allocated_gb": 5.138843536376953,
+      "memory_reserved_gb": 5.578125
+    }
+  },
+  "sample_descriptions": [
+    {
+      "prompt": "Describe this image: a beautiful sunset over mountains with clouds",
+      "generated_description": "guiActive strutConnector guiIcon",
+      "prompt_type": "Describe this image:",
+      "scene_type": "a beautiful sunset over mountains with clouds"
+    },
+    {
+      "prompt": "Describe this image: a busy city street with cars and pedestrians",
+      "generated_description": "guiIconDescDescDescDescDescDescDescDescDescDesc strutConnectorDescDescDescDescDescDescDescDescDescDescDescDescDescDescDescDescDesc",
+      "prompt_type": "Describe this image:",
+      "scene_type": "a busy city street with cars and pedestrians"
+    },
+    {
+      "prompt": "Describe this image: a peaceful forest with sunlight through trees",
+      "generated_description": "\u0001",
+      "prompt_type": "Describe this image:",
+      "scene_type": "a peaceful forest with sunlight through trees"
+    },
+    {
+      "prompt": "Describe this image: a modern kitchen with stainless steel appliances",
+      "generated_description": "strutConnector",
+      "prompt_type": "Describe this image:",
+      "scene_type": "a modern kitchen with stainless steel appliances"
+    },
+    {
+      "prompt": "Describe this image: a historic building with intricate architecture",
+      "generated_description": "guiName",
+      "prompt_type": "Describe this image:",
+      "scene_type": "a historic building with intricate architecture"
+    }
+  ],
+  "timestamp": "2025-11-01T05:25:45.582757",
+  "phase": "4.4"
+}

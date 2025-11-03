@@ -1,0 +1,145 @@
+{
+  "summary": {
+    "total_tests": 12,
+    "successful_generations": 6,
+    "success_rate": 50.0,
+    "coherence_rate": 50.0,
+    "relevance_rate": 16.666666666666664,
+    "artifact_rate": 0.0
+  },
+  "performance_metrics": {
+    "avg_inference_time": 1.7730576515197753,
+    "gpu_memory_gb": 4.966968536376953
+  },
+  "category_breakdown": {
+    "Nature": {
+      "tests": 4,
+      "success_rate": 100.0
+    },
+    "Urban": {
+      "tests": 4,
+      "success_rate": 0.0
+    },
+    "People": {
+      "tests": 4,
+      "success_rate": 50.0
+    }
+  },
+  "detailed_results": [
+    {
+      "category": "Nature",
+      "prompt": "Describe this image: a beautiful sunset over mountains",
+      "description": "and fields of wheat. What is the<unk>\u0000 \u0006 Unfocused \u0017\u001a \u0010 \u0019\u0011 srfN\u0005 \u0003 \u0014\u0018\u000foreAndOnline\b \u0016 \u0012",
+      "coherent": true,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u2705 SUCCESS"
+    },
+    {
+      "category": "Nature",
+      "prompt": "What do you see in this picture: a peaceful forest with sunlight",
+      "description": "streaming through trees. The same is true of the most common problem, which may be that people are not being creative about their problems and they have no other way to solve them than by resorting \u0019 \u0015\u0001 \u0018\u0010\u0012\u001a\u001b \u0014 Unfocused",
+      "coherent": true,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u2705 SUCCESS"
+    },
+    {
+      "category": "Nature",
+      "prompt": "Generate a caption: a tropical beach with palm trees",
+      "description": "and people. The image is the object of an action\u0012 \u0014\u0011\u0005 \u0001 Un\u0006 \u0019 \u0015\u0018 Unfocused\u0000\b \u001a \u000f\u0003\u0007\u001b actionGroup<unk>oreAndOnline",
+      "coherent": true,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u2705 SUCCESS"
+    },
+    {
+      "category": "Nature",
+      "prompt": "This image shows a field of wildflowers",
+      "description": ", which are often used as an example in the classroom. \u0006 \u0019 Un \u0010 \u0014\u001b \u899a\u9192\u0012 \u001a ?????-?????-<unk>\u0005 \u0000 Unfocused\u000f\u0018 \u0011\u0001",
+      "coherent": true,
+      "relevant": true,
+      "artifacts": false,
+      "status": "\u2705 SUCCESS"
+    },
+    {
+      "category": "Urban",
+      "prompt": "Describe this image: a busy city street with skyscrapers",
+      "description": "and cars, people in the streets\u0005\u0000 \u0003\u0010 \u0006 Unfocused <unk>\b \u001a \u0015\u0016 dstg\u000f \u0018 \u0001\u0019\u0011\u0012oreAndOnline\u0013\u001b \u0007",
+      "coherent": false,
+      "relevant": true,
+      "artifacts": false,
+      "status": "\u274c NEEDS WORK"
+    },
+    {
+      "category": "Urban",
+      "prompt": "What do you see here: a modern kitchen with appliances",
+      "description": "and countertops\u0019\u0017\u0000\u000f\u0018\b \u0013 Unfocused\u0015\u0001\u0016 dstg\u0014\u0012 \u0006\u0010\u001b \u0011 \u0004\u0003<unk> ?????-?????-",
+      "coherent": false,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u274c NEEDS WORK"
+    },
+    {
+      "category": "Urban",
+      "prompt": "Generate a caption: a historic building with architecture",
+      "description": "that is of interest to the public \u0012 \u001b \u0001\u0005 dstg \u0019 \u0015\u0007\u0010 \u000f Un\u0000 \u0003\u0006 \u899a\u9192 Unfocused\u001a \u0011 reportprint\u0018",
+      "coherent": false,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u274c NEEDS WORK"
+    },
+    {
+      "category": "Urban",
+      "prompt": "This picture shows a subway station with commuters",
+      "description": "waiting to use the service\u0015\u0018 \u0014 \u0010\u0001 \u0003\u0011 \u0005\u0019\b\u001b \u0016\u0012 <unk> Unfocused\u0006\u0000 unfocusedRange?????-?????- \u001a \u0013\u000e",
+      "coherent": false,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u274c NEEDS WORK"
+    },
+    {
+      "category": "People",
+      "prompt": "Describe this image: a sports event with athletes",
+      "description": "and spectators in \u0005\u0001 Un Unfocused\u0019 \u0006 \u0016\u0018 \u0000\b\u000f\u0012\u0011 \u0015 \u001a \u0014 \u0003\u0010\u0007 DevOnline\u007f\u001b dstg",
+      "coherent": false,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u274c NEEDS WORK"
+    },
+    {
+      "category": "People",
+      "prompt": "What do you see in this photo: a classroom with students",
+      "description": "sitting at desks and\u0011 \u0005\u0014 \u0018 \u0001\u0012 Unfocused\u0015\u0003 dstg<unk>\b \u000f\u0019 srfN\u0006\u0007oreAndOnline unfocusedRange \u0000\u001b\u000e Fan\u001a\u0016",
+      "coherent": false,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u274c NEEDS WORK"
+    },
+    {
+      "category": "People",
+      "prompt": "Generate a caption: a concert with musicians performing",
+      "description": "music. The image of the artist, or one\u0007 \u001b \b\u001a\u0011 \u0013 Unfocused \u0015\u0018<unk>\u0000 \u899a\u9192 Un\u0006 \u0019\u0012\u0001 \u0005",
+      "coherent": true,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u2705 SUCCESS"
+    },
+    {
+      "category": "People",
+      "prompt": "This image shows a family gathering in a living room",
+      "description": ", with the television and video games. The presence of these technologies is linked to problems such as violence\u0001\u0015 \u0006\u0000 Unfocused\u0019 \u0010 UnoreAndOnline srfN \u0011\u001a\u0014 \b",
+      "coherent": true,
+      "relevant": false,
+      "artifacts": false,
+      "status": "\u2705 SUCCESS"
+    }
+  ],
+  "model_info": {
+    "base_model": "facebook/opt-2.7b",
+    "fine_tuning": "LoRA (conservative)",
+    "training_data": "416 diverse examples",
+    "training_strategy": "Early stopping with validation"
+  },
+  "timestamp": "2025-11-01T06:40:10.711583"
+}
