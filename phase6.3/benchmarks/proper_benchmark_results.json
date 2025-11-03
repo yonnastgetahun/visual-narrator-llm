@@ -1,0 +1,76 @@
+{
+  "model_used": "Visual-Narrator-Enhanced",
+  "average_adjectives_per_description": 1.625,
+  "total_test_prompts": 8,
+  "total_adjectives_found": 13,
+  "results": [
+    {
+      "prompt": "Describe this urban scene:",
+      "generated": "Describe this urban scene:\nA man, a woman and their child are sitting on the pavement outside an abandoned building in downtown Los Angeles. The man is holding a rifle over his shoulder; he has a scowl on his face as if to say \u201cwhat have I done?\u201d He seems calm but very much agitated at the same time \u2013 almost like someone who knows what they",
+      "adjectives_count": 2,
+      "adjectives_found": [
+        "calm",
+        "urban"
+      ]
+    },
+    {
+      "prompt": "This beautiful landscape shows",
+      "generated": "This beautiful landscape shows a lovely village in the centre of a field with a lake nearby. The houses are all red and black, while the church has an archway and is surrounded by trees and flowers. This scene was taken in my garden on Sunday morning!\n(I love how you can see what's going on around me from this angle.)\nCopyright: Paul Saffery / UK",
+      "adjectives_count": 1,
+      "adjectives_found": [
+        "beautiful"
+      ]
+    },
+    {
+      "prompt": "Generate caption for historic building",
+      "generated": "Generate caption for historic building\nYou can generate captions on the web, but there are some steps you have to take first.",
+      "adjectives_count": 1,
+      "adjectives_found": [
+        "historic"
+      ]
+    },
+    {
+      "prompt": "What do you see in this city",
+      "generated": "What do you see in this city that makes it more appealing than the next?\nI grew up there.  There's a lot of good things about the town, but I'm not sure what would really qualify as \"more\" attractive.  The closest comparison is probably Portland OR... and we're both much further away from Vancouver BC than Seattle WA is. :)\nThat was kind of",
+      "adjectives_count": 0,
+      "adjectives_found": []
+    },
+    {
+      "prompt": "A peaceful natural scene with",
+      "generated": "A peaceful natural scene with a few animals running around. This is an excellent and beautiful image!\nThank you very much, that means a lot :)",
+      "adjectives_count": 3,
+      "adjectives_found": [
+        "beautiful",
+        "peaceful",
+        "natural"
+      ]
+    },
+    {
+      "prompt": "Modern architecture featuring",
+      "generated": "Modern architecture featuring natural materials and a sense of warmth. A mix of different architectural styles, the interiors have been designed by renowned architects including Rem Koolhaas, Pierre de Meuron, Richard Rogers and Frank Gehry to name but a few. The hotel has two restaurants and bars that serve classic cuisine, as well as modern international cuisine with an emphasis on fresh ingredients and seasonal flavours in",
+      "adjectives_count": 4,
+      "adjectives_found": [
+        "classic",
+        "modern",
+        "natural",
+        "warm"
+      ]
+    },
+    {
+      "prompt": "Ancient ruins showing",
+      "generated": "Ancient ruins showing the history of humanity in a nutshell.\nI'm pretty sure this is just more proof that humans are the only species to ever build an entire civilization from scratch, with no help at all from any other species whatsoever!  It's not like we can't learn anything about ancient civilizations through archeology and anthropology or some shit...right?\nWe're so smart. No other",
+      "adjectives_count": 1,
+      "adjectives_found": [
+        "ancient"
+      ]
+    },
+    {
+      "prompt": "Colorful street art depicting",
+      "generated": "Colorful street art depicting animals and birds is seen in Mexico City on February 9, 2017.\n\nA Mexican court has ruled that a piece of public artwork depicting the country's most popular bird should be removed from a city wall because it violates copyright law.\n\nThe work titled \"Birdman\" was commissioned by the municipality of Cuernavaca for $10 million (744,",
+      "adjectives_count": 1,
+      "adjectives_found": [
+        "colorful"
+      ]
+    }
+  ]
+}

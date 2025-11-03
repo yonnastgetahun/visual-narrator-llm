@@ -1,0 +1,113 @@
+{
+  "model": "Phase 6.1 Complete",
+  "average_adjectives": 5.125,
+  "total_adjectives": 41,
+  "adjective_list_size": 68,
+  "detailed_results": [
+    {
+      "prompt": "Describe this urban scene:",
+      "generated": "Describe this urban scene: a sports stadium with athletes competing on the field, or an art classroom with students creating beautiful paintings. This scene is historic and romantic; describe it with colorful qualities such as historical buildings with textured ornate design elements, modern sleek minimalist buildings with sharp angular lines, towering sunset over mountains with stunning colors, peaceful beach with ocean waves crashing against shorelines, or lush",
+      "adjectives_count": 8,
+      "adjectives_found": [
+        "beautiful",
+        "colorful",
+        "peaceful",
+        "historic",
+        "modern",
+        "urban",
+        "stunning",
+        "minimal"
+      ],
+      "generation_length": 467
+    },
+    {
+      "prompt": "This beautiful landscape shows",
+      "generated": "This beautiful landscape shows mountains with towering peaks. This scene is peaceful with stunning mountains with majestic scenery: a forest with trees and lush green plants, an ocean with waves crashing over rocks, or an urban city with buildings towering above. This textured image has historic qualities: a concert venue with musicians performing their instruments, an outdoor sports stadium with athletes competing in sports activities, an ancient historical site with",
+      "adjectives_count": 7,
+      "adjectives_found": [
+        "beautiful",
+        "peaceful",
+        "ancient",
+        "historic",
+        "urban",
+        "stunning",
+        "majestic"
+      ],
+      "generation_length": 472
+    },
+    {
+      "prompt": "Generate caption for historic building",
+      "generated": "Generate caption for historic building: a forest with trees and lush plants or an urban park with people gathering. A classroom with students learning about this subject: science: energy: the environment.\n\nDescribe the vibrant qualities of this scene: a concert venue with musicians performing a song; an airport with passengers arriving on a plane; a sports stadium with athletes competing in a game; a beach",
+      "adjectives_count": 3,
+      "adjectives_found": [
+        "vibrant",
+        "historic",
+        "urban"
+      ],
+      "generation_length": 409
+    },
+    {
+      "prompt": "What do you see in this city",
+      "generated": "What do you see in this city scene: a concert venue with musicians performing an instrument, or an urban park with people walking and enjoying the environment around them? What do you notice about this scene: a forest with trees, a beach with ocean waves crashing against sand dunes, or a kitchen with appliances and ingredients available for use?:\n\na vibrant concert venue with performers performing music to create",
+      "adjectives_count": 2,
+      "adjectives_found": [
+        "vibrant",
+        "urban"
+      ],
+      "generation_length": 416
+    },
+    {
+      "prompt": "A peaceful natural scene with",
+      "generated": "A peaceful natural scene with mountains and oceans is described in this image: a forest with trees towering above. Create a caption for this vibrant scene: an urban park with people walking, exercising or cooking a meal. A concert venue with musicians performing a song is detailed in this textured image: a concert studio with musicians sitting at keyboards and instruments.\nThis historic image describes an iconic landmark: a",
+      "adjectives_count": 5,
+      "adjectives_found": [
+        "vibrant",
+        "peaceful",
+        "historic",
+        "natural",
+        "urban"
+      ],
+      "generation_length": 427
+    },
+    {
+      "prompt": "Modern architecture featuring",
+      "generated": "Modern architecture featuring ornate structures with vibrant colors is described in this image: an urban park with people engaging in activities such as sports and music, or a kitchen with appliances. This scene is romantic with modern elements like sleek stainless steel appliances and colorful cookware.\nDescribe the visually stunning qualities of this scene: a city street with buildings towering over citizens; an urban forest with trees and vegetation",
+      "adjectives_count": 5,
+      "adjectives_found": [
+        "vibrant",
+        "colorful",
+        "modern",
+        "urban",
+        "stunning"
+      ],
+      "generation_length": 456
+    },
+    {
+      "prompt": "Ancient ruins showing",
+      "generated": "Ancient ruins showing massive buildings with people inside, beautiful landscapes with stunning scenery or vibrant colors with minimal features: this is a city street with buildings towering over it with people walking around; an urban park with people sitting and engaging in activities with colorful objects visible; an ornate historic building with decorative details including windows, doors and ceilings; a minimalist sports venue with athletes competing in a competition with other competitors",
+      "adjectives_count": 9,
+      "adjectives_found": [
+        "beautiful",
+        "vibrant",
+        "colorful",
+        "massive",
+        "ancient",
+        "historic",
+        "urban",
+        "stunning",
+        "minimal"
+      ],
+      "generation_length": 498
+    },
+    {
+      "prompt": "Colorful street art depicting",
+      "generated": "Colorful street art depicting buildings and people has been created in this picture: a city street with buildings towering above. Urban parks are also seen here with trees, plants and ornate structures. This image captures an urban park with people enjoying sports events or music concerts.\nWhat do you see in this scene: a concert venue with musicians, musicians playing instruments, musicians practicing skills on their instruments,",
+      "adjectives_count": 2,
+      "adjectives_found": [
+        "colorful",
+        "urban"
+      ],
+      "generation_length": 434
+    }
+  ]
+}
