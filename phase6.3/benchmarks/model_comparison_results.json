@@ -1,0 +1,247 @@
+{
+  "Phase 6.1 Complete": {
+    "model_name": "Phase 6.1 Complete",
+    "model_path": "phase6/adjective_complete_model",
+    "model_type": "fine-tuned",
+    "average_adjectives": 5.0,
+    "total_adjectives": 40,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene: a beach with ocean waves crashing over rocks, or an urban park with people walking and talking. Create a caption for this chaotic image: a sunset over mountains with peaks towering in the background; a sports stadium with athletes competing in a game; a concert venue with musicians performing on stage; an urban street with buildings sleekly designed with a modern aesthetic to create a vibrant",
+        "adjectives_count": 4
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows mountains with mountainsides with barren mountains and massive towering mountains with stunning mountains with rocky barren mountain landscapes with lush green grassy mountains with scenic colorful scenery with historic buildings with modern sleek designs with an urban city with a peaceful beach with ocean waves with tranquil sunset over colorful sunset sky with ornate historic building with spacious beautiful nature with vibrant forest with picturesque vibrant sunrise over majestic mountainous scene",
+        "adjectives_count": 10
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building: a concert venue with musicians in an energetic performance scene or a sports stadium with athletes competing on the field.\nDescribe this image: a sunset over mountains with stunning peaks towering above, a forest with trees and beautiful foliage, an urban park with people walking and activity happening around them, an artistic landscape with buildings and objects in their natural state, a city street",
+        "adjectives_count": 5
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city scene: a forest with trees and lush green plants or an urban park with people walking and exercising their bodies. Create a caption for this historic scene: a concert venue with musicians performing a song or an athletic stadium with athletes competing for a prize: a medal, trophy or championship title.\n\nA classroom with students learning about the concepts of this text: science",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with colorful textured buildings is depicted in this image: a forest with trees towering over lush green foliage. A city street with buildings and people walking in an urban environment is also visible in this picture. A sunset over beautiful mountains with stunning scenic views is another iconic image in this scene. This historic landmark includes historic buildings, historic sports venues with athletes competing on the field, historical",
+        "adjectives_count": 7
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a towering urban skyscraper with stunning city lights and buildings.\nCreate a caption for this scene: an urban park with people taking photos, a sports stadium with athletes competing, or a concert venue with musicians performing. Create a caption for this scene: an urban park with people taking photos, a sports stadium with athletes competing, or a concert venue with musicians performing.\nThis scene",
+        "adjectives_count": 3
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing chaotic characteristics: a city street with buildings and people, an urban park with people exercising or enjoying the sunset over mountains, or historic architecture with decorative elements. This image is peaceful: towering structures with beautiful architectural details create a scene for this event: a concert with musicians, students working on their projects, sports fans cheering on athletes, artists creating a work of art.This textured",
+        "adjectives_count": 6
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting buildings, sports stadiums and an urban park is featured in this image: a city street with buildings in the background. A sports stadium with athletes in action is also present in the scene this creates. This historic event includes people participating in sport as well as athletic events such as games of basketball, football or baseball. The scenes created by this historical event include sports teams playing on",
+        "adjectives_count": 3
+      }
+    ]
+  },
+  "Phase 6.2 Focused": {
+    "model_name": "Phase 6.2 Focused",
+    "model_path": "phase6/phase6_2_focused_adjectives",
+    "model_type": "fine-tuned",
+    "average_adjectives": 1.125,
+    "total_adjectives": 9,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene:\nIt is an alleyway, with two walls of old buildings on either side. There are three or four storefronts and the street ends in a small park where there is grass and trees around it. The sky has just begun to break through a clear blue cloudless sky above them, but the light seems more gray than white as though they were still under the",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows a man standing on the edge of a cliff with his hand raised to heaven. He is surrounded by clouds, birds and trees in all directions but he looks like he\u2019s looking down at something below him \u2013 perhaps from one of the mountains that surround the valley?\n\nThe artist\u2019s name was John Leech. The original painting was commissioned for Queen Victoria",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building\n\nI am looking to create a caption of the interior view of an historical building. This is from the movie \"The Shawshank Redemption.\" I would like it in color and high resolution. If anyone can help, please let me know as soon as possible! Thanks very much!!\n\nI need someone who knows how to use photoshop or illustrator",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city?\nI can only speak for myself, but I like the idea of a big and diverse metropolis.  My family moved here from Seattle (my dad had been out there since he was 2), so it's nice to be back in one place that feels familiar :)\nYeah man, I've heard its great! It just looks kinda scary at night",
+        "adjectives_count": 0
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with a couple of trees, a small river and an island in the middle.\nBut this is only half true as there are also two people sitting on top of each other making out!\nIn their defense it's not like they're taking up all the space or anything...\nThe day was uneventful until I got to school where my teacher asked me if I",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring the best interior design in India\n\nThe latest trend of Indian modern home designs and interiors is not only a beautiful addition to any homes, but also an amazing way for you to save on your energy bills. In fact, it can even help you earn money! With this new concept that we are discussing today, we have seen a number of new designs being introduced into the",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing signs of a recent earthquake\nThere is evidence that a major earthquake struck the island in mid-August and this has been reflected on ancient Roman and Byzantine buildings.\nThe most recent quake was recorded at 5.1 magnitude according to Seismological Observatory Cyprus (SOC), which monitors seismic activity around the Mediterranean Sea, but it had an epicentre in the northern part of",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting people with coronavirus is going up in Manhattan\nStreet artists are adding to the cultural landscape of New York City as they depict COVID-19 patients, many with masks and medical scrubs on their bodies. The public works of art were painted by local artist Nuno DaSilva over a week ago at an abandoned building near Battery Park. Now there are dozens",
+        "adjectives_count": 1
+      }
+    ]
+  },
+  "Adjective Dominance Full": {
+    "model_name": "Adjective Dominance Full",
+    "model_path": "phase6/adjective_dominance_full",
+    "model_type": "fine-tuned",
+    "average_adjectives": 3.5,
+    "total_adjectives": 28,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene: a classroom with students learning about the characteristics of an academic classroom. What do you see in this scene: students writing a paragraph about this scene or towering over them a city street with buildings and people living their lives this textured image.\n\nWhat do you see in this picture: a concert venue with musicians performing, musicians sitting in a concert venue with instruments music",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows urban buildings with people in a classroom with students caption this scene: a classroom with students sitting at desks with books towering over them. What do you see in this image: an athletic stadium with athletes standing on sports equipment or a concert venue with musicians and instruments. This image is peaceful historic with monuments, cities, city streets with buildings this what you see?\n\nWhat do",
+        "adjectives_count": 4
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building this: a classroom with students this what they are learning: a kitchen with appliances and ingredients or an urban park with people this.\n\nDescribe the spacious qualities of this scene: a sports stadium with athletes in sports gear or sports stadiums with fans sporting sports equipment. What do you see in this scene: a concert venue with musicians standing over a stage with instruments",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city scene: a forest with trees towering over an urban park or a sports stadium with athletes in training, or sports equipment captioned. What do you see in this historic image?\n\nAn urban park with people sporting sports uniforms and sports events what they are doing the sports venue with athletes sports equipment this iconic event scenes what do you see in this image: a",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with mountains or forest with trees. This image shows towering buildings with people in a city street this massive with buildings and people caption this event: sports stadium with athletes sports this venue stunning with athletes sporting their skills what do you see in this picture: an urban park with people sitting this historic with sports cars this scene chaotic with sports vehicles what do you see in this image: a",
+        "adjectives_count": 7
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a city street with buildings this historic: urban with buildings. What do you see in this image: an outdoor sports stadium with athletes or players, sporting their sports equipment or clothing, or an urban park with people this pristine: romantic with people and objects or ornate with textured scenes this beautiful: cities with buildings towering over streets or forests with trees.\nThis caption further describes",
+        "adjectives_count": 4
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing the peaceful qualities of this scene: a sports stadium with athletes sporting their sports equipment or a concert venue with musicians. This image shows an urban park with people living and doing activities: a kitchen with appliances what you see massive food scenes with students eating, a classroom with students learning textured issues such as this one \"a sports stadium with athletes,\" or sports stadiums with athletes in sport",
+        "adjectives_count": 4
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting a city street with buildings and people this iconic scene. What do you see in this caption: an urban park with people this peaceful or sports stadium with athletes this sports-centered? This image shows what you would see if you historic a concert venue with musicians this concert scene or artists this textured object with lines over barren scenes a city street with buildings a sunset over mountains",
+        "adjectives_count": 4
+      }
+    ]
+  },
+  "Adjective Model Proper": {
+    "model_name": "Adjective Model Proper",
+    "model_path": "phase6/adjective_model_proper",
+    "model_type": "fine-tuned",
+    "average_adjectives": 1.375,
+    "total_adjectives": 11,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene:\nThe town is a small one in the middle of nowhere, far from any cities or other places with people. The roads are dirt and there isn't really anywhere to buy food so everyone just eats whatever they can find when it's not raining.   It would be like if you were stuck on an island but every now and then someone comes out of the",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows the two sides of life: both beauty and tragedy.\nAs a fan of all things nature I am always fascinated by these sorts of photographs, especially when they are done well (as this one is).  Well done OP!",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building\n\nThe first image of the historic St. Francis House in downtown Portland, Maine is displayed on a computer screen as it's being readied to be photographed by an architectural photographer from the National Park Service at the end of January 2014.(Photo: John Domen)Buy Photo\n\nPORTLAND \u2014 The National Park Service will begin taking photographs next week of the",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city?\nI\u2019m not sure.  I was trying to find a way of saying that it didn\u2019t feel right there, but couldn\u2019t quite put my finger on how exactly.  Maybe something about the air just felt different or maybe because we were going up and down the road for hours with no purpose.  Either way,",
+        "adjectives_count": 0
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with a beautiful young woman in the foreground.\nShe's on her knees, kneeling before a shrine to her Lord and Savior Jesus Christ.\nHer hair is long and wavy, cascading down over her shoulders.\nThis image could be used for a Christian magazine ad or a religious newsletter about the beauty of Christianity!\nI'd love it as an ornament on my",
+        "adjectives_count": 3
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a concrete slab as the ground floor has been proposed in India. The design concept is to create a structure that can be modified according to individual needs of occupants and adaptable for various uses, such as living quarters or an office building.\nThe project will consist of two main parts: one on the lower floors which will provide space for offices, flats, shops etc., while the",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing signs of the past\nBANGKOK: The old city is full of ancient relics, and it's easy to find them thanks to technology.\nTuesday 3 September 2019, 08:37AM\nThe old city in Bangkok is filled with many historical sites. Photo: Thawatchai Prompao / Bangkok Post\nThere are many monuments that can be seen throughout central",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting a scene from the animated film 'Up' is displayed in Berlin, Germany. (Image credit: Reuters)\n\nThe world-famous \"Wall\" that divided East and West Berlin during decades of Cold War division has been painted over with colourful murals to mark its 40th anniversary since it was torn down by Soviet troops on November 9, 1989. The wall,",
+        "adjectives_count": 2
+      }
+    ]
+  },
+  "OPT-2.7B Base": {
+    "model_name": "OPT-2.7B Base",
+    "model_path": "base",
+    "model_type": "base",
+    "average_adjectives": 2.0,
+    "total_adjectives": 16,
+    "results": [
+      {
+        "prompt": "Describe this urban scene:",
+        "generated": "Describe this urban scene: The city of Vancouver has long been a centre for the music industry, and is home to several major recording studios. In addition to being one of Canada\u2019s largest cities with over 1 million people living in it (and counting), it also offers unique natural features such as mountains, forests, lakes and even a glacier on its doorstep! It was no wonder that",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "This beautiful landscape shows",
+        "generated": "This beautiful landscape shows a clear sky and the stars are shining brightly. A deep blue sea is also visible in this shot taken from a yacht sailing at night over a tropical island. The photographer used a Nikon D7000 camera with Nikkor 20mm f/1.8 lens to capture this photo which was shared on Flickr as part of an image challenge by the photography community called \u201c",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "Generate caption for historic building",
+        "generated": "Generate caption for historic building\n\nThe project's scope included generating captions to help people understand the architectural details on a historical structure. The client wanted something that would be visually interesting, but not distract from what was already there or make things more difficult to read in the dark of night. We were asked by this client if we could generate some captions using OpenStreetMap data and I",
+        "adjectives_count": 2
+      },
+      {
+        "prompt": "What do you see in this city",
+        "generated": "What do you see in this city for the future? What\u2019s your vision of it and how would that look to you personally, as a resident or visitor.\nI think there's room for more growth downtown especially with our new convention center opening next year! I'd love if we could build up on all sides towards downtown, but also keep some open space too. We have beautiful",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "A peaceful natural scene with",
+        "generated": "A peaceful natural scene with the water gently lapping against rocks. This is a lovely image of the ocean, and I love the serene colors in it! Thanks for sharing this beautiful picture here on our blog today, Christine!\n\nThis is so gorgeous; I just can't stop looking at the photo. It's like watching a dream unfold as you look into the distance from your own",
+        "adjectives_count": 4
+      },
+      {
+        "prompt": "Modern architecture featuring",
+        "generated": "Modern architecture featuring a traditional flair is the style that many architects are trying to create in the city. This classic approach has been adopted by most of the newer developments like GK, Avanti Garden and others. But these buildings were designed with modern technologies which make them extremely energy efficient as well. The best part about such projects is that they have the ability not only to conserve but also use",
+        "adjectives_count": 3
+      },
+      {
+        "prompt": "Ancient ruins showing",
+        "generated": "Ancient ruins showing the impact of ancient people\nThe remains found on Paseo de San Jos\u00e9 in the La Cienega neighborhood, east of downtown Los Angeles. The area is considered one of the oldest and most important cities built by the Native Americans to date during the 13th century A.D., but it was abandoned after they were massacred by Spanish conquistadors more than 500",
+        "adjectives_count": 1
+      },
+      {
+        "prompt": "Colorful street art depicting",
+        "generated": "Colorful street art depicting a woman in the act of having sex with an elephant is to be displayed on a wall opposite the US embassy in Bangkok, Thailand.\n\nThe work by artist Andy Goldsworthy features two nude women playing with each other between two elephants. The image was inspired by a mural he painted at the Elephant Sanctuary of Chiang Mai. It has also been featured in the",
+        "adjectives_count": 1
+      }
+    ]
+  }
+}

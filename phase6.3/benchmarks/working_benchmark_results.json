@@ -1,0 +1,21 @@
+{
+  "average_adjectives": 0.3333333333333333,
+  "total_tests": 3,
+  "results": [
+    {
+      "prompt": "Describe this urban scene:",
+      "generated": "Describe this urban scene:   > A middle-aged white man is in a wheelchair, holding his hands in the air, a woman in a blue shirt is standing behind him, an Asian woman in a short skirt is walking in front of him, and a black man in a green",
+      "adjectives_count": 0
+    },
+    {
+      "prompt": "This beautiful landscape shows",
+      "generated": "This beautiful landscape shows a small area of the town of Montreuil, in the suburbs of Paris. It is part of the famous Place d'Italie, one of the most famous squares in Paris. The square is located in the middle of the city and is one of the",
+      "adjectives_count": 1
+    },
+    {
+      "prompt": "Generate caption for historic building",
+      "generated": "Generate caption for historic building\n\nHi there. I am looking for a capturier to generate a caption for a historic building. I am looking for a text based capturier. I would like the caption to be at least 1500 characters and preferably longer, although I am flexible.",
+      "adjectives_count": 0
+    }
+  ]
+}
