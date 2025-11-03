@@ -1,0 +1,8 @@
+{
+  "model": "opt-2.7b",
+  "dataset": "synthetic",
+  "training_examples": 5000,
+  "final_loss": 0.13664947509765624,
+  "phase": "4.3",
+  "timestamp": "2025-11-01T05:09:29.556110"
+}
