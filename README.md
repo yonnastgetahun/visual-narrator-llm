@@ -9,8 +9,8 @@ tags:
 - cinematic
 license: apache-2.0
 datasets:
-- COCO
-- Visual Genome
+- microsoft/coco
+- laion/laion2B-en
 metrics:
 - semantic accuracy: 0.716
 - processing time: 0.0024
