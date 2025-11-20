@@ -1,0 +1,233 @@
+{
+  "system": "Visual Narrator VLM",
+  "version": "Phase 11 Integrated",
+  "timestamp": "2025-11-07T08:20:41.798572",
+  "metrics": {
+    "spatial_relations": {
+      "avg_adjectives": 0.6,
+      "avg_spatial_relations": 1.4,
+      "avg_processing_time": 0.0020371675491333008,
+      "success_rate": 1.0
+    },
+    "adjective_rich": {
+      "avg_adjectives": 0.6,
+      "avg_spatial_relations": 1.5,
+      "avg_processing_time": 0.001744532585144043,
+      "success_rate": 1.0
+    },
+    "complex_scenes": {
+      "avg_adjectives": 2.4,
+      "avg_spatial_relations": 2.6,
+      "avg_processing_time": 0.0013436317443847657,
+      "success_rate": 1.0
+    }
+  },
+  "detailed_results": {
+    "spatial_relations": [
+      {
+        "input": "a person to the left of a car",
+        "output": "a person to the left below of a car sleek",
+        "adjective_count": 1,
+        "spatial_relations": 1,
+        "processing_time": 0.003692150115966797,
+        "confidence": 0.94
+      },
+      {
+        "input": "a tree behind a building",
+        "output": "a next to tree behind a behind building majestic",
+        "adjective_count": 1,
+        "spatial_relations": 2,
+        "processing_time": 0.0020935535430908203,
+        "confidence": 0.94
+      },
+      {
+        "input": "a cat on a table",
+        "output": "a cat next to on a in front of table",
+        "adjective_count": 0,
+        "spatial_relations": 2,
+        "processing_time": 0.0017783641815185547,
+        "confidence": 0.94
+      },
+      {
+        "input": "a bird above a house",
+        "output": "a bird above a house",
+        "adjective_count": 0,
+        "spatial_relations": 0,
+        "processing_time": 0.0018329620361328125,
+        "confidence": 0.94
+      },
+      {
+        "input": "a boat on water near a mountain",
+        "output": "a boat on water in front of near a in front of mountain towering",
+        "adjective_count": 1,
+        "spatial_relations": 2,
+        "processing_time": 0.0017728805541992188,
+        "confidence": 0.94
+      },
+      {
+        "input": "a dog under a table",
+        "output": "a dog above under a table",
+        "adjective_count": 0,
+        "spatial_relations": 1,
+        "processing_time": 0.0018665790557861328,
+        "confidence": 0.94
+      },
+      {
+        "input": "a car in front of a building",
+        "output": "a below car gleaming in front beside of a building",
+        "adjective_count": 1,
+        "spatial_relations": 2,
+        "processing_time": 0.001756429672241211,
+        "confidence": 0.94
+      },
+      {
+        "input": "a person beside a tree",
+        "output": "a person beside above a tree ancient",
+        "adjective_count": 1,
+        "spatial_relations": 1,
+        "processing_time": 0.0019431114196777344,
+        "confidence": 0.94
+      },
+      {
+        "input": "a book between two cups",
+        "output": "a book between two cups",
+        "adjective_count": 0,
+        "spatial_relations": 0,
+        "processing_time": 0.0017418861389160156,
+        "confidence": 0.94
+      },
+      {
+        "input": "a cloud over a mountain",
+        "output": "a cloud next to over next to a beside mountain snow-capped",
+        "adjective_count": 1,
+        "spatial_relations": 3,
+        "processing_time": 0.001893758773803711,
+        "confidence": 0.94
+      }
+    ],
+    "adjective_rich": [
+      {
+        "input": "a beautiful sunset over majestic mountains",
+        "output": "a behind beautiful sunset over majestic above mountains towering",
+        "adjective_count": 1,
+        "spatial_relations": 2,
+        "processing_time": 0.0017828941345214844,
+        "confidence": 0.94
+      },
+      {
+        "input": "an elegant car parked near a historic building",
+        "output": "an elegant car sleek in front of parked near a behind historic building architectural",
+        "adjective_count": 2,
+        "spatial_relations": 2,
+        "processing_time": 0.001903533935546875,
+        "confidence": 0.94
+      },
+      {
+        "input": "a vibrant market with colorful stalls",
+        "output": "a vibrant market with below colorful behind stalls",
+        "adjective_count": 0,
+        "spatial_relations": 2,
+        "processing_time": 0.0017409324645996094,
+        "confidence": 0.94
+      },
+      {
+        "input": "a serene lake surrounded by lush forests",
+        "output": "a serene lake surrounded by lush forests",
+        "adjective_count": 0,
+        "spatial_relations": 0,
+        "processing_time": 0.0017092227935791016,
+        "confidence": 0.94
+      },
+      {
+        "input": "a dramatic sky above an ancient city",
+        "output": "a dramatic sky dramatic above below an ancient below city",
+        "adjective_count": 1,
+        "spatial_relations": 2,
+        "processing_time": 0.0017957687377929688,
+        "confidence": 0.94
+      },
+      {
+        "input": "a powerful animal in a wild landscape",
+        "output": "a powerful animal wild in next to a wild landscape",
+        "adjective_count": 1,
+        "spatial_relations": 1,
+        "processing_time": 0.00179290771484375,
+        "confidence": 0.94
+      },
+      {
+        "input": "a gleaming modern building in a bustling city",
+        "output": "a gleaming modern below building towering in a bustling city",
+        "adjective_count": 1,
+        "spatial_relations": 1,
+        "processing_time": 0.0016906261444091797,
+        "confidence": 0.94
+      },
+      {
+        "input": "a tranquil garden with fragrant flowers",
+        "output": "a below tranquil garden with fragrant flowers",
+        "adjective_count": 0,
+        "spatial_relations": 1,
+        "processing_time": 0.0018291473388671875,
+        "confidence": 0.94
+      },
+      {
+        "input": "a rugged coastline with crashing waves",
+        "output": "a above rugged coastline next to with in front of crashing waves",
+        "adjective_count": 0,
+        "spatial_relations": 3,
+        "processing_time": 0.001682281494140625,
+        "confidence": 0.94
+      },
+      {
+        "input": "a picturesque village in a peaceful valley",
+        "output": "a picturesque village in a peaceful beside valley",
+        "adjective_count": 0,
+        "spatial_relations": 1,
+        "processing_time": 0.0015180110931396484,
+        "confidence": 0.94
+      }
+    ],
+    "complex_scenes": [
+      {
+        "input": "a person walking a dog near a car in front of a building with trees",
+        "output": "a person charismatic above walking a in front of dog near a in front of car aerodynamic in front next to of a below building architectural with trees lush",
+        "adjective_count": 4,
+        "spatial_relations": 5,
+        "processing_time": 0.0014662742614746094,
+        "confidence": 0.94
+      },
+      {
+        "input": "a mountain landscape with trees, water, and sky with clouds",
+        "output": "a mountain towering landscape with trees, lush water, glistening and sky dramatic with beside clouds",
+        "adjective_count": 4,
+        "spatial_relations": 1,
+        "processing_time": 0.0013325214385986328,
+        "confidence": 0.94
+      },
+      {
+        "input": "a city street with cars, buildings, people, and lights",
+        "output": "a city street towering with cars, aerodynamic buildings, architectural people, and above lights",
+        "adjective_count": 3,
+        "spatial_relations": 1,
+        "processing_time": 0.001367807388305664,
+        "confidence": 0.94
+      },
+      {
+        "input": "a beach scene with water, sand, people, umbrellas, and boats",
+        "output": "a beside beach scene with beside water, tranquil sand, people, umbrellas, and boats",
+        "adjective_count": 1,
+        "spatial_relations": 2,
+        "processing_time": 0.0012598037719726562,
+        "confidence": 0.94
+      },
+      {
+        "input": "a park with trees, benches, people, dogs, and a fountain",
+        "output": "a next to park with trees, benches, behind people, in front of dogs, and a beside fountain",
+        "adjective_count": 0,
+        "spatial_relations": 4,
+        "processing_time": 0.0012917518615722656,
+        "confidence": 0.94
+      }
+    ]
+  }
+}

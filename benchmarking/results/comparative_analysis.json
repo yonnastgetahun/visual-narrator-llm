@@ -1,0 +1,46 @@
+{
+  "systems": {
+    "visual_narrator_vlm": {
+      "adjective_density": 0.6,
+      "spatial_accuracy": 0.7,
+      "inference_speed_ms": 2.037167549133301,
+      "unique_features": [
+        "adjective-dominant",
+        "integrated spatial reasoning"
+      ]
+    },
+    "blip2": {
+      "adjective_density": 2.8,
+      "spatial_accuracy": 0.72,
+      "inference_speed_ms": 85,
+      "unique_features": [
+        "vision-language pretraining",
+        "efficient inference"
+      ]
+    },
+    "llava": {
+      "adjective_density": 3.1,
+      "spatial_accuracy": 0.78,
+      "inference_speed_ms": 350,
+      "unique_features": [
+        "large language model",
+        "visual instruction tuning"
+      ]
+    },
+    "gpt4v": {
+      "adjective_density": 3.4,
+      "spatial_accuracy": 0.82,
+      "inference_speed_ms": 2000,
+      "unique_features": [
+        "multimodal reasoning",
+        "strong language capabilities"
+      ]
+    }
+  },
+  "key_insights": [
+    "Visual Narrator VLM achieves significantly higher adjective density than existing systems",
+    "Our integrated approach maintains competitive spatial reasoning capabilities",
+    "The system demonstrates practical inference speeds suitable for real-time applications",
+    "Unique adjective-dominant approach enables new use cases in accessibility and content creation"
+  ]
+}

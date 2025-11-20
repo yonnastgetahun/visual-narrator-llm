@@ -1,0 +1,33 @@
+{
+  "spatial_relations": [
+    "a person to the left of a car",
+    "a tree behind a building",
+    "a cat on a table",
+    "a bird above a house",
+    "a boat on water near a mountain",
+    "a dog under a table",
+    "a car in front of a building",
+    "a person beside a tree",
+    "a book between two cups",
+    "a cloud over a mountain"
+  ],
+  "adjective_rich": [
+    "a beautiful sunset over majestic mountains",
+    "an elegant car parked near a historic building",
+    "a vibrant market with colorful stalls",
+    "a serene lake surrounded by lush forests",
+    "a dramatic sky above an ancient city",
+    "a powerful animal in a wild landscape",
+    "a gleaming modern building in a bustling city",
+    "a tranquil garden with fragrant flowers",
+    "a rugged coastline with crashing waves",
+    "a picturesque village in a peaceful valley"
+  ],
+  "complex_scenes": [
+    "a person walking a dog near a car in front of a building with trees",
+    "a mountain landscape with trees, water, and sky with clouds",
+    "a city street with cars, buildings, people, and lights",
+    "a beach scene with water, sand, people, umbrellas, and boats",
+    "a park with trees, benches, people, dogs, and a fountain"
+  ]
+}

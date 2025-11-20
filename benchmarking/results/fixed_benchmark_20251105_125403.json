@@ -1,0 +1,58 @@
+{
+  "spatial_accuracy": 0.8,
+  "pattern_coverage": 1.0,
+  "total_patterns": 448,
+  "adjective_density": 0.5133333333333333,
+  "max_adjectives": 2,
+  "adjective_consistency": 0.0,
+  "inference_speed_ms": 1.061081886291504,
+  "throughput_rps": 942.4343332209864,
+  "competitive_analysis": {
+    "adjective_density": {
+      "Claude 3.5 Sonnet": -0.7555555555555556,
+      "GPT-4V": -0.7861111111111112,
+      "BLIP-2": -0.5333333333333334
+    },
+    "spatial_accuracy": {
+      "Claude 3.5 Sonnet": 0.23076923076923078,
+      "GPT-4V": 0.11111111111111122,
+      "BLIP-2": 0.7777777777777778
+    },
+    "inference_speed_ms": {
+      "Claude 3.5 Sonnet": 0.9991157650947571,
+      "GPT-4V": 0.9992926120758057,
+      "BLIP-2": 0.9969683374677386
+    }
+  },
+  "our_actual_performance": {
+    "adjective_density": 0.5133333333333333,
+    "spatial_accuracy": 0.8,
+    "inference_speed_ms": 1.061081886291504,
+    "pattern_coverage": 1.0,
+    "training_cost": 250,
+    "model_size": "3B parameters"
+  },
+  "competitor_performance": {
+    "Claude 3.5 Sonnet": {
+      "adjective_density": 2.1,
+      "spatial_accuracy": 0.65,
+      "inference_speed_ms": 1200,
+      "training_cost": ">$10M",
+      "model_size": "Large (undisclosed)"
+    },
+    "GPT-4V": {
+      "adjective_density": 2.4,
+      "spatial_accuracy": 0.72,
+      "inference_speed_ms": 1500,
+      "training_cost": ">$100M",
+      "model_size": "Large (undisclosed)"
+    },
+    "BLIP-2": {
+      "adjective_density": 1.1,
+      "spatial_accuracy": 0.45,
+      "inference_speed_ms": 350,
+      "training_cost": "~$1M",
+      "model_size": "3.4B parameters"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "Visual Narrator VLM": {
+    "training_cost": 344.69,
+    "inference_cost_per_1k": 0.0,
+    "model_size": "3B",
+    "development_time": "11 phases",
+    "infrastructure": "Lambda GPU",
+    "deployment": "Local/Free"
+  },
+  "GPT-4 Turbo": {
+    "training_cost": "Estimated $10M+",
+    "inference_cost_per_1k": 8.0,
+    "model_size": "~1.7T",
+    "development_time": "Years",
+    "infrastructure": "Proprietary",
+    "deployment": "API/Paid"
+  },
+  "Claude 3.5 Sonnet": {
+    "training_cost": "Estimated $5M+",
+    "inference_cost_per_1k": 5.0,
+    "model_size": "70B",
+    "development_time": "Years",
+    "infrastructure": "Proprietary",
+    "deployment": "API/Paid"
+  },
+  "BLIP-2": {
+    "training_cost": "Estimated $50K",
+    "inference_cost_per_1k": 0.0,
+    "model_size": "3.4B",
+    "development_time": "Months",
+    "infrastructure": "Academic",
+    "deployment": "Local/Free"
+  },
+  "LLaVA": {
+    "training_cost": "Estimated $100K",
+    "inference_cost_per_1k": 0.0,
+    "model_size": "7B",
+    "development_time": "Months",
+    "infrastructure": "Academic",
+    "deployment": "Local/Free"
+  }
+}

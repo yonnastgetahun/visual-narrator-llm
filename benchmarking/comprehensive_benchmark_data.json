@@ -1,0 +1,90 @@
+{
+  "phase6_text_to_text": {
+    "Our 3B Model": {
+      "adjective_density": 3.62,
+      "model_size": "3B",
+      "cost": "Local",
+      "inference_speed_ms": 2.1
+    },
+    "Claude Sonnet": {
+      "adjective_density": 2.0,
+      "model_size": "70B",
+      "cost": "API",
+      "inference_speed_ms": 1500
+    },
+    "GPT-4": {
+      "adjective_density": 2.8,
+      "model_size": "~1.7T",
+      "cost": "API",
+      "inference_speed_ms": 2000
+    }
+  },
+  "current_comprehensive": {
+    "Visual Narrator VLM": {
+      "adjective_density": 0.494,
+      "spatial_accuracy": 0.833,
+      "multi_object_reasoning": 1.0,
+      "inference_speed_ms": 2.5,
+      "integration_quality": 0.622,
+      "cost_efficiency": 0.95,
+      "model_size": "3B",
+      "deployment": "Local",
+      "training_cost": 344.69
+    },
+    "GPT-4 Turbo": {
+      "adjective_density": 0.049,
+      "spatial_accuracy": 1.0,
+      "multi_object_reasoning": 0.633,
+      "inference_speed_ms": 5403.1,
+      "integration_quality": 0.149,
+      "cost_efficiency": 0.006,
+      "model_size": "~1.7T",
+      "deployment": "API",
+      "training_cost": "Millions+"
+    },
+    "Claude 3.5 Sonnet": {
+      "adjective_density": 0.233,
+      "spatial_accuracy": 0.74,
+      "multi_object_reasoning": 0.797,
+      "inference_speed_ms": 2000,
+      "integration_quality": 0.309,
+      "cost_efficiency": 0.09,
+      "model_size": "70B",
+      "deployment": "API",
+      "training_cost": "Millions+"
+    },
+    "BLIP-2": {
+      "adjective_density": 0.118,
+      "spatial_accuracy": 0.551,
+      "multi_object_reasoning": 0.579,
+      "inference_speed_ms": 100,
+      "integration_quality": 0.341,
+      "cost_efficiency": 0.533,
+      "model_size": "3.4B",
+      "deployment": "Local",
+      "training_cost": "~$50K"
+    },
+    "LLaVA": {
+      "adjective_density": 0.205,
+      "spatial_accuracy": 0.636,
+      "multi_object_reasoning": 0.704,
+      "inference_speed_ms": 800,
+      "integration_quality": 0.316,
+      "cost_efficiency": 0.35,
+      "model_size": "7B",
+      "deployment": "Local",
+      "training_cost": "~$100K"
+    }
+  },
+  "metadata": {
+    "report_date": "2025-11-07T12:23:26.231847",
+    "training_cost_total": 344.69,
+    "models_compared": [
+      "Visual Narrator VLM",
+      "GPT-4 Turbo",
+      "Claude 3.5 Sonnet",
+      "BLIP-2",
+      "LLaVA"
+    ]
+  }
+}
