@@ -1,60 +1,61 @@
----
-language: 
-- en
-tags:
-- visual-narrator
-- scene-description
-- real-time
-- 3b-parameters
-- cinematic
-license: apache-2.0
-datasets:
-- microsoft/coco
-- laion/laion2B-en
-metrics:
-- semantic accuracy: 0.716
-- processing time: 0.0024
----
+# Visual Narrator - Real-Time Cinematic Descriptions
 
-# 🎬 Visual Narrator 3B - Phase 10
+## 🎯 Specialized 3B Model Outperforming Trillion-Parameter Giants
 
-## Real-Time Cinematic Description Model
-
-**3B parameter model specialized for rich, real-time scene description - outperforms trillion-parameter giants**
+**1,449x faster than Claude Opus with superior quality at zero marginal cost**
 
 ### 🚀 Performance Highlights
-- **Speed**: 2.4ms processing (1,449x faster than Claude Opus)
-- **Quality**: 71.6% semantic accuracy (#1 vs premium models)
+- **Speed**: 2.4ms vs 3,536ms (Claude Opus)
+- **Quality**: 71.6% semantic accuracy (#1)
+- **Cost**: $0 vs $0.06+ per API call
 - **Size**: 3B parameters (efficient deployment)
-- **Cost**: Zero marginal cost vs. API pricing
 
 ### 📊 Benchmark Results
-| Model | Processing Time | Semantic Accuracy | Narrative Quality |
-|-------|----------------|------------------|-------------------|
-| **Visual Narrator 3B** | **2.4ms** | **71.6%** | **100%** |
-| Claude Opus | 3,536ms | 64.2% | 87.5% |
-| GPT-4 Turbo | 2,344ms | 66.8% | 87.5% |
+| Metric | Visual Narrator | Claude Opus | GPT-4 Turbo |
+|--------|----------------|-------------|-------------|
+| Processing Time | **2.4ms** | 3,536ms | 2,344ms |
+| Semantic Accuracy | **71.6%** | 64.2% | 66.8% |
+| Narrative Quality | **100%** | 87.5% | 87.5% |
+| Real-time Capable | ✅ **Yes** | ❌ No | ❌ No |
 
-### 🎯 Key Features
-- Real-time capability (under 16ms threshold)
-- Professional narrative flow
-- Local deployment
-- Specialized for descriptive richness
+### 🎬 Live Demos
+- **[Technical Comparison](https://huggingface.co/spaces/Ytgetahun/visual-narrator-comparison)** - Visual Narrator vs GPT-4 (Hugging Face)
+- **[Model Repository](https://huggingface.co/Ytgetahun/visual-narrator-llm)** - Code & Documentation (Hugging Face)
+- **[Investor Demo](https://github.com/yonnastgetahun/visual-narrator-demo)** - Business Case & Videos (GitHub)
 
 ### 💎 Sample Output
-**Visual Narrator**: "A luxurious automobile navigates the metropolitan urban landscape at night, where colorful neon illumination creates dramatic atmospheric effects."
+**Visual Narrator**: "In the pulsating space, a graceful performer dances rhythmically under vibrant colorful lights."
 
-### 🔧 Usage
-```python
-# Real-time scene description API
-import requests
+### 🔧 Technical Architecture
+- **Model**: 3B parameter transformer
+- **Training**: Phase 10 specialized visual narration
+- **Inference**: 2.4ms on standard hardware
+- **Deployment**: Local, private, no API dependencies
 
-response = requests.post(
-    "http://localhost:8010/describe/scene",
-    json={"scene_description": "A car driving through a city at night"}
-)
-print(response.json()["enhanced_description"])
+### 📁 Repository Structure
+visual-narrator-llm/
+├── training/ # Phase 7.1-7.3 training pipeline
+├── benchmarking/ # Validation and benchmark scripts
+├── models/ # Model weights and configurations
+└── deployment/ # Production deployment setup
+
+text
+
+### 🚀 Quick Start
+```bash
+# Run benchmark comparison
+python benchmarking/benchmark_real_scores_clean.py
+
+# Test our model
+python visual_narrator_api_CLEAN.py
+🔗 Links
+Hugging Face Model
+
+Technical Demo
+
+Investor Demo
+
+Case Study
+
 📄 License
-Apache 2.0
-
-*Benchmark conducted with real API calls to Claude Opus and GPT-4 Turbo*
+Apache 2.0 - See LICENSE file for details.
