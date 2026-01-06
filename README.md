@@ -59,10 +59,27 @@ Measures descriptive language richness.
 
 ---
 
+## Live API Demo Results (January 2026)
+
+We built a live demo that races Visual Narrator against frontier models using **real API calls**—no simulation, no cherry-picking.
+
+| Model | Live Latency | vs Visual Narrator |
+|-------|-------------|-------------------|
+| **Visual Narrator** | **429ms** | — |
+| Claude Sonnet 4 | 4,559ms | 10.6x slower |
+| Gemini 2.0 Flash | 8,048ms | 18.8x slower |
+| GPT-4o | 11,873ms | 27.7x slower |
+
+**Try it yourself:** [Live Comparison Demo](https://huggingface.co/spaces/Ytgetahun/visual-narrator-comparison)
+
+*Results from parallel API calls at the same millisecond. WebSocket endpoint available for verification.*
+
+---
+
 ## The Unlock
 
 We're not claiming to beat Claude on language quality.
-We're claiming to **match their quality** while running **976x faster**.
+We're claiming to **match their quality** while running **10x+ faster in real-world API conditions**.
 
 That enables:
 - Live broadcasting with real-time audio description
