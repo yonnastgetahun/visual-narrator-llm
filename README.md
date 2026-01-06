@@ -132,8 +132,7 @@ python visual_narrator_api.py --input video.mp4
 ## Links
 
 - [Model Repository](https://huggingface.co/Ytgetahun/visual-narrator-llm)
-- [Technical Comparison Demo](https://huggingface.co/spaces/Ytgetahun/visual-narrator-comparison)
-- [Documentation](https://github.com/yonnastgetahun/visual-narrator-docs)
+- [Technical Comparison & Documentation](https://huggingface.co/spaces/Ytgetahun/visual-narrator-comparison)
 
 ---
 
