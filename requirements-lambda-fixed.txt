@@ -1,0 +1,8 @@
+mangum==0.17.0
+fastapi==0.104.1
+pydantic==1.10.12  # Use older, pure-Python version
+python-multipart==0.0.6
+pillow==10.0.1
+requests==2.31.0
+python-dotenv==1.0.0
+aiofiles==23.2.1
