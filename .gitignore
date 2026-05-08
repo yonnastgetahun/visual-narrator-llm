@@ -8,6 +8,10 @@ __pycache__/
 dist/
 build/
 .eggs/
+!build/
+build/*
+!build/vn003/
+!build/vn003/*.json
 
 # Virtual environments
 venv/
@@ -41,3 +45,4 @@ lambda-package/
 # IDE
 .vscode/
 .idea/
+package-lock.json.backup

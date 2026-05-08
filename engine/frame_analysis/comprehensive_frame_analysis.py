@@ -2,12 +2,34 @@
 COMPREHENSIVE FRAME ANALYSIS - Full Visual Detail Capture
 Goes beyond basic face detection to capture rich visual context
 """
+import boto3
 import cv2
 import numpy as np
 import os
 import json
 from datetime import datetime
 from collections import Counter
+
+rekognition = boto3.client("rekognition", region_name="us-east-1")
+
+
+def detect_objects(image_bytes):
+    try:
+        response = rekognition.detect_labels(
+            Image={"Bytes": image_bytes},
+            MaxLabels=10,
+            MinConfidence=70.0,
+        )
+        return [
+            {
+                "label": label["Name"],
+                "confidence": round(label["Confidence"], 1),
+            }
+            for label in response.get("Labels", [])
+        ], "rekognition"
+    except Exception as e:
+        print(f"Rekognition error: {e}")
+        return [], "fallback"
 
 class ComprehensiveFrameAnalyzer:
     def __init__(self, video_path):
@@ -35,6 +57,13 @@ class ComprehensiveFrameAnalyzer:
         self.cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
         ret, frame = self.cap.read()
         return frame if ret else None
+
+    def _encode_frame_bytes(self, frame):
+        """Encode an OpenCV frame to JPEG bytes for Rekognition."""
+        success, buffer = cv2.imencode(".jpg", frame)
+        if not success:
+            return None
+        return buffer.tobytes()
     
     def analyze_color_composition(self, frame):
         """Detailed color analysis"""
@@ -199,14 +228,18 @@ class ComprehensiveFrameAnalyzer:
         
         if frame is None:
             return self.get_fallback_analysis(timestamp)
-        
+
         # Run all analyses
         color_analysis = self.analyze_color_composition(frame)
         environment = self.detect_environment(frame)
         composition = self.analyze_composition(frame)
         visual_elements = self.detect_visual_elements(frame)
         lighting = self.analyze_lighting_mood(frame)
-        
+        image_bytes = self._encode_frame_bytes(frame)
+        objects_detected, detection_source = ([], "fallback")
+        if image_bytes:
+            objects_detected, detection_source = detect_objects(image_bytes)
+
         # Comprehensive analysis result
         analysis = {
             'timestamp': timestamp,
@@ -221,6 +254,9 @@ class ComprehensiveFrameAnalyzer:
             # Content Analysis
             'environment_detection': environment,
             'visual_elements': visual_elements,
+            'objects_detected': objects_detected,
+            'object_count': len(objects_detected),
+            'detection_source': detection_source,
             
             # Derived Insights
             'visual_complexity': self.calculate_visual_complexity(frame),
@@ -287,6 +323,9 @@ class ComprehensiveFrameAnalyzer:
         simulated = temp_engine.simulate_frame_analysis(timestamp)
         simulated['frame_available'] = False
         simulated['fallback_used'] = True
+        simulated['objects_detected'] = []
+        simulated['object_count'] = 0
+        simulated['detection_source'] = 'fallback'
         return simulated
     
     def get_narrative_context(self, timestamp):

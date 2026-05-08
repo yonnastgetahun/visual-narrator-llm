@@ -1,0 +1,26 @@
+{
+  "name": "vn003-vn-engine-image-build",
+  "description": "Temporary remote build for VN-003 Lambda image deployment",
+  "source": {
+    "type": "S3",
+    "location": "visual-narrator-models-yg/vn003/vn-engine-image.zip"
+  },
+  "artifacts": {
+    "type": "NO_ARTIFACTS"
+  },
+  "environment": {
+    "type": "LINUX_CONTAINER",
+    "image": "aws/codebuild/standard:7.0",
+    "computeType": "BUILD_GENERAL1_SMALL",
+    "privilegedMode": true,
+    "imagePullCredentialsType": "CODEBUILD"
+  },
+  "serviceRole": "arn:aws:iam::092439868784:role/vn-codebuild-service-role",
+  "timeoutInMinutes": 30,
+  "queuedTimeoutInMinutes": 30,
+  "logsConfig": {
+    "cloudWatchLogs": {
+      "status": "ENABLED"
+    }
+  }
+}

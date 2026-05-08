@@ -53,7 +53,9 @@ class MockEngine:
             "status": "success",
             "timestamp": timestamp,
             "frame_analysis": {
-                "objects_detected": ["ranger", "forest", "snow"],
+                "objects_detected": [],
+                "object_count": 0,
+                "detection_source": "fallback",
                 "emotional_tone": "apprehensive",
                 "characters_detected": ["will"],
                 "primary_action": "riding_through_forest",
@@ -96,7 +98,8 @@ class MockEngine:
                 "gap_analysis": "mock",
                 "narrative_intelligence": "mock"
             },
-            "performance": {"frames_processed": 0, "errors": 0}
+            "performance": {"frames_processed": 0, "errors": 0},
+            "capabilities": {"object_detection": "rekognition"}
         }
 
 # Use mock if real engine not available
