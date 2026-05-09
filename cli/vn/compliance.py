@@ -51,11 +51,10 @@ class ComplianceReport:
 
 def analyze_compliance(
     source: Path,
-    whisper_model: str = "base",
     min_gap: float = 2.0,
 ) -> ComplianceReport:
     """Score accessibility compliance using narration gaps from detect_gaps()."""
-    gaps = detect_gaps(source, whisper_model=whisper_model, min_gap=min_gap)
+    gaps = detect_gaps(source, min_gap=min_gap)
     duration, _has_audio = probe_media(source.expanduser().resolve())
     coverage_percent = _coverage_percent(gaps, duration)
     max_unbroken_speech_sec = _max_unbroken_speech_stretch(gaps, duration)

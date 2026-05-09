@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import os
 import json
-import importlib
+import os
 import re
 import shutil
 import subprocess
@@ -11,11 +10,15 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
+import httpx
+
 from .output import GapResult
 
 
 SILENCE_START_RE = re.compile(r"silence_start:\s*(?P<seconds>\d+(?:\.\d+)?)")
 SILENCE_END_RE = re.compile(r"silence_end:\s*(?P<seconds>\d+(?:\.\d+)?)")
+
+DEEPGRAM_URL = "https://api.deepgram.com/v1/listen"
 
 
 class GapDetectionError(RuntimeError):
@@ -32,7 +35,7 @@ class Interval:
         return max(0.0, self.end - self.start)
 
 
-def detect_gaps(source: Path, whisper_model: str = "base", min_gap: float = 2.0) -> list[GapResult]:
+def detect_gaps(source: Path, min_gap: float = 2.0) -> list[GapResult]:
     source = source.expanduser().resolve()
     if min_gap <= 0:
         raise GapDetectionError("--min-gap must be greater than 0")
@@ -55,10 +58,8 @@ def detect_gaps(source: Path, whisper_model: str = "base", min_gap: float = 2.0)
         audio_path = tmp_path / "audio.wav"
         _extract_audio(source, audio_path)
         silences = _detect_silences(source, duration, min_gap)
-        transcription = _transcribe_audio(audio_path, whisper_model, _whisper_model_dir())
+        words = _transcribe_with_deepgram(audio_path)
 
-    words = _collect_words(transcription)
-    segments = _collect_segments(transcription)
     candidates = _build_candidates(words, duration)
     if not candidates and duration >= min_gap:
         candidates = [Interval(0.0, duration)]
@@ -67,7 +68,7 @@ def detect_gaps(source: Path, whisper_model: str = "base", min_gap: float = 2.0)
     for candidate in candidates:
         if candidate.duration < min_gap:
             continue
-        gap_type = _classify_gap(candidate, silences, segments)
+        gap_type = _classify_gap(candidate, silences)
         gaps.append(
             GapResult(
                 start_sec=candidate.start,
@@ -90,10 +91,8 @@ def _probe_media(source: Path) -> tuple[float, bool]:
         completed = subprocess.run(
             [
                 "ffprobe",
-                "-v",
-                "error",
-                "-print_format",
-                "json",
+                "-v", "error",
+                "-print_format", "json",
                 "-show_format",
                 "-show_streams",
                 str(source),
@@ -139,19 +138,9 @@ def _extract_audio(source: Path, output_path: Path) -> None:
     try:
         subprocess.run(
             [
-                "ffmpeg",
-                "-hide_banner",
-                "-loglevel",
-                "error",
-                "-i",
-                str(source),
-                "-vn",
-                "-ac",
-                "1",
-                "-ar",
-                "16000",
-                "-acodec",
-                "pcm_s16le",
+                "ffmpeg", "-hide_banner", "-loglevel", "error",
+                "-i", str(source),
+                "-vn", "-ac", "1", "-ar", "16000", "-acodec", "pcm_s16le",
                 str(output_path),
             ],
             check=True,
@@ -170,16 +159,10 @@ def _detect_silences(source: Path, duration: float, min_gap: float) -> list[Inte
     silence_floor = "30dB"
     silence_duration = max(0.25, min(0.75, min_gap / 2))
     command = [
-        "ffmpeg",
-        "-hide_banner",
-        "-nostats",
-        "-i",
-        str(source),
-        "-af",
-        f"silencedetect=noise=-{silence_floor}:d={silence_duration}",
-        "-f",
-        "null",
-        "-",
+        "ffmpeg", "-hide_banner", "-nostats",
+        "-i", str(source),
+        "-af", f"silencedetect=noise=-{silence_floor}:d={silence_duration}",
+        "-f", "null", "-",
     ]
 
     try:
@@ -206,145 +189,56 @@ def _detect_silences(source: Path, duration: float, min_gap: float) -> list[Inte
     return _merge_intervals(intervals)
 
 
-def _whisper_model_dir() -> Path:
-    model_dir = Path(
-        os.getenv("VN_WHISPER_MODEL_DIR") or Path(tempfile.gettempdir()) / "vn-whisper-models"
-    ).expanduser()
-    model_dir.mkdir(parents=True, exist_ok=True)
-    return model_dir
-
-
-def _transcribe_audio(audio_path: Path, whisper_model: str, model_dir: Path) -> dict[str, Any]:
-    try:
-        whisper = importlib.import_module("whisper")
-    except ImportError as exc:
-        return _transcribe_with_cli(audio_path, whisper_model, model_dir)
-
-    try:
-        model = whisper.load_model(whisper_model, download_root=str(model_dir))
-    except Exception as exc:  # noqa: BLE001
-        raise GapDetectionError(f"failed to load Whisper model '{whisper_model}': {exc}") from exc
-
-    try:
-        import io
-        import sys as _sys
-        _old_stdout = _sys.stdout
-        _sys.stdout = io.StringIO()
-        try:
-            result = model.transcribe(str(audio_path), word_timestamps=True, verbose=False)
-        finally:
-            _sys.stdout = _old_stdout
-        return result
-    except Exception as exc:  # noqa: BLE001
-        raise GapDetectionError(f"Whisper transcription failed: {exc}") from exc
-
-
-def _transcribe_with_cli(audio_path: Path, whisper_model: str, model_dir: Path) -> dict[str, Any]:
-    whisper_bin = shutil.which("whisper")
-    if whisper_bin is None:
+def _transcribe_with_deepgram(audio_path: Path) -> list[Interval]:
+    api_key = os.getenv("DEEPGRAM_API_KEY")
+    if not api_key:
         raise GapDetectionError(
-            "Whisper is required for gap detection. Install openai-whisper or make the `whisper` CLI available."
+            "DEEPGRAM_API_KEY is not set. Get a free key at console.deepgram.com"
         )
 
-    with tempfile.TemporaryDirectory(prefix="vn-whisper-") as output_dir:
-        try:
-            subprocess.run(
-                [
-                    whisper_bin,
-                    str(audio_path),
-                    "--model",
-                    whisper_model,
-                    "--output_format",
-                    "json",
-                    "--output_dir",
-                    output_dir,
-                    "--model_dir",
-                    str(model_dir),
-                    "--word_timestamps",
-                    "True",
-                    "--fp16",
-                    "False",
-                    "--verbose",
-                    "False",
-                ],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-        except subprocess.CalledProcessError as exc:
-            stderr = (exc.stderr or exc.stdout or "").strip()
-            raise GapDetectionError(f"Whisper CLI transcription failed: {stderr}") from exc
+    try:
+        response = httpx.post(
+            DEEPGRAM_URL,
+            headers={
+                "Authorization": f"Token {api_key}",
+                "Content-Type": "audio/wav",
+            },
+            params={
+                "model": "nova-3",
+                "words": "true",
+                "punctuate": "false",
+                "smart_format": "false",
+            },
+            content=audio_path.read_bytes(),
+            timeout=60.0,
+        )
+        response.raise_for_status()
+    except httpx.HTTPStatusError as exc:
+        raise GapDetectionError(
+            f"Deepgram API error {exc.response.status_code}: {exc.response.text}"
+        ) from exc
+    except httpx.RequestError as exc:
+        raise GapDetectionError(f"Deepgram request failed: {exc}") from exc
 
-        json_path = Path(output_dir) / f"{audio_path.stem}.json"
-        if not json_path.exists():
-            raise GapDetectionError("Whisper CLI completed but did not produce a JSON transcript")
+    words_raw = (
+        response.json()
+        .get("results", {})
+        .get("channels", [{}])[0]
+        .get("alternatives", [{}])[0]
+        .get("words", [])
+    )
 
-        try:
-            return json.loads(json_path.read_text())
-        except json.JSONDecodeError as exc:
-            raise GapDetectionError(f"Whisper CLI produced invalid JSON: {exc}") from exc
-
-
-# Segments with no_speech_prob above this threshold are likely hallucinated
-# (gunshots, music, etc.) and are excluded from speech word collection.
-_NO_SPEECH_PROB_THRESHOLD = 0.35
-
-# Words with probability below this threshold inside a valid speech segment
-# are treated as hallucinated and excluded from candidate building.
-_WORD_PROB_THRESHOLD = 0.30
-
-
-def _collect_words(transcription: dict[str, Any]) -> list[Interval]:
     words: list[Interval] = []
-    for segment in transcription.get("segments", []):
-        # Skip segments Whisper itself flagged as likely non-speech
-        no_speech_prob = segment.get("no_speech_prob")
-        if no_speech_prob is not None:
-            try:
-                if float(no_speech_prob) > _NO_SPEECH_PROB_THRESHOLD:
-                    continue
-            except (TypeError, ValueError):
-                pass
-        for word in segment.get("words", []) or []:
-            start = word.get("start")
-            end = word.get("end")
-            prob = word.get("probability")
-            if start is None or end is None:
-                continue
-            # Skip low-confidence words (hallucinations from non-speech audio)
-            if prob is not None:
-                try:
-                    if float(prob) < _WORD_PROB_THRESHOLD:
-                        continue
-                except (TypeError, ValueError):
-                    pass
-            try:
-                words.append(Interval(start=float(start), end=float(end)))
-            except (TypeError, ValueError):
-                continue
-    return sorted(words, key=lambda item: (item.start, item.end))
-
-
-def _collect_segments(transcription: dict[str, Any]) -> list[Interval]:
-    segments: list[Interval] = []
-    for segment in transcription.get("segments", []):
-        # Exclude segments Whisper flagged as likely non-speech
-        no_speech_prob = segment.get("no_speech_prob")
-        if no_speech_prob is not None:
-            try:
-                if float(no_speech_prob) > _NO_SPEECH_PROB_THRESHOLD:
-                    continue
-            except (TypeError, ValueError):
-                pass
-        start = segment.get("start")
-        end = segment.get("end")
+    for w in words_raw:
+        start = w.get("start")
+        end = w.get("end")
         if start is None or end is None:
             continue
         try:
-            segments.append(Interval(start=float(start), end=float(end)))
+            words.append(Interval(start=float(start), end=float(end)))
         except (TypeError, ValueError):
             continue
-    return sorted(segments, key=lambda item: (item.start, item.end))
+    return sorted(words, key=lambda item: (item.start, item.end))
 
 
 def _build_candidates(words: list[Interval], duration: float) -> list[Interval]:
@@ -367,18 +261,12 @@ def _build_candidates(words: list[Interval], duration: float) -> list[Interval]:
     return _merge_intervals(candidates)
 
 
-def _classify_gap(candidate: Interval, silences: list[Interval], segments: list[Interval]) -> str:
+def _classify_gap(candidate: Interval, silences: list[Interval]) -> str:
     if candidate.duration <= 0:
         return "silence"
-
     silence_overlap = _coverage(candidate, silences)
     if silence_overlap / candidate.duration >= 0.8:
         return "silence"
-
-    for segment in segments:
-        if candidate.start >= segment.start and candidate.end <= segment.end:
-            return "speech"
-
     return "music_only"
 
 
@@ -405,12 +293,3 @@ def _merge_intervals(intervals: list[Interval]) -> list[Interval]:
         else:
             merged.append(interval)
     return merged
-
-
-def _decode_ffmpeg_error(exc: Exception) -> str:
-    stderr = getattr(exc, "stderr", b"")
-    stdout = getattr(exc, "stdout", b"")
-    payload = stderr or stdout or b""
-    if isinstance(payload, bytes):
-        return payload.decode("utf-8", errors="replace").strip()
-    return str(payload).strip()

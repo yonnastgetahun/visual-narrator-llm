@@ -22,7 +22,6 @@ app.add_typer(keys_app, name="keys")
 
 OutputFormat = typer.Option("json", "--format", "-f", help="Output format: json, srt, or text.")
 ApiUrl = typer.Option(DEFAULT_API_URL, "--api-url", help="Visual Narrator API base URL.")
-WhisperModel = typer.Option("base", "--whisper-model", help="Whisper model to use for gap detection.")
 
 
 @app.command()
@@ -75,16 +74,15 @@ def gaps(
     source: str = typer.Argument(..., help="Local video file or YouTube URL."),
     output_format: str = OutputFormat,
     min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
-    whisper_model: str = WhisperModel,
 ) -> None:
-    """Detect narration-friendly dialogue gaps with Whisper."""
+    """Detect narration-friendly dialogue gaps with Deepgram Nova-3."""
     output_format = _normalize_format(output_format)
 
     with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
         tmp_path = Path(tmp)
         try:
             media_path = _resolve_source(source, tmp_path / "download")
-            gaps = detect_gaps(media_path, whisper_model=whisper_model, min_gap=min_gap)
+            gaps = detect_gaps(media_path, min_gap=min_gap)
         except (GapDetectionError, YouTubeDownloadError) as exc:
             _fail(str(exc))
 
@@ -96,7 +94,6 @@ def compliance(
     source: str = typer.Argument(..., help="Local video file or YouTube URL."),
     output_format: str = typer.Option("json", "--format", "-f", help="Output format: json or text."),
     min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
-    whisper_model: str = WhisperModel,
 ) -> None:
     """Generate a WCAG/CVAA compliance report from detected narration gaps."""
     output_format = _normalize_compliance_format(output_format)
@@ -105,7 +102,7 @@ def compliance(
         tmp_path = Path(tmp)
         try:
             media_path = _resolve_source(source, tmp_path / "download")
-            report = analyze_compliance(media_path, whisper_model=whisper_model, min_gap=min_gap)
+            report = analyze_compliance(media_path, min_gap=min_gap)
         except (GapDetectionError, YouTubeDownloadError) as exc:
             _fail(str(exc))
 
