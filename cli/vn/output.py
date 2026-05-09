@@ -84,6 +84,16 @@ def render_compliance_report(report: Any, output_format: str) -> str:
     raise ValueError(f"unsupported output format: {output_format}")
 
 
+def render_kit(kit: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(kit.json_dict(), indent=2)
+    if output_format == "srt":
+        return render_kit_srt(kit)
+    if output_format == "text":
+        return render_kit_text(kit)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
 def result_from_api_response(response: dict[str, Any], timestamp: float, duration: float) -> DescriptionResult:
     return DescriptionResult(
         timecode=format_json_time(timestamp),
@@ -148,6 +158,51 @@ def render_compliance_text(report: Any) -> str:
         lines.append("- No narration gaps found.")
 
     return "\n".join(lines)
+
+
+def render_kit_srt(kit: Any) -> str:
+    blocks = []
+    for narration in kit.narrations:
+        start = format_srt_time(narration.start_sec)
+        end = format_srt_time(narration.end_sec)
+        blocks.append(f"{narration.srt_index}\n{start} --> {end}\n{narration.description}")
+    return "\n\n".join(blocks)
+
+
+def render_kit_text(kit: Any) -> str:
+    lines = [
+        f"Festival Film Accessibility Kit for {kit.source}",
+        f"Duration: {format_gap_duration(kit.duration_seconds)}",
+        f"Narration gaps found: {kit.gaps_found}",
+        f"Model version: {kit.model_version or 'n/a'}",
+        f"Estimated frame cost: ${kit.cost_estimate:.6f}",
+        "",
+        "Narration script:",
+    ]
+
+    if kit.narrations:
+        for narration in kit.narrations:
+            lines.append(
+                f"{narration.srt_index}. {format_gap_time(narration.start_sec)} -> "
+                f"{format_gap_time(narration.end_sec)} "
+                f"({format_gap_duration(narration.gap_duration_sec)} available, {narration.gap_type})"
+            )
+            lines.append(narration.description)
+            lines.append("")
+    else:
+        lines.append("No narration gaps found.")
+        lines.append("")
+
+    lines.extend(
+        [
+            "WCAG/CVAA summary:",
+            f"Score: {kit.compliance.score}",
+            f"WCAG level: {kit.compliance.wcag_level}",
+            f"Coverage: {kit.compliance.coverage_percent:.1f}%",
+            f"Max unbroken speech: {format_gap_duration(kit.compliance.max_unbroken_speech_sec)}",
+        ]
+    )
+    return "\n".join(lines).rstrip()
 
 
 def format_json_time(seconds: float) -> str:

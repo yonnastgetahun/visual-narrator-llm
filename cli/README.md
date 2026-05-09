@@ -135,6 +135,69 @@ JSON output returns:
 
 Coverage is calculated from silence and music-only gap duration divided by total video duration. Recommendations are capped at 10 narration opportunities.
 
+## Festival Film Accessibility Kit
+
+Generate a complete gap-targeted narration package in one command:
+
+```bash
+vn kit ./demo.mp4 --api-key "$VN_API_KEY" --format json
+```
+
+The `kit` command:
+
+- detects narration gaps with Deepgram + ffmpeg silence detection
+- extracts one frame at each gap midpoint
+- sends those frames to the live Visual Narrator API
+- returns narration text, SRT timing, compliance scoring, and cost totals
+
+Output formats:
+
+```bash
+vn kit ./demo.mp4 --format json
+vn kit ./demo.mp4 --format srt
+vn kit ./demo.mp4 --format text
+```
+
+Tune gap sensitivity with `--min-gap`:
+
+```bash
+vn kit ./demo.mp4 --min-gap 3.0 --format text
+```
+
+YouTube URLs use the same download path as `vn describe`:
+
+```bash
+vn kit "https://youtube.com/watch?v=VIDEO_ID" --format srt --api-key "$VN_API_KEY"
+```
+
+JSON output includes:
+
+```json
+{
+  "source": "./demo.mp4",
+  "duration_seconds": 5421.4,
+  "gaps_found": 6,
+  "narrations": [
+    {
+      "start_sec": 12.4,
+      "end_sec": 16.1,
+      "gap_duration_sec": 3.7,
+      "gap_type": "silence",
+      "frame_timestamp_sec": 14.25,
+      "description": "A wide shot shows the ship drifting past Saturn.",
+      "cost_estimate": 0.0012,
+      "srt_index": 1
+    }
+  ],
+  "compliance": {
+    "score": 67,
+    "wcag_level": "A"
+  },
+  "model_version": "visual-narrator-gpt4o-v1",
+  "cost_estimate": 0.0072
+}
+```
+
 ## Output Formats
 
 JSON:
@@ -187,6 +250,7 @@ vn benchmark /tmp/vn-test.jpg --api-url http://localhost:3000
 ```bash
 vn --help
 vn describe --help
+vn kit --help
 vn gaps --help
 vn compliance --help
 vn benchmark --help

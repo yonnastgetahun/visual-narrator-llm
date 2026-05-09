@@ -12,7 +12,9 @@ from .api import DEFAULT_API_URL, VNApiError, VNClient
 from .compliance import analyze_compliance
 from .frame import FrameExtractionError, extract_frames
 from .gaps import GapDetectionError, detect_gaps
+from .kit import assemble_kit
 from .output import render_compliance_report, render_gap_results, render_results, result_from_api_response
+from .output import render_kit
 from .youtube import YouTubeDownloadError, download_video, is_url
 
 
@@ -107,6 +109,39 @@ def compliance(
             _fail(str(exc))
 
     typer.echo(render_compliance_report(report, output_format))
+
+
+@app.command()
+def kit(
+    source: str = typer.Argument(..., help="Local video file or YouTube URL."),
+    output_format: str = OutputFormat,
+    api_key: Optional[str] = typer.Option(None, "--api-key", help="Visual Narrator API key. Defaults to VN_API_KEY."),
+    api_url: str = ApiUrl,
+    min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
+) -> None:
+    """Generate a narration script, subtitle track, and compliance report."""
+    output_format = _normalize_format(output_format)
+    resolved_api_key = api_key or os.getenv("VN_API_KEY")
+    if not resolved_api_key:
+        _fail("Missing API key. Pass --api-key or set VN_API_KEY.")
+
+    client = VNClient(api_url=api_url, api_key=resolved_api_key)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            result = assemble_kit(
+                media_path,
+                client,
+                min_gap=min_gap,
+                source_label=source,
+                output_dir=tmp_path / "kit-frames",
+            )
+        except (GapDetectionError, FrameExtractionError, YouTubeDownloadError, VNApiError) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_kit(result, output_format))
 
 
 @keys_app.command("create")

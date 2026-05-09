@@ -52,19 +52,20 @@ class ComplianceReport:
 def analyze_compliance(
     source: Path,
     min_gap: float = 2.0,
+    gaps: list[GapResult] | None = None,
 ) -> ComplianceReport:
     """Score accessibility compliance using narration gaps from detect_gaps()."""
-    gaps = detect_gaps(source, min_gap=min_gap)
+    resolved_gaps = gaps if gaps is not None else detect_gaps(source, min_gap=min_gap)
     duration, _has_audio = probe_media(source.expanduser().resolve())
-    coverage_percent = _coverage_percent(gaps, duration)
-    max_unbroken_speech_sec = _max_unbroken_speech_stretch(gaps, duration)
+    coverage_percent = _coverage_percent(resolved_gaps, duration)
+    max_unbroken_speech_sec = _max_unbroken_speech_stretch(resolved_gaps, duration)
 
     criteria = {
         "wcag_1_2_3": ComplianceCriterion(
-            passed=len(gaps) >= 1,
+            passed=len(resolved_gaps) >= 1,
             level="A",
             description="Audio description or media alternative is available for prerecorded video.",
-            metric={"narration_gaps": len(gaps)},
+            metric={"narration_gaps": len(resolved_gaps)},
         ),
         "wcag_1_2_5": ComplianceCriterion(
             passed=coverage_percent >= 15.0,
@@ -90,8 +91,8 @@ def analyze_compliance(
         score=_score(criteria),
         wcag_level=_wcag_level(criteria),
         criteria=criteria,
-        gaps=gaps,
-        recommendations=_recommendations(gaps),
+        gaps=resolved_gaps,
+        recommendations=_recommendations(resolved_gaps),
         total_duration_sec=duration,
         coverage_percent=coverage_percent,
         max_unbroken_speech_sec=max_unbroken_speech_sec,
