@@ -8,6 +8,7 @@ from typing import Optional
 
 import typer
 
+from .ad import AdDescriptionError, AdTTSError, assemble_ad_kit
 from .api import DEFAULT_API_URL, VNApiError, VNClient
 from .compliance import analyze_compliance
 from .edu import EduDescriptionError, assemble_edu_kit
@@ -15,7 +16,8 @@ from .frame import FrameExtractionError, extract_frames
 from .gaps import GapDetectionError, detect_gaps
 from .kit import assemble_kit
 from .output import render_compliance_report, render_gap_results, render_results, result_from_api_response
-from .output import render_edu, render_kit, render_sports, render_theater
+from .output import render_ad, render_edu, render_kit, render_podcast, render_sports, render_theater
+from .podcast import PodcastDescriptionError, PodcastMixError, PodcastTTSError, assemble_podcast
 from .sports import SportsDetectionError, assemble_sports_kit
 from .theater import TheaterDescriptionError, TheaterTTSError, assemble_theater_kit
 from .youtube import YouTubeDownloadError, download_video, is_url
@@ -256,6 +258,98 @@ def theater(
         typer.echo(f"\nAudio output directory: {result.output_dir}")
 
 
+@app.command()
+def podcast(
+    source: str = typer.Argument(..., help="Local video file or YouTube URL."),
+    output_format: str = typer.Option("json", "--format", "-f", help="Output format: json or text."),
+    output: Path = typer.Option(
+        Path("./podcast-output.mp3"),
+        "--output",
+        help="Path for assembled MP3.",
+    ),
+    output_dir: Path = typer.Option(
+        Path("./vn-podcast-work"),
+        "--output-dir",
+        help="Work directory for intermediate files.",
+    ),
+    voice_id: Optional[str] = typer.Option(
+        None,
+        "--voice-id",
+        help="ElevenLabs voice ID. Defaults to ELEVENLABS_VOICE_ADAM or Adam.",
+    ),
+    min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter gaps shorter than this many seconds."),
+) -> None:
+    """Convert a video into a narrated audio podcast with original dialogue preserved."""
+    output_format = _normalize_podcast_format(output_format)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            result = assemble_podcast(
+                media_path,
+                min_gap=min_gap,
+                voice_id=voice_id,
+                source_label=source,
+                output_path=output,
+                output_dir=output_dir,
+            )
+        except (
+            GapDetectionError,
+            FrameExtractionError,
+            YouTubeDownloadError,
+            PodcastDescriptionError,
+            PodcastTTSError,
+            PodcastMixError,
+        ) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_podcast(result, output_format))
+    typer.echo(f"\nPodcast saved to: {result.output_file}", err=True)
+
+
+@app.command()
+def ad(
+    source: str = typer.Argument(..., help="Local video file or YouTube URL."),
+    output_format: str = OutputFormat,
+    output_dir: Path = typer.Option(
+        Path("./vn-ad-output"),
+        "--output-dir",
+        help="Directory for MP3 files, manifest.json, and narration.srt.",
+    ),
+    voice_id: Optional[str] = typer.Option(
+        None,
+        "--voice-id",
+        help="ElevenLabs voice ID. Defaults to ELEVENLABS_VOICE_ADAM or Adam.",
+    ),
+    min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
+) -> None:
+    """Generate a WCAG-compliant Standard AD track with ElevenLabs voicing."""
+    output_format = _normalize_format(output_format)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            result = assemble_ad_kit(
+                media_path,
+                min_gap=min_gap,
+                voice_id=voice_id,
+                source_label=source,
+                output_dir=output_dir,
+            )
+        except (
+            GapDetectionError,
+            FrameExtractionError,
+            YouTubeDownloadError,
+            AdDescriptionError,
+            AdTTSError,
+        ) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_ad(result, output_format))
+
+
 @keys_app.command("create")
 def keys_create(
     email: str = typer.Argument(..., help="Email address for the free-tier API key."),
@@ -284,6 +378,13 @@ def _normalize_format(output_format: str) -> str:
 
 
 def _normalize_compliance_format(output_format: str) -> str:
+    normalized = output_format.lower()
+    if normalized not in {"json", "text"}:
+        _fail("--format must be one of: json, text")
+    return normalized
+
+
+def _normalize_podcast_format(output_format: str) -> str:
     normalized = output_format.lower()
     if normalized not in {"json", "text"}:
         _fail("--format must be one of: json, text")

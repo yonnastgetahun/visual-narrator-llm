@@ -125,6 +125,24 @@ def render_theater(kit: Any, output_format: str) -> str:
     raise ValueError(f"unsupported output format: {output_format}")
 
 
+def render_podcast(kit: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(kit.json_dict(), indent=2)
+    if output_format == "text":
+        return render_podcast_text(kit)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
+def render_ad(kit: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(kit.json_dict(), indent=2)
+    if output_format == "srt":
+        return render_ad_srt(kit)
+    if output_format == "text":
+        return render_ad_text(kit)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
 def result_from_api_response(response: dict[str, Any], timestamp: float, duration: float) -> DescriptionResult:
     return DescriptionResult(
         timecode=format_json_time(timestamp),
@@ -366,6 +384,83 @@ def render_theater_text(kit: Any) -> str:
             )
             lines.append(narration.description)
             lines.append(f"-> {narration.audio_file}")
+            lines.append("")
+    else:
+        lines.append("No narration gaps found.")
+        lines.append("")
+
+    lines.extend(
+        [
+            "WCAG/CVAA Summary",
+            (
+                f"Score: {kit.compliance.score} | Level: {kit.compliance.wcag_level} | "
+                f"Coverage: {kit.compliance.coverage_percent:.1f}% | "
+                f"Max unbroken speech: {format_gap_duration(kit.compliance.max_unbroken_speech_sec)}"
+            ),
+        ]
+    )
+    return "\n".join(lines).rstrip()
+
+
+def render_podcast_text(kit: Any) -> str:
+    lines = [
+        "Podcast Video Describer",
+        f"Source: {kit.source} | Duration: {format_long_duration(kit.duration_seconds)}",
+        f"Gaps narrated: {kit.narrations_mixed} | Output: {kit.output_file}",
+        (
+            f"Voice: {kit.voice_id} | GPT: ${kit.gpt_cost_estimate:.3f} | "
+            f"TTS: ${kit.tts_cost_estimate:.3f} | Total: ${kit.total_cost_estimate:.3f}"
+        ),
+        "",
+    ]
+
+    if kit.narrations:
+        for narration in kit.narrations:
+            lines.append(
+                f"[{format_gap_time(narration.start_sec)}] "
+                f"({format_gap_duration(narration.gap_duration_sec)} gap, {narration.gap_type})"
+            )
+            lines.append(narration.description)
+            lines.append("")
+    else:
+        lines.append("No narration gaps found.")
+        lines.append("")
+
+    lines.append(f"Work directory: {kit.output_dir}")
+    return "\n".join(lines).rstrip()
+
+
+def render_ad_srt(kit: Any) -> str:
+    blocks = []
+    for narration in kit.narrations:
+        start = format_srt_time(narration.start_sec)
+        end = format_srt_time(narration.end_sec)
+        blocks.append(f"{narration.srt_index}\n{start} --> {end}\n{narration.description}")
+    return "\n\n".join(blocks)
+
+
+def render_ad_text(kit: Any) -> str:
+    lines = [
+        "Standard AD Track — WCAG 2.1 Level AA",
+        f"Source: {kit.source} | Duration: {format_long_duration(kit.duration_seconds)}",
+        f"Gaps processed: {kit.gaps_found} | Voice: {kit.voice_id}",
+        (
+            f"GPT cost: ${kit.gpt_cost_estimate:.3f} | TTS cost: ${kit.tts_cost_estimate:.3f} | "
+            f"Total: ${kit.total_cost_estimate:.3f}"
+        ),
+        f"Output: {kit.output_dir}",
+        "",
+    ]
+
+    if kit.narrations:
+        for narration in kit.narrations:
+            lines.append(
+                f"[{format_gap_time(narration.start_sec)}] → "
+                f"[{format_gap_time(narration.end_sec)}] "
+                f"({format_gap_duration(narration.gap_duration_sec)} gap, {narration.gap_type})"
+            )
+            lines.append(narration.description)
+            lines.append(f"→ {narration.audio_file}")
             lines.append("")
     else:
         lines.append("No narration gaps found.")
