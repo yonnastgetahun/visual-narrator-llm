@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["ffmpeg"]
+
+[phases.install]
+cmds = [
+  "pip install -r demo-api/requirements.txt",
+  "pip install ./cli"
+]
