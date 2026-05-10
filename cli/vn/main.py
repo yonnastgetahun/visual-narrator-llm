@@ -17,7 +17,9 @@ from .gaps import GapDetectionError, detect_gaps
 from .kit import assemble_kit
 from .output import render_compliance_report, render_gap_results, render_results, result_from_api_response
 from .output import render_ad, render_edu, render_kit, render_podcast, render_sports, render_theater
+from .output import render_score
 from .podcast import PodcastDescriptionError, PodcastMixError, PodcastTTSError, assemble_podcast
+from .score import ScoreError, score_manifest
 from .sports import SportsDetectionError, assemble_sports_kit
 from .theater import TheaterDescriptionError, TheaterTTSError, assemble_theater_kit
 from .youtube import YouTubeDownloadError, download_video, is_url
@@ -350,6 +352,65 @@ def ad(
     typer.echo(render_ad(result, output_format))
 
 
+@app.command()
+def score(
+    source: str = typer.Argument(
+        ...,
+        help="Local video file or YouTube URL (same source used to generate the manifest).",
+    ),
+    manifest: Path = typer.Option(
+        ...,
+        "--manifest",
+        "-m",
+        help="Path to manifest.json from vn ad or vn theater.",
+    ),
+    output_format: str = typer.Option(
+        "text",
+        "--format",
+        "-f",
+        help="Output format: json, text, or flagged.",
+    ),
+    output_dir: Path = typer.Option(
+        Path("./vn-score-output"),
+        "--output-dir",
+        help="Directory for score-report.json.",
+    ),
+    word_limit: Optional[int] = typer.Option(
+        None,
+        "--word-limit",
+        min=1,
+        help="Word limit for within_limit check. Auto-detected from manifest if not set.",
+    ),
+    min_score: float = typer.Option(
+        6.0,
+        "--min-score",
+        min=0.0,
+        max=10.0,
+        help="Flag threshold: descriptions with any dimension below this are flagged.",
+    ),
+) -> None:
+    """Score AD description quality using GPT-4o Vision as a judge."""
+    output_format = _normalize_score_format(output_format)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            report = score_manifest(
+                manifest_path=manifest.expanduser().resolve(),
+                video_source=media_path,
+                word_limit=word_limit,
+                min_score=min_score,
+                output_dir=output_dir,
+                source_label=source,
+                manifest_label=str(manifest),
+            )
+        except (FileNotFoundError, ValueError, FrameExtractionError, YouTubeDownloadError, ScoreError) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_score(report, output_format))
+
+
 @keys_app.command("create")
 def keys_create(
     email: str = typer.Argument(..., help="Email address for the free-tier API key."),
@@ -388,6 +449,13 @@ def _normalize_podcast_format(output_format: str) -> str:
     normalized = output_format.lower()
     if normalized not in {"json", "text"}:
         _fail("--format must be one of: json, text")
+    return normalized
+
+
+def _normalize_score_format(output_format: str) -> str:
+    normalized = output_format.lower()
+    if normalized not in {"json", "text", "flagged"}:
+        _fail("--format must be one of: json, text, flagged")
     return normalized
 
 

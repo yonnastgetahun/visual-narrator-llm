@@ -143,6 +143,16 @@ def render_ad(kit: Any, output_format: str) -> str:
     raise ValueError(f"unsupported output format: {output_format}")
 
 
+def render_score(report: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(report.json_dict(), indent=2)
+    if output_format == "text":
+        return render_score_text(report)
+    if output_format == "flagged":
+        return render_score_text(report, flagged_only=True)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
 def result_from_api_response(response: dict[str, Any], timestamp: float, duration: float) -> DescriptionResult:
     return DescriptionResult(
         timecode=format_json_time(timestamp),
@@ -479,6 +489,54 @@ def render_ad_text(kit: Any) -> str:
     return "\n".join(lines).rstrip()
 
 
+def render_score_text(report: Any, flagged_only: bool = False) -> str:
+    visible_scores = [score for score in report.scores if score.flag] if flagged_only else list(report.scores)
+    lines = [
+        "AD Quality Score Report",
+        f"Source: {report.source} | Manifest: {report.manifest}",
+        (
+            f"Scored: {report.scored} descriptions | Flagged: {report.flagged} | "
+            f"Grade: {report.grade} | GPT cost: ${report.gpt_cost_estimate:.3f}"
+        ),
+        "",
+        "Aggregate",
+        f"  Accuracy:        {report.aggregate.accuracy:.1f}/10",
+        f"  Relevance:       {report.aggregate.relevance:.1f}/10",
+        f"  WCAG Compliance: {report.aggregate.wcag_compliance:.1f}/10",
+        f"  Conciseness:     {report.aggregate.conciseness:.1f}/10",
+        f"  Overall:         {report.aggregate.overall:.1f}/10",
+        (
+            f"  Within limit:    {report.aggregate.within_limit_pct:.1f}% | "
+            f"Present tense: {report.aggregate.tense_ok_pct:.1f}%"
+        ),
+        "",
+    ]
+
+    if visible_scores:
+        for score in visible_scores:
+            status = "✗ FLAGGED" if score.flag else "✓"
+            lines.append(
+                f"[{format_gap_time(score.start_sec)}] → [{format_gap_time(score.end_sec)}]  "
+                f"overall={_format_brief_score(score.overall)}  words={score.word_count}  {status}"
+            )
+            lines.append(score.description)
+            if score.flag and score.flag_reason:
+                lines.append(
+                    "  ↳ "
+                    f"accuracy={_format_brief_score(score.accuracy)}, "
+                    f"relevance={_format_brief_score(score.relevance)}, "
+                    f"wcag_compliance={_format_brief_score(score.wcag_compliance)}, "
+                    f"conciseness={_format_brief_score(score.conciseness)}"
+                    f" — {score.flag_reason}"
+                )
+            lines.append("")
+    else:
+        lines.append("No flagged descriptions." if flagged_only else "No descriptions scored.")
+        lines.append("")
+
+    return "\n".join(lines).rstrip()
+
+
 def format_json_time(seconds: float) -> str:
     hours, minutes, secs, millis = _split_time(seconds)
     return f"{hours:02d}:{minutes:02d}:{secs:02d}.{millis:03d}"
@@ -516,6 +574,10 @@ def _split_time(seconds: float) -> tuple[int, int, int, int]:
     minutes = total_minutes % 60
     hours = total_minutes // 60
     return hours, minutes, secs, millis
+
+
+def _format_brief_score(value: float) -> str:
+    return f"{value:.1f}".rstrip("0").rstrip(".")
 
 
 def _objects_from_response(response: dict[str, Any]) -> list[Any]:
