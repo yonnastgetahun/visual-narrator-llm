@@ -35,6 +35,13 @@ Create a free-tier key:
 vn keys create dev@example.com
 ```
 
+For education-focused gap narration, `vn edu` calls GPT-4o directly and does not use `VN_API_KEY`. Set:
+
+```bash
+export DEEPGRAM_API_KEY=dg_your_key
+export OPENAI_API_KEY=sk-your-key
+```
+
 ## Describe A Video
 
 Local video:
@@ -198,6 +205,73 @@ JSON output includes:
 }
 ```
 
+## Educational Video Describer
+
+Generate accessibility narration only for frames that add educational value such as slides, diagrams, equations, code, and charts:
+
+```bash
+vn edu ./lecture.mp4 --format json
+```
+
+The `edu` command:
+
+- detects narration gaps with Deepgram Nova-3 plus ffmpeg silence detection
+- extracts one frame at each gap midpoint
+- sends each frame directly to GPT-4o with an education-specific prompt
+- filters out talking-head frames when the model returns `NO_VISUAL_AID`
+- keeps WCAG/CVAA compliance scoring based on the full detected gap list
+
+Output formats:
+
+```bash
+vn edu ./lecture.mp4 --format json
+vn edu ./lecture.mp4 --format srt
+vn edu ./lecture.mp4 --format text
+```
+
+Tune gap sensitivity with `--min-gap`:
+
+```bash
+vn edu ./lecture.mp4 --min-gap 3.0 --format text
+```
+
+YouTube URLs are supported:
+
+```bash
+vn edu "https://youtube.com/watch?v=VIDEO_ID" --format srt
+```
+
+JSON output includes:
+
+```json
+{
+  "source": "./lecture.mp4",
+  "duration_seconds": 1800.0,
+  "gaps_analyzed": 12,
+  "visual_moments": 7,
+  "skipped_talking_head": 5,
+  "narrations": [
+    {
+      "start_sec": 42.0,
+      "end_sec": 46.5,
+      "gap_duration_sec": 4.5,
+      "gap_type": "music_only",
+      "frame_timestamp_sec": 44.25,
+      "description": "A slide compares precision and recall with a 2x2 confusion matrix and labels true positives, false positives, false negatives, and true negatives.",
+      "cost_estimate": 0.0013,
+      "srt_index": 1,
+      "visual_moment": true
+    }
+  ],
+  "compliance": {
+    "score": 100,
+    "wcag_level": "AA"
+  },
+  "model_version": "gpt-4o",
+  "cost_estimate": 0.0091
+}
+```
+
 ## Output Formats
 
 JSON:
@@ -251,6 +325,7 @@ vn benchmark /tmp/vn-test.jpg --api-url http://localhost:3000
 vn --help
 vn describe --help
 vn kit --help
+vn edu --help
 vn gaps --help
 vn compliance --help
 vn benchmark --help

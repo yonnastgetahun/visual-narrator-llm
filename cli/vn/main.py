@@ -10,11 +10,12 @@ import typer
 
 from .api import DEFAULT_API_URL, VNApiError, VNClient
 from .compliance import analyze_compliance
+from .edu import EduDescriptionError, assemble_edu_kit
 from .frame import FrameExtractionError, extract_frames
 from .gaps import GapDetectionError, detect_gaps
 from .kit import assemble_kit
 from .output import render_compliance_report, render_gap_results, render_results, result_from_api_response
-from .output import render_kit
+from .output import render_edu, render_kit
 from .youtube import YouTubeDownloadError, download_video, is_url
 
 
@@ -142,6 +143,31 @@ def kit(
             _fail(str(exc))
 
     typer.echo(render_kit(result, output_format))
+
+
+@app.command()
+def edu(
+    source: str = typer.Argument(..., help="Local video file or YouTube URL."),
+    output_format: str = OutputFormat,
+    min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
+) -> None:
+    """Generate education-focused visual aid descriptions from narration gaps."""
+    output_format = _normalize_format(output_format)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            result = assemble_edu_kit(
+                media_path,
+                min_gap=min_gap,
+                source_label=source,
+                output_dir=tmp_path / "edu-frames",
+            )
+        except (GapDetectionError, FrameExtractionError, YouTubeDownloadError, EduDescriptionError) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_edu(result, output_format))
 
 
 @keys_app.command("create")

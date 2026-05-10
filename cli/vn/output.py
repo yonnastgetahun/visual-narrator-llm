@@ -94,6 +94,16 @@ def render_kit(kit: Any, output_format: str) -> str:
     raise ValueError(f"unsupported output format: {output_format}")
 
 
+def render_edu(kit: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(kit.json_dict(), indent=2)
+    if output_format == "srt":
+        return render_edu_srt(kit)
+    if output_format == "text":
+        return render_edu_text(kit)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
 def result_from_api_response(response: dict[str, Any], timestamp: float, duration: float) -> DescriptionResult:
     return DescriptionResult(
         timecode=format_json_time(timestamp),
@@ -200,6 +210,52 @@ def render_kit_text(kit: Any) -> str:
             f"WCAG level: {kit.compliance.wcag_level}",
             f"Coverage: {kit.compliance.coverage_percent:.1f}%",
             f"Max unbroken speech: {format_gap_duration(kit.compliance.max_unbroken_speech_sec)}",
+        ]
+    )
+    return "\n".join(lines).rstrip()
+
+
+def render_edu_srt(kit: Any) -> str:
+    blocks = []
+    for narration in kit.narrations:
+        start = format_srt_time(narration.start_sec)
+        end = format_srt_time(narration.end_sec)
+        blocks.append(f"{narration.srt_index}\n{start} --> {end}\n{narration.description}")
+    return "\n\n".join(blocks)
+
+
+def render_edu_text(kit: Any) -> str:
+    lines = [
+        "Educational Video Accessibility Report",
+        f"Source: {kit.source} | Duration: {format_gap_duration(kit.duration_seconds)}",
+        (
+            f"Gaps analyzed: {kit.gaps_analyzed} | Visual moments: {kit.visual_moments} | "
+            f"Talking head skipped: {kit.skipped_talking_head}"
+        ),
+        f"Model version: {kit.model_version or 'n/a'} | Estimated frame cost: ${kit.cost_estimate:.6f}",
+        "",
+    ]
+
+    if kit.narrations:
+        for narration in kit.narrations:
+            lines.append(
+                f"[{format_gap_time(narration.start_sec)}] "
+                f"({format_gap_duration(narration.gap_duration_sec)} available, {narration.gap_type})"
+            )
+            lines.append(narration.description)
+            lines.append("")
+    else:
+        lines.append("No visually informative frames found in the detected narration gaps.")
+        lines.append("")
+
+    lines.extend(
+        [
+            "WCAG/CVAA Summary",
+            (
+                f"Score: {kit.compliance.score} | Level: {kit.compliance.wcag_level} | "
+                f"Coverage: {kit.compliance.coverage_percent:.1f}% | "
+                f"Max unbroken speech: {format_gap_duration(kit.compliance.max_unbroken_speech_sec)}"
+            ),
         ]
     )
     return "\n".join(lines).rstrip()
