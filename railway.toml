@@ -1,5 +1,2 @@
 [build]
 builder = "dockerfile"
-
-[deploy]
-startCommand = "uvicorn demo-api.main:app --host 0.0.0.0 --port $PORT"
