@@ -15,7 +15,9 @@ from .frame import FrameExtractionError, extract_frames
 from .gaps import GapDetectionError, detect_gaps
 from .kit import assemble_kit
 from .output import render_compliance_report, render_gap_results, render_results, result_from_api_response
-from .output import render_edu, render_kit
+from .output import render_edu, render_kit, render_sports, render_theater
+from .sports import SportsDetectionError, assemble_sports_kit
+from .theater import TheaterDescriptionError, TheaterTTSError, assemble_theater_kit
 from .youtube import YouTubeDownloadError, download_video, is_url
 
 
@@ -168,6 +170,90 @@ def edu(
             _fail(str(exc))
 
     typer.echo(render_edu(result, output_format))
+
+
+@app.command()
+def sports(
+    source: str = typer.Argument(..., help="Local video file or YouTube URL."),
+    output_format: str = OutputFormat,
+    fps: float = typer.Option(2.0, "--fps", min=0.1, help="Frame extraction rate. Default 2fps."),
+    narrate_every: float = typer.Option(
+        4.0,
+        "--narrate-every",
+        min=0.5,
+        help="Seconds between narrations. Default 4.0s.",
+    ),
+    min_confidence: float = typer.Option(
+        0.7,
+        "--min-confidence",
+        min=0.1,
+        max=1.0,
+        help="Rekognition minimum detection confidence. Default 0.7.",
+    ),
+) -> None:
+    """Live sports play-by-play narration using Rekognition tracking + GPT-4o."""
+    output_format = _normalize_format(output_format)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            result = assemble_sports_kit(
+                media_path,
+                fps=fps,
+                narrate_every=narrate_every,
+                min_confidence=min_confidence,
+                source_label=source,
+                output_dir=tmp_path / "sports-frames",
+            )
+        except (FrameExtractionError, YouTubeDownloadError, SportsDetectionError) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_sports(result, output_format))
+
+
+@app.command()
+def theater(
+    source: str = typer.Argument(..., help="Local video file or YouTube URL."),
+    output_format: str = OutputFormat,
+    output_dir: Path = typer.Option(
+        Path("./vn-theater-output"),
+        "--output-dir",
+        help="Directory for MP3 files and manifest.json.",
+    ),
+    voice_id: Optional[str] = typer.Option(
+        None,
+        "--voice-id",
+        help="ElevenLabs voice ID. Defaults to ELEVENLABS_VOICE_ADAM or Adam.",
+    ),
+    min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
+) -> None:
+    """Generate a timed audio description track using ElevenLabs TTS."""
+    output_format = _normalize_format(output_format)
+
+    with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
+        tmp_path = Path(tmp)
+        try:
+            media_path = _resolve_source(source, tmp_path / "download")
+            result = assemble_theater_kit(
+                media_path,
+                min_gap=min_gap,
+                voice_id=voice_id,
+                source_label=source,
+                output_dir=output_dir,
+            )
+        except (
+            GapDetectionError,
+            FrameExtractionError,
+            YouTubeDownloadError,
+            TheaterDescriptionError,
+            TheaterTTSError,
+        ) as exc:
+            _fail(str(exc))
+
+    typer.echo(render_theater(result, output_format))
+    if output_format != "json":
+        typer.echo(f"\nAudio output directory: {result.output_dir}")
 
 
 @keys_app.command("create")

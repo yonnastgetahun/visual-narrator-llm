@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from dataclasses import dataclass
 from typing import Any, Iterable
 
@@ -101,6 +102,26 @@ def render_edu(kit: Any, output_format: str) -> str:
         return render_edu_srt(kit)
     if output_format == "text":
         return render_edu_text(kit)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
+def render_sports(kit: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(kit.json_dict(), indent=2)
+    if output_format == "srt":
+        return render_sports_srt(kit)
+    if output_format == "text":
+        return render_sports_text(kit)
+    raise ValueError(f"unsupported output format: {output_format}")
+
+
+def render_theater(kit: Any, output_format: str) -> str:
+    if output_format == "json":
+        return json.dumps(kit.json_dict(), indent=2)
+    if output_format == "srt":
+        return render_theater_srt(kit)
+    if output_format == "text":
+        return render_theater_text(kit)
     raise ValueError(f"unsupported output format: {output_format}")
 
 
@@ -261,6 +282,108 @@ def render_edu_text(kit: Any) -> str:
     return "\n".join(lines).rstrip()
 
 
+def render_sports_srt(kit: Any) -> str:
+    blocks = []
+    for index, narration in enumerate(kit.narrations):
+        start = narration.timestamp_sec
+        if index + 1 < len(kit.narrations):
+            end = kit.narrations[index + 1].timestamp_sec
+        else:
+            end = min(kit.duration_seconds, narration.timestamp_sec + kit.narrate_every_sec)
+        if end <= start:
+            end = start + max(1.0, min(kit.narrate_every_sec, 4.0))
+        blocks.append(
+            f"{narration.srt_index}\n"
+            f"{format_srt_time(start)} --> {format_srt_time(end)}\n"
+            f"{narration.narration}"
+        )
+    return "\n\n".join(blocks)
+
+
+def render_sports_text(kit: Any) -> str:
+    lines = [
+        "Sports Broadcast Describer",
+        f"Source: {kit.source} | Duration: {kit.duration_seconds:.1f}s",
+        (
+            f"Frames analyzed: {kit.frames_analyzed} | Narrations: {kit.narrations_generated} | "
+            f"FPS: {kit.fps:.1f} | Narrate every: {kit.narrate_every_sec:.1f}s"
+        ),
+        (
+            f"Rekognition: ${kit.rekognition_cost_estimate:.3f} | "
+            f"GPT-4o: ${kit.gpt_cost_estimate:.3f} | Total: ${kit.total_cost_estimate:.3f}"
+        ),
+        "",
+    ]
+
+    if kit.narrations:
+        for narration in kit.narrations:
+            lines.append(
+                f"[{format_gap_time(narration.timestamp_sec)}] "
+                f"{len(narration.tracked_objects)} objects tracked ({_sports_object_summary(narration.tracked_objects)})"
+            )
+            lines.append(narration.narration)
+            lines.append("")
+    else:
+        lines.append("No narrations generated.")
+        lines.append("")
+
+    lines.append(f"Model version: {kit.model_version}")
+    return "\n".join(lines).rstrip()
+
+
+def render_theater_srt(kit: Any) -> str:
+    blocks = []
+    for narration in kit.narrations:
+        start = format_srt_time(narration.start_sec)
+        end = format_srt_time(narration.end_sec)
+        blocks.append(f"{narration.srt_index}\n{start} --> {end}\n{narration.description}")
+    return "\n\n".join(blocks)
+
+
+def render_theater_text(kit: Any) -> str:
+    lines = [
+        "Theater Mode Accessibility Audio Track",
+        (
+            f"Source: {kit.source} | Duration: {format_long_duration(kit.duration_seconds)}"
+        ),
+        (
+            f"Gaps processed: {kit.gaps_found} | Audio files: {len(kit.narrations)}"
+        ),
+        (
+            f"Voice: {kit.voice_id} | GPT cost: ${kit.gpt_cost_estimate:.3f} | "
+            f"TTS cost: ${kit.tts_cost_estimate:.3f} | Total: ${kit.total_cost_estimate:.3f}"
+        ),
+        f"Output: {kit.output_dir}",
+        "",
+    ]
+
+    if kit.narrations:
+        for narration in kit.narrations:
+            lines.append(
+                f"[{format_gap_time(narration.start_sec)}] -> "
+                f"[{format_gap_time(narration.end_sec)}] "
+                f"({format_gap_duration(narration.gap_duration_sec)} gap, {narration.gap_type})"
+            )
+            lines.append(narration.description)
+            lines.append(f"-> {narration.audio_file}")
+            lines.append("")
+    else:
+        lines.append("No narration gaps found.")
+        lines.append("")
+
+    lines.extend(
+        [
+            "WCAG/CVAA Summary",
+            (
+                f"Score: {kit.compliance.score} | Level: {kit.compliance.wcag_level} | "
+                f"Coverage: {kit.compliance.coverage_percent:.1f}% | "
+                f"Max unbroken speech: {format_gap_duration(kit.compliance.max_unbroken_speech_sec)}"
+            ),
+        ]
+    )
+    return "\n".join(lines).rstrip()
+
+
 def format_json_time(seconds: float) -> str:
     hours, minutes, secs, millis = _split_time(seconds)
     return f"{hours:02d}:{minutes:02d}:{secs:02d}.{millis:03d}"
@@ -278,6 +401,15 @@ def format_gap_time(seconds: float) -> str:
 
 def format_gap_duration(seconds: float) -> str:
     return f"{seconds:.1f}s"
+
+
+def format_long_duration(seconds: float) -> str:
+    hours, minutes, secs, _millis = _split_time(seconds)
+    if hours:
+        return f"{hours}h {minutes}m {secs}s"
+    if minutes:
+        return f"{minutes}m {secs}s"
+    return f"{secs}s"
 
 
 def _split_time(seconds: float) -> tuple[int, int, int, int]:
@@ -311,3 +443,17 @@ def _latency_from_response(response: dict[str, Any]) -> int | None:
         return int(float(latency))
     except (TypeError, ValueError):
         return None
+
+
+def _sports_object_summary(tracked_objects: Iterable[Any]) -> str:
+    counts = Counter()
+    for tracked_object in tracked_objects:
+        label = getattr(tracked_object, "label", None)
+        if isinstance(label, str) and label.strip():
+            counts[label.strip()] += 1
+    if not counts:
+        return "none"
+    return ", ".join(
+        f"{label} x{count}"
+        for label, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+    )
