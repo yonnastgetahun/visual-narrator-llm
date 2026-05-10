@@ -14,4 +14,5 @@ RUN pip install --no-cache-dir -r demo-api/requirements.txt
 
 COPY demo-api/ ./demo-api/
 
-CMD uvicorn demo-api.main:app --host 0.0.0.0 --port ${PORT:-8000}
+WORKDIR /app/demo-api
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
