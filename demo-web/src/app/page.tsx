@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useRef, useState } from "react";
 
 import { ProgressStream } from "@/components/ProgressStream";
@@ -9,6 +10,7 @@ import { UrlInput } from "@/components/UrlInput";
 import type { Manifest, ScoreReport, StepEvent } from "@/lib/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const YOUTUBE_URL_PATTERN = /^https?:\/\/((www|m)\.)?(youtube\.com|youtu\.be)(\/|$)/i;
 
 type ParsedSseMessage = {
   event: string;
@@ -40,6 +42,8 @@ function parseSseBuffer(buffer: string): { messages: ParsedSseMessage[]; rest: s
 
   return { messages, rest };
 }
+
+const isYouTubeUrl = (url: string) => YOUTUBE_URL_PATTERN.test(url);
 
 export default function Page() {
   const eventSourceRef = useRef<EventSource | null>(null);
@@ -81,6 +85,9 @@ export default function Page() {
     cancelActiveRun();
     resetRunState();
     setProcessing(true);
+    track("run_started", {
+      video_type: isYouTubeUrl(nextUrl) ? "youtube" : "direct",
+    });
 
     const eventSource = new EventSource(`${API_URL}/api/ad?source=${encodeURIComponent(nextUrl)}&min_gap=2.0`);
     eventSourceRef.current = eventSource;
@@ -92,6 +99,11 @@ export default function Page() {
 
     eventSource.addEventListener("complete", (event) => {
       const data = JSON.parse((event as MessageEvent).data) as { manifest: Manifest };
+      track("run_completed", {
+        video_duration: Math.round(data.manifest.duration_seconds ?? 0),
+        gap_count: data.manifest.gaps_found ?? 0,
+        cost_estimate: data.manifest.total_cost_estimate ?? 0,
+      });
       setManifest(data.manifest);
       setProcessing(false);
       eventSource.close();
