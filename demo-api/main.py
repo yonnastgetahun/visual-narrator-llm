@@ -61,6 +61,7 @@ REPLICATE_MODEL_SLUG = "yorickvp/llava-v1.6-vicuna-13b"
 REPLICATE_LLAVA_VERSION = "0603dec596080fa084e26f0ae6d605fc5788ed2b1a0358cd25010619487eae63"
 REPLICATE_COST_PER_FRAME = 0.071
 ADULT_DEMO_SHARED_KEY_ENV = "ADULT_DEMO_SHARED_KEY"
+ADULT_DEMO_VOICE_ID_ENV = "ADULT_DEMO_VOICE_ID"
 ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
 ADULT_DEMO_ALLOWED_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
 ADULT_DEMO_MAX_DURATION_SEC = 180.0
@@ -302,7 +303,12 @@ async def stream_ad_adult(
 
                 narrations: list[dict[str, Any]] = []
                 model_versions: list[str] = []
-                resolved_voice_id = voice_id or os.getenv("ELEVENLABS_VOICE_ADAM") or AD_DEFAULT_VOICE_ID
+                resolved_voice_id = (
+                    voice_id
+                    or os.getenv(ADULT_DEMO_VOICE_ID_ENV)
+                    or os.getenv("ELEVENLABS_VOICE_ADAM")
+                    or AD_DEFAULT_VOICE_ID
+                )
                 total = len(selected_gaps)
 
                 for current, gap in enumerate(selected_gaps, start=1):
