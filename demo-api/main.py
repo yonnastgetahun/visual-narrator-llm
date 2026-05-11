@@ -1,15 +1,18 @@
 from __future__ import annotations
 
+import asyncio
 import base64
 import json
 import os
 import tempfile
+import time
+from collections import defaultdict, deque
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
 import httpx
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
@@ -54,6 +57,14 @@ REPLICATE_API_URL = "https://api.replicate.com/v1/predictions"
 # Closest enabled LLaVA v1.6 fallback: Vicuna-13B latest version.
 REPLICATE_MODEL_SLUG = "yorickvp/llava-v1.6-vicuna-13b"
 REPLICATE_LLAVA_VERSION = "0603dec596080fa084e26f0ae6d605fc5788ed2b1a0358cd25010619487eae63"
+ADULT_DEMO_SHARED_KEY_ENV = "ADULT_DEMO_SHARED_KEY"
+ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
+ADULT_DEMO_ALLOWED_SUFFIX = ".mp4"
+ADULT_DEMO_MAX_DURATION_SEC = 180.0
+ADULT_DEMO_MAX_GAPS = 4
+ADULT_DEMO_MAX_RUNS_PER_HOUR = 5
+ADULT_DEMO_RATE_LIMIT_WINDOW_SEC = 3600.0
+ADULT_DEMO_DUPLICATE_WINDOW_SEC = 900.0
 
 ADULT_AD_PROMPT = (
     "You are writing audio description for an adult content video. "
@@ -64,6 +75,10 @@ ADULT_AD_PROMPT = (
     "Write in present tense."
 )
 DIRECT_VIDEO_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
+ADULT_DEMO_RECENT_RUNS: dict[str, deque[float]] = defaultdict(deque)
+ADULT_DEMO_RECENT_SOURCES: dict[str, float] = {}
+ADULT_DEMO_ACTIVE_CLIENTS: set[str] = set()
+ADULT_DEMO_LOCK = asyncio.Lock()
 
 
 app = FastAPI(title="Visual Narrator Demo API")
@@ -245,14 +260,15 @@ async def stream_ad_adult(
     min_gap: float = 2.0,
     voice_id: str = AD_DEFAULT_VOICE_ID,
 ) -> EventSourceResponse:
-    if not os.getenv("REPLICATE_API_KEY"):
-        raise HTTPException(status_code=500, detail="REPLICATE_API_KEY not set")
-
     async def event_generator():
+        client_id: str | None = None
         try:
+            if not os.getenv("REPLICATE_API_KEY"):
+                raise RuntimeError("REPLICATE_API_KEY not set")
             if not is_url(source):
                 yield _event("error", {"message": "Source must be a valid http or https URL."})
                 return
+            client_id = await _reserve_adult_demo_run(request, source)
 
             with tempfile.TemporaryDirectory(prefix="vn-demo-ad-") as tmp:
                 tmp_root = Path(tmp)
@@ -266,6 +282,7 @@ async def stream_ad_adult(
                 yield _event("step", {"step": "gaps", "message": "Detecting narration gaps..."})
                 gaps = await run_in_threadpool(detect_gaps, video_path, min_gap)
                 compliance = await run_in_threadpool(analyze_compliance, video_path, min_gap, gaps)
+                _validate_adult_demo_clip(compliance.total_duration_sec, len(gaps))
                 yield _event(
                     "step",
                     {
@@ -353,6 +370,9 @@ async def stream_ad_adult(
                 yield _event("complete", {"manifest": manifest})
         except Exception as exc:  # noqa: BLE001
             yield _event("error", {"message": _error_message(exc)})
+        finally:
+            if client_id:
+                await _release_adult_demo_run(client_id)
 
     return EventSourceResponse(event_generator())
 
@@ -427,6 +447,71 @@ async def stream_score(request: Request, payload: ScoreRequest) -> EventSourceRe
 
 def _event(name: str, payload: dict[str, Any]) -> dict[str, str]:
     return {"event": name, "data": json.dumps(payload)}
+
+
+def _adult_demo_client_id(request: Request) -> str:
+    forwarded_for = request.headers.get("x-forwarded-for")
+    if forwarded_for:
+        return forwarded_for.split(",", 1)[0].strip()
+    if request.client and request.client.host:
+        return request.client.host
+    return "unknown"
+
+
+def _looks_like_direct_mp4_url(source_url: str) -> bool:
+    parsed = urlparse(source_url)
+    return Path(parsed.path).suffix.lower() == ADULT_DEMO_ALLOWED_SUFFIX
+
+
+async def _reserve_adult_demo_run(request: Request, source_url: str) -> str:
+    shared_key = os.getenv(ADULT_DEMO_SHARED_KEY_ENV)
+    if not shared_key:
+        raise RuntimeError(f"{ADULT_DEMO_SHARED_KEY_ENV} is not set.")
+    if request.headers.get(ADULT_DEMO_SHARED_KEY_HEADER) != shared_key:
+        raise PermissionError("Adult demo access key is invalid.")
+    if not _looks_like_direct_mp4_url(source_url):
+        raise ValueError("Adult demo accepts direct .mp4 URLs only.")
+
+    client_id = _adult_demo_client_id(request)
+    now = time.time()
+
+    async with ADULT_DEMO_LOCK:
+        runs = ADULT_DEMO_RECENT_RUNS[client_id]
+        while runs and now - runs[0] > ADULT_DEMO_RATE_LIMIT_WINDOW_SEC:
+            runs.popleft()
+
+        stale_sources = [
+            source
+            for source, timestamp in ADULT_DEMO_RECENT_SOURCES.items()
+            if now - timestamp > ADULT_DEMO_DUPLICATE_WINDOW_SEC
+        ]
+        for stale_source in stale_sources:
+            ADULT_DEMO_RECENT_SOURCES.pop(stale_source, None)
+
+        if client_id in ADULT_DEMO_ACTIVE_CLIENTS:
+            raise ValueError("Only one adult demo run can be active at a time from the same IP.")
+        if len(runs) >= ADULT_DEMO_MAX_RUNS_PER_HOUR:
+            raise ValueError("Adult demo rate limit reached for this IP. Try again later.")
+        if source_url in ADULT_DEMO_RECENT_SOURCES:
+            raise ValueError("This clip was submitted recently. Wait a few minutes before retrying the same URL.")
+
+        runs.append(now)
+        ADULT_DEMO_RECENT_SOURCES[source_url] = now
+        ADULT_DEMO_ACTIVE_CLIENTS.add(client_id)
+
+    return client_id
+
+
+async def _release_adult_demo_run(client_id: str) -> None:
+    async with ADULT_DEMO_LOCK:
+        ADULT_DEMO_ACTIVE_CLIENTS.discard(client_id)
+
+
+def _validate_adult_demo_clip(duration_seconds: float, gap_count: int) -> None:
+    if duration_seconds > ADULT_DEMO_MAX_DURATION_SEC:
+        raise ValueError("Adult demo is limited to direct .mp4 clips that are 3 minutes or shorter.")
+    if gap_count > ADULT_DEMO_MAX_GAPS:
+        raise ValueError("Adult demo is limited to clips with 4 narration gaps or fewer.")
 
 
 def _download_source_video(source_url: str, output_dir: Path) -> Path:
@@ -511,6 +596,8 @@ def _error_message(exc: Exception) -> str:
             AdTTSError,
             FrameExtractionError,
             GapDetectionError,
+            PermissionError,
+            RuntimeError,
             ScoreError,
             YouTubeDownloadError,
             ValueError,

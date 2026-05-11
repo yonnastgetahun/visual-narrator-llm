@@ -8,10 +8,16 @@ import { ResultsPanel } from "@/components/ResultsPanel";
 import { UrlInput } from "@/components/UrlInput";
 import type { Manifest, StepEvent } from "@/lib/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
-const YOUTUBE_URL_PATTERN = /^https?:\/\/((www|m)\.)?(youtube\.com|youtu\.be)(\/|$)/i;
+const ADULT_DEMO_PROXY_PATH = "/api/ad-adult";
 
-const isYouTubeUrl = (url: string) => YOUTUBE_URL_PATTERN.test(url);
+function isDirectMp4Url(value: string) {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol.startsWith("http") && parsed.pathname.toLowerCase().endsWith(".mp4");
+  } catch {
+    return false;
+  }
+}
 
 export default function Page() {
   const eventSourceRef = useRef<EventSource | null>(null);
@@ -41,9 +47,15 @@ export default function Page() {
   function handleSubmit(nextUrl: string) {
     cancelActiveRun();
     resetRunState();
+
+    if (!isDirectMp4Url(nextUrl)) {
+      setError("Use a direct .mp4 URL. Adult demo clips are limited to 3 minutes and 4 narration gaps.");
+      return;
+    }
+
     setProcessing(true);
 
-    const endpoint = `${API_BASE}/api/ad-adult?source=${encodeURIComponent(nextUrl)}&min_gap=2.0`;
+    const endpoint = `${ADULT_DEMO_PROXY_PATH}?source=${encodeURIComponent(nextUrl)}&min_gap=2.0`;
     const eventSource = new EventSource(endpoint);
     eventSourceRef.current = eventSource;
 
@@ -87,9 +99,13 @@ export default function Page() {
             Adult Content Audio Description Demo
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Submit a direct MP4 or hosted video URL to generate an audio description track for professional
-            accessibility review.
+            Submit a short direct MP4 clip to generate an audio description track for professional accessibility
+            review.
           </p>
+          <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-4 text-sm text-cyan-50">
+            Demo guardrails: direct `.mp4` only, clips up to 3 minutes, maximum 4 narration gaps, one active run per
+            IP, and repeated submissions are rate limited.
+          </div>
           <div className="mt-8">
             <UrlInput
               value={url}
@@ -101,11 +117,6 @@ export default function Page() {
               }}
             />
           </div>
-          {isYouTubeUrl(url) ? (
-            <div className="mt-6 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-4 py-4 text-sm text-amber-100">
-              Hosted direct video URLs are recommended for the adult demo pipeline.
-            </div>
-          ) : null}
           {error ? (
             <div className="mt-6 rounded-2xl border border-rose-400/30 bg-rose-400/10 px-4 py-4 text-sm text-rose-100">
               {error}
