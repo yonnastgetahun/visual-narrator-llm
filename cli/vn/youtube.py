@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
@@ -10,6 +11,9 @@ import yt_dlp
 
 class YouTubeDownloadError(RuntimeError):
     """Raised when a YouTube URL cannot be downloaded."""
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 YOUTUBE_HOSTS = {
@@ -159,7 +163,7 @@ def download_video(url: str, output_dir: Path) -> Path:
     if is_youtube_url(url) and os.getenv("COBALT_API_URL"):
         try:
             return download_via_cobalt(url, output_dir)
-        except YouTubeDownloadError:
-            pass
+        except YouTubeDownloadError as exc:
+            LOGGER.warning("Cobalt download failed for %s: %s", _normalize_youtube_url(url), exc)
 
     return _download_with_yt_dlp(url, output_dir)
