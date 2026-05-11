@@ -6,6 +6,7 @@ const ADULT_DEMO_SHARED_KEY = process.env.ADULT_DEMO_SHARED_KEY;
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+export const maxDuration = 300;
 
 function sseHeaders() {
   return {
