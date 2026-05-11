@@ -60,6 +60,9 @@ REPLICATE_API_URL = "https://api.replicate.com/v1/predictions"
 REPLICATE_MODEL_SLUG = "yorickvp/llava-v1.6-vicuna-13b"
 REPLICATE_LLAVA_VERSION = "0603dec596080fa084e26f0ae6d605fc5788ed2b1a0358cd25010619487eae63"
 REPLICATE_COST_PER_FRAME = 0.071
+REPLICATE_RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
+REPLICATE_MAX_HTTP_RETRIES = 2
+REPLICATE_RETRY_BACKOFF_SEC = 3.0
 ADULT_DEMO_SHARED_KEY_ENV = "ADULT_DEMO_SHARED_KEY"
 ADULT_DEMO_VOICE_ID_ENV = "ADULT_DEMO_VOICE_ID"
 ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
@@ -242,16 +245,29 @@ def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
             "temperature": 0.2,
         },
     }
-    response = httpx.post(
-        REPLICATE_API_URL,
-        json=payload,
-        headers={
-            "Authorization": f"Token {replicate_key}",
-            "Content-Type": "application/json",
-            "Prefer": "wait",
-        },
-        timeout=90,
-    )
+    response: httpx.Response | None = None
+    for attempt in range(REPLICATE_MAX_HTTP_RETRIES + 1):
+        response = httpx.post(
+            REPLICATE_API_URL,
+            json=payload,
+            headers={
+                "Authorization": f"Token {replicate_key}",
+                "Content-Type": "application/json",
+                "Prefer": "wait",
+            },
+            timeout=90,
+        )
+        if response.status_code not in REPLICATE_RETRYABLE_STATUS_CODES or attempt >= REPLICATE_MAX_HTTP_RETRIES:
+            break
+
+        retry_after = response.headers.get("retry-after")
+        try:
+            delay = max(float(retry_after), REPLICATE_RETRY_BACKOFF_SEC)
+        except (TypeError, ValueError):
+            delay = REPLICATE_RETRY_BACKOFF_SEC * (attempt + 1)
+        time.sleep(delay)
+
+    assert response is not None
     response.raise_for_status()
     data = response.json()
     output = data.get("output") or []
