@@ -6,6 +6,7 @@ type ProgressStreamProps = {
   steps: StepEvent[];
   isComplete: boolean;
   onCancel: () => void;
+  showDownloadHint: boolean;
 };
 
 type RowState = "pending" | "active" | "done";
@@ -40,7 +41,7 @@ function indicator(state: RowState) {
   return <span className="h-3 w-3 rounded-full bg-slate-600" />;
 }
 
-export function ProgressStream({ steps, isComplete, onCancel }: ProgressStreamProps) {
+export function ProgressStream({ steps, isComplete, onCancel, showDownloadHint }: ProgressStreamProps) {
   const downloadSeen = steps.some((step) => step.step === "download");
   const gapsSeen = steps.some((step) => step.step === "gaps");
   const gapsDone = latestGapsDone(steps);
@@ -95,7 +96,14 @@ export function ProgressStream({ steps, isComplete, onCancel }: ProgressStreamPr
           >
             <div className="flex items-center gap-3">
               {indicator(row.state)}
-              <span className="font-medium">{row.label}</span>
+              <div>
+                <span className="font-medium">{row.label}</span>
+                {row.key === "download" && showDownloadHint ? (
+                  <p className="text-sm text-zinc-400">
+                    Loading your footage. The narrator works from real frames — this is what makes it accurate.
+                  </p>
+                ) : null}
+              </div>
             </div>
             <span className="text-sm">{row.detail}</span>
           </div>

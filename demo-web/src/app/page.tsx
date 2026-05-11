@@ -53,6 +53,7 @@ export default function Page() {
   const [scoring, setScoring] = useState(false);
   const [scoringProgress, setScoringProgress] = useState<{ current: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const showDownloadHint = steps[steps.length - 1]?.step === "download";
 
   function resetRunState() {
     setSteps([]);
@@ -210,7 +211,14 @@ export default function Page() {
           ) : null}
         </section>
 
-        {processing ? <ProgressStream isComplete={false} onCancel={cancelActiveRun} steps={steps} /> : null}
+        {processing ? (
+          <ProgressStream
+            isComplete={false}
+            onCancel={cancelActiveRun}
+            showDownloadHint={showDownloadHint}
+            steps={steps}
+          />
+        ) : null}
 
         {manifest ? (
           <>
