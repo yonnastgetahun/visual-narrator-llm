@@ -9,7 +9,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 import httpx
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
@@ -45,9 +45,21 @@ from vn.youtube import YouTubeDownloadError, download_video, is_url
 
 ORIGINS = [
     "https://demo.vnpoverview.com",
+    "https://adult.vnpoverview.com",
     "http://localhost:3000",
     "http://localhost:3001",
 ]
+REPLICATE_API_URL = "https://api.replicate.com/v1/predictions"
+REPLICATE_LLAVA_VERSION = "41ecfbfb261e6c1adf3ad896c9066ca98346996d"
+
+ADULT_AD_PROMPT = (
+    "You are writing audio description for an adult content video. "
+    "Describe what is happening on screen in clear, direct, clinical language. "
+    "Do not use euphemisms. Do not editorialize or add emotional commentary. "
+    "Focus on physical actions, positions, and visible participants. "
+    "Keep the description to 2-3 sentences that fit in a 3-5 second narration gap. "
+    "Write in present tense."
+)
 DIRECT_VIDEO_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
 
 
@@ -130,6 +142,161 @@ async def stream_ad(
                         tmp_root / "frames" / f"{current:05d}",
                     )
                     description, model_version = await run_in_threadpool(_describe_frame_for_ad, frames[0].path)
+                    if model_version:
+                        model_versions.append(model_version)
+
+                    yield _event(
+                        "step",
+                        {
+                            "step": "synthesizing",
+                            "current": current,
+                            "total": total,
+                            "message": f"Synthesizing audio {current} of {total}...",
+                        },
+                    )
+                    audio_bytes, character_count = await run_in_threadpool(
+                        _synthesize_speech_bytes,
+                        description,
+                        resolved_voice_id,
+                    )
+                    narrations.append(
+                        {
+                            "srt_index": current,
+                            "start_sec": round(gap.start_sec, 3),
+                            "end_sec": round(gap.end_sec, 3),
+                            "gap_duration_sec": round(gap.duration_sec, 3),
+                            "gap_type": gap.gap_type,
+                            "frame_timestamp_sec": round(frames[0].timestamp, 3),
+                            "description": description,
+                            "audio_data": base64.b64encode(audio_bytes).decode("ascii"),
+                            "audio_mime": "audio/mpeg",
+                            "gpt_cost": round(AD_COST_PER_FRAME, 6),
+                            "tts_cost": round(character_count * AD_TTS_COST_PER_CHAR, 6),
+                        }
+                    )
+                    if await request.is_disconnected():
+                        return
+
+                gpt_cost_estimate = sum(item["gpt_cost"] for item in narrations)
+                tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
+                manifest = {
+                    "source": source,
+                    "duration_seconds": round(compliance.total_duration_sec, 3),
+                    "gaps_found": len(gaps),
+                    "model_version": _combine_model_versions(model_versions),
+                    "voice_id": resolved_voice_id,
+                    "compliance_level": compliance.wcag_level,
+                    "gpt_cost_estimate": round(gpt_cost_estimate, 6),
+                    "tts_cost_estimate": round(tts_cost_estimate, 6),
+                    "total_cost_estimate": round(gpt_cost_estimate + tts_cost_estimate, 6),
+                    "compliance": compliance.json_dict(),
+                    "narrations": narrations,
+                }
+                yield _event("complete", {"manifest": manifest})
+        except Exception as exc:  # noqa: BLE001
+            yield _event("error", {"message": _error_message(exc)})
+
+    return EventSourceResponse(event_generator())
+
+
+def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
+    replicate_key = os.getenv("REPLICATE_API_KEY")
+    if not replicate_key:
+        raise RuntimeError("REPLICATE_API_KEY not set")
+
+    with frame_path.open("rb") as handle:
+        img_b64 = base64.b64encode(handle.read()).decode("ascii")
+    img_suffix = frame_path.suffix.lstrip(".") or "jpeg"
+    data_uri = f"data:image/{img_suffix};base64,{img_b64}"
+
+    payload = {
+        "version": REPLICATE_LLAVA_VERSION,
+        "input": {
+            "image": data_uri,
+            "prompt": ADULT_AD_PROMPT,
+            "max_tokens": 200,
+            "temperature": 0.2,
+        },
+    }
+    response = httpx.post(
+        REPLICATE_API_URL,
+        json=payload,
+        headers={
+            "Authorization": f"Token {replicate_key}",
+            "Content-Type": "application/json",
+            "Prefer": "wait",
+        },
+        timeout=90,
+    )
+    response.raise_for_status()
+    data = response.json()
+    output = data.get("output") or []
+    description = "".join(output).strip() if isinstance(output, list) else str(output).strip()
+    return description, f"replicate/llava-v1.6-34b@{REPLICATE_LLAVA_VERSION[:8]}"
+
+
+@app.get("/api/ad-adult")
+async def stream_ad_adult(
+    request: Request,
+    source: str,
+    min_gap: float = 2.0,
+    voice_id: str = AD_DEFAULT_VOICE_ID,
+) -> EventSourceResponse:
+    if not os.getenv("REPLICATE_API_KEY"):
+        raise HTTPException(status_code=500, detail="REPLICATE_API_KEY not set")
+
+    async def event_generator():
+        try:
+            if not is_url(source):
+                yield _event("error", {"message": "Source must be a valid http or https URL."})
+                return
+
+            with tempfile.TemporaryDirectory(prefix="vn-demo-ad-") as tmp:
+                tmp_root = Path(tmp)
+                video_root = tmp_root / "video"
+
+                yield _event("step", {"step": "download", "message": "Downloading video..."})
+                video_path = await run_in_threadpool(_download_source_video, source, video_root)
+                if await request.is_disconnected():
+                    return
+
+                yield _event("step", {"step": "gaps", "message": "Detecting narration gaps..."})
+                gaps = await run_in_threadpool(detect_gaps, video_path, min_gap)
+                compliance = await run_in_threadpool(analyze_compliance, video_path, min_gap, gaps)
+                yield _event(
+                    "step",
+                    {
+                        "step": "gaps_done",
+                        "gaps": len(gaps),
+                        "duration_seconds": round(compliance.total_duration_sec, 3),
+                    },
+                )
+                if await request.is_disconnected():
+                    return
+
+                narrations: list[dict[str, Any]] = []
+                model_versions: list[str] = []
+                resolved_voice_id = voice_id or os.getenv("ELEVENLABS_VOICE_ADAM") or AD_DEFAULT_VOICE_ID
+                total = len(gaps)
+
+                for current, gap in enumerate(gaps, start=1):
+                    midpoint = _gap_midpoint(gap)
+                    yield _event(
+                        "step",
+                        {
+                            "step": "describing",
+                            "current": current,
+                            "total": total,
+                            "message": f"Describing gap {current} of {total}...",
+                        },
+                    )
+                    frames = await run_in_threadpool(
+                        extract_frames_at,
+                        video_path,
+                        [midpoint],
+                        tmp_root / "frames" / f"{current:05d}",
+                    )
+                    description, model_version = await run_in_threadpool(_describe_frame_for_adult_ad, frames[0].path)
                     if model_version:
                         model_versions.append(model_version)
 

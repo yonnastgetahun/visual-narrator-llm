@@ -18,6 +18,10 @@ venv/
 env/
 .venv/
 
+# Node / Next.js
+node_modules/
+.next/
+
 # Lambda deployment bundles
 lambda-package-clean/
 lambda-package/
