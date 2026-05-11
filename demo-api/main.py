@@ -66,6 +66,8 @@ ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
 ADULT_DEMO_ALLOWED_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
 ADULT_DEMO_MAX_DURATION_SEC = 180.0
 ADULT_DEMO_MAX_GAPS = 4
+ADULT_DEMO_EMPTY_DESCRIPTION_RETRIES = 2
+ADULT_DEMO_NEARBY_FRAME_OFFSET_SEC = 0.5
 ADULT_DEMO_MAX_RUNS_PER_HOUR = 5
 ADULT_DEMO_RATE_LIMIT_WINDOW_SEC = 3600.0
 ADULT_DEMO_DUPLICATE_WINDOW_SEC = 900.0
@@ -124,7 +126,6 @@ async def stream_ad(
 
                 yield _event("step", {"step": "download", "message": "Downloading video..."})
                 video_path = await run_in_threadpool(_download_source_video, source, video_root)
-                video_path = await run_in_threadpool(_prepare_adult_demo_video, video_path, tmp_root)
                 if await request.is_disconnected():
                     return
 
@@ -260,6 +261,72 @@ def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
     return description, f"replicate/{REPLICATE_MODEL_SLUG.split('/', 1)[1]}@{REPLICATE_LLAVA_VERSION[:8]}"
 
 
+def _adult_demo_retry_timestamp(gap: Any) -> float:
+    midpoint = _gap_midpoint(gap)
+    min_timestamp = gap.start_sec + 0.15
+    max_timestamp = gap.end_sec - 0.15
+    if min_timestamp >= max_timestamp:
+        min_timestamp = gap.start_sec
+        max_timestamp = gap.end_sec
+
+    offset = min(0.75, max(0.25, min(ADULT_DEMO_NEARBY_FRAME_OFFSET_SEC, gap.duration_sec / 4)))
+    candidate = midpoint + offset
+    if candidate <= max_timestamp:
+        return candidate
+
+    candidate = midpoint - offset
+    if candidate >= min_timestamp:
+        return candidate
+    return midpoint
+
+
+def _describe_adult_demo_gap(video_path: Path, gap: Any, frame_root: Path) -> dict[str, Any]:
+    midpoint = _gap_midpoint(gap)
+    frames = extract_frames_at(video_path, [midpoint], frame_root / "primary")
+    frame = frames[0]
+    attempts = 0
+    last_error: AdDescriptionError | None = None
+
+    for _ in range(ADULT_DEMO_EMPTY_DESCRIPTION_RETRIES):
+        attempts += 1
+        try:
+            description, model_version = _describe_frame_for_adult_ad(frame.path)
+            return {
+                "description": description,
+                "model_version": model_version,
+                "frame_timestamp_sec": round(frame.timestamp, 3),
+                "vision_attempts": attempts,
+                "skipped": False,
+            }
+        except AdDescriptionError as exc:
+            last_error = exc
+
+    retry_timestamp = _adult_demo_retry_timestamp(gap)
+    retry_frames = extract_frames_at(video_path, [retry_timestamp], frame_root / "fallback")
+    retry_frame = retry_frames[0]
+    attempts += 1
+    try:
+        description, model_version = _describe_frame_for_adult_ad(retry_frame.path)
+        return {
+            "description": description,
+            "model_version": model_version,
+            "frame_timestamp_sec": round(retry_frame.timestamp, 3),
+            "vision_attempts": attempts,
+            "skipped": False,
+        }
+    except AdDescriptionError as exc:
+        last_error = exc
+
+    return {
+        "description": None,
+        "model_version": "",
+        "frame_timestamp_sec": round(retry_frame.timestamp, 3),
+        "vision_attempts": attempts,
+        "skipped": True,
+        "skip_reason": str(last_error or AdDescriptionError("Replicate returned an empty frame description.")),
+    }
+
+
 @app.get("/api/ad-adult")
 async def stream_ad_adult(
     request: Request,
@@ -283,6 +350,7 @@ async def stream_ad_adult(
 
                 yield _event("step", {"step": "download", "message": "Downloading video..."})
                 video_path = await run_in_threadpool(_download_source_video, source, video_root)
+                video_path = await run_in_threadpool(_prepare_adult_demo_video, video_path, tmp_root)
                 if await request.is_disconnected():
                     return
 
@@ -303,6 +371,8 @@ async def stream_ad_adult(
 
                 narrations: list[dict[str, Any]] = []
                 model_versions: list[str] = []
+                total_vision_attempts = 0
+                skipped_gaps = 0
                 resolved_voice_id = (
                     voice_id
                     or os.getenv(ADULT_DEMO_VOICE_ID_ENV)
@@ -312,7 +382,6 @@ async def stream_ad_adult(
                 total = len(selected_gaps)
 
                 for current, gap in enumerate(selected_gaps, start=1):
-                    midpoint = _gap_midpoint(gap)
                     yield _event(
                         "step",
                         {
@@ -322,13 +391,28 @@ async def stream_ad_adult(
                             "message": f"Describing gap {current} of {total}...",
                         },
                     )
-                    frames = await run_in_threadpool(
-                        extract_frames_at,
+                    gap_result = await run_in_threadpool(
+                        _describe_adult_demo_gap,
                         video_path,
-                        [midpoint],
+                        gap,
                         tmp_root / "frames" / f"{current:05d}",
                     )
-                    description, model_version = await run_in_threadpool(_describe_frame_for_adult_ad, frames[0].path)
+                    total_vision_attempts += gap_result["vision_attempts"]
+                    if gap_result["skipped"]:
+                        skipped_gaps += 1
+                        yield _event(
+                            "step",
+                            {
+                                "step": "skipping",
+                                "current": current,
+                                "total": total,
+                                "message": f"Skipping gap {current} of {total} after repeated empty frame descriptions.",
+                            },
+                        )
+                        continue
+
+                    description = gap_result["description"]
+                    model_version = gap_result["model_version"]
                     if model_version:
                         model_versions.append(model_version)
 
@@ -353,27 +437,34 @@ async def stream_ad_adult(
                             "end_sec": round(gap.end_sec, 3),
                             "gap_duration_sec": round(gap.duration_sec, 3),
                             "gap_type": gap.gap_type,
-                            "frame_timestamp_sec": round(frames[0].timestamp, 3),
+                            "frame_timestamp_sec": gap_result["frame_timestamp_sec"],
                             "description": description,
                             "audio_data": base64.b64encode(audio_bytes).decode("ascii"),
                             "audio_mime": "audio/mpeg",
-                            "gpt_cost": round(REPLICATE_COST_PER_FRAME, 6),
+                            "gpt_cost": round(gap_result["vision_attempts"] * REPLICATE_COST_PER_FRAME, 6),
                             "tts_cost": round(character_count * AD_TTS_COST_PER_CHAR, 6),
+                            "vision_attempts": gap_result["vision_attempts"],
                         }
                     )
                     if await request.is_disconnected():
                         return
 
-                vision_cost_estimate = sum(item["gpt_cost"] for item in narrations)
+                if selected_gaps and not narrations:
+                    raise ValueError("Adult demo could not generate descriptions for the selected gaps.")
+
+                vision_cost_estimate = total_vision_attempts * REPLICATE_COST_PER_FRAME
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {
                     "source": source,
                     "duration_seconds": round(compliance.total_duration_sec, 3),
                     "gaps_found": len(gaps),
-                    "gaps_processed": len(selected_gaps),
+                    "gaps_selected": len(selected_gaps),
+                    "gaps_processed": len(narrations),
+                    "gaps_skipped": skipped_gaps,
                     "model_version": _combine_model_versions(model_versions),
                     "voice_id": resolved_voice_id,
                     "compliance_level": compliance.wcag_level,
+                    "vision_attempts": total_vision_attempts,
                     "gpt_cost_estimate": round(vision_cost_estimate, 6),
                     "vision_cost_estimate": round(vision_cost_estimate, 6),
                     "tts_cost_estimate": round(tts_cost_estimate, 6),
@@ -381,7 +472,8 @@ async def stream_ad_adult(
                     "cost_basis": {
                         "vision_model": REPLICATE_MODEL_SLUG,
                         "vision_version": REPLICATE_LLAVA_VERSION,
-                        "vision_cost_per_gap_usd": REPLICATE_COST_PER_FRAME,
+                        "vision_cost_per_prediction_usd": REPLICATE_COST_PER_FRAME,
+                        "vision_pricing_unit": "per_prediction",
                         "tts_cost_per_1k_chars_usd": 0.10,
                         "tts_model": ELEVENLABS_MODEL,
                     },
