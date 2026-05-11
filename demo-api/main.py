@@ -192,14 +192,14 @@ async def stream_ad(
                             "description": description,
                             "audio_data": base64.b64encode(audio_bytes).decode("ascii"),
                             "audio_mime": "audio/mpeg",
-                            "gpt_cost": round(REPLICATE_COST_PER_FRAME, 6),
+                            "gpt_cost": round(AD_COST_PER_FRAME, 6),
                             "tts_cost": round(character_count * AD_TTS_COST_PER_CHAR, 6),
                         }
                     )
                     if await request.is_disconnected():
                         return
 
-                vision_cost_estimate = sum(item["gpt_cost"] for item in narrations)
+                gpt_cost_estimate = sum(item["gpt_cost"] for item in narrations)
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {
                     "source": source,
@@ -208,17 +208,9 @@ async def stream_ad(
                     "model_version": _combine_model_versions(model_versions),
                     "voice_id": resolved_voice_id,
                     "compliance_level": compliance.wcag_level,
-                    "gpt_cost_estimate": round(vision_cost_estimate, 6),
-                    "vision_cost_estimate": round(vision_cost_estimate, 6),
+                    "gpt_cost_estimate": round(gpt_cost_estimate, 6),
                     "tts_cost_estimate": round(tts_cost_estimate, 6),
-                    "total_cost_estimate": round(vision_cost_estimate + tts_cost_estimate, 6),
-                    "cost_basis": {
-                        "vision_model": REPLICATE_MODEL_SLUG,
-                        "vision_version": REPLICATE_LLAVA_VERSION,
-                        "vision_cost_per_gap_usd": REPLICATE_COST_PER_FRAME,
-                        "tts_cost_per_1k_chars_usd": 0.10,
-                        "tts_model": ELEVENLABS_MODEL,
-                    },
+                    "total_cost_estimate": round(gpt_cost_estimate + tts_cost_estimate, 6),
                     "compliance": compliance.json_dict(),
                     "narrations": narrations,
                 }
@@ -262,6 +254,8 @@ def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
     data = response.json()
     output = data.get("output") or []
     description = "".join(output).strip() if isinstance(output, list) else str(output).strip()
+    if not description:
+        raise AdDescriptionError("Replicate returned an empty frame description.")
     return description, f"replicate/{REPLICATE_MODEL_SLUG.split('/', 1)[1]}@{REPLICATE_LLAVA_VERSION[:8]}"
 
 
@@ -357,14 +351,14 @@ async def stream_ad_adult(
                             "description": description,
                             "audio_data": base64.b64encode(audio_bytes).decode("ascii"),
                             "audio_mime": "audio/mpeg",
-                            "gpt_cost": round(AD_COST_PER_FRAME, 6),
+                            "gpt_cost": round(REPLICATE_COST_PER_FRAME, 6),
                             "tts_cost": round(character_count * AD_TTS_COST_PER_CHAR, 6),
                         }
                     )
                     if await request.is_disconnected():
                         return
 
-                gpt_cost_estimate = sum(item["gpt_cost"] for item in narrations)
+                vision_cost_estimate = sum(item["gpt_cost"] for item in narrations)
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {
                     "source": source,
@@ -373,9 +367,17 @@ async def stream_ad_adult(
                     "model_version": _combine_model_versions(model_versions),
                     "voice_id": resolved_voice_id,
                     "compliance_level": compliance.wcag_level,
-                    "gpt_cost_estimate": round(gpt_cost_estimate, 6),
+                    "gpt_cost_estimate": round(vision_cost_estimate, 6),
+                    "vision_cost_estimate": round(vision_cost_estimate, 6),
                     "tts_cost_estimate": round(tts_cost_estimate, 6),
-                    "total_cost_estimate": round(gpt_cost_estimate + tts_cost_estimate, 6),
+                    "total_cost_estimate": round(vision_cost_estimate + tts_cost_estimate, 6),
+                    "cost_basis": {
+                        "vision_model": REPLICATE_MODEL_SLUG,
+                        "vision_version": REPLICATE_LLAVA_VERSION,
+                        "vision_cost_per_gap_usd": REPLICATE_COST_PER_FRAME,
+                        "tts_cost_per_1k_chars_usd": 0.10,
+                        "tts_model": ELEVENLABS_MODEL,
+                    },
                     "compliance": compliance.json_dict(),
                     "narrations": narrations,
                 }
