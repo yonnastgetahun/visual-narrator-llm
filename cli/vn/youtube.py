@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 import httpx
 import yt_dlp
@@ -30,19 +30,59 @@ def is_youtube_url(value: str) -> bool:
     return hostname.lower() in YOUTUBE_HOSTS if hostname else False
 
 
+def _normalize_youtube_url(value: str) -> str:
+    parsed = urlparse(value)
+    hostname = parsed.hostname.lower() if parsed.hostname else ""
+
+    if hostname in {"youtube.com", "www.youtube.com", "m.youtube.com"}:
+        video_id = parse_qs(parsed.query).get("v", [None])[0]
+        if not video_id:
+            return value
+        return urlunparse(
+            (
+                parsed.scheme or "https",
+                parsed.netloc,
+                "/watch",
+                "",
+                urlencode({"v": video_id}),
+                "",
+            )
+        )
+
+    if hostname == "youtu.be":
+        video_id = parsed.path.strip("/").split("/", 1)[0]
+        if not video_id:
+            return value
+        return urlunparse(
+            (
+                parsed.scheme or "https",
+                "youtu.be",
+                f"/{video_id}",
+                "",
+                "",
+                "",
+            )
+        )
+
+    return value
+
+
 def _download_with_yt_dlp(url: str, output_dir: Path) -> Path:
     template = str(output_dir / "source.%(ext)s")
+    is_youtube = is_youtube_url(url)
     options = {
         "format": "bv*[height<=720]+ba/b[height<=720]/best",
         "merge_output_format": "mp4",
         "outtmpl": template,
         "quiet": True,
         "no_warnings": True,
+        "noplaylist": is_youtube,
     }
+    source_url = _normalize_youtube_url(url) if is_youtube else url
 
     try:
         with yt_dlp.YoutubeDL(options) as downloader:
-            info = downloader.extract_info(url, download=True)
+            info = downloader.extract_info(source_url, download=True)
             downloaded = Path(downloader.prepare_filename(info))
     except Exception as exc:
         raise YouTubeDownloadError(f"failed to download video: {exc}") from exc
@@ -64,8 +104,9 @@ def download_via_cobalt(source_url: str, output_dir: Path) -> Path:
     if not cobalt_api_url:
         raise YouTubeDownloadError("COBALT_API_URL is not configured")
 
+    normalized_source_url = _normalize_youtube_url(source_url) if is_youtube_url(source_url) else source_url
     request_body = {
-        "url": source_url,
+        "url": normalized_source_url,
         "videoQuality": "360",
         "filenameStyle": "basic",
         "downloadMode": "auto",
