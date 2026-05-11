@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import threading
 import time
 from collections import defaultdict, deque
 from pathlib import Path
@@ -63,6 +64,7 @@ REPLICATE_COST_PER_FRAME = 0.071
 REPLICATE_RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 REPLICATE_MAX_HTTP_RETRIES = 2
 REPLICATE_RETRY_BACKOFF_SEC = 3.0
+REPLICATE_MIN_REQUEST_INTERVAL_SEC = 8.0
 ADULT_DEMO_SHARED_KEY_ENV = "ADULT_DEMO_SHARED_KEY"
 ADULT_DEMO_VOICE_ID_ENV = "ADULT_DEMO_VOICE_ID"
 ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
@@ -88,6 +90,8 @@ ADULT_DEMO_RECENT_RUNS: dict[str, deque[float]] = defaultdict(deque)
 ADULT_DEMO_RECENT_SOURCES: dict[str, float] = {}
 ADULT_DEMO_ACTIVE_CLIENTS: set[str] = set()
 ADULT_DEMO_LOCK = asyncio.Lock()
+REPLICATE_REQUEST_LOCK = threading.Lock()
+REPLICATE_NEXT_REQUEST_AT = 0.0
 
 
 app = FastAPI(title="Visual Narrator Demo API")
@@ -247,6 +251,7 @@ def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
     }
     response: httpx.Response | None = None
     for attempt in range(REPLICATE_MAX_HTTP_RETRIES + 1):
+        _pace_replicate_request()
         response = httpx.post(
             REPLICATE_API_URL,
             json=payload,
@@ -275,6 +280,18 @@ def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
     if not description:
         raise AdDescriptionError("Replicate returned an empty frame description.")
     return description, f"replicate/{REPLICATE_MODEL_SLUG.split('/', 1)[1]}@{REPLICATE_LLAVA_VERSION[:8]}"
+
+
+def _pace_replicate_request() -> None:
+    global REPLICATE_NEXT_REQUEST_AT
+
+    with REPLICATE_REQUEST_LOCK:
+        now = time.time()
+        wait_seconds = max(0.0, REPLICATE_NEXT_REQUEST_AT - now)
+        if wait_seconds > 0:
+            time.sleep(wait_seconds)
+            now = time.time()
+        REPLICATE_NEXT_REQUEST_AT = now + REPLICATE_MIN_REQUEST_INTERVAL_SEC
 
 
 def _adult_demo_retry_timestamp(gap: Any) -> float:
