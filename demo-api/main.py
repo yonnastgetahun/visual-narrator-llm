@@ -288,12 +288,12 @@ async def stream_ad_adult(
                 yield _event("step", {"step": "gaps", "message": "Detecting narration gaps..."})
                 gaps = await run_in_threadpool(detect_gaps, video_path, min_gap)
                 compliance = await run_in_threadpool(analyze_compliance, video_path, min_gap, gaps)
-                _validate_adult_demo_clip(compliance.total_duration_sec, len(gaps))
+                selected_gaps = _select_adult_demo_gaps(gaps)
                 yield _event(
                     "step",
                     {
                         "step": "gaps_done",
-                        "gaps": len(gaps),
+                        "gaps": len(selected_gaps),
                         "duration_seconds": round(compliance.total_duration_sec, 3),
                     },
                 )
@@ -303,9 +303,9 @@ async def stream_ad_adult(
                 narrations: list[dict[str, Any]] = []
                 model_versions: list[str] = []
                 resolved_voice_id = voice_id or os.getenv("ELEVENLABS_VOICE_ADAM") or AD_DEFAULT_VOICE_ID
-                total = len(gaps)
+                total = len(selected_gaps)
 
-                for current, gap in enumerate(gaps, start=1):
+                for current, gap in enumerate(selected_gaps, start=1):
                     midpoint = _gap_midpoint(gap)
                     yield _event(
                         "step",
@@ -364,6 +364,7 @@ async def stream_ad_adult(
                     "source": source,
                     "duration_seconds": round(compliance.total_duration_sec, 3),
                     "gaps_found": len(gaps),
+                    "gaps_processed": len(selected_gaps),
                     "model_version": _combine_model_versions(model_versions),
                     "voice_id": resolved_voice_id,
                     "compliance_level": compliance.wcag_level,
@@ -521,9 +522,8 @@ async def _release_adult_demo_run(client_id: str) -> None:
         ADULT_DEMO_ACTIVE_CLIENTS.discard(client_id)
 
 
-def _validate_adult_demo_clip(duration_seconds: float, gap_count: int) -> None:
-    if gap_count > ADULT_DEMO_MAX_GAPS:
-        raise ValueError("Adult demo is limited to clips with 4 narration gaps or fewer.")
+def _select_adult_demo_gaps(gaps: list[Any]) -> list[Any]:
+    return gaps[:ADULT_DEMO_MAX_GAPS]
 
 
 def _prepare_adult_demo_video(video_path: Path, tmp_root: Path) -> Path:
