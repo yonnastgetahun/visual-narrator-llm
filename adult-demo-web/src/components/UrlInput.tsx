@@ -18,7 +18,7 @@ export function UrlInput({ value, processing, onChange, onSubmit }: UrlInputProp
     >
       <input
         className="min-h-14 flex-1 rounded-2xl border border-white/15 bg-slate-950/70 px-5 text-base text-white outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
-        placeholder="Direct .mp4 URL (3 minutes max)"
+        placeholder="Direct video URL (first 3 minutes used)"
         type="url"
         value={value}
         onChange={(event) => onChange(event.target.value)}

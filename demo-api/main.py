@@ -4,6 +4,8 @@ import asyncio
 import base64
 import json
 import os
+import shutil
+import subprocess
 import tempfile
 import time
 from collections import defaultdict, deque
@@ -57,9 +59,10 @@ REPLICATE_API_URL = "https://api.replicate.com/v1/predictions"
 # Closest enabled LLaVA v1.6 fallback: Vicuna-13B latest version.
 REPLICATE_MODEL_SLUG = "yorickvp/llava-v1.6-vicuna-13b"
 REPLICATE_LLAVA_VERSION = "0603dec596080fa084e26f0ae6d605fc5788ed2b1a0358cd25010619487eae63"
+REPLICATE_COST_PER_FRAME = 0.071
 ADULT_DEMO_SHARED_KEY_ENV = "ADULT_DEMO_SHARED_KEY"
 ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
-ADULT_DEMO_ALLOWED_SUFFIX = ".mp4"
+ADULT_DEMO_ALLOWED_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
 ADULT_DEMO_MAX_DURATION_SEC = 180.0
 ADULT_DEMO_MAX_GAPS = 4
 ADULT_DEMO_MAX_RUNS_PER_HOUR = 5
@@ -120,6 +123,7 @@ async def stream_ad(
 
                 yield _event("step", {"step": "download", "message": "Downloading video..."})
                 video_path = await run_in_threadpool(_download_source_video, source, video_root)
+                video_path = await run_in_threadpool(_prepare_adult_demo_video, video_path, tmp_root)
                 if await request.is_disconnected():
                     return
 
@@ -188,14 +192,14 @@ async def stream_ad(
                             "description": description,
                             "audio_data": base64.b64encode(audio_bytes).decode("ascii"),
                             "audio_mime": "audio/mpeg",
-                            "gpt_cost": round(AD_COST_PER_FRAME, 6),
+                            "gpt_cost": round(REPLICATE_COST_PER_FRAME, 6),
                             "tts_cost": round(character_count * AD_TTS_COST_PER_CHAR, 6),
                         }
                     )
                     if await request.is_disconnected():
                         return
 
-                gpt_cost_estimate = sum(item["gpt_cost"] for item in narrations)
+                vision_cost_estimate = sum(item["gpt_cost"] for item in narrations)
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {
                     "source": source,
@@ -204,9 +208,17 @@ async def stream_ad(
                     "model_version": _combine_model_versions(model_versions),
                     "voice_id": resolved_voice_id,
                     "compliance_level": compliance.wcag_level,
-                    "gpt_cost_estimate": round(gpt_cost_estimate, 6),
+                    "gpt_cost_estimate": round(vision_cost_estimate, 6),
+                    "vision_cost_estimate": round(vision_cost_estimate, 6),
                     "tts_cost_estimate": round(tts_cost_estimate, 6),
-                    "total_cost_estimate": round(gpt_cost_estimate + tts_cost_estimate, 6),
+                    "total_cost_estimate": round(vision_cost_estimate + tts_cost_estimate, 6),
+                    "cost_basis": {
+                        "vision_model": REPLICATE_MODEL_SLUG,
+                        "vision_version": REPLICATE_LLAVA_VERSION,
+                        "vision_cost_per_gap_usd": REPLICATE_COST_PER_FRAME,
+                        "tts_cost_per_1k_chars_usd": 0.10,
+                        "tts_model": ELEVENLABS_MODEL,
+                    },
                     "compliance": compliance.json_dict(),
                     "narrations": narrations,
                 }
@@ -460,7 +472,7 @@ def _adult_demo_client_id(request: Request) -> str:
 
 def _looks_like_direct_mp4_url(source_url: str) -> bool:
     parsed = urlparse(source_url)
-    return Path(parsed.path).suffix.lower() == ADULT_DEMO_ALLOWED_SUFFIX
+    return Path(parsed.path).suffix.lower() in ADULT_DEMO_ALLOWED_SUFFIXES
 
 
 async def _reserve_adult_demo_run(request: Request, source_url: str) -> str:
@@ -470,7 +482,7 @@ async def _reserve_adult_demo_run(request: Request, source_url: str) -> str:
     if request.headers.get(ADULT_DEMO_SHARED_KEY_HEADER) != shared_key:
         raise PermissionError("Adult demo access key is invalid.")
     if not _looks_like_direct_mp4_url(source_url):
-        raise ValueError("Adult demo accepts direct .mp4 URLs only.")
+        raise ValueError("Adult demo accepts direct video file URLs only (.mp4, .m4v, .mov, .webm, .mkv).")
 
     client_id = _adult_demo_client_id(request)
     now = time.time()
@@ -508,10 +520,91 @@ async def _release_adult_demo_run(client_id: str) -> None:
 
 
 def _validate_adult_demo_clip(duration_seconds: float, gap_count: int) -> None:
-    if duration_seconds > ADULT_DEMO_MAX_DURATION_SEC:
-        raise ValueError("Adult demo is limited to direct .mp4 clips that are 3 minutes or shorter.")
     if gap_count > ADULT_DEMO_MAX_GAPS:
         raise ValueError("Adult demo is limited to clips with 4 narration gaps or fewer.")
+
+
+def _prepare_adult_demo_video(video_path: Path, tmp_root: Path) -> Path:
+    duration_seconds = _probe_media_duration(video_path)
+    if duration_seconds <= ADULT_DEMO_MAX_DURATION_SEC:
+        return video_path
+
+    if shutil.which("ffmpeg") is None or shutil.which("ffprobe") is None:
+        raise ValueError("ffmpeg and ffprobe are required to trim long adult demo clips.")
+
+    trimmed_path = tmp_root / "adult-preview.mp4"
+    try:
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-hide_banner",
+                "-loglevel",
+                "error",
+                "-y",
+                "-i",
+                str(video_path),
+                "-t",
+                str(ADULT_DEMO_MAX_DURATION_SEC),
+                "-c",
+                "copy",
+                str(trimmed_path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        stderr = (exc.stderr or exc.stdout or "").strip()
+        raise ValueError(f"Unable to trim adult demo clip to the first 3 minutes: {stderr}") from exc
+
+    if not trimmed_path.exists() or trimmed_path.stat().st_size <= 0:
+        raise ValueError("Unable to trim adult demo clip to the first 3 minutes.")
+    return trimmed_path
+
+
+def _probe_media_duration(video_path: Path) -> float:
+    if shutil.which("ffprobe") is None:
+        raise ValueError("ffprobe is required to inspect adult demo clips.")
+
+    try:
+        completed = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-print_format",
+                "json",
+                "-show_format",
+                "-show_streams",
+                str(video_path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        payload = json.loads(completed.stdout or "{}")
+    except subprocess.CalledProcessError as exc:
+        stderr = (exc.stderr or exc.stdout or "").strip()
+        raise ValueError(f"Unable to inspect adult demo clip duration: {stderr}") from exc
+
+    format_info = payload.get("format") or {}
+    duration = format_info.get("duration")
+    if duration is not None:
+        try:
+            return float(duration)
+        except (TypeError, ValueError):
+            pass
+
+    stream_durations: list[float] = []
+    for stream in payload.get("streams", []):
+        value = stream.get("duration")
+        if value is None:
+            continue
+        try:
+            stream_durations.append(float(value))
+        except (TypeError, ValueError):
+            continue
+    return max(stream_durations) if stream_durations else 0.0
 
 
 def _download_source_video(source_url: str, output_dir: Path) -> Path:

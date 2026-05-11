@@ -13,7 +13,11 @@ const ADULT_DEMO_PROXY_PATH = "/api/ad-adult";
 function isDirectMp4Url(value: string) {
   try {
     const parsed = new URL(value);
-    return parsed.protocol.startsWith("http") && parsed.pathname.toLowerCase().endsWith(".mp4");
+    const lowerPath = parsed.pathname.toLowerCase();
+    return (
+      parsed.protocol.startsWith("http") &&
+      [".mp4", ".m4v", ".mov", ".webm", ".mkv"].some((suffix) => lowerPath.endsWith(suffix))
+    );
   } catch {
     return false;
   }
@@ -49,7 +53,9 @@ export default function Page() {
     resetRunState();
 
     if (!isDirectMp4Url(nextUrl)) {
-      setError("Use a direct .mp4 URL. Adult demo clips are limited to 3 minutes and 4 narration gaps.");
+      setError(
+        "Use a direct video file URL (.mp4, .m4v, .mov, .webm, .mkv). Clips over 3 minutes are trimmed to the first 3 minutes.",
+      );
       return;
     }
 
@@ -99,12 +105,13 @@ export default function Page() {
             Adult Content Audio Description Demo
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Submit a short direct MP4 clip to generate an audio description track for professional accessibility
+            Submit a direct video file URL to generate an audio description track for professional accessibility
             review.
           </p>
           <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-4 text-sm text-cyan-50">
-            Demo guardrails: direct `.mp4` only, clips up to 3 minutes, maximum 4 narration gaps, one active run per
-            IP, and repeated submissions are rate limited.
+            Demo guardrails: direct video URLs only (`.mp4`, `.m4v`, `.mov`, `.webm`, `.mkv`), clips longer than 3
+            minutes are trimmed to the first 3 minutes, maximum 4 narration gaps, one active run per IP, and repeated
+            submissions are rate limited.
           </div>
           <div className="mt-8">
             <UrlInput

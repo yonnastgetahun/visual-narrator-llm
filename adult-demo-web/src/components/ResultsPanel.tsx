@@ -22,6 +22,7 @@ export function ResultsPanel({ manifest }: ResultsPanelProps) {
   const [activeTab, setActiveTab] = useState<TabKey>("audio");
   const srt = buildSrt(manifest.narrations);
   const manifestJson = JSON.stringify(manifestWithoutAudio(manifest), null, 2);
+  const visionCost = manifest.vision_cost_estimate ?? manifest.gpt_cost_estimate;
 
   return (
     <section className="rounded-[2rem] border border-white/10 bg-slate-950/65 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur">
@@ -49,7 +50,7 @@ export function ResultsPanel({ manifest }: ResultsPanelProps) {
       </div>
 
       <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-4 font-mono text-sm text-cyan-50">
-        GPT: ${manifest.gpt_cost_estimate.toFixed(3)} · TTS: ${manifest.tts_cost_estimate.toFixed(3)} · Total: $
+        Vision: ${visionCost.toFixed(3)} · TTS: ${manifest.tts_cost_estimate.toFixed(3)} · Total: $
         {manifest.total_cost_estimate.toFixed(3)}
       </div>
     </section>

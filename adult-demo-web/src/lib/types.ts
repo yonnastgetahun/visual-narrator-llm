@@ -25,8 +25,16 @@ export type Manifest = {
   voice_id: string;
   compliance_level: string;
   gpt_cost_estimate: number;
+  vision_cost_estimate?: number;
   tts_cost_estimate: number;
   total_cost_estimate: number;
+  cost_basis?: {
+    vision_model: string;
+    vision_version: string;
+    vision_cost_per_gap_usd: number;
+    tts_cost_per_1k_chars_usd: number;
+    tts_model: string;
+  };
   compliance: Record<string, unknown>;
   narrations: NarrationEntry[];
 };
