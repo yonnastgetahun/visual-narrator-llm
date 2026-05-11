@@ -50,7 +50,10 @@ ORIGINS = [
     "http://localhost:3001",
 ]
 REPLICATE_API_URL = "https://api.replicate.com/v1/predictions"
-REPLICATE_LLAVA_VERSION = "41ecfbfb261e6c1adf3ad896c9066ca98346996d"
+# 34B Nous-Hermes-2 version from the task is disabled upstream on Replicate as of 2026-05-11.
+# Closest enabled LLaVA v1.6 fallback: Vicuna-13B latest version.
+REPLICATE_MODEL_SLUG = "yorickvp/llava-v1.6-vicuna-13b"
+REPLICATE_LLAVA_VERSION = "0603dec596080fa084e26f0ae6d605fc5788ed2b1a0358cd25010619487eae63"
 
 ADULT_AD_PROMPT = (
     "You are writing audio description for an adult content video. "
@@ -232,7 +235,7 @@ def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
     data = response.json()
     output = data.get("output") or []
     description = "".join(output).strip() if isinstance(output, list) else str(output).strip()
-    return description, f"replicate/llava-v1.6-34b@{REPLICATE_LLAVA_VERSION[:8]}"
+    return description, f"replicate/{REPLICATE_MODEL_SLUG.split('/', 1)[1]}@{REPLICATE_LLAVA_VERSION[:8]}"
 
 
 @app.get("/api/ad-adult")
