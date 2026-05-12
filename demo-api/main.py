@@ -68,7 +68,6 @@ REPLICATE_MIN_REQUEST_INTERVAL_SEC = 8.0
 ADULT_DEMO_SHARED_KEY_ENV = "ADULT_DEMO_SHARED_KEY"
 ADULT_DEMO_VOICE_ID_ENV = "ADULT_DEMO_VOICE_ID"
 ADULT_DEMO_SHARED_KEY_HEADER = "x-demo-key"
-ADULT_DEMO_ALLOWED_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
 ADULT_DEMO_MAX_DURATION_SEC = 180.0
 ADULT_DEMO_MAX_GAPS = 4
 ADULT_DEMO_EMPTY_DESCRIPTION_RETRIES = 2
@@ -604,19 +603,12 @@ def _adult_demo_client_id(request: Request) -> str:
     return "unknown"
 
 
-def _looks_like_direct_mp4_url(source_url: str) -> bool:
-    parsed = urlparse(source_url)
-    return Path(parsed.path).suffix.lower() in ADULT_DEMO_ALLOWED_SUFFIXES
-
-
 async def _reserve_adult_demo_run(request: Request, source_url: str) -> str:
     shared_key = os.getenv(ADULT_DEMO_SHARED_KEY_ENV)
     if not shared_key:
         raise RuntimeError(f"{ADULT_DEMO_SHARED_KEY_ENV} is not set.")
     if request.headers.get(ADULT_DEMO_SHARED_KEY_HEADER) != shared_key:
         raise PermissionError("Adult demo access key is invalid.")
-    if not _looks_like_direct_mp4_url(source_url):
-        raise ValueError("Adult demo accepts direct video file URLs only (.mp4, .m4v, .mov, .webm, .mkv).")
 
     client_id = _adult_demo_client_id(request)
     now = time.time()
@@ -658,6 +650,7 @@ def _select_adult_demo_gaps(gaps: list[Any]) -> list[Any]:
 
 
 def _prepare_adult_demo_video(video_path: Path, tmp_root: Path) -> Path:
+    _ensure_video_media_file(video_path)
     duration_seconds = _probe_media_duration(video_path)
     if duration_seconds <= ADULT_DEMO_MAX_DURATION_SEC:
         return video_path
@@ -741,17 +734,50 @@ def _probe_media_duration(video_path: Path) -> float:
 
 
 def _download_source_video(source_url: str, output_dir: Path) -> Path:
-    if _looks_like_direct_video_url(source_url):
+    if _should_try_direct_video_download(source_url):
         try:
-            return _download_direct_video(source_url, output_dir)
+            video_path = _download_direct_video(source_url, output_dir)
+            _ensure_video_media_file(video_path)
+            return video_path
         except Exception:  # noqa: BLE001
             return download_video(source_url, output_dir)
     return download_video(source_url, output_dir)
 
 
+def _should_try_direct_video_download(source_url: str) -> bool:
+    if _looks_like_direct_video_url(source_url):
+        return True
+
+    for method in ("HEAD", "GET"):
+        try:
+            headers = {"Range": "bytes=0-0"} if method == "GET" else None
+            with httpx.stream(method, source_url, headers=headers, follow_redirects=True, timeout=20.0) as response:
+                response.raise_for_status()
+                if _response_looks_like_video(response):
+                    return True
+                content_type = (response.headers.get("content-type") or "").split(";", 1)[0].strip().lower()
+                if content_type.startswith("text/html"):
+                    return False
+        except Exception:  # noqa: BLE001
+            continue
+
+    return False
+
+
 def _looks_like_direct_video_url(source_url: str) -> bool:
     parsed = urlparse(source_url)
     return Path(parsed.path).suffix.lower() in DIRECT_VIDEO_SUFFIXES
+
+
+def _response_looks_like_video(response: httpx.Response) -> bool:
+    content_type = (response.headers.get("content-type") or "").split(";", 1)[0].strip().lower()
+    if content_type.startswith("video/"):
+        return True
+    if content_type in {"application/octet-stream", "binary/octet-stream"}:
+        return True
+
+    disposition = (response.headers.get("content-disposition") or "").lower()
+    return any(suffix in disposition for suffix in DIRECT_VIDEO_SUFFIXES)
 
 
 def _download_direct_video(source_url: str, output_dir: Path) -> Path:
@@ -777,6 +803,35 @@ def _download_direct_video(source_url: str, output_dir: Path) -> Path:
     if not target.exists() or target.stat().st_size <= 0:
         raise YouTubeDownloadError("direct video download produced an empty file")
     return target
+
+
+def _ensure_video_media_file(video_path: Path) -> None:
+    if shutil.which("ffprobe") is None:
+        raise ValueError("ffprobe is required to inspect adult demo clips.")
+
+    try:
+        completed = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-print_format",
+                "json",
+                "-show_streams",
+                str(video_path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        payload = json.loads(completed.stdout or "{}")
+    except subprocess.CalledProcessError as exc:
+        stderr = (exc.stderr or exc.stdout or "").strip()
+        raise ValueError(f"Source URL did not resolve to a readable video file: {stderr}") from exc
+
+    streams = payload.get("streams") or []
+    if not any(stream.get("codec_type") == "video" for stream in streams):
+        raise ValueError("Source URL did not resolve to a readable video file.")
 
 
 def _synthesize_speech_bytes(text: str, voice_id: str) -> tuple[bytes, int]:

@@ -10,19 +10,6 @@ import type { Manifest, StepEvent } from "@/lib/types";
 
 const ADULT_DEMO_PROXY_PATH = "/api/ad-adult";
 
-function isDirectMp4Url(value: string) {
-  try {
-    const parsed = new URL(value);
-    const lowerPath = parsed.pathname.toLowerCase();
-    return (
-      parsed.protocol.startsWith("http") &&
-      [".mp4", ".m4v", ".mov", ".webm", ".mkv"].some((suffix) => lowerPath.endsWith(suffix))
-    );
-  } catch {
-    return false;
-  }
-}
-
 export default function Page() {
   const eventSourceRef = useRef<EventSource | null>(null);
 
@@ -51,13 +38,6 @@ export default function Page() {
   function handleSubmit(nextUrl: string) {
     cancelActiveRun();
     resetRunState();
-
-    if (!isDirectMp4Url(nextUrl)) {
-      setError(
-        "Use a direct video file URL (.mp4, .m4v, .mov, .webm, .mkv). Clips over 3 minutes are trimmed to the first 3 minutes.",
-      );
-      return;
-    }
 
     setProcessing(true);
 
@@ -105,12 +85,11 @@ export default function Page() {
             Adult Content Audio Description Demo
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Submit a direct video file URL to generate an audio description track for professional accessibility
-            review.
+            Submit a video URL to generate an audio description track for professional accessibility review.
           </p>
           <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-4 text-sm text-cyan-50">
-            Demo guardrails: direct video URLs only (`.mp4`, `.m4v`, `.mov`, `.webm`, `.mkv`), clips longer than 3
-            minutes are trimmed to the first 3 minutes, maximum 4 narration gaps, one active run per IP, and repeated
+            Demo guardrails: the submitted URL must resolve to a downloadable video file, clips longer than 3 minutes
+            are trimmed to the first 3 minutes, maximum 4 narration gaps, one active run per IP, and repeated
             submissions are rate limited.
           </div>
           <div className="mt-8">
