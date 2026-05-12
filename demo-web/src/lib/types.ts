@@ -18,6 +18,7 @@ export type NarrationEntry = {
 };
 
 export type Manifest = {
+  job_id?: string;
   source: string;
   duration_seconds: number;
   gaps_found: number;

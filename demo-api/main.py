@@ -13,13 +13,15 @@ from collections import defaultdict, deque
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
+from uuid import uuid4
 
 import httpx
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 from starlette.concurrency import run_in_threadpool
+from starlette.responses import FileResponse, JSONResponse
 
 from vn.ad import (
     AD_COST_PER_FRAME,
@@ -77,6 +79,8 @@ ADULT_DEMO_NEARBY_FRAME_OFFSET_SEC = 0.5
 ADULT_DEMO_MAX_RUNS_PER_HOUR = 5
 ADULT_DEMO_RATE_LIMIT_WINDOW_SEC = 3600.0
 ADULT_DEMO_DUPLICATE_WINDOW_SEC = 900.0
+SCENE_CONTEXT_SIZE = 5
+SCENE_RESET_GAP_SEC = 8.0
 
 ADULT_AD_PROMPT = (
     "You are writing audio description for an adult content video. "
@@ -122,6 +126,8 @@ async def stream_ad(
     min_gap: float = 2.0,
     voice_id: str = AD_DEFAULT_VOICE_ID,
 ) -> EventSourceResponse:
+    job_id = str(uuid4())
+
     async def event_generator():
         try:
             if not is_url(source):
@@ -154,11 +160,15 @@ async def stream_ad(
                 narrations: list[dict[str, Any]] = []
                 audio_gap_fit_metrics: list[AudioGapFitMetrics] = []
                 model_versions: list[str] = []
+                context_window: deque[str] = deque(maxlen=SCENE_CONTEXT_SIZE)
                 resolved_voice_id = voice_id or os.getenv("ELEVENLABS_VOICE_ADAM") or AD_DEFAULT_VOICE_ID
                 total = len(gaps)
 
                 for current, gap in enumerate(gaps, start=1):
+                    if gap.duration_sec > SCENE_RESET_GAP_SEC:
+                        context_window.clear()
                     midpoint = _gap_midpoint(gap)
+                    frame_timestamps = _ad_frame_timestamps(gap)
                     yield _event(
                         "step",
                         {
@@ -171,7 +181,7 @@ async def stream_ad(
                     frames = await run_in_threadpool(
                         extract_frames_at,
                         video_path,
-                        [midpoint],
+                        frame_timestamps,
                         tmp_root / "frames" / f"{current:05d}",
                     )
                     yield _event(
@@ -185,13 +195,15 @@ async def stream_ad(
                     )
                     narration = await run_in_threadpool(
                         generate_gap_aware_ad_narration,
-                        frames[0].path,
+                        [frame.path for frame in frames],
                         gap.duration_sec,
                         resolved_voice_id,
+                        _scene_context_prefix(context_window),
                     )
                     if narration.model_version:
                         model_versions.append(narration.model_version)
                     audio_gap_fit_metrics.append(narration.audio_fit)
+                    context_window.append(narration.description)
                     narrations.append(
                         {
                             "srt_index": current,
@@ -199,7 +211,7 @@ async def stream_ad(
                             "end_sec": round(gap.end_sec, 3),
                             "gap_duration_sec": round(gap.duration_sec, 3),
                             "gap_type": gap.gap_type,
-                            "frame_timestamp_sec": round(frames[0].timestamp, 3),
+                            "frame_timestamp_sec": round(midpoint, 3),
                             "description": narration.description,
                             "audio_data": base64.b64encode(narration.audio_bytes).decode("ascii"),
                             "audio_mime": "audio/mpeg",
@@ -222,6 +234,7 @@ async def stream_ad(
                 gpt_cost_estimate = sum(item["gpt_cost"] for item in narrations)
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {
+                    "job_id": job_id,
                     "source": source,
                     "duration_seconds": round(compliance.total_duration_sec, 3),
                     "gaps_found": len(gaps),
@@ -234,11 +247,171 @@ async def stream_ad(
                     "compliance": compliance.json_dict(),
                     "narrations": narrations,
                 }
+                await run_in_threadpool(_persist_job_outputs, job_id, video_path, narrations, compliance)
                 yield _event("complete", {"manifest": manifest})
         except Exception as exc:  # noqa: BLE001
             yield _event("error", {"message": _error_message(exc)})
 
     return EventSourceResponse(event_generator())
+
+
+@app.get("/api/download/{job_id}/audio")
+async def download_audio(job_id: str) -> FileResponse:
+    path = _job_output_path(job_id, "mixed-track.mp3")
+    return FileResponse(path, media_type="audio/mpeg", filename=f"{job_id}-ad-track.mp3")
+
+
+@app.get("/api/download/{job_id}/srt")
+async def download_srt(job_id: str) -> FileResponse:
+    path = _job_output_path(job_id, "narration-track.srt")
+    return FileResponse(path, media_type="application/x-subrip", filename=f"{job_id}-narration.srt")
+
+
+@app.get("/api/download/{job_id}/report")
+async def download_report(job_id: str) -> JSONResponse:
+    path = _job_output_path(job_id, "compliance.json")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise HTTPException(status_code=500, detail="Stored compliance report is invalid JSON.") from exc
+    return JSONResponse(content=payload)
+
+
+def build_mixed_track(original_path: str, narrations: list[dict[str, Any]], output_path: str) -> None:
+    if shutil.which("ffmpeg") is None:
+        raise ValueError("ffmpeg is required to build the mixed narration track.")
+
+    output = Path(output_path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    if not narrations:
+        try:
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-hide_banner",
+                    "-loglevel",
+                    "error",
+                    "-y",
+                    "-i",
+                    original_path,
+                    "-vn",
+                    "-map",
+                    "0:a:0",
+                    "-c:a",
+                    "libmp3lame",
+                    "-b:a",
+                    "192k",
+                    str(output),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        except subprocess.CalledProcessError as exc:
+            stderr = (exc.stderr or exc.stdout or "").strip()
+            raise ValueError(f"Unable to render the mixed narration track: {stderr}") from exc
+        return
+
+    with tempfile.TemporaryDirectory(prefix="vn-mix-") as tmp:
+        tmp_root = Path(tmp)
+        inputs = ["-i", original_path]
+        filters: list[str] = []
+        delayed_streams: list[str] = []
+
+        for index, narration in enumerate(narrations):
+            audio_data = narration.get("audio_data")
+            if not audio_data:
+                raise ValueError(f"Narration {index + 1} is missing audio data.")
+
+            narration_path = tmp_root / f"narration_{index:04d}.mp3"
+            narration_path.write_bytes(base64.b64decode(audio_data))
+
+            delay_ms = max(0, round(float(narration["start_sec"]) * 1000))
+            inputs += ["-i", str(narration_path)]
+            delayed_label = f"n{index}"
+            filters.append(f"[{index + 1}:a]adelay={delay_ms}:all=1[{delayed_label}]")
+            delayed_streams.append(f"[{delayed_label}]")
+
+        filters.append(
+            f"[0:a]{''.join(delayed_streams)}amix=inputs={len(delayed_streams) + 1}:duration=first:dropout_transition=0:normalize=0[out]"
+        )
+
+        try:
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-hide_banner",
+                    "-loglevel",
+                    "error",
+                    "-y",
+                    *inputs,
+                    "-filter_complex",
+                    ";".join(filters),
+                    "-map",
+                    "[out]",
+                    "-c:a",
+                    "libmp3lame",
+                    "-b:a",
+                    "192k",
+                    str(output),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+        except subprocess.CalledProcessError as exc:
+            stderr = (exc.stderr or exc.stdout or "").strip()
+            raise ValueError(f"Unable to render the mixed narration track: {stderr}") from exc
+
+
+def build_srt(narrations: list[dict[str, Any]]) -> str:
+    def format_srt_time(seconds: float) -> str:
+        total_ms = max(0, round(float(seconds) * 1000))
+        hours, remainder = divmod(total_ms, 3_600_000)
+        minutes, remainder = divmod(remainder, 60_000)
+        secs, millis = divmod(remainder, 1000)
+        return f"{hours:02d}:{minutes:02d}:{secs:02d},{millis:03d}"
+
+    return "\n\n".join(
+        (
+            f"{entry.get('srt_index', index)}\n"
+            f"{format_srt_time(entry['start_sec'])} --> {format_srt_time(entry['end_sec'])}\n"
+            f"{entry['description']}"
+        )
+        for index, entry in enumerate(narrations, start=1)
+    )
+
+
+def _persist_job_outputs(
+    job_id: str,
+    video_path: Path,
+    narrations: list[dict[str, Any]],
+    compliance: Any,
+) -> None:
+    job_dir = _job_output_dir(job_id)
+    job_dir.mkdir(parents=True, exist_ok=True)
+
+    build_mixed_track(str(video_path), narrations, str(job_dir / "mixed-track.mp3"))
+    (job_dir / "narration-track.srt").write_text(build_srt(narrations), encoding="utf-8")
+    (job_dir / "compliance.json").write_text(
+        json.dumps(compliance.json_dict(), indent=2),
+        encoding="utf-8",
+    )
+
+
+def _job_output_dir(job_id: str) -> Path:
+    normalized = Path(job_id).name
+    if not normalized or normalized != job_id:
+        raise HTTPException(status_code=400, detail="Invalid job ID.")
+    return Path("/tmp") / normalized
+
+
+def _job_output_path(job_id: str, filename: str) -> Path:
+    path = _job_output_dir(job_id) / filename
+    if not path.exists() or not path.is_file():
+        raise HTTPException(status_code=404, detail="Requested job output was not found.")
+    return path
 
 
 def _describe_frame_for_adult_ad(frame_path: Path) -> tuple[str, str]:
@@ -303,6 +476,27 @@ def _pace_replicate_request() -> None:
             time.sleep(wait_seconds)
             now = time.time()
         REPLICATE_NEXT_REQUEST_AT = now + REPLICATE_MIN_REQUEST_INTERVAL_SEC
+
+
+def _ad_frame_timestamps(gap: Any) -> list[float]:
+    midpoint = _gap_midpoint(gap)
+    if gap.duration_sec <= 1.0:
+        return [midpoint, midpoint, midpoint]
+
+    start_frame = min(gap.start_sec + 0.5, midpoint)
+    end_frame = max(gap.end_sec - 0.5, midpoint)
+    return [start_frame, midpoint, end_frame]
+
+
+def _scene_context_prefix(context_window: deque[str]) -> str | None:
+    if not context_window:
+        return None
+    joined = "\n".join(context_window)
+    return (
+        "Prior descriptions in this scene:\n"
+        f"{joined}\n\n"
+        "Continue in the same style. Do not re-introduce characters already described."
+    )
 
 
 def _adult_demo_retry_timestamp(gap: Any) -> float:
