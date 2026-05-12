@@ -10,25 +10,25 @@ type UrlInputProps = {
 export function UrlInput({ value, processing, onChange, onSubmit }: UrlInputProps) {
   return (
     <form
-      className="flex flex-col gap-3 md:flex-row"
+      className="flex flex-col gap-4 md:flex-row"
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit(value);
       }}
     >
       <input
-        className="min-h-14 flex-1 rounded-2xl border border-white/15 bg-slate-950/70 px-5 text-base text-white outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30"
+        className="min-h-14 flex-1 border-b-2 border-vn-ash bg-transparent px-1 pb-3 text-base text-vn-fog outline-none transition-colors placeholder:text-vn-dim focus:border-vn-amber"
         placeholder="YouTube, Vimeo, or direct video URL"
         type="url"
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />
       <button
-        className="min-h-14 rounded-2xl bg-cyan-400 px-6 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
+        className="min-h-14 bg-vn-amber px-8 font-body text-sm font-semibold uppercase tracking-[0.18em] text-vn-black transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:bg-vn-ash disabled:text-vn-dim"
         disabled={processing || !value.trim()}
         type="submit"
       >
-        Generate AD Track
+        Generate Audio Description
       </button>
     </form>
   );

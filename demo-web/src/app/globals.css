@@ -2,37 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* ─── VN Design System ─── */
+
+/* Dark theme (default) */
+:root, [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #020617;
-  --bg-soft: #0f172a;
-  --panel: rgba(15, 23, 42, 0.72);
-  --line: rgba(255, 255, 255, 0.12);
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --accent: #67e8f9;
+
+  /* Core palette */
+  --vn-black:        #0A0A0A;
+  --vn-ink:          #141414;
+  --vn-carbon:       #1C1C1C;
+  --vn-ash:          #2A2A2A;
+  --vn-dim:          #6B6B6B;
+  --vn-mist:         #A8A8A8;
+  --vn-fog:          #D4D0C8;
+  --vn-cream:        #F0EDE6;
+
+  /* Surfaces */
+  --vn-line:         rgba(255, 255, 255, 0.07);
+  --vn-panel:        rgba(20, 20, 20, 0.75);
+
+  /* Film grain opacity */
+  --vn-grain-opacity: 1;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Core palette — inverted, warm paper tones */
+  --vn-black:        #F7F5F0;
+  --vn-ink:          #EDEAE3;
+  --vn-carbon:       #E2DED7;
+  --vn-ash:          #C8C4BC;
+  --vn-dim:          #8C8880;
+  --vn-mist:         #5A5652;
+  --vn-fog:          #2C2A27;
+  --vn-cream:        #1A1816;
+
+  /* Surfaces */
+  --vn-line:         rgba(0, 0, 0, 0.07);
+  --vn-panel:        rgba(237, 234, 227, 0.75);
+
+  /* Film grain opacity — slightly more visible on light */
+  --vn-grain-opacity: 1.6;
+}
+
+:root {
+  /* Accent — amber stays fixed in both themes */
+  --vn-amber:        #F59E0B;
+  --vn-amber-dim:    #C27D08;
+  --vn-amber-glow:   rgba(245, 158, 11, 0.12);
+  --vn-amber-border: rgba(245, 158, 11, 0.22);
+
+  /* Typography */
+  --font-display:    var(--font-playfair);
+  --font-body:       var(--font-geist);
+  --font-mono:       var(--font-geist-mono);
+
+  /* Motion */
+  --ease-vn:         cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-vn-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   min-height: 100%;
-  background:
-    radial-gradient(circle at top left, rgba(103, 232, 249, 0.18), transparent 26%),
-    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.18), transparent 24%),
-    linear-gradient(180deg, #020617 0%, #071126 52%, #020617 100%);
+  background-color: var(--vn-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: var(--font-display), sans-serif;
-  color: var(--text);
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.16), rgba(8, 47, 73, 0.14)),
-    transparent;
+  background-color: var(--vn-black);
+  color: var(--vn-fog);
+  font-family: var(--font-body), 'Geist', system-ui, sans-serif;
+  min-height: 100dvh;
 }
 
 a {
@@ -40,13 +90,128 @@ a {
   text-decoration: none;
 }
 
-button,
-input {
+button, input, textarea, select {
   font: inherit;
 }
 
-pre {
-  font-family: var(--font-mono), monospace;
-  white-space: pre-wrap;
-  word-break: break-word;
+/* ─── Film grain overlay (fixed layer, pointer-events-none) ─── */
+.vn-grain-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: var(--vn-grain-opacity, 1);
+  animation: grain 8s steps(10) infinite;
+  will-change: transform;
+}
+
+/* ─── Letterbox bars ─── */
+.vn-letterbox-top,
+.vn-letterbox-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3.5rem;
+  background: var(--vn-black);
+  z-index: 10;
+  pointer-events: none;
+}
+.vn-letterbox-top    { top: 0; }
+.vn-letterbox-bottom { bottom: 0; }
+
+/* ─── Typography ─── */
+.vn-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.vn-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.vn-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ─── Amber accent line ─── */
+.vn-amber-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--vn-amber) 0%, rgba(245,158,11,0.0) 100%);
+  width: 3rem;
+  display: block;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--vn-ash);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--vn-dim); }
+
+/* ─── Shimmer skeleton ─── */
+.vn-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--vn-carbon) 0%,
+    var(--vn-ash) 50%,
+    var(--vn-carbon) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.2s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10%  { transform: translate(-2%, -2%); }
+  20%  { transform: translate(2%, -1%); }
+  30%  { transform: translate(-1%, 2%); }
+  40%  { transform: translate(2%, 2%); }
+  50%  { transform: translate(-2%, 1%); }
+  60%  { transform: translate(1%, -2%); }
+  70%  { transform: translate(-1%, 1%); }
+  80%  { transform: translate(2%, -1%); }
+  90%  { transform: translate(-2%, 2%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes waveform-bar {
+  0%, 100% { transform: scaleY(0.25); opacity: 0.4; }
+  50%       { transform: scaleY(1);    opacity: 1; }
+}
+
+@keyframes pulse-amber {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
 }

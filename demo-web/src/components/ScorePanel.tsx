@@ -10,11 +10,11 @@ type ScorePanelProps = {
   report: ScoreReport | null;
 };
 
-function scoreLine(label: string, value: number) {
+function ScoreLine({ label, value }: { label: string; value: number }) {
   return (
-    <div className="flex items-center justify-between border-b border-white/10 py-3 text-sm text-slate-200">
-      <span>{label}</span>
-      <span className="font-mono">{value.toFixed(1)} / 10</span>
+    <div className="flex items-center justify-between border-b border-vn-ash py-4 text-sm">
+      <span className="text-vn-mist">{label}</span>
+      <span className="font-mono text-vn-fog">{value.toFixed(1)} / 10</span>
     </div>
   );
 }
@@ -22,20 +22,27 @@ function scoreLine(label: string, value: number) {
 export function ScorePanel({ onScore, scoring, scoringProgress, report }: ScorePanelProps) {
   if (!report) {
     return (
-      <section className="rounded-[2rem] border border-white/10 bg-slate-950/65 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <section className="bg-vn-ink border border-vn-ash p-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.32em] text-cyan-300">Scoring</p>
-            <h2 className="mt-2 text-2xl font-semibold text-white">AD Quality Score</h2>
-            <p className="mt-2 text-sm text-slate-300">Run the quality reviewer against every narration after generation completes.</p>
+            <span className="vn-label text-vn-amber flex items-center gap-2.5 mb-4">
+              <span className="vn-amber-rule" />
+              Quality Review
+            </span>
+            <h2 className="font-display text-2xl text-vn-cream leading-tight">AD Quality Score</h2>
+            <p className="mt-2 text-sm text-vn-mist leading-relaxed">
+              Run the quality reviewer against every narration after generation completes.
+            </p>
           </div>
           <button
-            className="rounded-2xl bg-cyan-400 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
+            className="self-start md:self-center bg-vn-amber px-8 py-4 font-body text-sm font-semibold uppercase tracking-[0.18em] text-vn-black transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:bg-vn-ash disabled:text-vn-dim"
             disabled={scoring}
             onClick={onScore}
             type="button"
           >
-            {scoring && scoringProgress ? `Scoring ${scoringProgress.current} / ${scoringProgress.total}` : "Score This AD Track"}
+            {scoring && scoringProgress
+              ? `Scoring ${scoringProgress.current} / ${scoringProgress.total}`
+              : "Score This AD Track"}
           </button>
         </div>
       </section>
@@ -45,58 +52,67 @@ export function ScorePanel({ onScore, scoring, scoringProgress, report }: ScoreP
   const flagged = report.scores.filter((score) => score.flag);
 
   return (
-    <section className="rounded-[2rem] border border-white/10 bg-slate-950/65 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <section className="bg-vn-ink border border-vn-ash p-8">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-8">
         <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-cyan-300">Scoring Complete</p>
-          <h2 className="mt-2 text-2xl font-semibold text-white">AD Quality Score</h2>
+          <span className="vn-label text-vn-amber flex items-center gap-2.5 mb-4">
+            <span className="vn-amber-rule" />
+            Scoring Complete
+          </span>
+          <h2 className="font-display text-2xl text-vn-cream leading-tight">AD Quality Score</h2>
         </div>
-        <div className="rounded-2xl border border-emerald-300/30 bg-emerald-300/10 px-5 py-4 text-right">
-          <p className="text-xs uppercase tracking-[0.26em] text-emerald-200">Grade</p>
-          <p className="mt-1 text-3xl font-semibold text-white">{report.grade}</p>
-          <p className="font-mono text-sm text-emerald-100">Overall {report.aggregate.overall.toFixed(1)} / 10</p>
+        <div className="border border-vn-amber/30 bg-vn-amber/10 px-6 py-4 text-right">
+          <p className="vn-label text-vn-mist mb-1">Grade</p>
+          <p className="font-display text-4xl text-vn-cream">{report.grade}</p>
+          <p className="font-mono text-sm text-vn-fog mt-1">Overall {report.aggregate.overall.toFixed(1)} / 10</p>
         </div>
       </div>
 
-      <div className="mt-6">
-        {scoreLine("Accuracy", report.aggregate.accuracy)}
-        {scoreLine("Relevance", report.aggregate.relevance)}
-        {scoreLine("WCAG Compliance", report.aggregate.wcag_compliance)}
-        {scoreLine("Conciseness", report.aggregate.conciseness)}
-        <div className="flex items-center justify-between py-3 text-sm text-slate-200">
-          <span>Within word limit</span>
-          <span className="font-mono">{report.aggregate.within_limit_pct.toFixed(0)}%</span>
+      <div className="border-t border-vn-ash">
+        <ScoreLine label="Accuracy" value={report.aggregate.accuracy} />
+        <ScoreLine label="Relevance" value={report.aggregate.relevance} />
+        <ScoreLine label="WCAG Compliance" value={report.aggregate.wcag_compliance} />
+        <ScoreLine label="Conciseness" value={report.aggregate.conciseness} />
+        <div className="flex items-center justify-between border-b border-vn-ash py-4 text-sm">
+          <span className="text-vn-mist">Within word limit</span>
+          <span className="font-mono text-vn-fog">{report.aggregate.within_limit_pct.toFixed(0)}%</span>
         </div>
-        <div className="flex items-center justify-between py-3 text-sm text-slate-200">
-          <span>Present tense</span>
-          <span className="font-mono">{report.aggregate.tense_ok_pct.toFixed(0)}%</span>
+        <div className="flex items-center justify-between border-b border-vn-ash py-4 text-sm">
+          <span className="text-vn-mist">Present tense</span>
+          <span className="font-mono text-vn-fog">{report.aggregate.tense_ok_pct.toFixed(0)}%</span>
         </div>
-        <div className="flex items-center justify-between py-3 text-sm text-slate-200">
-          <span>Flagged</span>
-          <span className="font-mono">
+        <div className="flex items-center justify-between py-4 text-sm">
+          <span className="text-vn-mist">Flagged</span>
+          <span className="font-mono text-vn-fog">
             {report.flagged} of {report.scored}
           </span>
         </div>
       </div>
 
-      <div className="mt-6">
-        <h3 className="text-lg font-medium text-white">
-          {flagged.length ? `Flagged Descriptions (${flagged.length})` : "No flagged descriptions"}
-        </h3>
+      <div className="mt-8">
+        <span className="vn-label text-vn-mist flex items-center gap-2.5 mb-5">
+          <span className="vn-amber-rule" />
+          {flagged.length ? `Flagged Descriptions (${flagged.length})` : "Flagged Descriptions"}
+        </span>
         {flagged.length ? (
-          <div className="mt-4 space-y-4">
+          <div className="space-y-5">
             {flagged.map((score) => (
-              <article key={`${score.srt_index}-${score.start_sec}`} className="rounded-2xl border border-amber-300/30 bg-amber-300/10 p-4">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-amber-100">
-                  {formatClock(score.start_sec)} → {formatClock(score.end_sec)} · overall={score.overall.toFixed(1)} · ✗
+              <article
+                key={`${score.srt_index}-${score.start_sec}`}
+                className="border-l-2 border-vn-amber pl-5 py-1"
+              >
+                <p className="font-mono text-xs text-vn-amber tracking-[0.18em] uppercase">
+                  {formatClock(score.start_sec)} → {formatClock(score.end_sec)} · overall={score.overall.toFixed(1)} · flagged
                 </p>
-                <p className="mt-3 text-slate-100">{score.description}</p>
-                {score.flag_reason ? <p className="mt-3 text-sm text-amber-100">↳ {score.flag_reason}</p> : null}
+                <p className="mt-2 text-sm text-vn-fog leading-relaxed">{score.description}</p>
+                {score.flag_reason ? (
+                  <p className="mt-2 text-xs text-vn-mist">{score.flag_reason}</p>
+                ) : null}
               </article>
             ))}
           </div>
         ) : (
-          <p className="mt-3 text-sm text-slate-300">All descriptions cleared the configured threshold.</p>
+          <p className="text-sm text-vn-mist">All descriptions cleared the configured threshold.</p>
         )}
       </div>
     </section>

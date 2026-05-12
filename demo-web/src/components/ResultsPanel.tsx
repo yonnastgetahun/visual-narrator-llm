@@ -24,13 +24,16 @@ export function ResultsPanel({ manifest }: ResultsPanelProps) {
   const manifestJson = JSON.stringify(manifestWithoutAudio(manifest), null, 2);
 
   return (
-    <section className="rounded-[2rem] border border-white/10 bg-slate-950/65 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur">
-      <div className="flex flex-wrap gap-2">
+    <section className="bg-vn-ink border border-vn-ash p-8">
+      {/* Flat underline tabs */}
+      <div className="flex border-b border-vn-ash mb-8">
         {tabs.map((tab) => (
           <button
             key={tab.key}
-            className={`rounded-full px-4 py-2 text-sm transition ${
-              activeTab === tab.key ? "bg-cyan-300 text-slate-950" : "bg-white/5 text-slate-300 hover:bg-white/10"
+            className={`pb-3 pr-8 text-sm transition-colors ${
+              activeTab === tab.key
+                ? "border-b-2 border-vn-amber -mb-px text-vn-cream font-medium"
+                : "text-vn-dim hover:text-vn-mist"
             }`}
             onClick={() => setActiveTab(tab.key)}
             type="button"
@@ -40,17 +43,24 @@ export function ResultsPanel({ manifest }: ResultsPanelProps) {
         ))}
       </div>
 
-      <div className="mt-6">
+      <div>
         {activeTab === "audio" ? <AudioPlayer narrations={manifest.narrations} /> : null}
-        {activeTab === "srt" ? <pre className="max-h-[32rem] overflow-auto rounded-2xl bg-black/30 p-4 text-sm text-slate-200">{srt}</pre> : null}
+        {activeTab === "srt" ? (
+          <pre className="max-h-[32rem] overflow-auto bg-vn-carbon p-5 font-mono text-sm text-vn-fog leading-relaxed">
+            {srt}
+          </pre>
+        ) : null}
         {activeTab === "manifest" ? (
-          <pre className="max-h-[32rem] overflow-auto rounded-2xl bg-black/30 p-4 text-sm text-slate-200">{manifestJson}</pre>
+          <pre className="max-h-[32rem] overflow-auto bg-vn-carbon p-5 font-mono text-sm text-vn-fog leading-relaxed">
+            {manifestJson}
+          </pre>
         ) : null}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-4 font-mono text-sm text-cyan-50">
-        GPT: ${manifest.gpt_cost_estimate.toFixed(3)} · TTS: ${manifest.tts_cost_estimate.toFixed(3)} · Total: $
-        {manifest.total_cost_estimate.toFixed(3)}
+      <div className="mt-8 border-t border-vn-ash pt-5">
+        <span className="font-mono text-xs text-vn-mist">
+          GPT ${manifest.gpt_cost_estimate.toFixed(3)} · TTS ${manifest.tts_cost_estimate.toFixed(3)} · Total ${manifest.total_cost_estimate.toFixed(3)}
+        </span>
       </div>
     </section>
   );

@@ -23,22 +23,22 @@ function latestProgressStep(steps: StepEvent[], name: ProgressCountStep["step"])
 
 function rowClass(state: RowState) {
   if (state === "done") {
-    return "border-emerald-400/40 bg-emerald-400/10 text-emerald-100";
+    return "border-vn-ash bg-vn-carbon text-vn-fog";
   }
   if (state === "active") {
-    return "border-cyan-400/40 bg-cyan-400/10 text-cyan-50";
+    return "border-vn-amber/30 bg-vn-amber/10 text-vn-cream";
   }
-  return "border-white/10 bg-white/5 text-slate-400";
+  return "border-vn-ash bg-vn-carbon text-vn-dim";
 }
 
 function indicator(state: RowState) {
   if (state === "done") {
-    return <span className="text-lg">✓</span>;
+    return <span className="text-vn-amber text-base font-medium">✓</span>;
   }
   if (state === "active") {
-    return <span className="h-3 w-3 animate-spin rounded-full border-2 border-cyan-200 border-t-transparent" />;
+    return <span className="h-2 w-2 rounded-full bg-vn-amber animate-pulse" />;
   }
-  return <span className="h-3 w-3 rounded-full bg-slate-600" />;
+  return <span className="h-2 w-2 rounded-full bg-vn-ash" />;
 }
 
 export function ProgressStream({ steps, isComplete, onCancel, showDownloadHint }: ProgressStreamProps) {
@@ -77,35 +77,50 @@ export function ProgressStream({ steps, isComplete, onCancel, showDownloadHint }
   ] as const;
 
   return (
-    <section className="rounded-[2rem] border border-white/10 bg-slate-950/65 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur">
-      <div className="flex items-center justify-between">
+    <section className="bg-vn-ink border border-vn-ash p-8">
+      <div className="flex items-start justify-between mb-8">
         <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-cyan-300">Live Pipeline</p>
-          <h2 className="mt-2 text-2xl font-semibold text-white">Processing your source</h2>
+          <span className="vn-label text-vn-amber flex items-center gap-2.5 mb-4">
+            <span className="vn-amber-rule" />
+            Live Pipeline
+          </span>
+          <h2 className="font-display text-2xl text-vn-cream leading-tight">Processing your source</h2>
         </div>
-        <button className="text-sm text-slate-300 transition hover:text-white" onClick={onCancel} type="button">
+        <button
+          className="vn-label text-vn-dim transition-colors hover:text-vn-mist"
+          onClick={onCancel}
+          type="button"
+        >
           Cancel
         </button>
       </div>
 
-      <div className="mt-6 grid gap-3">
+      <div className="divide-y divide-vn-ash border border-vn-ash">
         {rows.map((row) => (
           <div
             key={row.key}
-            className={`flex items-center justify-between rounded-2xl border px-4 py-4 ${rowClass(row.state)}`}
+            className={`flex items-center justify-between px-5 py-5 border-l-2 ${
+              row.state === "active"
+                ? "border-l-vn-amber"
+                : row.state === "done"
+                ? "border-l-vn-ash"
+                : "border-l-transparent"
+            } ${rowClass(row.state)}`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {indicator(row.state)}
               <div>
-                <span className="font-medium">{row.label}</span>
+                <span className="text-sm font-medium">{row.label}</span>
                 {row.key === "download" && showDownloadHint ? (
-                  <p className="text-sm text-zinc-400">
+                  <p className="mt-1 text-xs text-vn-dim leading-relaxed">
                     Loading your footage. The narrator works from real frames — this is what makes it accurate.
                   </p>
                 ) : null}
               </div>
             </div>
-            <span className="text-sm">{row.detail}</span>
+            {row.detail ? (
+              <span className="font-mono text-xs text-vn-mist">{row.detail}</span>
+            ) : null}
           </div>
         ))}
       </div>

@@ -1,30 +1,52 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { DM_Serif_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import type { ReactNode } from "react";
-
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const dmSerifDisplay = DM_Serif_Display({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-playfair",
+  weight: ["400"],
+  display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  variable: "--font-geist",
   weight: ["400", "500", "600"],
-  variable: "--font-mono",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Visual Narrator Demo",
-  description: "Self-service Standard Audio Description demo for Visual Narrator.",
+  title: "Visual Narrator — Audio Description in Minutes",
+  description:
+    "Upload a film or paste a URL. Get a broadcast-ready audio description track — MP3, SRT, and compliance report — in about 20 minutes. $39.",
+  metadataBase: new URL("https://app.vnpoverview.com"),
+  openGraph: {
+    title: "Visual Narrator — Audio Description in Minutes",
+    description: "Broadcast-ready AD tracks for indie filmmakers, EdTech platforms, and AD studios.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html className={`${spaceGrotesk.variable} ${plexMono.variable}`} lang="en">
+    <html
+      className={`${dmSerifDisplay.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+      data-theme="dark"
+      lang="en"
+    >
       <body>
+        {/* Film grain — fixed overlay, GPU-isolated */}
+        <div aria-hidden="true" className="vn-grain-layer" />
         {children}
         <Analytics />
       </body>
