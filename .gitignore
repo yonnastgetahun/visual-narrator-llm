@@ -46,6 +46,9 @@ lambda-package/
 *.pth
 *.ckpt
 
+# Benchmark fixture media
+cli/tests/fixtures/ad_benchmarks/clips/*.mp4
+
 # IDE
 .vscode/
 .idea/

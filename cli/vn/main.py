@@ -10,6 +10,7 @@ import typer
 
 from .ad import AdDescriptionError, AdTTSError, assemble_ad_kit
 from .api import DEFAULT_API_URL, VNApiError, VNClient
+from .benchmark import BenchmarkError, benchmark_video
 from .compliance import analyze_compliance
 from .edu import EduDescriptionError, assemble_edu_kit
 from .frame import FrameExtractionError, extract_frames
@@ -66,10 +67,65 @@ def describe(
 
 @app.command()
 def benchmark(
-    image_file: Path = typer.Argument(..., exists=True, dir_okay=False, readable=True, help="JPEG or PNG image file."),
+    image_file: Optional[Path] = typer.Argument(
+        None,
+        exists=True,
+        dir_okay=False,
+        readable=True,
+        help="Legacy single-frame benchmark mode: JPEG or PNG image file.",
+    ),
+    video: Optional[Path] = typer.Option(
+        None,
+        "--video",
+        exists=True,
+        dir_okay=False,
+        readable=True,
+        help="Video file to benchmark with the VN AD pipeline.",
+    ),
+    reference: Optional[Path] = typer.Option(
+        None,
+        "--reference",
+        exists=True,
+        dir_okay=False,
+        readable=True,
+        help="Reference SRT file containing professional AD cues.",
+    ),
+    output: Optional[Path] = typer.Option(
+        None,
+        "--output",
+        dir_okay=False,
+        help="Path for the benchmark JSON report.",
+    ),
+    voice_id: Optional[str] = typer.Option(
+        None,
+        "--voice-id",
+        help="ElevenLabs voice ID. Defaults to ELEVENLABS_VOICE_ADAM or Adam.",
+    ),
+    min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
     api_url: str = ApiUrl,
 ) -> None:
-    """Run a single-frame VN vs GPT-4o vs Gemini benchmark."""
+    """Run the quality benchmark against professional AD, or a legacy single-frame benchmark."""
+    if video is not None or reference is not None or output is not None:
+        if image_file is not None:
+            _fail("Do not pass an image file when using --video/--reference/--output.")
+        if video is None or reference is None or output is None:
+            _fail("--video, --reference, and --output are required together.")
+        try:
+            report = benchmark_video(
+                video_path=video,
+                reference_path=reference,
+                output_path=output,
+                min_gap=min_gap,
+                voice_id=voice_id,
+            )
+        except (FileNotFoundError, BenchmarkError, GapDetectionError, FrameExtractionError, AdDescriptionError, AdTTSError) as exc:
+            _fail(str(exc))
+        typer.echo(json.dumps(report.json_dict(), indent=2))
+        return
+
+    if image_file is None:
+        _fail("Pass either an image file or --video/--reference/--output.")
+
     client = VNClient(api_url=api_url)
     try:
         result = client.benchmark_frame(image_file)
