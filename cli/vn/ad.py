@@ -43,7 +43,11 @@ AD_DEFAULT_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"
 ELEVENLABS_MODEL = "eleven_multilingual_v2"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 OPENAI_MODEL = "gpt-4o"
-SUPPORTED_VISION_MODELS = {OPENAI_MODEL, "gpt-4.1-mini"}
+QWEN_MODEL = "qwen2.5-vl"
+HF_INFERENCE_URL = "https://router.huggingface.co/ovhcloud/v1/chat/completions"
+HF_MODEL_ID = "Qwen/Qwen2.5-VL-72B-Instruct"
+HF_PROVIDER_MODEL_ID = "Qwen2.5-VL-72B-Instruct"
+SUPPORTED_VISION_MODELS = {OPENAI_MODEL, "gpt-4.1-mini", QWEN_MODEL}
 AD_COST_PER_FRAME = 0.0013
 AD_TTS_COST_PER_CHAR = 0.0003
 WORDS_PER_SECOND = 2.5
@@ -194,7 +198,6 @@ def assemble_ad_kit(
     audio_dir.mkdir(parents=True, exist_ok=True)
 
     gaps = detect_gaps(source, min_gap=min_gap)
-    timestamps = [_gap_midpoint(gap) for gap in gaps]
     narrations: list[AdNarrationEntry] = []
     audio_gap_fit_metrics: list[AudioGapFitMetrics] = []
     model_versions: list[str] = []
@@ -204,12 +207,20 @@ def assemble_ad_kit(
         or AD_DEFAULT_VOICE_ID
     )
 
-    if timestamps:
+    if gaps:
         with tempfile.TemporaryDirectory(prefix="vn-ad-frames-") as tmp:
             frame_dir = Path(tmp)
-            frames = extract_frames_at(source, timestamps, frame_dir)
+            frames_per_gap = 3 if _vision_model() == QWEN_MODEL else 1
+            all_timestamps: list[float] = []
+            for gap in gaps:
+                all_timestamps.extend(_gap_timestamps(gap, frames_per_gap))
+            all_frames = extract_frames_at(source, all_timestamps, frame_dir)
+            frame_groups = [
+                all_frames[i * frames_per_gap:(i + 1) * frames_per_gap]
+                for i in range(len(gaps))
+            ]
             scene_context: list[str] = []
-            for index, (gap, frame) in enumerate(zip(gaps, frames, strict=True), start=1):
+            for index, (gap, frame_group) in enumerate(zip(gaps, frame_groups, strict=True), start=1):
                 prefix_parts = []
                 if character_context:
                     prefix_parts.append(character_context)
@@ -217,7 +228,7 @@ def assemble_ad_kit(
                     prefix_parts.append("Recent descriptions:\n" + "\n".join(scene_context[-5:]))
                 prefix = "\n\n".join(prefix_parts) or None
                 narration = generate_gap_aware_ad_narration(
-                    [frame.path],
+                    [f.path for f in frame_group],
                     gap.duration_sec,
                     resolved_voice_id,
                     system_prompt_prefix=prefix,
@@ -237,7 +248,7 @@ def assemble_ad_kit(
                         end_sec=gap.end_sec,
                         gap_duration_sec=gap.duration_sec,
                         gap_type=gap.gap_type,
-                        frame_timestamp_sec=frame.timestamp,
+                        frame_timestamp_sec=frame_group[0].timestamp,
                         description=narration.description,
                         audio_file=audio_relative_path.as_posix(),
                         audio_duration_sec=narration.audio_duration_sec,
@@ -518,12 +529,77 @@ def build_audio_gap_fit_summary(metrics: Sequence[AudioGapFitMetrics]) -> dict[s
     }
 
 
+def _describe_frame_hf(
+    frame_paths: Sequence[Path],
+    gap_duration_sec: float,
+    max_words: int | None = None,
+    system_prompt_prefix: str | None = None,
+) -> tuple[str, str]:
+    api_key = os.getenv("HF_TOKEN") or os.getenv("HF_TOKEN_VULCAN26") or os.getenv("HUGGINGFACE_API_KEY")
+    if not api_key:
+        raise AdDescriptionError("HF_TOKEN is not set. Required for Qwen2.5-VL via HuggingFace.")
+    if not frame_paths:
+        raise AdDescriptionError("At least one frame is required for AD generation.")
+
+    resolved_word_limit = max_words or target_words(gap_duration_sec)
+    prompt = "\n\n".join(
+        part
+        for part in (
+            _frame_prompt_prefix(len(frame_paths)),
+            AD_PROMPT_TEMPLATE.format(gap_seconds=gap_duration_sec, max_words=resolved_word_limit),
+        )
+        if part
+    )
+    content: list[dict[str, Any]] = []
+    for frame_path in frame_paths:
+        mime_type = mimetypes.guess_type(frame_path.name)[0] or "image/jpeg"
+        content.append({
+            "type": "image_url",
+            "image_url": {"url": f"data:{mime_type};base64,{encode_file_base64(frame_path)}"},
+        })
+    content.append({"type": "text", "text": prompt})
+
+    messages: list[dict[str, Any]] = [{"role": "user", "content": content}]
+    if system_prompt_prefix:
+        messages.insert(0, {"role": "system", "content": system_prompt_prefix})
+
+    payload = {"model": HF_PROVIDER_MODEL_ID, "messages": messages, "max_tokens": 150}
+
+    try:
+        with httpx.Client(timeout=180.0, follow_redirects=True) as client:
+            response = client.post(
+                HF_INFERENCE_URL,
+                json=payload,
+                headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            )
+        response.raise_for_status()
+    except httpx.HTTPStatusError as exc:
+        raise AdDescriptionError(
+            f"HuggingFace API error {exc.response.status_code}: {exc.response.text}"
+        ) from exc
+    except httpx.RequestError as exc:
+        raise AdDescriptionError(f"HuggingFace request failed: {exc}") from exc
+
+    try:
+        data = response.json()
+    except ValueError as exc:
+        raise AdDescriptionError(f"HuggingFace returned invalid JSON: {response.text[:300]}") from exc
+
+    description = _assistant_text_from_response(data).strip()
+    if not description:
+        raise AdDescriptionError("HuggingFace returned an empty description.")
+    return description, HF_MODEL_ID
+
+
 def _describe_frame_for_ad(
     frame_paths: Sequence[Path],
     gap_duration_sec: float,
     max_words: int | None = None,
     system_prompt_prefix: str | None = None,
 ) -> tuple[str, str]:
+    if _vision_model() == QWEN_MODEL:
+        return _describe_frame_hf(frame_paths, gap_duration_sec, max_words=max_words, system_prompt_prefix=system_prompt_prefix)
+
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise AdDescriptionError("OPENAI_API_KEY is not set.")
@@ -704,6 +780,15 @@ def _combine_model_versions(model_versions: list[str]) -> str:
 
 def _gap_midpoint(gap: GapResult) -> float:
     return gap.start_sec + (gap.duration_sec / 2)
+
+
+def _gap_timestamps(gap: GapResult, frame_count: int) -> list[float]:
+    mid = _gap_midpoint(gap)
+    if frame_count == 1:
+        return [mid]
+    start = min(gap.start_sec + 0.5, mid)
+    end = max(gap.end_sec - 0.5, mid)
+    return [start, mid, end]
 
 
 def _display_output_dir(path: Path) -> str:

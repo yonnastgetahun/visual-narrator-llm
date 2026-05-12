@@ -1,0 +1,39 @@
+{
+  "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+  "provider": "ovhcloud (via HuggingFace Router)",
+  "frames_per_gap": 3,
+  "character_context": true,
+  "clips_tested": 3,
+  "overall_quality_ratio": "41.6%",
+  "overall_semantic_similarity": 0.4163,
+  "overall_gap_fit_rate": 1.0,
+  "per_clip": [
+    {
+      "clip": "6nvQySlxSWY.mp4",
+      "gaps_matched": 40,
+      "semantic_similarity_mean": 0.4,
+      "semantic_similarity_median": 0.3653,
+      "word_count_ratio_mean": 0.275,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "40.0%"
+    },
+    {
+      "clip": "7ELmyf41TnQ.mp4",
+      "gaps_matched": 41,
+      "semantic_similarity_mean": 0.395,
+      "semantic_similarity_median": 0.3872,
+      "word_count_ratio_mean": 0.6088,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "39.5%"
+    },
+    {
+      "clip": "v0KOJWyR4SU.mp4",
+      "gaps_matched": 45,
+      "semantic_similarity_mean": 0.4502,
+      "semantic_similarity_median": 0.4736,
+      "word_count_ratio_mean": 0.5333,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "45.0%"
+    }
+  ]
+}
