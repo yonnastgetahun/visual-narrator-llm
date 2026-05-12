@@ -40,6 +40,7 @@ AD_DEFAULT_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"
 ELEVENLABS_MODEL = "eleven_multilingual_v2"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 OPENAI_MODEL = "gpt-4o"
+SUPPORTED_VISION_MODELS = {OPENAI_MODEL, "gpt-4.1-mini"}
 AD_COST_PER_FRAME = 0.0013
 AD_TTS_COST_PER_CHAR = 0.0003
 WORDS_PER_SECOND = 2.5
@@ -205,7 +206,7 @@ def assemble_ad_kit(
             frames = extract_frames_at(source, timestamps, frame_dir)
             for index, (gap, frame) in enumerate(zip(gaps, frames, strict=True), start=1):
                 narration = generate_gap_aware_ad_narration(
-                    frame.path,
+                    [frame.path],
                     gap.duration_sec,
                     resolved_voice_id,
                 )
@@ -390,9 +391,10 @@ def synthesize_speech_bytes(text: str, voice_id: str) -> tuple[bytes, int]:
 
 
 def generate_gap_aware_ad_narration(
-    frame_path: Path,
+    frame_paths: Sequence[Path],
     gap_duration_sec: float,
     voice_id: str,
+    system_prompt_prefix: str | None = None,
 ) -> GeneratedAdNarration:
     attempt_audio_sec: list[float] = []
     attempt_word_limits: list[int] = []
@@ -407,9 +409,10 @@ def generate_gap_aware_ad_narration(
     for retry in range(MAX_AUDIO_FIT_RETRIES + 1):
         word_limit = _retry_word_limit(base_word_limit, retry)
         description, model_version = _describe_frame_for_ad(
-            frame_path,
+            frame_paths,
             gap_duration_sec,
             max_words=word_limit,
+            system_prompt_prefix=system_prompt_prefix,
         )
         if model_version:
             model_versions.append(model_version)
@@ -502,37 +505,52 @@ def build_audio_gap_fit_summary(metrics: Sequence[AudioGapFitMetrics]) -> dict[s
 
 
 def _describe_frame_for_ad(
-    frame_path: Path,
+    frame_paths: Sequence[Path],
     gap_duration_sec: float,
     max_words: int | None = None,
+    system_prompt_prefix: str | None = None,
 ) -> tuple[str, str]:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise AdDescriptionError("OPENAI_API_KEY is not set.")
+    if not frame_paths:
+        raise AdDescriptionError("At least one frame is required for AD generation.")
 
     resolved_word_limit = max_words or target_words(gap_duration_sec)
-    prompt = AD_PROMPT_TEMPLATE.format(
-        gap_seconds=gap_duration_sec,
-        max_words=resolved_word_limit,
+    prompt = "\n\n".join(
+        part
+        for part in (
+            _frame_prompt_prefix(len(frame_paths)),
+            AD_PROMPT_TEMPLATE.format(
+                gap_seconds=gap_duration_sec,
+                max_words=resolved_word_limit,
+            ),
+        )
+        if part
     )
-    mime_type = mimetypes.guess_type(frame_path.name)[0] or "image/jpeg"
-    payload = {
-        "model": OPENAI_MODEL,
-        "messages": [
+    content: list[dict[str, Any]] = [{"type": "text", "text": prompt}]
+    for frame_path in frame_paths:
+        mime_type = mimetypes.guess_type(frame_path.name)[0] or "image/jpeg"
+        content.append(
             {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": prompt},
-                    {
-                        "type": "image_url",
-                        "image_url": {
-                            "url": f"data:{mime_type};base64,{encode_file_base64(frame_path)}",
-                            "detail": "low",
-                        },
-                    },
-                ],
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:{mime_type};base64,{encode_file_base64(frame_path)}",
+                    "detail": "low",
+                },
             }
-        ],
+        )
+    messages: list[dict[str, Any]] = [
+        {
+            "role": "user",
+            "content": content,
+        }
+    ]
+    if system_prompt_prefix:
+        messages.insert(0, {"role": "system", "content": system_prompt_prefix})
+    payload = {
+        "model": _vision_model(),
+        "messages": messages,
         "max_tokens": 150,
     }
 
@@ -565,6 +583,28 @@ def _describe_frame_for_ad(
     if not description:
         raise AdDescriptionError("OpenAI returned an empty description.")
     return description, _model_version_from_response(data)
+
+
+def _frame_prompt_prefix(frame_count: int) -> str:
+    if frame_count == 3:
+        return (
+            "You are viewing three frames from a single narration gap. "
+            "Describe what is happening as a single continuous audio description."
+        )
+    if frame_count > 1:
+        return (
+            f"You are viewing {frame_count} frames from a single narration gap. "
+            "Describe what is happening as a single continuous audio description."
+        )
+    return ""
+
+
+def _vision_model() -> str:
+    model = os.getenv("VN_VISION_MODEL", OPENAI_MODEL).strip() or OPENAI_MODEL
+    if model not in SUPPORTED_VISION_MODELS:
+        supported = ", ".join(sorted(SUPPORTED_VISION_MODELS))
+        raise AdDescriptionError(f"Unsupported VN_VISION_MODEL: {model}. Supported: {supported}")
+    return model
 
 
 def _write_audio_file(output_path: Path, audio_bytes: bytes) -> None:
@@ -641,7 +681,7 @@ def _model_version_from_response(data: dict[str, Any]) -> str:
 
 def _combine_model_versions(model_versions: list[str]) -> str:
     if not model_versions:
-        return OPENAI_MODEL
+        return _vision_model()
     unique_versions = list(dict.fromkeys(model_versions))
     if len(unique_versions) == 1:
         return unique_versions[0]

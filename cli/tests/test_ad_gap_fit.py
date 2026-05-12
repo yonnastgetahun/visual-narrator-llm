@@ -4,6 +4,8 @@ from unittest.mock import patch
 
 from vn.ad import (
     AudioGapFitMetrics,
+    AdDescriptionError,
+    _describe_frame_for_ad,
     build_audio_gap_fit_summary,
     generate_gap_aware_ad_narration,
     target_words,
@@ -38,7 +40,7 @@ class AudioGapFitTests(unittest.TestCase):
         duration_mock,
         log_mock,
     ) -> None:
-        result = generate_gap_aware_ad_narration(Path("/tmp/frame.jpg"), 4.0, "voice-1")
+        result = generate_gap_aware_ad_narration([Path("/tmp/frame.jpg")], 4.0, "voice-1")
 
         self.assertEqual(result.description, "Short retry.")
         self.assertEqual(result.audio_fit.retries, 1)
@@ -73,7 +75,7 @@ class AudioGapFitTests(unittest.TestCase):
         truncate_mock,
         log_mock,
     ) -> None:
-        result = generate_gap_aware_ad_narration(Path("/tmp/frame.jpg"), 4.0, "voice-1")
+        result = generate_gap_aware_ad_narration([Path("/tmp/frame.jpg")], 4.0, "voice-1")
 
         self.assertEqual(result.description, "Attempt three.")
         self.assertEqual(result.audio_fit.retries, 2)
@@ -152,6 +154,52 @@ class AudioGapFitTests(unittest.TestCase):
         self.assertIn("Audio gap fit:", rendered)
         self.assertIn("Overrun rate: 50.0% (1/2)", rendered)
         self.assertIn("Retries: 2 | Truncations: 1", rendered)
+
+    @patch.dict("os.environ", {"OPENAI_API_KEY": "test-key", "VN_VISION_MODEL": "gpt-4.1-mini"}, clear=True)
+    @patch("vn.ad.encode_file_base64", side_effect=["img-one", "img-two", "img-three"])
+    @patch("vn.ad.httpx.Client")
+    def test_describe_frame_uses_three_images_context_and_model_flag(
+        self,
+        client_cls,
+        encode_mock,
+    ) -> None:
+        response = client_cls.return_value.__enter__.return_value.post.return_value
+        response.json.return_value = {
+            "choices": [{"message": {"content": "A woman crosses the room."}}],
+            "model": "gpt-4.1-mini-2026-05-01",
+        }
+        response.raise_for_status.return_value = None
+
+        description, model_version = _describe_frame_for_ad(
+            [
+                Path("/tmp/frame_start.jpg"),
+                Path("/tmp/frame_mid.jpg"),
+                Path("/tmp/frame_end.jpg"),
+            ],
+            4.0,
+            max_words=10,
+            system_prompt_prefix="Prior descriptions in this scene:\nAlice enters.",
+        )
+
+        self.assertEqual(description, "A woman crosses the room.")
+        self.assertEqual(model_version, "gpt-4.1-mini-2026-05-01")
+        payload = client_cls.return_value.__enter__.return_value.post.call_args.kwargs["json"]
+        self.assertEqual(payload["model"], "gpt-4.1-mini")
+        self.assertEqual(payload["messages"][0]["role"], "system")
+        self.assertIn("Prior descriptions in this scene", payload["messages"][0]["content"])
+        self.assertEqual(payload["messages"][1]["role"], "user")
+        content = payload["messages"][1]["content"]
+        self.assertEqual(content[0]["type"], "text")
+        self.assertIn("You are viewing three frames", content[0]["text"])
+        self.assertEqual(len([item for item in content if item["type"] == "image_url"]), 3)
+        self.assertEqual(encode_mock.call_count, 3)
+
+    @patch.dict("os.environ", {"OPENAI_API_KEY": "test-key", "VN_VISION_MODEL": "bad-model"}, clear=True)
+    @patch("vn.ad.encode_file_base64", return_value="img-one")
+    def test_describe_frame_rejects_unsupported_model_flag(self, encode_mock) -> None:
+        with self.assertRaises(AdDescriptionError):
+            _describe_frame_for_ad([Path("/tmp/frame.jpg")], 4.0)
+        encode_mock.assert_called_once()
 
 
 if __name__ == "__main__":
