@@ -1,5 +1,6 @@
 "use client";
 
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { HeroSection } from "@/components/hero/HeroSection";
@@ -39,6 +40,34 @@ const AUDIENCES = [
 export default function LandingPage() {
   return (
     <main>
+      <header className="fixed inset-x-0 top-0 z-30 border-b border-vn-line bg-vn-black/95 backdrop-blur">
+        <div className="flex items-center justify-between px-6 py-4 md:px-[8vw]">
+          <Link href="/" className="vn-label text-vn-amber transition-colors hover:text-amber-300">
+            Visual Narrator
+          </Link>
+          <div className="flex items-center">
+            <SignedIn>
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "h-9 w-9",
+                  },
+                }}
+              />
+            </SignedIn>
+            <SignedOut>
+              <Link
+                href="/sign-in"
+                className="vn-label text-vn-mist transition-colors hover:text-vn-cream"
+              >
+                Sign in
+              </Link>
+            </SignedOut>
+          </div>
+        </div>
+      </header>
+
       <HeroSection />
 
       {/* How it works */}

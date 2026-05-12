@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
@@ -39,17 +40,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html
-      className={`${dmSerifDisplay.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
-      data-theme="dark"
-      lang="en"
-    >
-      <body>
-        {/* Film grain — fixed overlay, GPU-isolated */}
-        <div aria-hidden="true" className="vn-grain-layer" />
-        {children}
-        <Analytics />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        className={`${dmSerifDisplay.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+        data-theme="dark"
+        lang="en"
+      >
+        <body>
+          {/* Film grain — fixed overlay, GPU-isolated */}
+          <div aria-hidden="true" className="vn-grain-layer" />
+          {children}
+          <Analytics />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
