@@ -186,6 +186,7 @@ def assemble_ad_kit(
     voice_id: str | None = None,
     source_label: str | None = None,
     output_dir: Path | None = None,
+    character_context: str | None = None,
 ) -> AdResult:
     requested_output_dir = output_dir or Path("./vn-ad-output")
     resolved_output_dir = requested_output_dir.expanduser()
@@ -207,12 +208,22 @@ def assemble_ad_kit(
         with tempfile.TemporaryDirectory(prefix="vn-ad-frames-") as tmp:
             frame_dir = Path(tmp)
             frames = extract_frames_at(source, timestamps, frame_dir)
+            scene_context: list[str] = []
             for index, (gap, frame) in enumerate(zip(gaps, frames, strict=True), start=1):
+                prefix_parts = []
+                if character_context:
+                    prefix_parts.append(character_context)
+                if scene_context:
+                    prefix_parts.append("Recent descriptions:\n" + "\n".join(scene_context[-5:]))
+                prefix = "\n\n".join(prefix_parts) or None
                 narration = generate_gap_aware_ad_narration(
                     [frame.path],
                     gap.duration_sec,
                     resolved_voice_id,
+                    system_prompt_prefix=prefix,
                 )
+                if narration.description:
+                    scene_context.append(narration.description)
                 if narration.model_version:
                     model_versions.append(narration.model_version)
                 audio_filename = f"{index:05d}_{int(gap.start_sec * 1000):07d}.mp3"

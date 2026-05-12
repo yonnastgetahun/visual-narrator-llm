@@ -12,6 +12,7 @@ from typing import Any
 import httpx
 
 from .ad import AdResult, assemble_ad_kit
+from .characters import CharacterRoster, build_roster_from_audio
 
 
 EMBEDDINGS_MODEL = "text-embedding-3-small"
@@ -93,6 +94,8 @@ def benchmark_video(
     output_path: Path,
     min_gap: float = 2.0,
     voice_id: str | None = None,
+    character_sheet: Path | None = None,
+    auto_detect_names: bool = True,
 ) -> BenchmarkReport:
     resolved_video_path = video_path.expanduser().resolve()
     resolved_reference_path = reference_path.expanduser().resolve()
@@ -103,6 +106,14 @@ def benchmark_video(
     if not resolved_reference_path.exists():
         raise FileNotFoundError(f"reference not found: {reference_path}")
 
+    # Build character roster — sheet takes priority, audio detection fills gaps
+    roster = CharacterRoster()
+    if character_sheet and character_sheet.exists():
+        roster = roster.merge(CharacterRoster.from_file(character_sheet))
+    if auto_detect_names and roster.is_empty():
+        roster = roster.merge(build_roster_from_audio(resolved_video_path))
+    character_context = roster.to_prompt_fragment()
+
     reference_cues = _load_srt(resolved_reference_path)
     with tempfile.TemporaryDirectory(prefix="vn-benchmark-") as tmp:
         pipeline_output_dir = Path(tmp) / "ad-output"
@@ -112,6 +123,7 @@ def benchmark_video(
             voice_id=voice_id,
             source_label=resolved_video_path.name,
             output_dir=pipeline_output_dir,
+            character_context=character_context,
         )
 
     matched = _match_reference_cues(reference_cues, ad_result)

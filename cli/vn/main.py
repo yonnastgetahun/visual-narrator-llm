@@ -102,6 +102,19 @@ def benchmark(
         help="ElevenLabs voice ID. Defaults to ELEVENLABS_VOICE_ADAM or Adam.",
     ),
     min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
+    characters: Optional[Path] = typer.Option(
+        None,
+        "--characters",
+        dir_okay=False,
+        readable=True,
+        help="Character sheet .txt file (one character per line: 'Name: description'). "
+             "If omitted, names are auto-detected from the audio track via Whisper.",
+    ),
+    no_auto_detect: bool = typer.Option(
+        False,
+        "--no-auto-detect",
+        help="Disable automatic name detection from audio when no --characters file is provided.",
+    ),
     api_url: str = ApiUrl,
 ) -> None:
     """Run the quality benchmark against professional AD, or a legacy single-frame benchmark."""
@@ -117,6 +130,8 @@ def benchmark(
                 output_path=output,
                 min_gap=min_gap,
                 voice_id=voice_id,
+                character_sheet=characters,
+                auto_detect_names=not no_auto_detect,
             )
         except (FileNotFoundError, BenchmarkError, GapDetectionError, FrameExtractionError, AdDescriptionError, AdTTSError) as exc:
             _fail(str(exc))
