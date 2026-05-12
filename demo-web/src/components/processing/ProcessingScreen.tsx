@@ -173,20 +173,42 @@ function FilmCounter({ currentStep }: { currentStep: number }) {
   );
 }
 
-export function ProcessingScreen({ jobId }: { jobId: string }) {
+export function ProcessingScreen({
+  estimatedMinutes,
+  jobId,
+}: {
+  estimatedMinutes: number;
+  jobId: string;
+}) {
   const router = useRouter();
   const [activeStepIdx, setActiveStepIdx] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [progress, setProgress] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const startRef = useRef(Date.now());
+  const completionStartedRef = useRef(false);
 
   // Simulate pipeline steps
   useEffect(() => {
     let idx = 0;
     function runStep(stepIdx: number) {
       if (stepIdx >= STEPS.length) {
-        setTimeout(() => router.push(`/results/${jobId}`), 800);
+        if (completionStartedRef.current) {
+          return;
+        }
+
+        completionStartedRef.current = true;
+        void fetch(`/api/jobs/${jobId}/complete`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            estimatedMinutes,
+          }),
+        }).finally(() => {
+          setTimeout(() => router.push(`/results/${jobId}`), 800);
+        });
         return;
       }
       setActiveStepIdx(stepIdx);
@@ -208,7 +230,7 @@ export function ProcessingScreen({ jobId }: { jobId: string }) {
     }
     const cleanup = runStep(idx);
     return cleanup;
-  }, [jobId, router]);
+  }, [estimatedMinutes, jobId, router]);
 
   // Elapsed timer
   useEffect(() => {
