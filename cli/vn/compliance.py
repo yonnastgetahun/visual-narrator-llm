@@ -38,21 +38,26 @@ class ComplianceReport:
     total_duration_sec: float
     coverage_percent: float
     max_unbroken_speech_sec: float
+    audio_gap_fit: dict[str, Any] | None = None
 
     def json_dict(self) -> dict[str, Any]:
-        return {
+        payload = {
             "score": self.score,
             "wcag_level": self.wcag_level,
             "criteria": {key: value.json_dict() for key, value in self.criteria.items()},
             "gaps": [gap.json_dict() for gap in self.gaps],
             "recommendations": self.recommendations,
         }
+        if self.audio_gap_fit is not None:
+            payload["audio_gap_fit"] = self.audio_gap_fit
+        return payload
 
 
 def analyze_compliance(
     source: Path,
     min_gap: float = 2.0,
     gaps: list[GapResult] | None = None,
+    audio_gap_fit: dict[str, Any] | None = None,
 ) -> ComplianceReport:
     """Score accessibility compliance using narration gaps from detect_gaps()."""
     resolved_gaps = gaps if gaps is not None else detect_gaps(source, min_gap=min_gap)
@@ -96,6 +101,7 @@ def analyze_compliance(
         total_duration_sec=duration,
         coverage_percent=coverage_percent,
         max_unbroken_speech_sec=max_unbroken_speech_sec,
+        audio_gap_fit=audio_gap_fit,
     )
 
 

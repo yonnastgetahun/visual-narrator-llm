@@ -216,6 +216,13 @@ def render_compliance_text(report: Any) -> str:
     else:
         lines.append("- No narration gaps found.")
 
+    audio_gap_fit = getattr(report, "audio_gap_fit", None)
+    if audio_gap_fit:
+        lines.extend(["", "Audio gap fit:"])
+        lines.append(f"- Overrun rate: {audio_gap_fit['overrun_rate']:.1%} ({audio_gap_fit['overrun_count']}/{audio_gap_fit['narrations_evaluated']})")
+        lines.append(f"- Avg fit ratio: {audio_gap_fit['average_fit_ratio']:.3f}")
+        lines.append(f"- Retries: {audio_gap_fit['retry_count']} | Truncations: {audio_gap_fit['truncation_count']}")
+
     return "\n".join(lines)
 
 
@@ -409,6 +416,15 @@ def render_theater_text(kit: Any) -> str:
             ),
         ]
     )
+    audio_gap_fit = getattr(kit.compliance, "audio_gap_fit", None)
+    if audio_gap_fit:
+        lines.append(
+            "Audio gap fit: "
+            f"overrun rate {audio_gap_fit['overrun_rate']:.1%} "
+            f"({audio_gap_fit['overrun_count']}/{audio_gap_fit['narrations_evaluated']}), "
+            f"avg fit ratio {audio_gap_fit['average_fit_ratio']:.3f}, "
+            f"retries {audio_gap_fit['retry_count']}, truncations {audio_gap_fit['truncation_count']}"
+        )
     return "\n".join(lines).rstrip()
 
 

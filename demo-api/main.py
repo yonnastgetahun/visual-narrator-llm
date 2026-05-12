@@ -25,12 +25,14 @@ from vn.ad import (
     AD_COST_PER_FRAME,
     AD_DEFAULT_VOICE_ID,
     AD_TTS_COST_PER_CHAR,
+    AudioGapFitMetrics,
     ELEVENLABS_MODEL,
     ELEVENLABS_TTS_URL,
     AdDescriptionError,
     AdTTSError,
+    build_audio_gap_fit_summary,
     _combine_model_versions,
-    _describe_frame_for_ad,
+    generate_gap_aware_ad_narration,
     _gap_midpoint,
 )
 from vn.compliance import analyze_compliance
@@ -150,6 +152,7 @@ async def stream_ad(
                     return
 
                 narrations: list[dict[str, Any]] = []
+                audio_gap_fit_metrics: list[AudioGapFitMetrics] = []
                 model_versions: list[str] = []
                 resolved_voice_id = voice_id or os.getenv("ELEVENLABS_VOICE_ADAM") or AD_DEFAULT_VOICE_ID
                 total = len(gaps)
@@ -171,10 +174,6 @@ async def stream_ad(
                         [midpoint],
                         tmp_root / "frames" / f"{current:05d}",
                     )
-                    description, model_version = await run_in_threadpool(_describe_frame_for_ad, frames[0].path)
-                    if model_version:
-                        model_versions.append(model_version)
-
                     yield _event(
                         "step",
                         {
@@ -184,11 +183,15 @@ async def stream_ad(
                             "message": f"Synthesizing audio {current} of {total}...",
                         },
                     )
-                    audio_bytes, character_count = await run_in_threadpool(
-                        _synthesize_speech_bytes,
-                        description,
+                    narration = await run_in_threadpool(
+                        generate_gap_aware_ad_narration,
+                        frames[0].path,
+                        gap.duration_sec,
                         resolved_voice_id,
                     )
+                    if narration.model_version:
+                        model_versions.append(narration.model_version)
+                    audio_gap_fit_metrics.append(narration.audio_fit)
                     narrations.append(
                         {
                             "srt_index": current,
@@ -197,16 +200,25 @@ async def stream_ad(
                             "gap_duration_sec": round(gap.duration_sec, 3),
                             "gap_type": gap.gap_type,
                             "frame_timestamp_sec": round(frames[0].timestamp, 3),
-                            "description": description,
-                            "audio_data": base64.b64encode(audio_bytes).decode("ascii"),
+                            "description": narration.description,
+                            "audio_data": base64.b64encode(narration.audio_bytes).decode("ascii"),
                             "audio_mime": "audio/mpeg",
+                            "audio_duration_sec": round(narration.audio_duration_sec, 3),
+                            "audio_fit": narration.audio_fit.json_dict(),
                             "gpt_cost": round(AD_COST_PER_FRAME, 6),
-                            "tts_cost": round(character_count * AD_TTS_COST_PER_CHAR, 6),
+                            "tts_cost": round(narration.character_count * AD_TTS_COST_PER_CHAR, 6),
                         }
                     )
                     if await request.is_disconnected():
                         return
 
+                compliance = await run_in_threadpool(
+                    analyze_compliance,
+                    video_path,
+                    min_gap,
+                    gaps,
+                    build_audio_gap_fit_summary(audio_gap_fit_metrics),
+                )
                 gpt_cost_estimate = sum(item["gpt_cost"] for item in narrations)
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {

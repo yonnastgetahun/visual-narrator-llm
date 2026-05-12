@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import json
+import logging
 import mimetypes
 import os
+import shutil
+import subprocess
 import tempfile
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, Sequence
 
 import httpx
 
@@ -17,7 +20,9 @@ from .gaps import detect_gaps
 from .output import GapResult, render_ad_srt
 
 
-AD_PROMPT = (
+LOGGER = logging.getLogger(__name__)
+
+AD_PROMPT_TEMPLATE = (
     "You are writing a professional audio description for accessibility compliance (WCAG 2.1 Level AA).\n"
     "Describe the key visual information concisely and objectively. Focus on:\n"
     "- Actions and movements relevant to understanding the content\n"
@@ -25,7 +30,9 @@ AD_PROMPT = (
     "- Changes in scene or setting\n"
     "- Expressions or gestures that convey meaning not audible in the dialogue\n"
     "Do not describe irrelevant background details. Do not interpret emotions unless clearly expressed.\n"
-    "Use present tense. One to two short sentences. Maximum 30 words. Be clear and factual."
+    "Use present tense. One to two short sentences. "
+    "You have {gap_seconds:.1f} seconds of silence to fill. Maximum {max_words} words. "
+    "Be clear and factual."
 )
 
 ELEVENLABS_TTS_URL = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
@@ -35,6 +42,14 @@ OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 OPENAI_MODEL = "gpt-4o"
 AD_COST_PER_FRAME = 0.0013
 AD_TTS_COST_PER_CHAR = 0.0003
+WORDS_PER_SECOND = 2.5
+MIN_AD_WORDS = 5
+MAX_AD_WORDS = 30
+SHORTER_RETRY_FACTOR = 0.7
+MAX_AUDIO_FIT_RETRIES = 2
+OVERRUN_BUFFER = 0.15
+TRUNCATION_STEP_SEC = 0.05
+MAX_TRUNCATION_ATTEMPTS = 3
 
 
 class AdDescriptionError(RuntimeError):
@@ -43,6 +58,58 @@ class AdDescriptionError(RuntimeError):
 
 class AdTTSError(RuntimeError):
     """Raised when ElevenLabs speech synthesis fails."""
+
+
+@dataclass(frozen=True)
+class AudioGapFitMetrics:
+    gap_sec: float
+    audio_sec: float
+    fit: bool
+    retries: int
+    truncated: bool
+    fit_ratio: float
+    overrun_attempts: int
+    word_limit: int
+    max_allowed_sec: float
+    attempt_audio_sec: tuple[float, ...] = field(default_factory=tuple)
+    attempt_word_limits: tuple[int, ...] = field(default_factory=tuple)
+
+    def json_dict(self) -> dict[str, Any]:
+        return {
+            "gap_sec": round(self.gap_sec, 3),
+            "audio_sec": round(self.audio_sec, 3),
+            "fit": self.fit,
+            "retries": self.retries,
+            "truncated": self.truncated,
+            "fit_ratio": round(self.fit_ratio, 3),
+            "overrun_attempts": self.overrun_attempts,
+            "word_limit": self.word_limit,
+            "max_allowed_sec": round(self.max_allowed_sec, 3),
+            "attempt_audio_sec": [round(value, 3) for value in self.attempt_audio_sec],
+            "attempt_word_limits": list(self.attempt_word_limits),
+        }
+
+
+@dataclass(frozen=True)
+class GeneratedAdNarration:
+    description: str
+    model_version: str
+    audio_bytes: bytes = field(repr=False)
+    character_count: int = 0
+    audio_duration_sec: float = 0.0
+    audio_fit: AudioGapFitMetrics = field(
+        default_factory=lambda: AudioGapFitMetrics(
+            gap_sec=0.0,
+            audio_sec=0.0,
+            fit=True,
+            retries=0,
+            truncated=False,
+            fit_ratio=0.0,
+            overrun_attempts=0,
+            word_limit=0,
+            max_allowed_sec=0.0,
+        )
+    )
 
 
 @dataclass(frozen=True)
@@ -55,6 +122,8 @@ class AdNarrationEntry:
     frame_timestamp_sec: float
     description: str
     audio_file: str
+    audio_duration_sec: float
+    audio_fit: dict[str, Any]
     gpt_cost: float
     tts_cost: float
 
@@ -68,6 +137,8 @@ class AdNarrationEntry:
             "frame_timestamp_sec": round(self.frame_timestamp_sec, 3),
             "description": self.description,
             "audio_file": self.audio_file,
+            "audio_duration_sec": round(self.audio_duration_sec, 3),
+            "audio_fit": self.audio_fit,
             "gpt_cost": round(self.gpt_cost, 6),
             "tts_cost": round(self.tts_cost, 6),
         }
@@ -120,6 +191,7 @@ def assemble_ad_kit(
     gaps = detect_gaps(source, min_gap=min_gap)
     timestamps = [_gap_midpoint(gap) for gap in gaps]
     narrations: list[AdNarrationEntry] = []
+    audio_gap_fit_metrics: list[AudioGapFitMetrics] = []
     model_versions: list[str] = []
     resolved_voice_id = (
         voice_id
@@ -132,17 +204,17 @@ def assemble_ad_kit(
             frame_dir = Path(tmp)
             frames = extract_frames_at(source, timestamps, frame_dir)
             for index, (gap, frame) in enumerate(zip(gaps, frames, strict=True), start=1):
-                description, model_version = _describe_frame_for_ad(frame.path)
-                if model_version:
-                    model_versions.append(model_version)
-
+                narration = generate_gap_aware_ad_narration(
+                    frame.path,
+                    gap.duration_sec,
+                    resolved_voice_id,
+                )
+                if narration.model_version:
+                    model_versions.append(narration.model_version)
                 audio_filename = f"{index:05d}_{int(gap.start_sec * 1000):07d}.mp3"
                 audio_relative_path = Path("audio") / audio_filename
-                character_count = _synthesize_speech(
-                    description,
-                    resolved_voice_id,
-                    resolved_output_dir / audio_relative_path,
-                )
+                _write_audio_file(resolved_output_dir / audio_relative_path, narration.audio_bytes)
+                audio_gap_fit_metrics.append(narration.audio_fit)
                 narrations.append(
                     AdNarrationEntry(
                         srt_index=index,
@@ -151,14 +223,21 @@ def assemble_ad_kit(
                         gap_duration_sec=gap.duration_sec,
                         gap_type=gap.gap_type,
                         frame_timestamp_sec=frame.timestamp,
-                        description=description,
+                        description=narration.description,
                         audio_file=audio_relative_path.as_posix(),
+                        audio_duration_sec=narration.audio_duration_sec,
+                        audio_fit=narration.audio_fit.json_dict(),
                         gpt_cost=AD_COST_PER_FRAME,
-                        tts_cost=character_count * AD_TTS_COST_PER_CHAR,
+                        tts_cost=narration.character_count * AD_TTS_COST_PER_CHAR,
                     )
                 )
 
-    compliance = analyze_compliance(source, min_gap=min_gap, gaps=gaps)
+    compliance = analyze_compliance(
+        source,
+        min_gap=min_gap,
+        gaps=gaps,
+        audio_gap_fit=build_audio_gap_fit_summary(audio_gap_fit_metrics),
+    )
     gpt_cost_estimate = sum(narration.gpt_cost for narration in narrations)
     tts_cost_estimate = sum(narration.tts_cost for narration in narrations)
     result = AdResult(
@@ -183,11 +262,259 @@ def assemble_ad_kit(
     return result
 
 
-def _describe_frame_for_ad(frame_path: Path) -> tuple[str, str]:
+def target_words(gap_duration_sec: float) -> int:
+    if gap_duration_sec <= 0:
+        return MIN_AD_WORDS
+    return max(MIN_AD_WORDS, min(MAX_AD_WORDS, int(gap_duration_sec * WORDS_PER_SECOND)))
+
+
+def fits_in_gap(audio_sec: float, gap_sec: float) -> bool:
+    return audio_sec <= max(0.0, gap_sec - OVERRUN_BUFFER)
+
+
+def audio_duration_sec(audio_bytes: bytes) -> float:
+    if shutil.which("ffprobe") is None:
+        raise AdTTSError("ffprobe is required to verify narration duration. Install ffmpeg first.")
+
+    with tempfile.NamedTemporaryFile(prefix="vn-audio-fit-", suffix=".mp3") as handle:
+        handle.write(audio_bytes)
+        handle.flush()
+        completed = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "quiet",
+                "-print_format",
+                "json",
+                "-show_format",
+                "-show_streams",
+                handle.name,
+            ],
+            capture_output=True,
+            check=False,
+        )
+    if completed.returncode != 0:
+        stderr = completed.stderr.decode("utf-8", errors="ignore").strip()
+        raise AdTTSError(f"ffprobe failed while measuring narration audio: {stderr or 'unknown error'}")
+
+    try:
+        payload = json.loads(completed.stdout.decode("utf-8") or "{}")
+    except ValueError as exc:
+        raise AdTTSError("ffprobe returned invalid JSON while measuring narration audio.") from exc
+
+    format_duration = ((payload.get("format") or {}).get("duration"))
+    try:
+        if format_duration is not None:
+            return float(format_duration)
+    except (TypeError, ValueError):
+        pass
+
+    for stream in payload.get("streams", []):
+        duration = stream.get("duration")
+        try:
+            if duration is not None:
+                return float(duration)
+        except (TypeError, ValueError):
+            continue
+    raise AdTTSError("ffprobe did not report narration audio duration.")
+
+
+def truncate_audio(audio_bytes: bytes, max_sec: float) -> bytes:
+    if shutil.which("ffmpeg") is None:
+        raise AdTTSError("ffmpeg is required to truncate narration audio. Install ffmpeg first.")
+
+    completed = subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-y",
+            "-i",
+            "pipe:0",
+            "-t",
+            f"{max_sec:.3f}",
+            "-c:a",
+            "libmp3lame",
+            "-b:a",
+            "192k",
+            "-f",
+            "mp3",
+            "pipe:1",
+        ],
+        input=audio_bytes,
+        capture_output=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        stderr = completed.stderr.decode("utf-8", errors="ignore").strip()
+        raise AdTTSError(f"ffmpeg failed while truncating narration audio: {stderr or 'unknown error'}")
+    if not completed.stdout:
+        raise AdTTSError("ffmpeg returned empty audio while truncating narration.")
+    return completed.stdout
+
+
+def synthesize_speech_bytes(text: str, voice_id: str) -> tuple[bytes, int]:
+    api_key = os.getenv("ELEVENLABS_API_KEY")
+    if not api_key:
+        raise AdTTSError("ELEVENLABS_API_KEY is not set.")
+
+    payload = {
+        "text": text,
+        "model_id": ELEVENLABS_MODEL,
+        "voice_settings": {
+            "stability": 0.5,
+            "similarity_boost": 0.75,
+        },
+    }
+
+    try:
+        with httpx.Client(timeout=120.0, follow_redirects=True) as client:
+            response = client.post(
+                ELEVENLABS_TTS_URL.format(voice_id=voice_id),
+                json=payload,
+                headers={
+                    "xi-api-key": api_key,
+                    "Content-Type": "application/json",
+                    "Accept": "audio/mpeg",
+                },
+            )
+    except httpx.RequestError as exc:
+        raise AdTTSError(f"ElevenLabs request failed: {exc}") from exc
+
+    if response.status_code != 200:
+        raise AdTTSError(f"ElevenLabs API error {response.status_code}: {response.text}")
+    if not response.content:
+        raise AdTTSError("ElevenLabs returned empty audio.")
+    return response.content, len(text)
+
+
+def generate_gap_aware_ad_narration(
+    frame_path: Path,
+    gap_duration_sec: float,
+    voice_id: str,
+) -> GeneratedAdNarration:
+    attempt_audio_sec: list[float] = []
+    attempt_word_limits: list[int] = []
+    model_versions: list[str] = []
+    base_word_limit = target_words(gap_duration_sec)
+    last_audio_bytes = b""
+    last_description = ""
+    last_character_count = 0
+    last_duration = 0.0
+    last_word_limit = base_word_limit
+
+    for retry in range(MAX_AUDIO_FIT_RETRIES + 1):
+        word_limit = _retry_word_limit(base_word_limit, retry)
+        description, model_version = _describe_frame_for_ad(
+            frame_path,
+            gap_duration_sec,
+            max_words=word_limit,
+        )
+        if model_version:
+            model_versions.append(model_version)
+        audio_bytes, character_count = synthesize_speech_bytes(description, voice_id)
+        duration = audio_duration_sec(audio_bytes)
+
+        attempt_audio_sec.append(duration)
+        attempt_word_limits.append(word_limit)
+        last_audio_bytes = audio_bytes
+        last_description = description
+        last_character_count = character_count
+        last_duration = duration
+        last_word_limit = word_limit
+
+        if fits_in_gap(duration, gap_duration_sec):
+            metrics = AudioGapFitMetrics(
+                gap_sec=gap_duration_sec,
+                audio_sec=duration,
+                fit=True,
+                retries=retry,
+                truncated=False,
+                fit_ratio=_fit_ratio(duration, gap_duration_sec),
+                overrun_attempts=retry,
+                word_limit=word_limit,
+                max_allowed_sec=_max_allowed_audio_sec(gap_duration_sec),
+                attempt_audio_sec=tuple(attempt_audio_sec),
+                attempt_word_limits=tuple(attempt_word_limits),
+            )
+            _log_audio_gap_fit(metrics)
+            return GeneratedAdNarration(
+                description=description,
+                model_version=_combine_model_versions(model_versions),
+                audio_bytes=audio_bytes,
+                character_count=character_count,
+                audio_duration_sec=duration,
+                audio_fit=metrics,
+            )
+
+    truncated_audio, truncated_duration = _truncate_to_fit(last_audio_bytes, gap_duration_sec)
+    metrics = AudioGapFitMetrics(
+        gap_sec=gap_duration_sec,
+        audio_sec=truncated_duration,
+        fit=True,
+        retries=MAX_AUDIO_FIT_RETRIES,
+        truncated=True,
+        fit_ratio=_fit_ratio(truncated_duration, gap_duration_sec),
+        overrun_attempts=len(attempt_audio_sec),
+        word_limit=last_word_limit,
+        max_allowed_sec=_max_allowed_audio_sec(gap_duration_sec),
+        attempt_audio_sec=tuple([*attempt_audio_sec, truncated_duration]),
+        attempt_word_limits=tuple(attempt_word_limits),
+    )
+    _log_audio_gap_fit(metrics)
+    return GeneratedAdNarration(
+        description=last_description,
+        model_version=_combine_model_versions(model_versions),
+        audio_bytes=truncated_audio,
+        character_count=last_character_count,
+        audio_duration_sec=truncated_duration,
+        audio_fit=metrics,
+    )
+
+
+def build_audio_gap_fit_summary(metrics: Sequence[AudioGapFitMetrics]) -> dict[str, Any]:
+    total = len(metrics)
+    if total == 0:
+        return {
+            "narrations_evaluated": 0,
+            "overrun_count": 0,
+            "overrun_rate": 0.0,
+            "retry_count": 0,
+            "truncation_count": 0,
+            "average_fit_ratio": 0.0,
+            "buffer_sec": OVERRUN_BUFFER,
+        }
+
+    overrun_count = sum(1 for item in metrics if item.overrun_attempts > 0)
+    retry_count = sum(item.retries for item in metrics)
+    truncation_count = sum(1 for item in metrics if item.truncated)
+    average_fit_ratio = sum(item.fit_ratio for item in metrics) / total
+    return {
+        "narrations_evaluated": total,
+        "overrun_count": overrun_count,
+        "overrun_rate": round(overrun_count / total, 3),
+        "retry_count": retry_count,
+        "truncation_count": truncation_count,
+        "average_fit_ratio": round(average_fit_ratio, 3),
+        "buffer_sec": OVERRUN_BUFFER,
+    }
+
+
+def _describe_frame_for_ad(
+    frame_path: Path,
+    gap_duration_sec: float,
+    max_words: int | None = None,
+) -> tuple[str, str]:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise AdDescriptionError("OPENAI_API_KEY is not set.")
 
+    resolved_word_limit = max_words or target_words(gap_duration_sec)
+    prompt = AD_PROMPT_TEMPLATE.format(
+        gap_seconds=gap_duration_sec,
+        max_words=resolved_word_limit,
+    )
     mime_type = mimetypes.guess_type(frame_path.name)[0] or "image/jpeg"
     payload = {
         "model": OPENAI_MODEL,
@@ -195,7 +522,7 @@ def _describe_frame_for_ad(frame_path: Path) -> tuple[str, str]:
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": AD_PROMPT},
+                    {"type": "text", "text": prompt},
                     {
                         "type": "image_url",
                         "image_url": {
@@ -240,42 +567,45 @@ def _describe_frame_for_ad(frame_path: Path) -> tuple[str, str]:
     return description, _model_version_from_response(data)
 
 
-def _synthesize_speech(text: str, voice_id: str, output_path: Path) -> int:
-    api_key = os.getenv("ELEVENLABS_API_KEY")
-    if not api_key:
-        raise AdTTSError("ELEVENLABS_API_KEY is not set.")
-
-    payload = {
-        "text": text,
-        "model_id": ELEVENLABS_MODEL,
-        "voice_settings": {
-            "stability": 0.5,
-            "similarity_boost": 0.75,
-        },
-    }
-
-    try:
-        with httpx.Client(timeout=120.0, follow_redirects=True) as client:
-            response = client.post(
-                ELEVENLABS_TTS_URL.format(voice_id=voice_id),
-                json=payload,
-                headers={
-                    "xi-api-key": api_key,
-                    "Content-Type": "application/json",
-                    "Accept": "audio/mpeg",
-                },
-            )
-    except httpx.RequestError as exc:
-        raise AdTTSError(f"ElevenLabs request failed: {exc}") from exc
-
-    if response.status_code != 200:
-        raise AdTTSError(f"ElevenLabs API error {response.status_code}: {response.text}")
-
+def _write_audio_file(output_path: Path, audio_bytes: bytes) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_bytes(response.content)
+    output_path.write_bytes(audio_bytes)
     if output_path.stat().st_size <= 0:
         raise AdTTSError(f"ElevenLabs returned empty audio for {output_path.name}.")
-    return len(text)
+
+
+def _retry_word_limit(base_word_limit: int, retry: int) -> int:
+    if retry <= 0:
+        return base_word_limit
+    reduced_limit = int(base_word_limit * (SHORTER_RETRY_FACTOR ** retry))
+    return max(3, min(base_word_limit, reduced_limit))
+
+
+def _max_allowed_audio_sec(gap_duration_sec: float) -> float:
+    return max(0.0, gap_duration_sec - OVERRUN_BUFFER)
+
+
+def _fit_ratio(audio_sec: float, gap_duration_sec: float) -> float:
+    if gap_duration_sec <= 0:
+        return 0.0
+    return audio_sec / gap_duration_sec
+
+
+def _truncate_to_fit(audio_bytes: bytes, gap_duration_sec: float) -> tuple[bytes, float]:
+    target_sec = _max_allowed_audio_sec(gap_duration_sec)
+    for attempt in range(MAX_TRUNCATION_ATTEMPTS):
+        trim_target = max(0.05, target_sec - (attempt * TRUNCATION_STEP_SEC))
+        truncated = truncate_audio(audio_bytes, trim_target)
+        duration = audio_duration_sec(truncated)
+        if fits_in_gap(duration, gap_duration_sec):
+            return truncated, duration
+    raise AdTTSError(
+        "Unable to fit narration audio inside the detected gap after retries and truncation."
+    )
+
+
+def _log_audio_gap_fit(metrics: AudioGapFitMetrics) -> None:
+    LOGGER.info("audio-gap-fit %s", json.dumps(metrics.json_dict(), sort_keys=True))
 
 
 def _assistant_text_from_response(data: dict[str, Any]) -> str:
