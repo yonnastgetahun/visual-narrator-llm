@@ -15,9 +15,11 @@ from typing import Any
 from urllib.parse import urlparse
 from uuid import uuid4
 
+import boto3
 import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from botocore.exceptions import BotoCoreError, ClientError
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 from starlette.concurrency import run_in_threadpool
@@ -81,6 +83,8 @@ ADULT_DEMO_RATE_LIMIT_WINDOW_SEC = 3600.0
 ADULT_DEMO_DUPLICATE_WINDOW_SEC = 900.0
 SCENE_CONTEXT_SIZE = 5
 SCENE_RESET_GAP_SEC = 8.0
+UPLOADS_BUCKET = os.getenv("S3_UPLOAD_BUCKET", "vnpoverview-uploads")
+UPLOADS_REGION = os.getenv("AWS_REGION", "us-east-1")
 
 ADULT_AD_PROMPT = (
     "You are writing audio description for an adult content video. "
@@ -99,6 +103,7 @@ ADULT_DEMO_ACTIVE_CLIENTS: set[str] = set()
 ADULT_DEMO_LOCK = asyncio.Lock()
 REPLICATE_REQUEST_LOCK = threading.Lock()
 REPLICATE_NEXT_REQUEST_AT = 0.0
+S3_CLIENT = boto3.client("s3", region_name=UPLOADS_REGION)
 
 
 app = FastAPI(title="Visual Narrator Demo API")
@@ -124,24 +129,43 @@ async def health() -> dict[str, str]:
 @app.get("/api/ad")
 async def stream_ad(
     request: Request,
-    source: str,
+    source: str | None = None,
+    s3_key: str | None = None,
     min_gap: float = 2.0,
     voice_id: str = AD_DEFAULT_VOICE_ID,
 ) -> EventSourceResponse:
+    if request.headers.get("x-vn-entitled") == "0":
+        raise HTTPException(status_code=402, detail="Active billing entitlement required.")
+
     job_id = str(uuid4())
 
     async def event_generator():
         try:
-            if not is_url(source):
+            if bool(source) == bool(s3_key):
+                yield _event("error", {"message": "Provide exactly one of source or s3_key."})
+                return
+            if source and not is_url(source):
                 yield _event("error", {"message": "Source must be a valid http or https URL."})
                 return
 
             with tempfile.TemporaryDirectory(prefix="vn-demo-ad-") as tmp:
                 tmp_root = Path(tmp)
-                video_root = tmp_root / "video"
 
                 yield _event("step", {"step": "download", "message": "Downloading video..."})
-                video_path = await run_in_threadpool(_download_source_video, source, video_root)
+                if s3_key:
+                    video_path = await run_in_threadpool(
+                        fetch_from_s3,
+                        s3_key,
+                        _job_output_dir(job_id) / "input.mp4",
+                    )
+                    resolved_source = f"s3://{UPLOADS_BUCKET}/{s3_key}"
+                else:
+                    video_path = await run_in_threadpool(
+                        _download_source_video,
+                        source,
+                        tmp_root / "video",
+                    )
+                    resolved_source = source
                 if await request.is_disconnected():
                     return
 
@@ -237,7 +261,7 @@ async def stream_ad(
                 tts_cost_estimate = sum(item["tts_cost"] for item in narrations)
                 manifest = {
                     "job_id": job_id,
-                    "source": source,
+                    "source": resolved_source,
                     "duration_seconds": round(compliance.total_duration_sec, 3),
                     "gaps_found": len(gaps),
                     "model_version": _combine_model_versions(model_versions),
@@ -249,7 +273,15 @@ async def stream_ad(
                     "compliance": compliance.json_dict(),
                     "narrations": narrations,
                 }
+                if s3_key:
+                    manifest["s3_key"] = s3_key
                 await run_in_threadpool(_persist_job_outputs, job_id, video_path, narrations, compliance)
+                if s3_key:
+                    try:
+                        await run_in_threadpool(delete_from_s3, s3_key)
+                    except Exception as cleanup_exc:  # noqa: BLE001
+                        print(f"Failed to delete uploaded input {s3_key}: {cleanup_exc}")
+                    video_path.unlink(missing_ok=True)
                 yield _event("complete", {"manifest": manifest})
         except Exception as exc:  # noqa: BLE001
             yield _event("error", {"message": _error_message(exc)})
@@ -1011,6 +1043,27 @@ def _download_direct_video(source_url: str, output_dir: Path) -> Path:
     if not target.exists() or target.stat().st_size <= 0:
         raise YouTubeDownloadError("direct video download produced an empty file")
     return target
+
+
+def fetch_from_s3(s3_key: str, local_path: Path | str) -> Path:
+    target = Path(local_path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+
+    try:
+        S3_CLIENT.download_file(UPLOADS_BUCKET, s3_key, str(target))
+    except (BotoCoreError, ClientError) as exc:
+        raise ValueError(f"Unable to fetch uploaded input from S3: {exc}") from exc
+
+    if not target.exists() or target.stat().st_size <= 0:
+        raise ValueError("S3 download produced an empty input file.")
+    return target
+
+
+def delete_from_s3(s3_key: str) -> None:
+    try:
+        S3_CLIENT.delete_object(Bucket=UPLOADS_BUCKET, Key=s3_key)
+    except (BotoCoreError, ClientError) as exc:
+        raise ValueError(f"Unable to delete uploaded input from S3: {exc}") from exc
 
 
 def _ensure_video_media_file(video_path: Path) -> None:

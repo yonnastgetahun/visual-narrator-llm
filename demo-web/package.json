@@ -7,6 +7,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1045.0",
+    "@aws-sdk/s3-request-presigner": "^3.1045.0",
     "@clerk/nextjs": "^6.9.10",
     "@phosphor-icons/react": "^2.1.10",
     "@types/three": "^0.184.1",
@@ -15,6 +17,7 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "stripe": "^22.1.1",
     "three": "^0.184.0"
   },
   "devDependencies": {

@@ -5,9 +5,20 @@ import { useRouter } from "next/navigation";
 import { useState, useCallback, useRef } from "react";
 
 const EASE_VN = [0.16, 1, 0.3, 1] as const;
+const MAX_UPLOAD_BYTES = 4 * 1024 * 1024 * 1024;
 
 type InputMode = "url" | "file";
-type FileSizeInfo = { name: string; size: string; duration: string; cost: string };
+type FileSizeInfo = { name: string; size: string; duration: string; cost: string; minutes: number };
+type UploadStatus = "idle" | "uploading" | "uploaded" | "error";
+type PresignResponse = {
+  url: string;
+  s3_key: string;
+  expires_in: number;
+};
+
+function estimateDurationMinutes(bytes: number) {
+  return Math.max(1, Math.round((bytes / (1024 * 1024 * 1024)) * 90));
+}
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
@@ -16,11 +27,54 @@ function formatBytes(bytes: number): string {
 
 // Rough estimate: 1GB ~ 90 min film
 function estimateDuration(bytes: number): string {
-  const mins = Math.round((bytes / (1024 * 1024 * 1024)) * 90 * 60);
+  const mins = estimateDurationMinutes(bytes);
   const h = Math.floor(mins / 60);
   const m = mins % 60;
   if (h === 0) return `~${m}m`;
   return `~${h}h ${m}m`;
+}
+
+function uploadFileWithProgress(
+  uploadUrl: string,
+  file: File,
+  onProgress: (progress: number) => void,
+) {
+  return new Promise<void>((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", uploadUrl);
+    if (file.type) {
+      xhr.setRequestHeader("Content-Type", file.type);
+    }
+
+    xhr.upload.addEventListener("progress", (event) => {
+      if (!event.lengthComputable) return;
+      onProgress(Math.round((event.loaded / event.total) * 100));
+    });
+
+    xhr.addEventListener("load", () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        onProgress(100);
+        resolve();
+        return;
+      }
+      reject(new Error(`Upload failed with status ${xhr.status}.`));
+    });
+    xhr.addEventListener("error", () => {
+      reject(new Error("Upload failed before the file reached storage."));
+    });
+    xhr.addEventListener("abort", () => {
+      reject(new Error("Upload was cancelled."));
+    });
+
+    xhr.send(file);
+  });
+}
+
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+  return "Upload failed. Try again.";
 }
 
 export function UploadScreen() {
@@ -30,19 +84,74 @@ export function UploadScreen() {
   const [fileInfo, setFileInfo] = useState<FileSizeInfo | null>(null);
   const [dragging, setDragging] = useState(false);
   const [urlError, setUrlError] = useState<string | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [uploadStatus, setUploadStatus] = useState<UploadStatus>("idle");
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [s3Key, setS3Key] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const handleFile = useCallback((file: File) => {
+  const uploadFile = useCallback(async (file: File) => {
+    if (!file.type.startsWith("video/")) {
+      setFileError("Choose a video file to continue.");
+      setFileInfo(null);
+      setS3Key(null);
+      setUploadStatus("error");
+      return;
+    }
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setFileError("File size exceeds the 4 GB upload limit.");
+      setFileInfo(null);
+      setS3Key(null);
+      setUploadStatus("error");
+      return;
+    }
+
     const durationStr = estimateDuration(file.size);
-    const mins = Math.round((file.size / (1024 * 1024 * 1024)) * 90);
+    const mins = estimateDurationMinutes(file.size);
     const cost = `$${Math.max(39, Math.round(mins / 90 * 39)).toFixed(0)}`;
     setFileInfo({
       name: file.name,
       size: formatBytes(file.size),
       duration: durationStr,
       cost,
+      minutes: mins,
     });
+    setFileError(null);
+    setUrlError(null);
+    setSubmitError(null);
+    setS3Key(null);
+    setUploadProgress(0);
+    setUploadStatus("uploading");
+
+    try {
+      const response = await fetch("/api/upload/presign", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          filename: file.name,
+          contentType: file.type || "application/octet-stream",
+        }),
+      });
+      const payload = (await response.json().catch(() => null)) as
+        | (Partial<PresignResponse> & { error?: string })
+        | null;
+      if (!response.ok || !payload?.url || !payload?.s3_key) {
+        throw new Error(payload?.error || "Unable to prepare the upload.");
+      }
+
+      await uploadFileWithProgress(payload.url, file, setUploadProgress);
+      setS3Key(payload.s3_key);
+      setUploadStatus("uploaded");
+      setSubmitError(null);
+    } catch (error) {
+      setS3Key(null);
+      setUploadStatus("error");
+      setFileError(getErrorMessage(error));
+    }
   }, []);
 
   const onDrop = useCallback(
@@ -50,9 +159,9 @@ export function UploadScreen() {
       e.preventDefault();
       setDragging(false);
       const file = e.dataTransfer.files?.[0];
-      if (file && file.type.startsWith("video/")) handleFile(file);
+      if (file) void uploadFile(file);
     },
-    [handleFile]
+    [uploadFile]
   );
 
   const validateUrl = (val: string) => {
@@ -64,19 +173,68 @@ export function UploadScreen() {
     }
   };
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (mode === "url") {
       if (!url.trim() || !validateUrl(url.trim())) {
         setUrlError("Enter a valid video URL — YouTube, Vimeo, or direct link.");
         return;
       }
+    } else if (!s3Key) {
+      setFileError(
+        uploadStatus === "uploading"
+          ? "Wait for the upload to finish before starting processing."
+          : "Upload a video file before starting processing.",
+      );
+      return;
     }
+
+    setSubmitError(null);
     setSubmitting(true);
-    // In real impl: POST to API, get jobId back, then navigate
-    setTimeout(() => {
-      router.push("/processing/demo-job-001");
-    }, 800);
+
+    try {
+      const response = await fetch("/api/jobs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          estimatedMinutes: mode === "file" && fileInfo ? fileInfo.minutes : 90,
+          s3Key,
+          source: mode === "url" ? url.trim() : undefined,
+          sourceType: mode,
+        }),
+      });
+
+      const payload = (await response.json().catch(() => null)) as
+        | {
+            error?: string;
+            processingUrl?: string;
+            redirectTo?: string;
+          }
+        | null;
+
+      if (response.status === 402) {
+        router.push(payload?.redirectTo || "/pricing");
+        return;
+      }
+
+      if (!response.ok || !payload?.processingUrl) {
+        throw new Error(payload?.error || `Job creation failed with status ${response.status}.`);
+      }
+
+      router.push(payload.processingUrl);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "We couldn't start the job. Please try again.",
+      );
+      setSubmitting(false);
+    }
   }
+
+  const submitDisabled =
+    submitting || (mode === "file" && (uploadStatus === "uploading" || !s3Key));
 
   return (
     <div className="relative min-h-[100dvh] bg-vn-black px-5 pt-20 pb-16 flex flex-col items-center justify-center">
@@ -122,7 +280,12 @@ export function UploadScreen() {
             <button
               key={m}
               type="button"
-              onClick={() => setMode(m)}
+              onClick={() => {
+                setMode(m);
+                setUrlError(null);
+                setFileError(null);
+                setSubmitError(null);
+              }}
               className={`relative flex-1 py-2.5 text-[0.8125rem] font-medium tracking-wide transition-colors duration-200 ${
                 mode === m ? "bg-vn-carbon text-vn-cream" : "text-vn-dim hover:text-vn-mist"
               }`}
@@ -164,6 +327,7 @@ export function UploadScreen() {
                   onChange={(e) => {
                     setUrl(e.target.value);
                     setUrlError(null);
+                    setSubmitError(null);
                   }}
                   placeholder="https://youtube.com/watch?v=..."
                   className="w-full bg-vn-carbon border border-vn-line px-4 py-3.5 text-[0.9375rem] text-vn-cream placeholder:text-vn-dim outline-none focus:border-vn-amber-border transition-colors duration-200"
@@ -175,6 +339,15 @@ export function UploadScreen() {
                     className="mt-2 text-[0.8125rem] text-red-400"
                   >
                     {urlError}
+                  </motion.p>
+                )}
+                {submitError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-[0.8125rem] text-red-400"
+                  >
+                    {submitError}
                   </motion.p>
                 )}
               </motion.div>
@@ -193,7 +366,8 @@ export function UploadScreen() {
                   className="sr-only"
                   onChange={(e) => {
                     const file = e.target.files?.[0];
-                    if (file) handleFile(file);
+                    if (file) void uploadFile(file);
+                    e.currentTarget.value = "";
                   }}
                 />
                 <button
@@ -230,16 +404,64 @@ export function UploadScreen() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="mt-3 border border-vn-amber-border bg-vn-amber-glow px-4 py-3 flex items-center justify-between"
+                      className="mt-3 border border-vn-amber-border bg-vn-amber-glow px-4 py-3"
                     >
-                      <div className="flex flex-col gap-0.5">
-                        <span className="text-[0.9375rem] text-vn-cream font-medium truncate max-w-[24ch]">{fileInfo.name}</span>
-                        <span className="vn-label text-vn-dim">{fileInfo.size} · {fileInfo.duration} estimated</span>
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex min-w-0 flex-col gap-0.5">
+                          <span className="text-[0.9375rem] text-vn-cream font-medium truncate max-w-[24ch]">{fileInfo.name}</span>
+                          <span className="vn-label text-vn-dim">{fileInfo.size} · {fileInfo.duration} estimated</span>
+                        </div>
+                        <span className="font-mono text-vn-amber font-medium">{fileInfo.cost}</span>
                       </div>
-                      <span className="font-mono text-vn-amber font-medium">{fileInfo.cost}</span>
+                      <div className="mt-3 space-y-2">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="vn-label text-vn-dim">
+                            {uploadStatus === "uploading" && `Uploading to secure storage · ${uploadProgress}%`}
+                            {uploadStatus === "uploaded" && "Uploaded to secure storage"}
+                            {uploadStatus === "error" && "Upload failed"}
+                            {uploadStatus === "idle" && "Waiting to upload"}
+                          </span>
+                          {s3Key ? (
+                            <span className="vn-label text-vn-amber">Stored</span>
+                          ) : null}
+                        </div>
+                        <div className="h-[2px] overflow-hidden bg-vn-line">
+                          <motion.div
+                            className={`h-full ${
+                              uploadStatus === "error" ? "bg-red-400" : "bg-vn-amber"
+                            }`}
+                            initial={false}
+                            animate={{
+                              width:
+                                uploadStatus === "error"
+                                  ? "100%"
+                                  : `${uploadStatus === "uploaded" ? 100 : uploadProgress}%`,
+                            }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                          />
+                        </div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
+                {fileError ? (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-[0.8125rem] text-red-400"
+                  >
+                    {fileError}
+                  </motion.p>
+                ) : null}
+                {!fileError && submitError ? (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-[0.8125rem] text-red-400"
+                  >
+                    {submitError}
+                  </motion.p>
+                ) : null}
               </motion.div>
             )}
           </AnimatePresence>
@@ -286,9 +508,9 @@ export function UploadScreen() {
           <motion.button
             type="button"
             onClick={handleSubmit}
-            disabled={submitting}
-            whileHover={{ scale: submitting ? 1 : 1.01 }}
-            whileTap={{ scale: submitting ? 1 : 0.98 }}
+            disabled={submitDisabled}
+            whileHover={{ scale: submitDisabled ? 1 : 1.01 }}
+            whileTap={{ scale: submitDisabled ? 1 : 0.98 }}
             className="w-full bg-vn-amber py-4 text-[0.9375rem] font-medium text-vn-black tracking-wide disabled:opacity-60 transition-opacity duration-200"
           >
             {submitting ? (
@@ -296,12 +518,16 @@ export function UploadScreen() {
                 <span className="h-3.5 w-3.5 rounded-full border-2 border-vn-black border-t-transparent animate-spin" />
                 Starting…
               </span>
+            ) : mode === "file" && uploadStatus === "uploading" ? (
+              "Uploading file…"
+            ) : mode === "file" && !s3Key ? (
+              "Upload file to continue  —  $39"
             ) : (
               "Start audio description  —  $39"
             )}
           </motion.button>
           <p className="mt-3 text-center text-[0.8125rem] text-vn-dim">
-            No account required. Billed once on completion.
+            Active billing entitlement required before processing starts.
           </p>
         </motion.div>
       </div>
