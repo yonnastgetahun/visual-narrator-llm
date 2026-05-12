@@ -10,7 +10,7 @@ def test_claude_api():
     test_configs = [
         {
             "name": "Original Key",
-            "api_key": "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",
+            "api_key": os.environ["ANTHROPIC_API_KEY"],
             "models": ["claude-3-5-sonnet-20241022", "claude-3-5-sonnet-20240620", "claude-3-sonnet-20240229"]
         }
     ]

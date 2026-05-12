@@ -21,11 +21,11 @@ class ProfessionalBenchmark:
         
         # Initialize with correct API keys
         self.claude_client = anthropic.Anthropic(
-            api_key="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"
+            api_key=os.environ["ANTHROPIC_API_KEY"]
         )
         
         self.openai_client = OpenAI(
-            api_key="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"
+            api_key=os.environ["OPENAI_API_KEY"]
         )
         
         # CORRECT MODEL IDs ONLY - no deprecated models

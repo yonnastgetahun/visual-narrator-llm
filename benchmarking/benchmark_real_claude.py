@@ -16,7 +16,7 @@ class RealClaudeBenchmark:
     
     def __init__(self):
         self.claude_client = anthropic.Anthropic(
-            api_key="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"
+            api_key=os.environ["ANTHROPIC_API_KEY"]
         )
         self.our_api_url = "http://localhost:8002"
         self.claude_model = "claude-3-5-sonnet-20241022"  # Your highest available

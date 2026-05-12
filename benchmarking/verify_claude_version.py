@@ -12,7 +12,7 @@ def verify_claude_models():
     """Test Claude API access and available models"""
     
     # Test with our API key
-    api_key = "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"
+    api_key = os.environ["ANTHROPIC_API_KEY"]
     
     log("🔍 VERIFYING CLAUDE MODEL VERSIONS...")
     
@@ -72,7 +72,7 @@ def check_api_quota():
     # Note: Anthropic doesn't have a direct quota endpoint
     # We'll test with a small call
     try:
-        client = anthropic.Anthropic(api_key="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")
+        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
         
         response = client.messages.create(
             model="claude-3-5-sonnet-20240620",  # Use confirmed available model

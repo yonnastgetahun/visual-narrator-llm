@@ -12,7 +12,7 @@ def test_claude_models():
     """Test available Claude models with your API key"""
     
     # Your Claude API key
-    api_key = "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"
+    api_key = os.environ["ANTHROPIC_API_KEY"]
     
     # Available models from your account
     test_models = [

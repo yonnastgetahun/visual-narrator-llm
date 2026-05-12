@@ -15,8 +15,8 @@ class SOTAComparisonBenchmark:
     
     def __init__(self):
         # Setup APIs
-        self.claude_client = anthropic.Anthropic(api_key="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")
-        self.openai_client = openai.OpenAI(api_key="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")
+        self.claude_client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+        self.openai_client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
         
         # Our production API
         self.our_api_url = "http://localhost:8002"
