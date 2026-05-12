@@ -1,0 +1,36 @@
+{
+  "clips_tested": 3,
+  "character_context": true,
+  "overall_quality_ratio": "32.4%",
+  "overall_semantic_similarity": 0.3241,
+  "overall_gap_fit_rate": 1.0,
+  "per_clip": [
+    {
+      "clip": "6nvQySlxSWY.mp4",
+      "gaps_matched": 40,
+      "semantic_similarity_mean": 0.2179,
+      "semantic_similarity_median": 0.1339,
+      "word_count_ratio_mean": 0.5771,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "21.8%"
+    },
+    {
+      "clip": "7ELmyf41TnQ.mp4",
+      "gaps_matched": 41,
+      "semantic_similarity_mean": 0.3093,
+      "semantic_similarity_median": 0.3205,
+      "word_count_ratio_mean": 0.5607,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "30.9%"
+    },
+    {
+      "clip": "v0KOJWyR4SU.mp4",
+      "gaps_matched": 45,
+      "semantic_similarity_mean": 0.4321,
+      "semantic_similarity_median": 0.4474,
+      "word_count_ratio_mean": 0.5035,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "43.2%"
+    }
+  ]
+}
