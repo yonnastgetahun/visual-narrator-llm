@@ -84,10 +84,12 @@ SCENE_RESET_GAP_SEC = 8.0
 
 ADULT_AD_PROMPT = (
     "You are writing audio description for an adult content video. "
-    "Describe what is happening on screen in clear, direct, clinical language. "
-    "Do not use euphemisms. Do not editorialize or add emotional commentary. "
-    "Focus on physical actions, positions, and visible participants. "
-    "Keep the description to 2-3 sentences that fit in a 3-5 second narration gap. "
+    "Describe what is visible on screen in clear, direct, explicit, clinical language for accessibility. "
+    "Do not use euphemisms, teasing, marketing language, or emotional commentary. "
+    "Name visible body positions, sexual actions, clothing changes, and participants directly when clearly visible. "
+    "Use anatomically specific terms when they are plainly visible, but keep the tone neutral and non-sensational. "
+    "Do not infer feelings, consent, or off-screen activity. "
+    "Keep the description to 1-2 short sentences that fit naturally inside the narration gap. "
     "Write in present tense."
 )
 DIRECT_VIDEO_SUFFIXES = {".mp4", ".m4v", ".mov", ".webm", ".mkv"}
@@ -570,7 +572,7 @@ async def stream_ad_adult(
     request: Request,
     source: str,
     min_gap: float = 2.0,
-    voice_id: str = AD_DEFAULT_VOICE_ID,
+    voice_id: str | None = None,
 ) -> EventSourceResponse:
     async def event_generator():
         client_id: str | None = None
