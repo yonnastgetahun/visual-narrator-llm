@@ -2,58 +2,58 @@
   "clip": "v0KOJWyR4SU.mp4",
   "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
   "gaps_matched": 45,
-  "semantic_similarity_mean": 0.3852,
-  "semantic_similarity_median": 0.3915,
-  "word_count_ratio_mean": 0.4151,
+  "semantic_similarity_mean": 0.3838,
+  "semantic_similarity_median": 0.4163,
+  "word_count_ratio_mean": 0.4291,
   "gap_fit_rate": 1.0,
-  "quality_ratio": "38.5%",
+  "quality_ratio": "38.4%",
   "vn_samples": [
     {
       "timestamp": "00:00:02,475 --> 00:00:07,919",
       "vn_timestamp": "00:00:00,000 --> 00:00:28,650",
-      "vn": "Christine, a young blonde woman in a dark coat, sits tense in the dimly lit car, gazing anxiously off-screen to the right.",
+      "vn": "Christine, a young blonde woman, sits in the dimly lit driver's seat, her serious expression reflecting anxiety as she gazes intently outside the car.",
       "reference": "Christine watches as wind picks up a handkerchief from underneath the faded yellow car and carries it through the air.",
-      "similarity": 0.559,
-      "word_count_ratio": 0.9091,
+      "similarity": 0.5333,
+      "word_count_ratio": 0.8333,
       "gap_fit": true,
       "overlap_iou": 0.19
     },
     {
       "timestamp": "00:00:09,667 --> 00:00:16,849",
       "vn_timestamp": "00:00:00,000 --> 00:00:28,650",
-      "vn": "Christine, a young blonde woman in a dark coat, sits tense in the dimly lit car, gazing anxiously off-screen to the right.",
+      "vn": "Christine, a young blonde woman, sits in the dimly lit driver's seat, her serious expression reflecting anxiety as she gazes intently outside the car.",
       "reference": "Christine watches in astonishment as the handkerchief dances under the dim lights of the parking garage, coming closer before it dips out of view.",
-      "similarity": 0.5631,
-      "word_count_ratio": 0.9167,
+      "similarity": 0.525,
+      "word_count_ratio": 1.0,
       "gap_fit": true,
       "overlap_iou": 0.2507
     },
     {
       "timestamp": "00:00:19,860 --> 00:00:21,860",
       "vn_timestamp": "00:00:00,000 --> 00:00:28,650",
-      "vn": "Christine, a young blonde woman in a dark coat, sits tense in the dimly lit car, gazing anxiously off-screen to the right.",
+      "vn": "Christine, a young blonde woman, sits in the dimly lit driver's seat, her serious expression reflecting anxiety as she gazes intently outside the car.",
       "reference": "The handkerchief hits her windshield.",
-      "similarity": 0.3432,
-      "word_count_ratio": 0.2273,
+      "similarity": 0.3754,
+      "word_count_ratio": 0.2083,
       "gap_fit": true,
       "overlap_iou": 0.0698
     },
     {
       "timestamp": "00:00:22,810 --> 00:00:29,692",
       "vn_timestamp": "00:00:00,000 --> 00:00:28,650",
-      "vn": "Christine, a young blonde woman in a dark coat, sits tense in the dimly lit car, gazing anxiously off-screen to the right.",
+      "vn": "Christine, a young blonde woman, sits in the dimly lit driver's seat, her serious expression reflecting anxiety as she gazes intently outside the car.",
       "reference": "Calming herself, Christine follows the handkerchief with her eyes as it slides across the windshield and floats toward the rear of her car.",
-      "similarity": 0.6122,
-      "word_count_ratio": 0.9565,
+      "similarity": 0.6331,
+      "word_count_ratio": 0.9583,
       "gap_fit": true,
       "overlap_iou": 0.1967
     },
     {
       "timestamp": "00:00:49,330 --> 00:00:54,111",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "The old woman grabs Christine's ponytail and yanks the blonde's small hoop earring.",
-      "similarity": 0.5575,
+      "similarity": 0.5033,
       "word_count_ratio": 0.619,
       "gap_fit": true,
       "overlap_iou": 0.0401
@@ -61,9 +61,9 @@
     {
       "timestamp": "00:00:54,471 --> 00:00:57,552",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Christine snags a stapler and whacks her attacker on the head.",
-      "similarity": 0.5439,
+      "similarity": 0.5244,
       "word_count_ratio": 0.5238,
       "gap_fit": true,
       "overlap_iou": 0.0259
@@ -71,9 +71,9 @@
     {
       "timestamp": "00:00:57,952 --> 00:01:02,073",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Ganesh comes at her again and Christine staples the woman's rotten eye shut.",
-      "similarity": 0.6735,
+      "similarity": 0.6622,
       "word_count_ratio": 0.619,
       "gap_fit": true,
       "overlap_iou": 0.0346
@@ -81,9 +81,9 @@
     {
       "timestamp": "00:01:02,914 --> 00:01:08,155",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Lunging, Ganesh knocks the stapler away, slams Christine into the wheel and seizes the blonde's head.",
-      "similarity": 0.5989,
+      "similarity": 0.5983,
       "word_count_ratio": 0.7619,
       "gap_fit": true,
       "overlap_iou": 0.044
@@ -91,9 +91,9 @@
     {
       "timestamp": "00:01:08,715 --> 00:01:12,376",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "With her foot, Christine puts the car in reverse and slams on the gas.",
-      "similarity": 0.6076,
+      "similarity": 0.6161,
       "word_count_ratio": 0.6667,
       "gap_fit": true,
       "overlap_iou": 0.0307
@@ -101,9 +101,9 @@
     {
       "timestamp": "00:01:12,896 --> 00:01:14,977",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "They crash into a parked car.",
-      "similarity": 0.3526,
+      "similarity": 0.4483,
       "word_count_ratio": 0.2857,
       "gap_fit": true,
       "overlap_iou": 0.0175
@@ -111,9 +111,9 @@
     {
       "timestamp": "00:01:16,609 --> 00:01:19,131",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Gathering her bearings, Ganesh pounces again.",
-      "similarity": 0.4094,
+      "similarity": 0.4191,
       "word_count_ratio": 0.2857,
       "gap_fit": true,
       "overlap_iou": 0.0212
@@ -121,9 +121,9 @@
     {
       "timestamp": "00:01:19,173 --> 00:01:21,173",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Christine elbows her in the neck.",
-      "similarity": 0.5858,
+      "similarity": 0.5505,
       "word_count_ratio": 0.2857,
       "gap_fit": true,
       "overlap_iou": 0.0168
@@ -131,9 +131,9 @@
     {
       "timestamp": "00:01:21,373 --> 00:01:23,816",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Undeterred, the old woman puts her in a headlock.",
-      "similarity": 0.3836,
+      "similarity": 0.3383,
       "word_count_ratio": 0.4286,
       "gap_fit": true,
       "overlap_iou": 0.0205
@@ -141,9 +141,9 @@
     {
       "timestamp": "00:01:24,116 --> 00:01:26,699",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Christine's hand trembles as she reaches for the gear shift.",
-      "similarity": 0.6069,
+      "similarity": 0.6038,
       "word_count_ratio": 0.4762,
       "gap_fit": true,
       "overlap_iou": 0.0217
@@ -151,9 +151,9 @@
     {
       "timestamp": "00:01:30,062 --> 00:01:33,205",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "She snags it, shifts into drive, and stomps the gas pedal.",
-      "similarity": 0.3915,
+      "similarity": 0.369,
       "word_count_ratio": 0.5238,
       "gap_fit": true,
       "overlap_iou": 0.0264
@@ -161,9 +161,9 @@
     {
       "timestamp": "00:01:34,186 --> 00:01:37,629",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "As they speed forward toward an SUV, Christine eyes her seatbelt.",
-      "similarity": 0.5608,
+      "similarity": 0.5728,
       "word_count_ratio": 0.5238,
       "gap_fit": true,
       "overlap_iou": 0.0289
@@ -171,9 +171,9 @@
     {
       "timestamp": "00:01:37,930 --> 00:01:40,132",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "She grabs for the latch and wrestles it toward the buckle.",
-      "similarity": 0.3512,
+      "similarity": 0.3424,
       "word_count_ratio": 0.5238,
       "gap_fit": true,
       "overlap_iou": 0.0185
@@ -181,9 +181,9 @@
     {
       "timestamp": "00:01:43,917 --> 00:01:45,917",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Finally, she snaps it in.",
-      "similarity": 0.3463,
+      "similarity": 0.3018,
       "word_count_ratio": 0.2381,
       "gap_fit": true,
       "overlap_iou": 0.0168
@@ -191,9 +191,9 @@
     {
       "timestamp": "00:01:45,569 --> 00:01:47,569",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "See, they're about to crash.",
-      "similarity": 0.3048,
+      "similarity": 0.3336,
       "word_count_ratio": 0.2381,
       "gap_fit": true,
       "overlap_iou": 0.0168
@@ -201,9 +201,9 @@
     {
       "timestamp": "00:01:47,379 --> 00:01:50,103",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "The old woman's eyes go wide and the staple pops out.",
-      "similarity": 0.368,
+      "similarity": 0.3208,
       "word_count_ratio": 0.5238,
       "gap_fit": true,
       "overlap_iou": 0.0229
@@ -211,9 +211,9 @@
     {
       "timestamp": "00:01:50,503 --> 00:01:52,606",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Upon impact, she slams into the dash.",
-      "similarity": 0.4243,
+      "similarity": 0.4163,
       "word_count_ratio": 0.3333,
       "gap_fit": true,
       "overlap_iou": 0.0176
@@ -221,9 +221,9 @@
     {
       "timestamp": "00:01:52,446 --> 00:01:54,446",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Out fly her dentures.",
-      "similarity": 0.2412,
+      "similarity": 0.1824,
       "word_count_ratio": 0.1905,
       "gap_fit": true,
       "overlap_iou": 0.0168
@@ -231,9 +231,9 @@
     {
       "timestamp": "00:01:55,609 --> 00:02:02,217",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Clutching at her mouth, the old woman savagely sneers and renebs onto Christine, feeding the trying to bite the young woman's bottom jaw.",
-      "similarity": 0.5453,
+      "similarity": 0.4981,
       "word_count_ratio": 0.913,
       "gap_fit": true,
       "overlap_iou": 0.0554
@@ -241,9 +241,9 @@
     {
       "timestamp": "00:02:04,173 --> 00:02:06,955",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Christine shoves the slobbering woman into the passenger door.",
-      "similarity": 0.6266,
+      "similarity": 0.5968,
       "word_count_ratio": 0.4286,
       "gap_fit": true,
       "overlap_iou": 0.0233
@@ -251,9 +251,9 @@
     {
       "timestamp": "00:02:07,376 --> 00:02:12,440",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Ganesh feels for her missing teeth, then spots them on the gear shift panel and stuffs them into her mouth.",
-      "similarity": 0.4679,
+      "similarity": 0.4389,
       "word_count_ratio": 0.9524,
       "gap_fit": true,
       "overlap_iou": 0.0425
@@ -261,9 +261,9 @@
     {
       "timestamp": "00:02:13,050 --> 00:02:15,050",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "The teeth are broken and jagged.",
-      "similarity": 0.2425,
+      "similarity": 0.1925,
       "word_count_ratio": 0.2857,
       "gap_fit": true,
       "overlap_iou": 0.0168
@@ -271,9 +271,9 @@
     {
       "timestamp": "00:02:15,033 --> 00:02:17,033",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Christine unbuckles and grabs a metal ruler.",
-      "similarity": 0.5056,
+      "similarity": 0.4903,
       "word_count_ratio": 0.3333,
       "gap_fit": true,
       "overlap_iou": 0.0168
@@ -281,9 +281,9 @@
     {
       "timestamp": "00:02:17,343 --> 00:02:21,627",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Ganesh comes at her again, and Christine stabs the ruler into the woman's open mouth.",
-      "similarity": 0.6447,
+      "similarity": 0.6394,
       "word_count_ratio": 0.7143,
       "gap_fit": true,
       "overlap_iou": 0.0359
@@ -291,9 +291,9 @@
     {
       "timestamp": "00:02:23,368 --> 00:02:30,914",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "With a cough, the ruler shoots back at Christine, who dodges it, then fiercely kicks the old woman, sending her flying out the passenger door.",
-      "similarity": 0.5441,
+      "similarity": 0.5205,
       "word_count_ratio": 0.84,
       "gap_fit": true,
       "overlap_iou": 0.0633
@@ -301,9 +301,9 @@
     {
       "timestamp": "00:02:32,475 --> 00:02:36,218",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "Mrs. Ganesh scrambles for the door, but Christine pulls it shut and locks it.",
-      "similarity": 0.6974,
+      "similarity": 0.7286,
       "word_count_ratio": 0.6667,
       "gap_fit": true,
       "overlap_iou": 0.0314
@@ -311,9 +311,9 @@
     {
       "timestamp": "00:02:36,518 --> 00:02:40,542",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "The old woman tries the back door, but Christine beats her to it, engaging the lock.",
-      "similarity": 0.5042,
+      "similarity": 0.5487,
       "word_count_ratio": 0.7619,
       "gap_fit": true,
       "overlap_iou": 0.0338
@@ -321,9 +321,9 @@
     {
       "timestamp": "00:02:43,505 --> 00:02:47,368",
       "vn_timestamp": "00:00:48,330 --> 00:02:47,505",
-      "vn": "Christine, visibly distressed and in shock, gasps for air inside the dimly lit car, while Mrs. Ganesh aggressively pulls her hair.",
+      "vn": "Christine struggles against Mrs. Ganesh's tight grip in the dimly lit car, while chaos erupts outside as a car crashes nearby.",
       "reference": "As Mrs. Ganesh beats helplessly on the window, Christine laughs with relief.",
-      "similarity": 0.7318,
+      "similarity": 0.7108,
       "word_count_ratio": 0.5714,
       "gap_fit": true,
       "overlap_iou": 0.0324
@@ -451,10 +451,10 @@
     {
       "timestamp": "00:04:11,591 --> 00:04:15,854",
       "vn_timestamp": "00:04:09,705 --> 00:04:46,836",
-      "vn": "No.",
+      "vn": "Mrs. Ganesh, shocked and disheveled, loosens her grip on Christine as the scene transitions to the film's credits, displaying names and images against a dark background.",
       "reference": "She sets the button in the palm of Christine's hand and folds the young woman's fingers over it.",
-      "similarity": 0.1066,
-      "word_count_ratio": 0.0556,
+      "similarity": 0.4049,
+      "word_count_ratio": 0.6923,
       "gap_fit": true,
       "overlap_iou": 0.1148
     }
