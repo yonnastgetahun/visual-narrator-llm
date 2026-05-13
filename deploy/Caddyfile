@@ -1,0 +1,7 @@
+# Visual Narrator — App Box Caddyfile
+# Deploy to: /etc/caddy/Caddyfile on vn-app-nuremberg-01
+# Caddy auto-provisions TLS via Let's Encrypt for api.vnpoverview.com
+
+api.vnpoverview.com {
+    reverse_proxy localhost:8000
+}

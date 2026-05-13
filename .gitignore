@@ -38,6 +38,7 @@ lambda-package/
 # Environment
 .env
 .env.*
+!.env.example
 
 # Model weights (large files)
 *.bin

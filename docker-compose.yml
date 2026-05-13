@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:8000:8000"
+    networks:
+      - vn
+
+  cobalt:
+    image: ghcr.io/imputnet/cobalt:10
+    restart: unless-stopped
+    networks:
+      - vn
+
+networks:
+  vn:
+    driver: bridge
