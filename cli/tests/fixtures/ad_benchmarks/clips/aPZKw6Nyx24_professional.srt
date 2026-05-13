@@ -1,0 +1,607 @@
+1
+00:00:01,000 --> 00:00:03,500
+A chef stirs a pot while staff move around a busy restaurant kitchen.
+
+2
+00:00:06,000 --> 00:00:08,500
+A man swings a frying pan toward another man in a dimly lit kitchen.
+
+3
+00:00:08,500 --> 00:00:11,000
+Two men are grappling each other in a dimly lit kitchen, while other cooks work.
+
+4
+00:00:11,000 --> 00:00:13,500
+A person in a dark jacket rushes past, holding a camera in a dimly lit room.
+
+5
+00:00:13,500 --> 00:00:16,000
+A figure runs through a dimly lit kitchen with equipment and ingredients scattered around.
+
+6
+00:00:16,000 --> 00:00:18,500
+A man holds another man's leg while sitting on a cluttered kitchen countertop.
+
+7
+00:00:18,500 --> 00:00:21,000
+A man in a black jacket moves quickly through a commercial kitchen, partially obscured.
+
+8
+00:00:21,000 --> 00:00:23,500
+A man in a suit dramatically swings a long coat around him.
+
+9
+00:00:23,500 --> 00:00:26,000
+A blurred motion captures a dimly lit room filled with shelves and various objects.
+
+10
+00:00:26,000 --> 00:00:28,500
+A man in black clothes punches another man, who grins in a kitchen setting.
+
+11
+00:00:28,500 --> 00:00:31,000
+A figure in a dark coat rushes through a dimly lit kitchen.
+
+12
+00:00:31,000 --> 00:00:33,500
+A man punches a second man, shattering a glass display case behind them.
+
+13
+00:00:33,500 --> 00:00:36,000
+A person lies on the ground, struggling as two figures loom over them.
+
+14
+00:00:36,000 --> 00:00:38,500
+A man in a black outfit stands in a dimly lit kitchen holding a kettle.
+
+15
+00:00:38,500 --> 00:00:41,000
+A man in a suit confronts another man in a kitchen, both appearing tense.
+
+16
+00:00:41,000 --> 00:00:43,500
+A man in a black suit stands in a dimly lit kitchen, looking tense.
+
+17
+00:00:43,500 --> 00:00:46,000
+A man leans over a red gas canister, inspecting it inside a dimly lit room.
+
+18
+00:00:46,000 --> 00:00:48,500
+A red gas cylinder stands upright, with flames flickering near its base.
+
+19
+00:00:48,500 --> 00:00:51,000
+A hand reaches for a large knife resting on a metal countertop.
+
+20
+00:00:51,000 --> 00:00:53,500
+A person in a dark suit stands over a table in a dimly lit area.
+
+21
+00:00:53,500 --> 00:00:56,000
+A figure in dark clothing rushes past a stainless steel kitchen counter.
+
+22
+00:00:56,000 --> 00:00:58,500
+A man with dark hair swiftly moves through a dimly lit room.
+
+23
+00:00:58,500 --> 00:01:01,000
+Three men in dark clothing are forcefully escorting an older man down a corridor.
+
+24
+00:01:01,000 --> 00:01:03,500
+A man in a suit punches another man in an enclosed elevator space.
+
+25
+00:01:03,500 --> 00:01:06,000
+Two men struggle against a wooden door, with blood streaked across its surface.
+
+26
+00:01:06,000 --> 00:01:08,500
+A blurred figure lunges forward in a dimly lit, reddish environment.
+
+27
+00:01:08,500 --> 00:01:11,000
+A hand reaches for a small object on a dark surface, illuminated faintly.
+
+28
+00:01:11,000 --> 00:01:13,500
+A man forces another man against the wall while holding a gun in an elevator.
+
+29
+00:01:13,500 --> 00:01:16,000
+Two men grapple with a third man in a cramped, dimly lit elevator.
+
+30
+00:01:16,000 --> 00:01:18,500
+Two men grapple in a confined space, one attempting to stab the other.
+
+31
+00:01:18,500 --> 00:01:21,000
+A man grapples with another, holding a gun in a tense elevator confrontation.
+
+32
+00:01:21,000 --> 00:01:23,500
+Two men struggle violently in a narrow space, one holding a knife near the other's throat.
+
+33
+00:01:23,500 --> 00:01:26,000
+A man with a knife confronts another man, both displaying intense expressions in a cramped space.
+
+34
+00:01:26,000 --> 00:01:28,500
+A man grips a knife, pressing it threateningly against another man's neck in close quarters.
+
+35
+00:01:28,500 --> 00:01:31,000
+Two men are face-to-face, one holding a knife, both displaying tense expressions.
+
+36
+00:01:31,000 --> 00:01:33,500
+A man with a gun is pressing it against another man's forehead in a tense confrontation.
+
+37
+00:01:33,500 --> 00:01:36,000
+Two men grapple closely, one with a shocked expression and the other biting his neck.
+
+38
+00:01:36,000 --> 00:01:38,500
+A man with blood on his face grips another man's neck in a tense confrontation.
+
+39
+00:01:38,500 --> 00:01:41,000
+A man with disheveled hair, blood on his face, stands against a blood-splattered wall.
+
+40
+00:01:41,000 --> 00:01:43,500
+A woman sings on stage while an audience enjoys their drinks in a dimly lit room.
+
+41
+00:01:43,500 --> 00:01:46,000
+A woman in an elegant dress smiles while standing next to two men in suits.
+
+42
+00:01:46,000 --> 00:01:48,500
+A hand presses a blood-stained button on an ornate, worn device on a dark surface.
+
+43
+00:01:48,500 --> 00:01:51,000
+Audience members sit in a dimly lit room, watching a performance with interest.
+
+44
+00:01:51,000 --> 00:01:53,500
+A red gas cylinder sits atop a wooden crate, with flames glowing below it.
+
+45
+00:01:53,500 --> 00:01:56,000
+A man with tousled hair stands underneath soft, glowing light, surrounded by a haze of smoke.
+
+46
+00:01:56,000 --> 00:01:58,500
+A red gas cylinder stands on a metal platform, partially illuminated by overhead light.
+
+47
+00:01:58,500 --> 00:02:01,000
+A woman in elegant attire claps while seated at a dining table in a crowded restaurant.
+
+48
+00:02:01,000 --> 00:02:03,500
+A man stands against a wall, illuminated by red lighting, wearing a black outfit.
+
+49
+00:02:03,500 --> 00:02:06,000
+A crystal chandelier sparkles, adorned with dangling glass droplets reflecting light.
+
+50
+00:02:06,000 --> 00:02:08,500
+A gold elevator button panel is mounted on a wooden wall beside an ornate mirror.
+
+51
+00:02:08,500 --> 00:02:11,000
+A hand reaches toward an elevator button illuminated above a engraved surface.
+
+52
+00:02:11,000 --> 00:02:13,500
+A crowd of elegantly dressed people sits at tables in a dimly lit restaurant.
+
+53
+00:02:13,500 --> 00:02:16,000
+A man stands in a dimly lit elevator hallway, smoke swirling around him.
+
+54
+00:02:16,000 --> 00:02:18,500
+A man in a black shirt turns away as sparks fly near him.
+
+55
+00:02:18,500 --> 00:02:21,000
+A man with a serious expression stands illuminated, while another man lurks in the background.
+
+56
+00:02:21,000 --> 00:02:23,500
+A man with disheveled hair and a grim expression raises his arm, revealing blood on his face.
+
+57
+00:02:23,500 --> 00:02:26,000
+A man in a black shirt stands with a tense expression, facing an ornate painting.
+
+58
+00:02:26,000 --> 00:02:28,500
+A man stands in a dimly lit room, glancing towards the door with concern.
+
+59
+00:02:28,500 --> 00:02:31,000
+A group of people gathers around dimly lit tables with plates and drinks.
+
+60
+00:02:31,000 --> 00:02:33,500
+A person is being restrained while another figure pulls them back in a dimly lit room.
+
+61
+00:02:33,500 --> 00:02:36,000
+A hand holds a firework fuse, igniting sparks against a smoky background.
+
+62
+00:02:36,000 --> 00:02:38,500
+Two men are engaged in a fight in a dimly lit bar, with smoke around them.
+
+63
+00:02:38,500 --> 00:02:41,000
+A man falls backward while another person stands over him, as chaos unfolds around them.
+
+64
+00:02:41,000 --> 00:02:43,500
+A man in a suit suddenly jumps in a dimly lit restaurant, creating tension.
+
+65
+00:02:46,000 --> 00:02:48,500
+A man in a dark suit lunges at another man in a dimly lit bar.
+
+66
+00:02:48,500 --> 00:02:51,000
+A man runs through a dimly lit room, dodging objects and debris.
+
+67
+00:02:51,000 --> 00:02:53,500
+A man in a dark suit runs through a dimly lit restaurant, looking anxious.
+
+68
+00:02:53,500 --> 00:02:56,000
+Two figures engage in a frantic fight, throwing punches in a dimly lit room.
+
+69
+00:02:56,000 --> 00:02:58,500
+A man in a black coat crouches at a table in a dimly lit restaurant.
+
+70
+00:02:58,500 --> 00:03:01,000
+A person lies on the ground, partially obscured by shadow, with a bright light overhead.
+
+71
+00:03:01,000 --> 00:03:03,500
+A woman in a black dress runs frantically across a dimly lit room.
+
+72
+00:03:03,500 --> 00:03:06,000
+A man in a black suit throws a punch in a dimly lit bar.
+
+73
+00:03:06,000 --> 00:03:08,500
+A man with dark hair and a mustache turns to face the camera in a dimly lit bar.
+
+74
+00:03:08,500 --> 00:03:11,000
+A server approaches a table with a glowing orb and elegantly set place settings.
+
+75
+00:03:11,000 --> 00:03:13,500
+A blurred figure in a suit swiftly moves through a dimly lit restaurant.
+
+76
+00:03:13,500 --> 00:03:16,000
+Two men in dark clothing engage in a fierce fistfight in a dimly lit room.
+
+77
+00:03:16,000 --> 00:03:18,500
+A man kicks another man, sending him sliding across the wooden floor.
+
+78
+00:03:18,500 --> 00:03:21,000
+Two men are engaged in an intense fight inside a dimly lit bar.
+
+79
+00:03:21,000 --> 00:03:23,500
+Two men grapple on the floor, one pinning the other down in a fight.
+
+80
+00:03:23,500 --> 00:03:26,000
+A man crouches beside a table, reaching for a overturned drink.
+
+81
+00:03:26,000 --> 00:03:28,500
+A man in a dark coat runs through a dimly lit bar, evading danger.
+
+82
+00:03:28,500 --> 00:03:31,000
+Two men run through a dimly lit bar, evading an unseen threat.
+
+83
+00:03:31,000 --> 00:03:33,500
+Two men struggle on a bar, one holding the other by the throat.
+
+84
+00:03:33,500 --> 00:03:36,000
+A man in dark clothing grapples with another man in a dimly lit bar.
+
+85
+00:03:36,000 --> 00:03:38,500
+A man in a dark shirt turns abruptly, avoiding an attack from another figure.
+
+86
+00:03:38,500 --> 00:03:41,000
+Two men are physically fighting in a dimly lit bar surrounded by shelves of liquor.
+
+87
+00:03:41,000 --> 00:03:43,500
+Two figures are engaged in a struggle in a dimly lit room filled with bottles.
+
+88
+00:03:43,500 --> 00:03:46,000
+A man in black clothing walks through a dimly lit room with golden shelves.
+
+89
+00:03:46,000 --> 00:03:48,500
+Two men engage in a physical confrontation, grappling near a bar with bottles.
+
+90
+00:03:48,500 --> 00:03:51,000
+Two men struggle violently in a dimly lit bar, one holding a bottle as a weapon.
+
+91
+00:03:51,000 --> 00:03:53,500
+A man with dark hair stands in a dimly lit bar, looking upwards.
+
+92
+00:03:53,500 --> 00:03:56,000
+A group of men with intense expressions crowded together in a dimly lit elevator.
+
+93
+00:03:56,000 --> 00:03:58,500
+A man in a suit turns, walking through a dimly lit bar with art on the walls.
+
+94
+00:03:58,500 --> 00:04:01,000
+Three men in dark clothing enter a dimly lit bar, approaching a table.
+
+95
+00:04:01,000 --> 00:04:03,500
+A woman in dark clothing stands between two men in a dimly lit restaurant.
+
+96
+00:04:03,500 --> 00:04:06,000
+A man with blood on his face looks distressed in a dimly lit room.
+
+97
+00:04:06,000 --> 00:04:08,500
+A man with a mustache leans forward, intensively listening in a dimly lit room.
+
+98
+00:04:08,500 --> 00:04:11,000
+A man with messy hair leans forward, looking intently, shadows cast across his face.
+
+99
+00:04:11,000 --> 00:04:13,500
+A bloodied man with tousled hair looks upward, tension etched on his face.
+
+100
+00:04:13,500 --> 00:04:16,000
+A man with wet, tousled hair stands solemnly, facing a dimly lit room full of people.
+
+101
+00:04:16,000 --> 00:04:18,500
+A heavily armored figure stands in an entrance, illuminated by wall sconces.
+
+102
+00:04:18,500 --> 00:04:21,000
+Six performers in elaborate costumes and masks stand in a dimly lit room.
+
+103
+00:04:21,000 --> 00:04:23,500
+Four women with painted faces stand side by side, adorned in intricate jewelry.
+
+104
+00:04:23,500 --> 00:04:26,000
+A group of women in ornate costumes stand in a dimly lit room.
+
+105
+00:04:26,000 --> 00:04:28,500
+A hand holds a silver chain with a small, detailed car pendant.
+
+106
+00:04:28,500 --> 00:04:31,000
+A hand holds a firecracker with a sparkler igniting from it.
+
+107
+00:04:31,000 --> 00:04:33,500
+A man with curly hair and a tense expression gazes over his shoulder in a dimly lit room.
+
+108
+00:04:33,500 --> 00:04:36,000
+A man with striking makeup gazes intensely, flanked by two women in traditional attire.
+
+109
+00:04:36,000 --> 00:04:38,500
+A man with a bruised face looks intensely to the side in a dimly lit room.
+
+110
+00:04:38,500 --> 00:04:41,000
+A smiling man with dramatic makeup and ornate clothing fills the frame.
+
+111
+00:04:41,000 --> 00:04:43,500
+Dancers in ornate costumes perform energetically in a dimly lit, festive room.
+
+112
+00:04:43,500 --> 00:04:46,000
+A person in dark clothing swings a stick toward another person adorned in colorful attire.
+
+113
+00:04:46,000 --> 00:04:48,500
+A cloaked figure moves swiftly through a dimly lit, elegant restaurant.
+
+114
+00:04:48,500 --> 00:04:51,000
+A figure in dark clothing lunges forward, partially obscured against a glowing backdrop.
+
+115
+00:04:51,000 --> 00:04:53,500
+A silhouetted figure leaps over a bar while a figure lies motionless on the floor.
+
+116
+00:04:53,500 --> 00:04:56,000
+Two silhouetted figures engage in a standoff on a bar, framed by a lit bottle display.
+
+117
+00:04:56,000 --> 00:04:58,500
+A bright explosion erupts from a wooden cabinet, scattering debris across the room.
+
+118
+00:04:58,500 --> 00:05:01,000
+Two silhouetted figures engage in a tense duel against a brightly lit bar backdrop.
+
+119
+00:05:01,000 --> 00:05:03,500
+A man in black clothing falls backward, blurring against a brightly lit bar shelf.
+
+120
+00:05:03,500 --> 00:05:06,000
+A man is swinging his arm, appearing to strike another figure in a dimly lit bar.
+
+121
+00:05:06,000 --> 00:05:08,500
+A figure wearing a hooded coat stands next to a bright explosion of sparks.
+
+122
+00:05:08,500 --> 00:05:11,000
+A vibrant, patterned fabric sways as it moves through the frame, capturing attention.
+
+123
+00:05:11,000 --> 00:05:13,500
+A man with long hair stands amidst smoke, his face illuminated by flickering flames.
+
+124
+00:05:13,500 --> 00:05:16,000
+A dancer in ornate costume moves gracefully amid dim lighting and decorative surroundings.
+
+125
+00:05:16,000 --> 00:05:18,500
+A regal portrait of a man wearing a blue garment and a decorative white turban.
+
+126
+00:05:18,500 --> 00:05:21,000
+A colorful, ornate tapestry swirls rapidly, revealing intricate patterns and designs.
+
+127
+00:05:21,000 --> 00:05:23,500
+A spinning ornate spinner with intricate designs glimmers in the light.
+
+128
+00:05:23,500 --> 00:05:26,000
+A man in a black shirt runs through a dimly lit bar, looking anxious.
+
+129
+00:05:26,000 --> 00:05:28,500
+A man in a dark suit walks swiftly across a dimly lit room.
+
+130
+00:05:28,500 --> 00:05:31,000
+A crystal chandelier hangs above, reflecting light onto the dark floor below.
+
+131
+00:05:31,000 --> 00:05:33,500
+A large chandelier with glowing bulbs hangs above a dimly lit floor.
+
+132
+00:05:33,500 --> 00:05:36,000
+Two figures engage in a fight on a dimly lit floor surrounded by scattered furniture.
+
+133
+00:05:36,000 --> 00:05:38,500
+A figure lies on the floor under a dimly lit lamp, surrounded by scattered debris.
+
+134
+00:05:38,500 --> 00:05:41,000
+A man runs away from a dimly lit bar, illuminated by flickering candlelight.
+
+135
+00:05:41,000 --> 00:05:43,500
+A woman in a dark cloak looks anxiously to her right as confetti falls.
+
+136
+00:05:43,500 --> 00:05:46,000
+A man in a black suit stands tense, while another figure is engaged in a struggle behind him.
+
+137
+00:05:46,000 --> 00:05:48,500
+A blurred figure approaches a golden elevator door illuminated by soft, warm lights.
+
+138
+00:05:48,500 --> 00:05:51,000
+A woman aims a handgun forward, shooting while displaying a fierce expression.
+
+139
+00:05:51,000 --> 00:05:53,500
+A figure runs through a dimly lit bar, with shelves lined with bottles in the background.
+
+140
+00:05:53,500 --> 00:05:56,000
+A person aims a handgun towards an unseen target in a dimly lit room.
+
+141
+00:05:56,000 --> 00:05:58,500
+A man with dark hair turns towards a dimly lit corner in a room.
+
+142
+00:05:58,500 --> 00:06:01,000
+A woman points a handgun forward with a determined expression against a dimly lit background.
+
+143
+00:06:01,000 --> 00:06:03,500
+A man with curly hair looks upward towards a painting on the wall.
+
+144
+00:06:03,500 --> 00:06:06,000
+A man with dark, tousled hair stands close to a wooden door.
+
+145
+00:06:06,000 --> 00:06:08,500
+A woman in a dark outfit angrily points a handgun towards an unseen person.
+
+146
+00:06:08,500 --> 00:06:11,000
+A woman in a silver dress stands at a bar, her expression pensive and somber.
+
+147
+00:06:11,000 --> 00:06:13,500
+A man stands in a dimly lit room, partially turned with a serious expression.
+
+148
+00:06:13,500 --> 00:06:16,000
+A woman stands in a dimly lit bar, covered in blood and visibly distressed.
+
+149
+00:06:16,000 --> 00:06:18,500
+A woman in a purple dress stands bloody and distressed in a dimly lit room.
+
+150
+00:06:18,500 --> 00:06:21,000
+Abstract shapes, including a tomato and splash, are layered against a blue background.
+
+151
+00:06:21,000 --> 00:06:23,500
+A blue background features abstract purple shapes, including a splatter and a tomato silhouette.
+
+152
+00:06:23,500 --> 00:06:26,000
+A blue gradient background displays dark purple shapes resembling splatters and tomatoes.

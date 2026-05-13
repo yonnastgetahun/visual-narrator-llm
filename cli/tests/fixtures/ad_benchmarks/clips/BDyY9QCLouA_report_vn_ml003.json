@@ -1,0 +1,82 @@
+{
+  "clip": "BDyY9QCLouA.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 7,
+  "semantic_similarity_mean": 0.4588,
+  "semantic_similarity_median": 0.5674,
+  "word_count_ratio_mean": 0.5295,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "45.9%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:03,500 --> 00:00:06,000",
+      "vn_timestamp": "00:00:04,240 --> 00:00:06,960",
+      "vn": "Max reads note aloud: \"Ed Norton.\"",
+      "reference": "An hourglass with a yellow top sits on a wooden table surrounded by food.",
+      "similarity": 0.1196,
+      "word_count_ratio": 0.4286,
+      "gap_fit": true,
+      "overlap_iou": 0.5087
+    },
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:04,240 --> 00:00:06,960",
+      "vn": "Max reads note aloud: \"Ed Norton.\"",
+      "reference": "A hand holds a torn paper with \"ED NORTON\" handwritten on it.",
+      "similarity": 0.4622,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.2254
+    },
+    {
+      "timestamp": "00:00:43,500 --> 00:00:46,000",
+      "vn_timestamp": "00:00:45,665 --> 00:00:56,773",
+      "vn": "The scene transitions to a yellow screen with icons and text prompting viewers to subscribe, watch more, or get tickets now. No characters or actions are present.",
+      "reference": "A group of six friends sit around a coffee table filled with snacks and drinks.",
+      "similarity": 0.1784,
+      "word_count_ratio": 0.5556,
+      "gap_fit": true,
+      "overlap_iou": 0.0252
+    },
+    {
+      "timestamp": "00:00:46,000 --> 00:00:48,500",
+      "vn_timestamp": "00:00:45,665 --> 00:00:56,773",
+      "vn": "The scene transitions to a yellow screen with icons and text prompting viewers to subscribe, watch more, or get tickets now. No characters or actions are present.",
+      "reference": "The frame features a bright yellow background with text promoting subscriptions and ticket purchases.",
+      "similarity": 0.5674,
+      "word_count_ratio": 0.5185,
+      "gap_fit": true,
+      "overlap_iou": 0.2251
+    },
+    {
+      "timestamp": "00:00:48,500 --> 00:00:51,000",
+      "vn_timestamp": "00:00:45,665 --> 00:00:56,773",
+      "vn": "The scene transitions to a yellow screen with icons and text prompting viewers to subscribe, watch more, or get tickets now. No characters or actions are present.",
+      "reference": "The background features a vibrant yellow pattern with various icons and text promoting subscriptions.",
+      "similarity": 0.5805,
+      "word_count_ratio": 0.5185,
+      "gap_fit": true,
+      "overlap_iou": 0.2251
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:45,665 --> 00:00:56,773",
+      "vn": "The scene transitions to a yellow screen with icons and text prompting viewers to subscribe, watch more, or get tickets now. No characters or actions are present.",
+      "reference": "Text prompts display on a bright yellow background, inviting viewers to subscribe or get tickets.",
+      "similarity": 0.7246,
+      "word_count_ratio": 0.5556,
+      "gap_fit": true,
+      "overlap_iou": 0.2251
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:45,665 --> 00:00:56,773",
+      "vn": "The scene transitions to a yellow screen with icons and text prompting viewers to subscribe, watch more, or get tickets now. No characters or actions are present.",
+      "reference": "The frame features a bright yellow background with various icons and buttons for subscriptions and ticket purchases.",
+      "similarity": 0.5793,
+      "word_count_ratio": 0.6296,
+      "gap_fit": true,
+      "overlap_iou": 0.2251
+    }
+  ]
+}

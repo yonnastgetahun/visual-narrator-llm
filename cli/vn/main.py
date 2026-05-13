@@ -115,6 +115,16 @@ def benchmark(
         "--no-auto-detect",
         help="Disable automatic name detection from audio when no --characters file is provided.",
     ),
+    two_stage: bool = typer.Option(
+        False,
+        "--two-stage",
+        help="Use two-stage generation: dense VLM description → GPT-4o mini compression → hallucination filter.",
+    ),
+    text_only: bool = typer.Option(
+        True,
+        "--text-only/--no-text-only",
+        help="Skip TTS synthesis (benchmark mode: text metrics only, no audio files written).",
+    ),
     api_url: str = ApiUrl,
 ) -> None:
     """Run the quality benchmark against professional AD, or a legacy single-frame benchmark."""
@@ -132,6 +142,8 @@ def benchmark(
                 voice_id=voice_id,
                 character_sheet=characters,
                 auto_detect_names=not no_auto_detect,
+                two_stage=two_stage,
+                text_only=text_only,
             )
         except (FileNotFoundError, BenchmarkError, GapDetectionError, FrameExtractionError, AdDescriptionError, AdTTSError) as exc:
             _fail(str(exc))

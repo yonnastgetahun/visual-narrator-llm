@@ -1,0 +1,1812 @@
+{
+  "clip": "Lm1eYqp9_RI.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 180,
+  "semantic_similarity_mean": 0.2962,
+  "semantic_similarity_median": 0.286,
+  "word_count_ratio_mean": 0.4884,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "29.6%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:01,000 --> 00:00:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:00:02,720",
+      "vn": "Kate Cooper observes storm from vehicle.",
+      "reference": "A woman glances back, her hair blowing in the wind, as she leans toward a vehicle.",
+      "similarity": 0.3917,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.4914
+    },
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A person in dark clothing is kicking upward while being propelled by an explosion.",
+      "similarity": 0.4294,
+      "word_count_ratio": 0.4516,
+      "gap_fit": true,
+      "overlap_iou": 0.1078
+    },
+    {
+      "timestamp": "00:00:08,500 --> 00:00:11,000",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A strong tornado sweeps through a deserted street, scattering debris and flags.",
+      "similarity": 0.53,
+      "word_count_ratio": 0.3871,
+      "gap_fit": true,
+      "overlap_iou": 0.1118
+    },
+    {
+      "timestamp": "00:00:11,000 --> 00:00:13,500",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A red streetcar travels down a debris-strewn street amid strong winds and dark clouds.",
+      "similarity": 0.4692,
+      "word_count_ratio": 0.4516,
+      "gap_fit": true,
+      "overlap_iou": 0.1118
+    },
+    {
+      "timestamp": "00:00:16,000 --> 00:00:18,500",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A red trolley rolls down a debris-strewn street amid a dark, stormy atmosphere.",
+      "similarity": 0.4728,
+      "word_count_ratio": 0.4194,
+      "gap_fit": true,
+      "overlap_iou": 0.1118
+    },
+    {
+      "timestamp": "00:00:18,500 --> 00:00:21,000",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A man struggles to lift a fallen metal structure amid a cloudy, chaotic scene.",
+      "similarity": 0.5552,
+      "word_count_ratio": 0.4516,
+      "gap_fit": true,
+      "overlap_iou": 0.1118
+    },
+    {
+      "timestamp": "00:00:21,000 --> 00:00:23,500",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A massive structure looms under a stormy sky, with debris scattered around it.",
+      "similarity": 0.4983,
+      "word_count_ratio": 0.4194,
+      "gap_fit": true,
+      "overlap_iou": 0.1118
+    },
+    {
+      "timestamp": "00:00:23,500 --> 00:00:26,000",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A young woman runs toward a fallen red double-decker bus amidst debris and dust.",
+      "similarity": 0.4629,
+      "word_count_ratio": 0.4516,
+      "gap_fit": true,
+      "overlap_iou": 0.1118
+    },
+    {
+      "timestamp": "00:00:26,000 --> 00:00:28,500",
+      "vn_timestamp": "00:00:06,080 --> 00:00:28,450",
+      "vn": "The scene shifts to a chaotic street with debris flying. A person in a green shirt reaches out, appearing distressed as objects swirl around, indicating a powerful force disrupting the environment.",
+      "reference": "A man struggles on the ground, gripping the edge of a platform.",
+      "similarity": 0.3343,
+      "word_count_ratio": 0.3871,
+      "gap_fit": true,
+      "overlap_iou": 0.1093
+    },
+    {
+      "timestamp": "00:00:28,500 --> 00:00:31,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A young woman with tousled hair struggles intensely, focused on her task.",
+      "similarity": 0.2292,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0318
+    },
+    {
+      "timestamp": "00:00:31,000 --> 00:00:33,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A woman pulls a child along a debris-strewn street as chaos surrounds them.",
+      "similarity": 0.2438,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:33,500 --> 00:00:36,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A woman looks back as a large cloud of debris swirls around her.",
+      "similarity": 0.1746,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:36,000 --> 00:00:38,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A chair is airborne, spinning through a stormy sky above a building.",
+      "similarity": 0.1932,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:38,500 --> 00:00:41,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A water tower is tipped over, scattering debris in a strong wind.",
+      "similarity": 0.1348,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:41,000 --> 00:00:43,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A man on the ground looks up, fear in his eyes, as someone looms over him.",
+      "similarity": 0.3172,
+      "word_count_ratio": 0.5517,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:43,500 --> 00:00:46,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A robotic arm extends from a large cylindrical structure against a cloudy sky.",
+      "similarity": 0.1885,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:46,000 --> 00:00:48,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A powerful tornado uproots debris and destroys buildings in a stormy urban setting.",
+      "similarity": 0.0787,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:48,500 --> 00:00:51,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A young woman with short hair turns her face away, distressed in a dynamic setting.",
+      "similarity": 0.3219,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A woman climbs over a man, navigating debris on the ground in a chaotic scene.",
+      "similarity": 0.284,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A water tower stands tall as strong winds and debris swirl around it.",
+      "similarity": 0.1152,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:56,000 --> 00:00:58,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A man looks up with a worried expression while lying on the ground.",
+      "similarity": 0.3606,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:00:58,500 --> 00:01:01,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A worn leather boot rests beside stacked wooden planks on a gravel surface.",
+      "similarity": 0.1898,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:01,000 --> 00:01:03,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A young man with curly hair screams while leaning over a railing in distress.",
+      "similarity": 0.3076,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:03,500 --> 00:01:06,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A hand grips a rough wooden beam as it shifts among other stacked planks.",
+      "similarity": 0.3107,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:06,000 --> 00:01:08,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A young man runs frantically past debris and a damaged building under dark, stormy skies.",
+      "similarity": 0.1955,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:08,500 --> 00:01:11,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "The water tower labeled \"RENO\" topples as debris and dust erupt around it.",
+      "similarity": 0.1585,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:11,000 --> 00:01:13,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "Waves crash violently against a large, round metal structure in a stormy sea.",
+      "similarity": 0.0967,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:13,500 --> 00:01:16,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A man in a white suit falls into a pool of shattered glass and water.",
+      "similarity": 0.2152,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:16,000 --> 00:01:18,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "Waves crash violently against a partially submerged boat in a chaotic harbor scene.",
+      "similarity": 0.1706,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:18,500 --> 00:01:21,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A massive wave crashes over a flooded city, revealing submerged vehicles and debris.",
+      "similarity": 0.1171,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:21,000 --> 00:01:23,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "Two people crawl on a wet, debris-strewn ground amidst wreckage.",
+      "similarity": 0.3351,
+      "word_count_ratio": 0.3448,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:23,500 --> 00:01:26,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "Two people run through debris, while a third person grapples with one of them.",
+      "similarity": 0.3151,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:26,000 --> 00:01:28,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A person runs through a dimly lit hallway, while another figure follows closely behind.",
+      "similarity": 0.354,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:28,500 --> 00:01:31,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A person is shown turning away, partially obscured by a blurred background.",
+      "similarity": 0.3154,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:31,000 --> 00:01:33,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A spotlight shines on a cracked ceiling while a figure stands in shadows below.",
+      "similarity": 0.359,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:33,500 --> 00:01:36,000",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "Audience members panic and flee their seats in a dimly lit theater.",
+      "similarity": 0.2426,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0372
+    },
+    {
+      "timestamp": "00:01:36,000 --> 00:01:38,500",
+      "vn_timestamp": "00:00:28,850 --> 00:01:36,100",
+      "vn": "A person in a yellow shirt leans forward, holding an object. In the background, another individual assists someone lying down, while others move around in a dimly lit room.",
+      "reference": "A blurred figure runs through a dimly lit room filled with seated people.",
+      "similarity": 0.3738,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0014
+    },
+    {
+      "timestamp": "00:01:58,500 --> 00:02:01,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man passionately speaks to a woman, his expression intense and pleading.",
+      "similarity": 0.2106,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0057
+    },
+    {
+      "timestamp": "00:02:01,000 --> 00:02:03,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A group of people in a dimly lit venue reacts with surprise, looking upward.",
+      "similarity": 0.3917,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:03,500 --> 00:02:06,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A powerful tornado lifts debris and damages buildings in a stormy landscape.",
+      "similarity": 0.3227,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:06,000 --> 00:02:08,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Light streams through a jagged hole in a wall, illuminating dust particles.",
+      "similarity": 0.2766,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:08,500 --> 00:02:11,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Three people stand in a doorway, staring anxiously at a large tornado outside.",
+      "similarity": 0.3905,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:11,000 --> 00:02:13,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman in a tank top turns to look at an approaching storm.",
+      "similarity": 0.2841,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:13,500 --> 00:02:16,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "The young woman looks up with a worried expression, her wet hair clinging to her face.",
+      "similarity": 0.2814,
+      "word_count_ratio": 0.5517,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:16,000 --> 00:02:18,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman is being supported by two men while a third man looks on concerned.",
+      "similarity": 0.3759,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:18,500 --> 00:02:21,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Two men rush from their seats in a dimly lit room, looking distressed.",
+      "similarity": 0.5099,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:21,000 --> 00:02:23,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man in a dirty prison uniform stands animatedly, smiling amidst subdued figures.",
+      "similarity": 0.3794,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:23,500 --> 00:02:26,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man in a black shirt looks back with a concerned expression in a chaotic theater.",
+      "similarity": 0.3939,
+      "word_count_ratio": 0.5517,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:26,000 --> 00:02:28,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman runs urgently through debris and dust, escaping a collapsing building.",
+      "similarity": 0.4322,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:28,500 --> 00:02:31,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman climbs onto the side of a red pickup truck amid heavy rain.",
+      "similarity": 0.2342,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:31,000 --> 00:02:33,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A young woman pulls on the door handle of a red truck, looking anxious.",
+      "similarity": 0.2485,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:33,500 --> 00:02:36,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A person sits inside a foggy red car, their silhouette barely visible.",
+      "similarity": 0.3201,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:36,000 --> 00:02:38,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A person sits in a red vehicle, partially obscured by water droplets on the window.",
+      "similarity": 0.267,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:38,500 --> 00:02:41,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A person sits in a red truck, partially obscured by rain on the windows.",
+      "similarity": 0.247,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:41,000 --> 00:02:43,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red truck drives past, partially obscured by foggy weather conditions.",
+      "similarity": 0.2261,
+      "word_count_ratio": 0.3793,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:43,500 --> 00:02:46,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red pickup truck drives past, towing several large yellow barrels on a trailer.",
+      "similarity": 0.1726,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:46,000 --> 00:02:48,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red truck drives along a rural road, towing large yellow barrels behind it.",
+      "similarity": 0.1505,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:48,500 --> 00:02:51,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A narrow road stretches ahead, flanked by dark clouds and sparse vegetation.",
+      "similarity": 0.2542,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:51,000 --> 00:02:53,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A young woman grips the steering wheel, looking anxiously through a rain-soaked windshield.",
+      "similarity": 0.2616,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:53,500 --> 00:02:56,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A driver grips the steering wheel as a stormy sky looms ominously ahead.",
+      "similarity": 0.272,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:56,000 --> 00:02:58,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red pickup truck with barrels tows equipment through a stormy landscape.",
+      "similarity": 0.2524,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:02:58,500 --> 00:03:01,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A large tornado spins violently above a boat docked on the shoreline.",
+      "similarity": 0.2477,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:01,000 --> 00:03:03,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A blurred figure moves rapidly in turbulent water, suggesting distress and urgency.",
+      "similarity": 0.4089,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:03,500 --> 00:03:06,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man stands with his back to the camera, facing an open, foggy doorway.",
+      "similarity": 0.2798,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:06,000 --> 00:03:08,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man in a black shirt stands at an open door, looking distressed.",
+      "similarity": 0.3569,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:08,500 --> 00:03:11,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Stormy clouds swirl ominously in a darkened sky above a blurred landscape.",
+      "similarity": 0.3004,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:11,000 --> 00:03:13,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Three men burst through a doorway, with one man in a black leather jacket yelling.",
+      "similarity": 0.3207,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:13,500 --> 00:03:16,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A train speeds past, while dark clouds loom overhead, creating a tense atmosphere.",
+      "similarity": 0.2653,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:16,000 --> 00:03:18,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red truck tows a trailer loaded with yellow barrels across a grassy landscape.",
+      "similarity": 0.2247,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:18,500 --> 00:03:21,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A truck with a trailer drives through a misty, grassy landscape.",
+      "similarity": 0.237,
+      "word_count_ratio": 0.3793,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:21,000 --> 00:03:23,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A dark, ominous storm clouds swirl, revealing a tornado touching down in the distance.",
+      "similarity": 0.3418,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:23,500 --> 00:03:26,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A truck drives through a foggy, forested area, with blurred barrels in the foreground.",
+      "similarity": 0.2251,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:26,000 --> 00:03:28,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A young boy grips the steering wheel of a truck, focused amid heavy rain.",
+      "similarity": 0.2222,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:28,500 --> 00:03:31,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red car speeds down a wet road, rain splattering against its windshield.",
+      "similarity": 0.2128,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:31,000 --> 00:03:33,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "The inside of a car shakes violently as a tornado looms ominously in the distance.",
+      "similarity": 0.3002,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:33,500 --> 00:03:36,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red vehicle with yellow containers speeds through debris in a stormy landscape.",
+      "similarity": 0.3423,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:36,000 --> 00:03:38,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A military vehicle drives along a gravel path amidst a stormy, foggy landscape.",
+      "similarity": 0.2641,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:38,500 --> 00:03:41,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A person grips the steering wheel as heavy rain and debris swirl outside the car.",
+      "similarity": 0.3426,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:41,000 --> 00:03:43,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A large explosion erupts amidst a rain-soaked, chaotic urban landscape.",
+      "similarity": 0.3401,
+      "word_count_ratio": 0.3448,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:43,500 --> 00:03:46,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Flames engulf a truck outside a car's passenger window, amid a dark, stormy atmosphere.",
+      "similarity": 0.319,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:46,000 --> 00:03:48,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red truck\u2019s rear tire spins rapidly, kicking up mud and debris.",
+      "similarity": 0.2825,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:48,500 --> 00:03:51,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Dark storm clouds swirl ominously above a distant city skyline, obscured by heavy rain.",
+      "similarity": 0.2627,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:51,000 --> 00:03:53,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A train car hovers above a foggy landscape, revealing a yellow warning signal below.",
+      "similarity": 0.2867,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:53,500 --> 00:03:56,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A red truck drives through thick fog, revealing its rugged features and equipment.",
+      "similarity": 0.2461,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:56,000 --> 00:03:58,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A large truck drives through heavy rain, with water splashing against its windshield.",
+      "similarity": 0.2044,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:03:58,500 --> 00:04:01,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman with wet hair leans forward in the driver's seat of a car.",
+      "similarity": 0.256,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:01,000 --> 00:04:03,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A large wave crashes against a boat, engulfing it in turbulent water.",
+      "similarity": 0.2729,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:03,500 --> 00:04:06,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Dark storm clouds swirl ominously above a shadowy, partially visible structure.",
+      "similarity": 0.321,
+      "word_count_ratio": 0.3793,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:06,000 --> 00:04:08,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A young woman grips the steering wheel, looking anxiously out the windshield.",
+      "similarity": 0.2498,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:08,500 --> 00:04:11,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Dark storm clouds swirl ominously across the sky, creating a foreboding atmosphere.",
+      "similarity": 0.2453,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:11,000 --> 00:04:13,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A hand reaches for a red switch, ready to turn it on labeled \"kitchen barrel.\"",
+      "similarity": 0.2854,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:13,500 --> 00:04:16,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "The woman looks anxiously out the car window, rain dripping down the glass.",
+      "similarity": 0.2293,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:16,000 --> 00:04:18,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman grips the steering wheel tightly as she drives through a dark, forested area.",
+      "similarity": 0.2629,
+      "word_count_ratio": 0.5172,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:18,500 --> 00:04:21,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A hand emerges from murky water, surrounded by swirling particles and bubbles.",
+      "similarity": 0.4087,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:21,000 --> 00:04:23,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A dark tornado spirals ominously across a stormy landscape, surrounded by gray clouds.",
+      "similarity": 0.3247,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:23,500 --> 00:04:26,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A distressed man with disheveled hair and a torn shirt looks back in panic.",
+      "similarity": 0.4199,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:26,000 --> 00:04:28,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man struggles against a heavy door in a rain-soaked, stormy environment.",
+      "similarity": 0.3248,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:28,500 --> 00:04:31,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A large explosion erupts outside as two figures brace against the shockwave.",
+      "similarity": 0.3613,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:31,000 --> 00:04:33,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Two men struggle to pull themselves through a narrow, foggy opening.",
+      "similarity": 0.3583,
+      "word_count_ratio": 0.3793,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:33,500 --> 00:04:36,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man with wet hair looks anxiously while crouching in a dimly lit room.",
+      "similarity": 0.4303,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:36,000 --> 00:04:38,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man with wet, disheveled hair looks distressed while sitting against a wall.",
+      "similarity": 0.3482,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:38,500 --> 00:04:41,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A frightened man with wet hair is pressing against a wall, looking anxiously around.",
+      "similarity": 0.4035,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:41,000 --> 00:04:43,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "Dust swirls around a brick building as debris flies through the air.",
+      "similarity": 0.363,
+      "word_count_ratio": 0.4138,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:43,500 --> 00:04:46,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A circular ceiling light casts a warm glow in a shadowy, textured space.",
+      "similarity": 0.244,
+      "word_count_ratio": 0.4483,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:46,000 --> 00:04:48,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "People run in panic through a dimly lit room filled with smoke and shadows.",
+      "similarity": 0.4917,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:48,500 --> 00:04:51,000",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A woman swings her arm forcefully, holding a clenched fist in a tense moment.",
+      "similarity": 0.3115,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0144
+    },
+    {
+      "timestamp": "00:04:51,000 --> 00:04:53,500",
+      "vn_timestamp": "00:02:00,010 --> 00:04:53,110",
+      "vn": "A person in a green shirt reaches out amidst swirling debris. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around.",
+      "reference": "A man with glasses yells intensely, gesturing amid a chaotic crowd in the background.",
+      "similarity": 0.3698,
+      "word_count_ratio": 0.4828,
+      "gap_fit": true,
+      "overlap_iou": 0.0122
+    },
+    {
+      "timestamp": "00:04:53,500 --> 00:04:56,000",
+      "vn_timestamp": "00:04:53,750 --> 00:04:55,990",
+      "vn": "Tyler speaks urgently.",
+      "reference": "Two men in wet clothing look anxiously toward a dark doorway, while another man stands behind them.",
+      "similarity": 0.2873,
+      "word_count_ratio": 0.1765,
+      "gap_fit": true,
+      "overlap_iou": 0.896
+    },
+    {
+      "timestamp": "00:05:03,500 --> 00:05:06,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A man in a black shirt is running while being pulled by another person.",
+      "similarity": 0.285,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0126
+    },
+    {
+      "timestamp": "00:05:06,000 --> 00:05:08,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "The frame shows a dark, misty environment with faint, indistinct shapes in the background.",
+      "similarity": 0.2918,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:08,500 --> 00:05:11,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A train rushes through a foggy, dimly lit industrial landscape.",
+      "similarity": 0.3229,
+      "word_count_ratio": 0.4,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:11,000 --> 00:05:13,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A red truck skids through heavy fog, kicking up water on the road.",
+      "similarity": 0.2333,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:13,500 --> 00:05:16,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A young woman grips the steering wheel tightly, her face tense as rain falls.",
+      "similarity": 0.3009,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:16,000 --> 00:05:18,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "Rain pours heavily against the car windshield, obscuring the view outside.",
+      "similarity": 0.1742,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:18,500 --> 00:05:21,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "Water ripples over the surface of several large, cylindrical barrels in misty surroundings.",
+      "similarity": 0.2383,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:21,000 --> 00:05:23,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A girl sits in a car, glancing anxiously out the window at the rain.",
+      "similarity": 0.1744,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:23,500 --> 00:05:26,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A woman with wet hair sits in a car, appearing distressed and focused.",
+      "similarity": 0.2678,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:26,000 --> 00:05:28,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A rusted metal structure stands amid tall grass in a foggy environment.",
+      "similarity": 0.1899,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:28,500 --> 00:05:31,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A man with wet, tousled hair looks alarmed while people flee in the background.",
+      "similarity": 0.3609,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:31,000 --> 00:05:33,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A man pulls a woman to safety amid chaos in a crowded theater.",
+      "similarity": 0.3993,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:33,500 --> 00:05:36,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "An older man with glasses looks worriedly at chaos unfolding around him.",
+      "similarity": 0.3314,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:36,000 --> 00:05:38,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "People in a theater lean forward in their seats, looking towards a glowing screen.",
+      "similarity": 0.4898,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:38,500 --> 00:05:41,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A young man in a cap looks up, startled, in a crowded theater.",
+      "similarity": 0.3067,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:41,000 --> 00:05:43,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A dimly lit projection shows two figures operating complex machinery in a control room.",
+      "similarity": 0.4319,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:43,500 --> 00:05:46,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A man stands with his back to a chaotic audience, people rising from their seats.",
+      "similarity": 0.3179,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:46,000 --> 00:05:48,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A person crawls on the floor, closely approaching a metal edge.",
+      "similarity": 0.357,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:48,500 --> 00:05:51,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A monstrous creature bursts through a cinema screen, debris flying into the auditorium.",
+      "similarity": 0.2869,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:51,000 --> 00:05:53,500",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "A massive wave crashes into an empty theater, scattering debris and water.",
+      "similarity": 0.3008,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:53,500 --> 00:05:56,000",
+      "vn_timestamp": "00:05:05,335 --> 00:05:56,105",
+      "vn": "Tyler leans forward, gripping a lever. The scene shifts to a dimly lit room where individuals assist someone lying down, while others move around urgently.",
+      "reference": "The camera glides under a large, dark bridge in a foggy atmosphere.",
+      "similarity": 0.2805,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0492
+    },
+    {
+      "timestamp": "00:05:56,000 --> 00:05:58,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A woman with wet hair sits in the car, looking distressed as rain falls.",
+      "similarity": 0.2557,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0161
+    },
+    {
+      "timestamp": "00:05:58,500 --> 00:06:01,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A chain connects several submerged yellow barrels in murky water.",
+      "similarity": 0.302,
+      "word_count_ratio": 0.4348,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:01,000 --> 00:06:03,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A dark, swirling tornado moves ominously across a desolate landscape, shrouded in grey clouds.",
+      "similarity": 0.2263,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:03,500 --> 00:06:06,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A dark, swirling mist fills the frame, suggesting an ominous atmosphere.",
+      "similarity": 0.1949,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:06,000 --> 00:06:08,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A paintbrush's bristles touch the wet surface, leaving a vibrant red mark.",
+      "similarity": 0.1139,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:08,500 --> 00:06:11,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A pair of feet hangs upside down amidst swirling dust and debris.",
+      "similarity": 0.2662,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:11,000 --> 00:06:13,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A figure falls through a chaotic, debris-filled environment illuminated by eerie light.",
+      "similarity": 0.2922,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:13,500 --> 00:06:16,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A woman grips a ledge, her expression strained and focused.",
+      "similarity": 0.3297,
+      "word_count_ratio": 0.4348,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:16,000 --> 00:06:18,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "Two hands grip the underside of a table while a hat rests on a head.",
+      "similarity": 0.2358,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:18,500 --> 00:06:21,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man lies on the theater floor, struggling with another person amidst empty red seats.",
+      "similarity": 0.3342,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:21,000 --> 00:06:23,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A bearded man with glasses crawls on the floor beneath a red chair.",
+      "similarity": 0.1594,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:23,500 --> 00:06:26,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A young man lies on the ground, gripping a chair tightly while screaming in distress.",
+      "similarity": 0.3351,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:26,000 --> 00:06:28,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A young woman looks over her shoulder while sitting in a car, hair tousled.",
+      "similarity": 0.1634,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:28,500 --> 00:06:31,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "Pots with yellow rims are scattered across a misty, dimly lit surface.",
+      "similarity": 0.1753,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:33,500 --> 00:06:36,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A driver intensely grips the steering wheel of a large truck in heavy fog.",
+      "similarity": 0.1865,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:36,000 --> 00:06:38,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A dark, solid gray background fills the frame with a subtle texture.",
+      "similarity": 0.1601,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:38,500 --> 00:06:41,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "Fluffy gray clouds billow and swirl against a muted, overcast sky.",
+      "similarity": 0.1054,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:41,000 --> 00:06:43,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "Clouds billow and swirl, creating a thick, textured layer against a pale sky.",
+      "similarity": 0.1138,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:43,500 --> 00:06:46,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A figure stands with a weapon, while a car is submerged in murky water.",
+      "similarity": 0.3978,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:46,000 --> 00:06:48,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A hand grips a mechanical tool, poised above tall, swaying green grass.",
+      "similarity": 0.2723,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:48,500 --> 00:06:51,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A small, gray animal scurries across the damp, dark ground littered with straw.",
+      "similarity": 0.179,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:51,000 --> 00:06:53,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A young woman with wet hair braces herself in a damaged vehicle during a storm.",
+      "similarity": 0.2871,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:53,500 --> 00:06:56,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A woman grips the steering wheel tightly, her face showing intense concentration.",
+      "similarity": 0.2053,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:56,000 --> 00:06:58,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A person's hands press a button on a car's dashboard in dim lighting.",
+      "similarity": 0.1342,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:06:58,500 --> 00:07:01,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A tire lifts, revealing a drilling apparatus underneath a foggy, dimly lit environment.",
+      "similarity": 0.2312,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:01,000 --> 00:07:03,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A submerged vehicle with flashing lights rests in murky water amidst thick fog.",
+      "similarity": 0.3191,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:03,500 --> 00:07:06,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A driver grips the steering wheel while rain lashes against the windshield.",
+      "similarity": 0.2069,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:06,000 --> 00:07:08,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A woman sits inside a car, visibly tense, with rain streaking the windshield.",
+      "similarity": 0.205,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:08,500 --> 00:07:11,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A silhouette of a large vehicle looms through thick fog and dim light.",
+      "similarity": 0.1454,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:11,000 --> 00:07:13,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "The camera reveals a devastated cityscape with destroyed buildings and debris scattered everywhere.",
+      "similarity": 0.1645,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:13,500 --> 00:07:16,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A woman lies on the ground, partially hidden, with a fearful expression on her face.",
+      "similarity": 0.3602,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:16,000 --> 00:07:18,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man with disheveled hair struggles on the ground beneath a large object.",
+      "similarity": 0.298,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:18,500 --> 00:07:21,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A soldier lies on the ground, aiming a rifle amid debris and chaos.",
+      "similarity": 0.2847,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:21,000 --> 00:07:23,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A person submerged in water reaches out, grasping another person's hand for support.",
+      "similarity": 0.5976,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:23,500 --> 00:07:26,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man struggles to pull a woman from the water, both appearing distressed.",
+      "similarity": 0.5335,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:26,000 --> 00:07:28,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man, lying on the ground, reaches for a woman's hand in desperation.",
+      "similarity": 0.5178,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:28,500 --> 00:07:31,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man struggles to pull a woman out of the water, both reaching out.",
+      "similarity": 0.5491,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:31,000 --> 00:07:33,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A person leaps forward, arms outstretched, as dust and mist swirl around them.",
+      "similarity": 0.2425,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:33,500 --> 00:07:36,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "Debris swirls in the air as a building partially collapses amidst dark, cloudy chaos.",
+      "similarity": 0.1818,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:36,000 --> 00:07:38,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A large, ominous storm cloud looms over a devastated urban landscape with ruined buildings.",
+      "similarity": 0.1687,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:38,500 --> 00:07:41,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A dark, swirling tornado looms ominously above a city landscape under cloudy skies.",
+      "similarity": 0.1894,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:41,000 --> 00:07:43,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man struggles on the ground, grasping someone\u2019s hand with a desperate expression.",
+      "similarity": 0.4717,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:43,500 --> 00:07:46,000",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A man pulls on a woman's hands, both struggling on a blue floor.",
+      "similarity": 0.3785,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:46,000 --> 00:07:48,500",
+      "vn_timestamp": "00:05:56,665 --> 00:07:49,935",
+      "vn": "Tyler reaches out to Kate, who is lying on the ground. Kate struggles to grab Tyler's hand, her body partially submerged in water.",
+      "reference": "A woman and a man grip each other's hands, straining while lying on a floor.",
+      "similarity": 0.4047,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0221
+    },
+    {
+      "timestamp": "00:07:48,500 --> 00:07:51,000",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "A woman reaches out, grasping a man's hand while lying on the ground.",
+      "similarity": 0.1694,
+      "word_count_ratio": 0.4815,
+      "gap_fit": true,
+      "overlap_iou": 0.0284
+    },
+    {
+      "timestamp": "00:07:51,000 --> 00:07:53,500",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "A woman and a man grasp each other's hands, both lying on a dusty floor.",
+      "similarity": 0.1822,
+      "word_count_ratio": 0.5556,
+      "gap_fit": true,
+      "overlap_iou": 0.1582
+    },
+    {
+      "timestamp": "00:07:53,500 --> 00:07:56,000",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "A dark, smoky scene reveals crumbling debris and a partially collapsed structure.",
+      "similarity": 0.4357,
+      "word_count_ratio": 0.4444,
+      "gap_fit": true,
+      "overlap_iou": 0.1582
+    },
+    {
+      "timestamp": "00:07:56,000 --> 00:07:58,500",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "A blue background features abstract shapes, including a dark splatter and a round tomato shape.",
+      "similarity": 0.5001,
+      "word_count_ratio": 0.5556,
+      "gap_fit": true,
+      "overlap_iou": 0.1582
+    },
+    {
+      "timestamp": "00:07:58,500 --> 00:08:01,000",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "Blue background with curved black shapes and dark purple tomato and splash patterns.",
+      "similarity": 0.4434,
+      "word_count_ratio": 0.4815,
+      "gap_fit": true,
+      "overlap_iou": 0.1582
+    },
+    {
+      "timestamp": "00:08:01,000 --> 00:08:03,500",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "A vibrant blue background features dark blue shapes resembling splashes and tomatoes.",
+      "similarity": 0.4899,
+      "word_count_ratio": 0.4444,
+      "gap_fit": true,
+      "overlap_iou": 0.1582
+    },
+    {
+      "timestamp": "00:08:03,500 --> 00:08:06,000",
+      "vn_timestamp": "00:07:50,495 --> 00:08:06,296",
+      "vn": "The scene transitions to an abstract blue background with apple shapes. No characters or actions are present, indicating a shift away from the previous intense rescue scenario.",
+      "reference": "The frame features a gradient blue background adorned with abstract purple shapes and tomato silhouettes.",
+      "similarity": 0.4859,
+      "word_count_ratio": 0.5556,
+      "gap_fit": true,
+      "overlap_iou": 0.1582
+    }
+  ]
+}

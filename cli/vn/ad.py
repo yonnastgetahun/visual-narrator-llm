@@ -195,6 +195,7 @@ def assemble_ad_kit(
     character_context: str | None = None,
     narrative_context: str | None = None,
     two_stage: bool = False,
+    text_only: bool = False,
 ) -> AdResult:
     requested_output_dir = output_dir or Path("./vn-ad-output")
     resolved_output_dir = requested_output_dir.expanduser()
@@ -255,6 +256,7 @@ def assemble_ad_kit(
                     resolved_voice_id,
                     system_prompt_prefix=prefix,
                     two_stage=two_stage,
+                    text_only=text_only,
                 )
                 if narration.description:
                     scene_context.append(narration.description)
@@ -262,7 +264,8 @@ def assemble_ad_kit(
                     model_versions.append(narration.model_version)
                 audio_filename = f"{index:05d}_{int(gap.start_sec * 1000):07d}.mp3"
                 audio_relative_path = Path("audio") / audio_filename
-                _write_audio_file(resolved_output_dir / audio_relative_path, narration.audio_bytes)
+                if not text_only:
+                    _write_audio_file(resolved_output_dir / audio_relative_path, narration.audio_bytes)
                 audio_gap_fit_metrics.append(narration.audio_fit)
                 narrations.append(
                     AdNarrationEntry(
@@ -444,11 +447,43 @@ def generate_gap_aware_ad_narration(
     voice_id: str,
     system_prompt_prefix: str | None = None,
     two_stage: bool = False,
+    text_only: bool = False,
 ) -> GeneratedAdNarration:
     attempt_audio_sec: list[float] = []
     attempt_word_limits: list[int] = []
     model_versions: list[str] = []
     base_word_limit = target_words(gap_duration_sec)
+
+    if text_only:
+        description, model_version = _describe_frame_for_ad(
+            frame_paths,
+            gap_duration_sec,
+            max_words=base_word_limit,
+            system_prompt_prefix=system_prompt_prefix,
+            two_stage=two_stage,
+        )
+        metrics = AudioGapFitMetrics(
+            gap_sec=gap_duration_sec,
+            audio_sec=gap_duration_sec,
+            fit=True,
+            retries=0,
+            truncated=False,
+            fit_ratio=1.0,
+            overrun_attempts=0,
+            word_limit=base_word_limit,
+            max_allowed_sec=_max_allowed_audio_sec(gap_duration_sec),
+            attempt_audio_sec=(gap_duration_sec,),
+            attempt_word_limits=(base_word_limit,),
+        )
+        return GeneratedAdNarration(
+            description=description,
+            model_version=model_version or "",
+            audio_bytes=b"",
+            character_count=len(description),
+            audio_duration_sec=gap_duration_sec,
+            audio_fit=metrics,
+        )
+
     last_audio_bytes = b""
     last_description = ""
     last_character_count = 0

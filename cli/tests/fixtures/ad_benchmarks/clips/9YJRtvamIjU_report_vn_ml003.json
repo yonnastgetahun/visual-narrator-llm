@@ -1,0 +1,232 @@
+{
+  "clip": "9YJRtvamIjU.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 22,
+  "semantic_similarity_mean": 0.4237,
+  "semantic_similarity_median": 0.4039,
+  "word_count_ratio_mean": 0.6047,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "42.4%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:06,160 --> 00:00:09,600",
+      "vn": "Louise hands Ian documents; he examines them.",
+      "reference": "A man wearing glasses receives a piece of paper from another person.",
+      "similarity": 0.3386,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.65
+    },
+    {
+      "timestamp": "00:00:08,500 --> 00:00:11,000",
+      "vn_timestamp": "00:00:06,160 --> 00:00:09,600",
+      "vn": "Louise hands Ian documents; he examines them.",
+      "reference": "A man with glasses looks intently at a computer screen in a dimly lit room.",
+      "similarity": 0.2842,
+      "word_count_ratio": 0.4667,
+      "gap_fit": true,
+      "overlap_iou": 0.2273
+    },
+    {
+      "timestamp": "00:00:11,000 --> 00:00:13,500",
+      "vn_timestamp": "00:00:12,000 --> 00:00:16,405",
+      "vn": "Louise adjusts her hair while Ian looks down at something.",
+      "reference": "A woman with short hair walks through a dimly lit tent filled with computer equipment.",
+      "similarity": 0.3262,
+      "word_count_ratio": 0.6667,
+      "gap_fit": true,
+      "overlap_iou": 0.2775
+    },
+    {
+      "timestamp": "00:00:13,500 --> 00:00:16,000",
+      "vn_timestamp": "00:00:12,000 --> 00:00:16,405",
+      "vn": "Louise adjusts her hair while Ian looks down at something.",
+      "reference": "A man in a blue shirt speaks on a phone while a woman listens intently.",
+      "similarity": 0.2969,
+      "word_count_ratio": 0.6667,
+      "gap_fit": true,
+      "overlap_iou": 0.5675
+    },
+    {
+      "timestamp": "00:00:16,000 --> 00:00:18,500",
+      "vn_timestamp": "00:00:12,000 --> 00:00:16,405",
+      "vn": "Louise adjusts her hair while Ian looks down at something.",
+      "reference": "A man in a blue shirt studies a document, while a woman watches attentively.",
+      "similarity": 0.3805,
+      "word_count_ratio": 0.7143,
+      "gap_fit": true,
+      "overlap_iou": 0.0623
+    },
+    {
+      "timestamp": "00:00:33,500 --> 00:00:36,000",
+      "vn_timestamp": "00:00:34,200 --> 00:00:40,120",
+      "vn": "Louise and Ian walk through the tent, passing by other personnel working at desks.",
+      "reference": "A woman with a ponytail walks toward a military tent, where others are seated.",
+      "similarity": 0.4191,
+      "word_count_ratio": 1.0,
+      "gap_fit": true,
+      "overlap_iou": 0.2719
+    },
+    {
+      "timestamp": "00:00:36,000 --> 00:00:38,500",
+      "vn_timestamp": "00:00:34,200 --> 00:00:40,120",
+      "vn": "Louise and Ian walk through the tent, passing by other personnel working at desks.",
+      "reference": "Two individuals in military attire walk towards a group in a dimly lit room.",
+      "similarity": 0.4298,
+      "word_count_ratio": 1.0,
+      "gap_fit": true,
+      "overlap_iou": 0.4223
+    },
+    {
+      "timestamp": "00:00:38,500 --> 00:00:41,000",
+      "vn_timestamp": "00:00:34,200 --> 00:00:40,120",
+      "vn": "Louise and Ian walk through the tent, passing by other personnel working at desks.",
+      "reference": "Various military personnel gather and work around a table in a dimly lit room.",
+      "similarity": 0.4088,
+      "word_count_ratio": 1.0,
+      "gap_fit": true,
+      "overlap_iou": 0.2382
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:52,995 --> 00:00:55,235",
+      "vn": "A soldier speaks, holding papers.",
+      "reference": "A woman with red hair examines a document under dim light in a tent.",
+      "similarity": 0.317,
+      "word_count_ratio": 0.3571,
+      "gap_fit": true,
+      "overlap_iou": 0.1192
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:52,995 --> 00:00:55,235",
+      "vn": "A soldier speaks, holding papers.",
+      "reference": "A soldier in camouflage uniform listens intently to a woman in a military tent.",
+      "similarity": 0.4666,
+      "word_count_ratio": 0.3571,
+      "gap_fit": true,
+      "overlap_iou": 0.5774
+    },
+    {
+      "timestamp": "00:00:56,000 --> 00:00:58,500",
+      "vn_timestamp": "00:00:58,420 --> 00:01:02,660",
+      "vn": "Louise walks towards whiteboard with complex equations written.",
+      "reference": "A woman with red hair looks anxiously over her shoulder in a dimly lit tent.",
+      "similarity": 0.2283,
+      "word_count_ratio": 0.5333,
+      "gap_fit": true,
+      "overlap_iou": 0.012
+    },
+    {
+      "timestamp": "00:00:58,500 --> 00:01:01,000",
+      "vn_timestamp": "00:00:58,420 --> 00:01:02,660",
+      "vn": "Louise walks towards whiteboard with complex equations written.",
+      "reference": "A woman with red hair looks anxiously to the side in a dimly lit room.",
+      "similarity": 0.2329,
+      "word_count_ratio": 0.5333,
+      "gap_fit": true,
+      "overlap_iou": 0.5896
+    },
+    {
+      "timestamp": "00:01:01,000 --> 00:01:03,500",
+      "vn_timestamp": "00:00:58,420 --> 00:01:02,660",
+      "vn": "Louise walks towards whiteboard with complex equations written.",
+      "reference": "A woman in a dark jacket writes complex equations on a whiteboard filled with formulas.",
+      "similarity": 0.6905,
+      "word_count_ratio": 0.5333,
+      "gap_fit": true,
+      "overlap_iou": 0.3268
+    },
+    {
+      "timestamp": "00:01:03,500 --> 00:01:06,000",
+      "vn_timestamp": "00:01:04,100 --> 00:01:10,155",
+      "vn": "Louise stands near a whiteboard filled with equations and handwritten text.",
+      "reference": "Two men, one in military uniform and one in casual clothes, move quickly through a dimly lit room.",
+      "similarity": 0.0919,
+      "word_count_ratio": 0.6111,
+      "gap_fit": true,
+      "overlap_iou": 0.2855
+    },
+    {
+      "timestamp": "00:01:06,000 --> 00:01:08,500",
+      "vn_timestamp": "00:01:04,100 --> 00:01:10,155",
+      "vn": "Louise stands near a whiteboard filled with equations and handwritten text.",
+      "reference": "A woman stands in front of a whiteboard filled with complex mathematical equations and notes.",
+      "similarity": 0.7093,
+      "word_count_ratio": 0.7333,
+      "gap_fit": true,
+      "overlap_iou": 0.4129
+    },
+    {
+      "timestamp": "00:01:08,500 --> 00:01:11,000",
+      "vn_timestamp": "00:01:04,100 --> 00:01:10,155",
+      "vn": "Louise stands near a whiteboard filled with equations and handwritten text.",
+      "reference": "A woman stands in front of a whiteboard filled with complex equations and questions.",
+      "similarity": 0.7067,
+      "word_count_ratio": 0.7857,
+      "gap_fit": true,
+      "overlap_iou": 0.2399
+    },
+    {
+      "timestamp": "00:01:56,000 --> 00:01:58,500",
+      "vn_timestamp": "00:01:56,490 --> 00:01:58,890",
+      "vn": "Louise points at equation.",
+      "reference": "A woman stands by a whiteboard filled with complex equations and notes.",
+      "similarity": 0.3991,
+      "word_count_ratio": 0.3333,
+      "gap_fit": true,
+      "overlap_iou": 0.6955
+    },
+    {
+      "timestamp": "00:01:58,500 --> 00:02:01,000",
+      "vn_timestamp": "00:01:56,490 --> 00:01:58,890",
+      "vn": "Louise points at equation.",
+      "reference": "A woman stands beside a whiteboard filled with complex mathematical equations and notes.",
+      "similarity": 0.4091,
+      "word_count_ratio": 0.3077,
+      "gap_fit": true,
+      "overlap_iou": 0.0865
+    },
+    {
+      "timestamp": "00:02:06,000 --> 00:02:08,500",
+      "vn_timestamp": "00:02:07,786 --> 00:02:18,321",
+      "vn": "The scene transitions to an end screen with options to subscribe, buy, or rent the full movie. Various character icons appear on the right side.",
+      "reference": "A military officer in uniform stands quietly, with a technician observing in the background.",
+      "similarity": 0.0886,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0579
+    },
+    {
+      "timestamp": "00:02:08,500 --> 00:02:11,000",
+      "vn_timestamp": "00:02:07,786 --> 00:02:18,321",
+      "vn": "The scene transitions to an end screen with options to subscribe, buy, or rent the full movie. Various character icons appear on the right side.",
+      "reference": "A blurred background features text boxes with options to subscribe, buy, or rent.",
+      "similarity": 0.6338,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.2373
+    },
+    {
+      "timestamp": "00:02:11,000 --> 00:02:13,500",
+      "vn_timestamp": "00:02:07,786 --> 00:02:18,321",
+      "vn": "The scene transitions to an end screen with options to subscribe, buy, or rent the full movie. Various character icons appear on the right side.",
+      "reference": "A dark screen displays text prompts for subscribing and renting the movie.",
+      "similarity": 0.7117,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.2373
+    },
+    {
+      "timestamp": "00:02:13,500 --> 00:02:16,000",
+      "vn_timestamp": "00:02:07,786 --> 00:02:18,321",
+      "vn": "The scene transitions to an end screen with options to subscribe, buy, or rent the full movie. Various character icons appear on the right side.",
+      "reference": "The screen displays text promoting subscriptions and options to buy or rent a movie.",
+      "similarity": 0.7507,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.2373
+    }
+  ]
+}

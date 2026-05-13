@@ -1,0 +1,622 @@
+{
+  "clip": "_8sUkBay8Hw.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 61,
+  "semantic_similarity_mean": 0.3826,
+  "semantic_similarity_median": 0.359,
+  "word_count_ratio_mean": 0.5716,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "38.3%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:01,000 --> 00:00:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man grips the steering wheel tightly, focused intently on the road ahead.",
+      "similarity": 0.6629,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:03,500 --> 00:00:06,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man with a beard is intensely looking forward while seated in a vehicle.",
+      "similarity": 0.4245,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man with dark hair intensely speaks while sitting in the driver's seat of a car.",
+      "similarity": 0.5018,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:08,500 --> 00:00:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A brown BMW drives rapidly down a street beneath a bridge, surrounded by parked cars.",
+      "similarity": 0.382,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:11,000 --> 00:00:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A rider in black gear accelerates on a sleek silver motorcycle, headlights glowing.",
+      "similarity": 0.3775,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:13,500 --> 00:00:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcyclist in a black leather jacket speeds down a narrow street.",
+      "similarity": 0.2986,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:16,000 --> 00:00:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A black BMW drives along a sunlit urban street, passing by pedestrians and shops.",
+      "similarity": 0.27,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:18,500 --> 00:00:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A black BMW drives under an elevated structure, flanked by other cars.",
+      "similarity": 0.2778,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:21,000 --> 00:00:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Two men sit in a car, with one driving and the other looking tense.",
+      "similarity": 0.5081,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:23,500 --> 00:00:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A person in dark clothing navigates through moving traffic on a busy street.",
+      "similarity": 0.3983,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:26,000 --> 00:00:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A green car speeds along a busy street, blurred by motion.",
+      "similarity": 0.3944,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:28,500 --> 00:00:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Cars drive beneath a large elevated structure along a tree-lined street.",
+      "similarity": 0.3062,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:31,000 --> 00:00:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A black car makes a sharp turn on a city street lined with trees.",
+      "similarity": 0.4091,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:33,500 --> 00:00:36,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcycle speeds past a car parked on a sunlit street.",
+      "similarity": 0.268,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:36,000 --> 00:00:38,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcyclist in black gear accelerates down a city street lined with trees.",
+      "similarity": 0.359,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:38,500 --> 00:00:41,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A black BMW sedan drives down a city street, passing street signs and trees.",
+      "similarity": 0.328,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:41,000 --> 00:00:43,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A person sits in a car, looking out the window at passing buildings.",
+      "similarity": 0.387,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:43,500 --> 00:00:46,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcyclist in black rides swiftly past a row of buildings.",
+      "similarity": 0.2727,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:46,000 --> 00:00:48,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Two men sit in a car, driving under a bridge with trees visible outside.",
+      "similarity": 0.3253,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:48,500 --> 00:00:51,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A gold sedan drives under an elevated train track lined with green trees.",
+      "similarity": 0.2973,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcycle rider leans into a turn on an empty city street.",
+      "similarity": 0.3319,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A gray car drives past a red object on a city crosswalk.",
+      "similarity": 0.3121,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:56,000 --> 00:00:58,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man sits in a car, looking intently out the window, visibly tense.",
+      "similarity": 0.5625,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:00:58,500 --> 00:01:01,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Cars drive through an intersection as a pedestrian crosses, with a green traffic light.",
+      "similarity": 0.2681,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:01,000 --> 00:01:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcycle speeds past a car with a driver looking out the window.",
+      "similarity": 0.3027,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:03,500 --> 00:01:06,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A black car drives along a narrow street with historic buildings on either side.",
+      "similarity": 0.3024,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:06,000 --> 00:01:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A person walks down stone steps in front of a large building while a car drives past.",
+      "similarity": 0.3186,
+      "word_count_ratio": 0.7391,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:08,500 --> 00:01:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Two men sit in a car; one drives while the other looks intently ahead.",
+      "similarity": 0.5025,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:11,000 --> 00:01:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A young man grips the steering wheel, focused while driving the car.",
+      "similarity": 0.6064,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:13,500 --> 00:01:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A brown car drifts sharply around a city corner, kicking up dust on the road.",
+      "similarity": 0.3997,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:16,000 --> 00:01:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man drives an SUV while a passenger gestures dramatically from the seat.",
+      "similarity": 0.4069,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:18,500 --> 00:01:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A person in a black helmet rides a motorcycle down a narrow street.",
+      "similarity": 0.3215,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:21,000 --> 00:01:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man with a beard drives a car, focused on the road ahead.",
+      "similarity": 0.4812,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:23,500 --> 00:01:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man sits in a car, gripping the steering wheel with a tense expression.",
+      "similarity": 0.5847,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:26,000 --> 00:01:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A driver grips the steering wheel, focused on the road ahead.",
+      "similarity": 0.5918,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:28,500 --> 00:01:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A green car drives down a narrow street lined with buildings.",
+      "similarity": 0.3474,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:31,000 --> 00:01:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A gold BMW drives down a narrow street lined with buildings.",
+      "similarity": 0.3284,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:33,500 --> 00:01:36,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A dark green car speeds down a narrow street, leaving a trail of smoke.",
+      "similarity": 0.3966,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:36,000 --> 00:01:38,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcyclist swiftly turns down a narrow street lined with European-style buildings.",
+      "similarity": 0.3262,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:38,500 --> 00:01:41,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Bicycles are parked along the sidewalk as pedestrians walk on a narrow Parisian street.",
+      "similarity": 0.1309,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:41,000 --> 00:01:43,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A black car speeds down a narrow street between tall buildings, approaching a stop sign.",
+      "similarity": 0.3659,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:43,500 --> 00:01:46,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A driver navigates a car through narrow streets, while a passenger looks ahead.",
+      "similarity": 0.4429,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:46,000 --> 00:01:48,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcycle speeds through a narrow street, leaving the surrounding buildings in the background.",
+      "similarity": 0.2983,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:48,500 --> 00:01:51,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A person walks through an archway, silhouetted against a bright light behind them.",
+      "similarity": 0.2472,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:51,000 --> 00:01:53,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A rider on a motorcycle speeds through an archway lined with columns.",
+      "similarity": 0.2519,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:53,500 --> 00:01:56,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man drives a car, focused intently on the road ahead.",
+      "similarity": 0.5527,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:56,000 --> 00:01:58,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A blurred cityscape shows a stone column and adjacent buildings passing by quickly.",
+      "similarity": 0.2812,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:01:58,500 --> 00:02:01,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcycle speeds through a dimly lit corridor beneath a historic archway.",
+      "similarity": 0.2939,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:01,000 --> 00:02:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "Two men sit inside a car, driving down a deserted street with buildings on either side.",
+      "similarity": 0.361,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:03,500 --> 00:02:06,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man looks intensely focused while driving a car, tension evident on his face.",
+      "similarity": 0.6356,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:06,000 --> 00:02:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A green BMW drives down a narrow street flanked by tall buildings.",
+      "similarity": 0.3343,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:08,500 --> 00:02:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man with short hair and an intense expression sits in the driver's seat of a car.",
+      "similarity": 0.5264,
+      "word_count_ratio": 0.7391,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:11,000 --> 00:02:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man with a beard sits in the driver's seat, looking intensely forward.",
+      "similarity": 0.4996,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:13,500 --> 00:02:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A woman in a black helmet aims a gun, staring intently ahead.",
+      "similarity": 0.4432,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:16,000 --> 00:02:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A woman in a black helmet points a finger directly at the camera.",
+      "similarity": 0.2803,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:18,500 --> 00:02:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man with short hair grips the steering wheel, looking intensely out the window.",
+      "similarity": 0.5892,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:21,000 --> 00:02:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A woman in a helmet aims a handgun, her eye focused with determination.",
+      "similarity": 0.4111,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:23,500 --> 00:02:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A person in black clothing leaps over a parked car in an urban setting.",
+      "similarity": 0.3267,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:26,000 --> 00:02:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A motorcyclist lies on the street while a car approaches in the background.",
+      "similarity": 0.2347,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:28,500 --> 00:02:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A man turns his head towards the passenger seat in a car.",
+      "similarity": 0.401,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0164
+    },
+    {
+      "timestamp": "00:02:31,000 --> 00:02:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:02:32,150",
+      "vn": "Ethan Hunt grips the steering wheel tightly, his intense focus contrasting with the calm street outside as he prepares for an urgent situation.",
+      "reference": "A young child, partially obscured, holds up a toy in a car seat.",
+      "similarity": 0.2928,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0075
+    }
+  ]
+}

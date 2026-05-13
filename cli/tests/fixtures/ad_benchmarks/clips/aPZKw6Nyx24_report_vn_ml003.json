@@ -1,0 +1,1502 @@
+{
+  "clip": "aPZKw6Nyx24.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 149,
+  "semantic_similarity_mean": 0.284,
+  "semantic_similarity_median": 0.2517,
+  "word_count_ratio_mean": 0.5493,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "28.4%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:01,000 --> 00:00:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A chef stirs a pot while staff move around a busy restaurant kitchen.",
+      "similarity": 0.3419,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man swings a frying pan toward another man in a dimly lit kitchen.",
+      "similarity": 0.3594,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:08,500 --> 00:00:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men are grappling each other in a dimly lit kitchen, while other cooks work.",
+      "similarity": 0.4174,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:11,000 --> 00:00:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A person in a dark jacket rushes past, holding a camera in a dimly lit room.",
+      "similarity": 0.4262,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:13,500 --> 00:00:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A figure runs through a dimly lit kitchen with equipment and ingredients scattered around.",
+      "similarity": 0.3902,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:16,000 --> 00:00:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man holds another man's leg while sitting on a cluttered kitchen countertop.",
+      "similarity": 0.3036,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:18,500 --> 00:00:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in a black jacket moves quickly through a commercial kitchen, partially obscured.",
+      "similarity": 0.4461,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:21,000 --> 00:00:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in a suit dramatically swings a long coat around him.",
+      "similarity": 0.329,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:23,500 --> 00:00:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A blurred motion captures a dimly lit room filled with shelves and various objects.",
+      "similarity": 0.3304,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:26,000 --> 00:00:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in black clothes punches another man, who grins in a kitchen setting.",
+      "similarity": 0.421,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:28,500 --> 00:00:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A figure in a dark coat rushes through a dimly lit kitchen.",
+      "similarity": 0.4201,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:31,000 --> 00:00:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man punches a second man, shattering a glass display case behind them.",
+      "similarity": 0.2973,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:33,500 --> 00:00:36,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A person lies on the ground, struggling as two figures loom over them.",
+      "similarity": 0.2986,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:36,000 --> 00:00:38,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in a black outfit stands in a dimly lit kitchen holding a kettle.",
+      "similarity": 0.3935,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:38,500 --> 00:00:41,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in a suit confronts another man in a kitchen, both appearing tense.",
+      "similarity": 0.494,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:41,000 --> 00:00:43,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in a black suit stands in a dimly lit kitchen, looking tense.",
+      "similarity": 0.5373,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:43,500 --> 00:00:46,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man leans over a red gas canister, inspecting it inside a dimly lit room.",
+      "similarity": 0.3603,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:46,000 --> 00:00:48,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A red gas cylinder stands upright, with flames flickering near its base.",
+      "similarity": 0.2458,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:48,500 --> 00:00:51,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A hand reaches for a large knife resting on a metal countertop.",
+      "similarity": 0.3064,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A person in a dark suit stands over a table in a dimly lit area.",
+      "similarity": 0.3377,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A figure in dark clothing rushes past a stainless steel kitchen counter.",
+      "similarity": 0.4006,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:56,000 --> 00:00:58,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man with dark hair swiftly moves through a dimly lit room.",
+      "similarity": 0.4735,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:58,500 --> 00:01:01,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Three men in dark clothing are forcefully escorting an older man down a corridor.",
+      "similarity": 0.3764,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:01,000 --> 00:01:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man in a suit punches another man in an enclosed elevator space.",
+      "similarity": 0.4579,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:03,500 --> 00:01:06,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men struggle against a wooden door, with blood streaked across its surface.",
+      "similarity": 0.3939,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:06,000 --> 00:01:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A blurred figure lunges forward in a dimly lit, reddish environment.",
+      "similarity": 0.3903,
+      "word_count_ratio": 0.3438,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:08,500 --> 00:01:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A hand reaches for a small object on a dark surface, illuminated faintly.",
+      "similarity": 0.2443,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:11,000 --> 00:01:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man forces another man against the wall while holding a gun in an elevator.",
+      "similarity": 0.5216,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:13,500 --> 00:01:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men grapple with a third man in a cramped, dimly lit elevator.",
+      "similarity": 0.5226,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:16,000 --> 00:01:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men grapple in a confined space, one attempting to stab the other.",
+      "similarity": 0.3825,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:18,500 --> 00:01:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man grapples with another, holding a gun in a tense elevator confrontation.",
+      "similarity": 0.5574,
+      "word_count_ratio": 0.4062,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:21,000 --> 00:01:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men struggle violently in a narrow space, one holding a knife near the other's throat.",
+      "similarity": 0.4139,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:23,500 --> 00:01:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man with a knife confronts another man, both displaying intense expressions in a cramped space.",
+      "similarity": 0.5227,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:26,000 --> 00:01:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man grips a knife, pressing it threateningly against another man's neck in close quarters.",
+      "similarity": 0.4184,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:28,500 --> 00:01:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men are face-to-face, one holding a knife, both displaying tense expressions.",
+      "similarity": 0.4511,
+      "word_count_ratio": 0.375,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:31,000 --> 00:01:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man with a gun is pressing it against another man's forehead in a tense confrontation.",
+      "similarity": 0.3867,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:33,500 --> 00:01:36,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "Two men grapple closely, one with a shocked expression and the other biting his neck.",
+      "similarity": 0.4004,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:36,000 --> 00:01:38,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man with blood on his face grips another man's neck in a tense confrontation.",
+      "similarity": 0.4611,
+      "word_count_ratio": 0.4688,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:38,500 --> 00:01:41,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "The man with curly hair stands in an elevator splattered with blood. He looks directly at the camera, his expression serious. The scene shifts from the kitchen chaos to this enclosed space.",
+      "reference": "A man with disheveled hair, blood on his face, stands against a blood-splattered wall.",
+      "similarity": 0.5666,
+      "word_count_ratio": 0.4375,
+      "gap_fit": true,
+      "overlap_iou": 0.0236
+    },
+    {
+      "timestamp": "00:01:46,000 --> 00:01:48,500",
+      "vn_timestamp": "00:01:46,325 --> 00:01:48,725",
+      "vn": "Hand presses button.",
+      "reference": "A hand presses a blood-stained button on an ornate, worn device on a dark surface.",
+      "similarity": 0.6288,
+      "word_count_ratio": 0.2,
+      "gap_fit": true,
+      "overlap_iou": 0.7982
+    },
+    {
+      "timestamp": "00:01:48,500 --> 00:01:51,000",
+      "vn_timestamp": "00:01:49,525 --> 00:01:51,720",
+      "vn": "Match ignites fuse.",
+      "reference": "Audience members sit in a dimly lit room, watching a performance with interest.",
+      "similarity": 0.1892,
+      "word_count_ratio": 0.2308,
+      "gap_fit": true,
+      "overlap_iou": 0.4581
+    },
+    {
+      "timestamp": "00:01:51,000 --> 00:01:53,500",
+      "vn_timestamp": "00:01:49,525 --> 00:01:51,720",
+      "vn": "Match ignites fuse.",
+      "reference": "A red gas cylinder sits atop a wooden crate, with flames glowing below it.",
+      "similarity": 0.3275,
+      "word_count_ratio": 0.2143,
+      "gap_fit": true,
+      "overlap_iou": 0.1811
+    },
+    {
+      "timestamp": "00:01:56,000 --> 00:01:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A red gas cylinder stands on a metal platform, partially illuminated by overhead light.",
+      "similarity": 0.1731,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0035
+    },
+    {
+      "timestamp": "00:01:58,500 --> 00:02:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in elegant attire claps while seated at a dining table in a crowded restaurant.",
+      "similarity": 0.1518,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:01,000 --> 00:02:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man stands against a wall, illuminated by red lighting, wearing a black outfit.",
+      "similarity": 0.1856,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:03,500 --> 00:02:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A crystal chandelier sparkles, adorned with dangling glass droplets reflecting light.",
+      "similarity": 0.1974,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:06,000 --> 00:02:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A gold elevator button panel is mounted on a wooden wall beside an ornate mirror.",
+      "similarity": 0.23,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:08,500 --> 00:02:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A hand reaches toward an elevator button illuminated above a engraved surface.",
+      "similarity": 0.2302,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:11,000 --> 00:02:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A crowd of elegantly dressed people sits at tables in a dimly lit restaurant.",
+      "similarity": 0.1871,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:13,500 --> 00:02:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man stands in a dimly lit elevator hallway, smoke swirling around him.",
+      "similarity": 0.2212,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:16,000 --> 00:02:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a black shirt turns away as sparks fly near him.",
+      "similarity": 0.1811,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:18,500 --> 00:02:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with a serious expression stands illuminated, while another man lurks in the background.",
+      "similarity": 0.2594,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:21,000 --> 00:02:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with disheveled hair and a grim expression raises his arm, revealing blood on his face.",
+      "similarity": 0.2226,
+      "word_count_ratio": 0.7391,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:23,500 --> 00:02:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a black shirt stands with a tense expression, facing an ornate painting.",
+      "similarity": 0.2781,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:26,000 --> 00:02:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man stands in a dimly lit room, glancing towards the door with concern.",
+      "similarity": 0.2575,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:28,500 --> 00:02:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A group of people gathers around dimly lit tables with plates and drinks.",
+      "similarity": 0.1934,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:31,000 --> 00:02:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A person is being restrained while another figure pulls them back in a dimly lit room.",
+      "similarity": 0.245,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:33,500 --> 00:02:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A hand holds a firework fuse, igniting sparks against a smoky background.",
+      "similarity": 0.2447,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:36,000 --> 00:02:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men are engaged in a fight in a dimly lit bar, with smoke around them.",
+      "similarity": 0.1908,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:38,500 --> 00:02:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man falls backward while another person stands over him, as chaos unfolds around them.",
+      "similarity": 0.215,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:41,000 --> 00:02:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a suit suddenly jumps in a dimly lit restaurant, creating tension.",
+      "similarity": 0.261,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:46,000 --> 00:02:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a dark suit lunges at another man in a dimly lit bar.",
+      "similarity": 0.1893,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:48,500 --> 00:02:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man runs through a dimly lit room, dodging objects and debris.",
+      "similarity": 0.22,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:51,000 --> 00:02:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a dark suit runs through a dimly lit restaurant, looking anxious.",
+      "similarity": 0.2059,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:53,500 --> 00:02:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two figures engage in a frantic fight, throwing punches in a dimly lit room.",
+      "similarity": 0.2779,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:56,000 --> 00:02:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a black coat crouches at a table in a dimly lit restaurant.",
+      "similarity": 0.1255,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:58,500 --> 00:03:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A person lies on the ground, partially obscured by shadow, with a bright light overhead.",
+      "similarity": 0.2134,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:01,000 --> 00:03:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in a black dress runs frantically across a dimly lit room.",
+      "similarity": 0.2413,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:03,500 --> 00:03:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a black suit throws a punch in a dimly lit bar.",
+      "similarity": 0.1835,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:06,000 --> 00:03:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with dark hair and a mustache turns to face the camera in a dimly lit bar.",
+      "similarity": 0.2004,
+      "word_count_ratio": 0.7826,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:08,500 --> 00:03:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A server approaches a table with a glowing orb and elegantly set place settings.",
+      "similarity": 0.2651,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:11,000 --> 00:03:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A blurred figure in a suit swiftly moves through a dimly lit restaurant.",
+      "similarity": 0.3474,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:13,500 --> 00:03:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men in dark clothing engage in a fierce fistfight in a dimly lit room.",
+      "similarity": 0.1895,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:16,000 --> 00:03:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man kicks another man, sending him sliding across the wooden floor.",
+      "similarity": 0.1636,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:18,500 --> 00:03:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men are engaged in an intense fight inside a dimly lit bar.",
+      "similarity": 0.1884,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:21,000 --> 00:03:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men grapple on the floor, one pinning the other down in a fight.",
+      "similarity": 0.1101,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:23,500 --> 00:03:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man crouches beside a table, reaching for a overturned drink.",
+      "similarity": 0.0867,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:26,000 --> 00:03:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a dark coat runs through a dimly lit bar, evading danger.",
+      "similarity": 0.1962,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:28,500 --> 00:03:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men run through a dimly lit bar, evading an unseen threat.",
+      "similarity": 0.2494,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:31,000 --> 00:03:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men struggle on a bar, one holding the other by the throat.",
+      "similarity": 0.1306,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:33,500 --> 00:03:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in dark clothing grapples with another man in a dimly lit bar.",
+      "similarity": 0.1875,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:36,000 --> 00:03:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a dark shirt turns abruptly, avoiding an attack from another figure.",
+      "similarity": 0.2098,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:38,500 --> 00:03:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men are physically fighting in a dimly lit bar surrounded by shelves of liquor.",
+      "similarity": 0.1587,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:41,000 --> 00:03:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two figures are engaged in a struggle in a dimly lit room filled with bottles.",
+      "similarity": 0.2625,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:43,500 --> 00:03:46,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in black clothing walks through a dimly lit room with golden shelves.",
+      "similarity": 0.2575,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:46,000 --> 00:03:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men engage in a physical confrontation, grappling near a bar with bottles.",
+      "similarity": 0.1439,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:48,500 --> 00:03:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two men struggle violently in a dimly lit bar, one holding a bottle as a weapon.",
+      "similarity": 0.1879,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:51,000 --> 00:03:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with dark hair stands in a dimly lit bar, looking upwards.",
+      "similarity": 0.2103,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:53,500 --> 00:03:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A group of men with intense expressions crowded together in a dimly lit elevator.",
+      "similarity": 0.2517,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:56,000 --> 00:03:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a suit turns, walking through a dimly lit bar with art on the walls.",
+      "similarity": 0.3015,
+      "word_count_ratio": 0.7391,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:58,500 --> 00:04:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Three men in dark clothing enter a dimly lit bar, approaching a table.",
+      "similarity": 0.2205,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:01,000 --> 00:04:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in dark clothing stands between two men in a dimly lit restaurant.",
+      "similarity": 0.1716,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:03,500 --> 00:04:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with blood on his face looks distressed in a dimly lit room.",
+      "similarity": 0.2735,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:06,000 --> 00:04:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with a mustache leans forward, intensively listening in a dimly lit room.",
+      "similarity": 0.2056,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:08,500 --> 00:04:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with messy hair leans forward, looking intently, shadows cast across his face.",
+      "similarity": 0.2301,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:11,000 --> 00:04:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A bloodied man with tousled hair looks upward, tension etched on his face.",
+      "similarity": 0.2719,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:13,500 --> 00:04:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with wet, tousled hair stands solemnly, facing a dimly lit room full of people.",
+      "similarity": 0.2247,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:16,000 --> 00:04:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A heavily armored figure stands in an entrance, illuminated by wall sconces.",
+      "similarity": 0.1977,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:18,500 --> 00:04:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Six performers in elaborate costumes and masks stand in a dimly lit room.",
+      "similarity": 0.2283,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:21,000 --> 00:04:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Four women with painted faces stand side by side, adorned in intricate jewelry.",
+      "similarity": 0.1794,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:23,500 --> 00:04:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A group of women in ornate costumes stand in a dimly lit room.",
+      "similarity": 0.2323,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:26,000 --> 00:04:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A hand holds a silver chain with a small, detailed car pendant.",
+      "similarity": 0.1347,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:28,500 --> 00:04:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A hand holds a firecracker with a sparkler igniting from it.",
+      "similarity": 0.1044,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:31,000 --> 00:04:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with curly hair and a tense expression gazes over his shoulder in a dimly lit room.",
+      "similarity": 0.291,
+      "word_count_ratio": 0.7826,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:33,500 --> 00:04:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with striking makeup gazes intensely, flanked by two women in traditional attire.",
+      "similarity": 0.2264,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:36,000 --> 00:04:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with a bruised face looks intensely to the side in a dimly lit room.",
+      "similarity": 0.2633,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:38,500 --> 00:04:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A smiling man with dramatic makeup and ornate clothing fills the frame.",
+      "similarity": 0.3023,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:41,000 --> 00:04:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Dancers in ornate costumes perform energetically in a dimly lit, festive room.",
+      "similarity": 0.244,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:43,500 --> 00:04:46,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A person in dark clothing swings a stick toward another person adorned in colorful attire.",
+      "similarity": 0.1924,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:46,000 --> 00:04:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A cloaked figure moves swiftly through a dimly lit, elegant restaurant.",
+      "similarity": 0.2991,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:48,500 --> 00:04:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A figure in dark clothing lunges forward, partially obscured against a glowing backdrop.",
+      "similarity": 0.3368,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:51,000 --> 00:04:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A silhouetted figure leaps over a bar while a figure lies motionless on the floor.",
+      "similarity": 0.3452,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:53,500 --> 00:04:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two silhouetted figures engage in a standoff on a bar, framed by a lit bottle display.",
+      "similarity": 0.2724,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:56,000 --> 00:04:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A bright explosion erupts from a wooden cabinet, scattering debris across the room.",
+      "similarity": 0.2006,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:58,500 --> 00:05:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two silhouetted figures engage in a tense duel against a brightly lit bar backdrop.",
+      "similarity": 0.3324,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:01,000 --> 00:05:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in black clothing falls backward, blurring against a brightly lit bar shelf.",
+      "similarity": 0.2359,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:03,500 --> 00:05:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man is swinging his arm, appearing to strike another figure in a dimly lit bar.",
+      "similarity": 0.2333,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:06,000 --> 00:05:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A figure wearing a hooded coat stands next to a bright explosion of sparks.",
+      "similarity": 0.2367,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:08,500 --> 00:05:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A vibrant, patterned fabric sways as it moves through the frame, capturing attention.",
+      "similarity": 0.4391,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:11,000 --> 00:05:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with long hair stands amidst smoke, his face illuminated by flickering flames.",
+      "similarity": 0.1888,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:13,500 --> 00:05:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A dancer in ornate costume moves gracefully amid dim lighting and decorative surroundings.",
+      "similarity": 0.3148,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:16,000 --> 00:05:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A regal portrait of a man wearing a blue garment and a decorative white turban.",
+      "similarity": 0.2752,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:18,500 --> 00:05:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A colorful, ornate tapestry swirls rapidly, revealing intricate patterns and designs.",
+      "similarity": 0.4669,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:21,000 --> 00:05:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A spinning ornate spinner with intricate designs glimmers in the light.",
+      "similarity": 0.2785,
+      "word_count_ratio": 0.4783,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:23,500 --> 00:05:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a black shirt runs through a dimly lit bar, looking anxious.",
+      "similarity": 0.2209,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:26,000 --> 00:05:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a dark suit walks swiftly across a dimly lit room.",
+      "similarity": 0.2609,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:28,500 --> 00:05:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A crystal chandelier hangs above, reflecting light onto the dark floor below.",
+      "similarity": 0.2272,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:31,000 --> 00:05:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A large chandelier with glowing bulbs hangs above a dimly lit floor.",
+      "similarity": 0.219,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:33,500 --> 00:05:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Two figures engage in a fight on a dimly lit floor surrounded by scattered furniture.",
+      "similarity": 0.2551,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:36,000 --> 00:05:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A figure lies on the floor under a dimly lit lamp, surrounded by scattered debris.",
+      "similarity": 0.2149,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:38,500 --> 00:05:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man runs away from a dimly lit bar, illuminated by flickering candlelight.",
+      "similarity": 0.2156,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:41,000 --> 00:05:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in a dark cloak looks anxiously to her right as confetti falls.",
+      "similarity": 0.2364,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:43,500 --> 00:05:46,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man in a black suit stands tense, while another figure is engaged in a struggle behind him.",
+      "similarity": 0.2356,
+      "word_count_ratio": 0.7826,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:46,000 --> 00:05:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A blurred figure approaches a golden elevator door illuminated by soft, warm lights.",
+      "similarity": 0.3381,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:48,500 --> 00:05:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman aims a handgun forward, shooting while displaying a fierce expression.",
+      "similarity": 0.1638,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:51,000 --> 00:05:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A figure runs through a dimly lit bar, with shelves lined with bottles in the background.",
+      "similarity": 0.306,
+      "word_count_ratio": 0.6957,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:53,500 --> 00:05:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A person aims a handgun towards an unseen target in a dimly lit room.",
+      "similarity": 0.1693,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:56,000 --> 00:05:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with dark hair turns towards a dimly lit corner in a room.",
+      "similarity": 0.2508,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:58,500 --> 00:06:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman points a handgun forward with a determined expression against a dimly lit background.",
+      "similarity": 0.2184,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:01,000 --> 00:06:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with curly hair looks upward towards a painting on the wall.",
+      "similarity": 0.2375,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:03,500 --> 00:06:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man with dark, tousled hair stands close to a wooden door.",
+      "similarity": 0.1582,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:06,000 --> 00:06:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in a dark outfit angrily points a handgun towards an unseen person.",
+      "similarity": 0.1461,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:08,500 --> 00:06:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in a silver dress stands at a bar, her expression pensive and somber.",
+      "similarity": 0.2615,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:11,000 --> 00:06:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A man stands in a dimly lit room, partially turned with a serious expression.",
+      "similarity": 0.2606,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:13,500 --> 00:06:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman stands in a dimly lit bar, covered in blood and visibly distressed.",
+      "similarity": 0.241,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:16,000 --> 00:06:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A woman in a purple dress stands bloody and distressed in a dimly lit room.",
+      "similarity": 0.3105,
+      "word_count_ratio": 0.6522,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:18,500 --> 00:06:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "Abstract shapes, including a tomato and splash, are layered against a blue background.",
+      "similarity": 0.4635,
+      "word_count_ratio": 0.5652,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:21,000 --> 00:06:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A blue background features abstract purple shapes, including a splatter and a tomato silhouette.",
+      "similarity": 0.5103,
+      "word_count_ratio": 0.6087,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:23,500 --> 00:06:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "The scene transitions to a blue-toned graphic with abstract shapes and patterns, indicating a shift in the narrative or a passage of time.",
+      "reference": "A blue gradient background displays dark purple shapes resembling splatters and tomatoes.",
+      "similarity": 0.5213,
+      "word_count_ratio": 0.5217,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    }
+  ]
+}

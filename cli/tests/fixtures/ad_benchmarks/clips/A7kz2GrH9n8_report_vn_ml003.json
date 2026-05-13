@@ -1,0 +1,1412 @@
+{
+  "clip": "A7kz2GrH9n8.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 140,
+  "semantic_similarity_mean": 0.3577,
+  "semantic_similarity_median": 0.3262,
+  "word_count_ratio_mean": 0.5436,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "35.8%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:01,000 --> 00:00:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "A figure holding a staff moves toward a glowing doorway, illuminated by shafts of light.",
+      "similarity": 0.2828,
+      "word_count_ratio": 0.5357,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:03,500 --> 00:00:06,000",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "Three apes cautiously approach a human figure illuminated by beams of light.",
+      "similarity": 0.3574,
+      "word_count_ratio": 0.4286,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "Two realistic-looking apes, one larger, stand closely together, looking intently ahead.",
+      "similarity": 0.3756,
+      "word_count_ratio": 0.3929,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:08,500 --> 00:00:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "A chimpanzee stands at the forefront, looking toward a large gathering of other apes.",
+      "similarity": 0.3742,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:11,000 --> 00:00:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "Two gorillas walk towards a bustling crowd of various apes in a desolate landscape.",
+      "similarity": 0.3212,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:13,500 --> 00:00:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "A group of apes fights near an open doorway, water reflecting beneath them.",
+      "similarity": 0.3111,
+      "word_count_ratio": 0.4643,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:16,000 --> 00:00:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "A humanoid gorilla in regal attire walks down a dimly lit corridor.",
+      "similarity": 0.2967,
+      "word_count_ratio": 0.4286,
+      "gap_fit": true,
+      "overlap_iou": 0.1301
+    },
+    {
+      "timestamp": "00:00:18,500 --> 00:00:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:00:19,215",
+      "vn": "Proximus Caesar stands with arms crossed, observing the scene. The camera shifts to a wide shot of a large, dimly lit hangar filled with military vehicles and personnel.",
+      "reference": "A chimpanzee stands in an open doorway, observing a distant group of humanoid figures.",
+      "similarity": 0.3786,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.034
+    },
+    {
+      "timestamp": "00:00:33,500 --> 00:00:36,000",
+      "vn_timestamp": "00:00:33,600 --> 00:00:39,920",
+      "vn": "Apes run through hangar, weapons drawn, soldiers retreat.",
+      "reference": "A group of angry apes charges forward, baring their teeth in a dark environment.",
+      "similarity": 0.5516,
+      "word_count_ratio": 0.5714,
+      "gap_fit": true,
+      "overlap_iou": 0.3738
+    },
+    {
+      "timestamp": "00:00:36,000 --> 00:00:38,500",
+      "vn_timestamp": "00:00:33,600 --> 00:00:39,920",
+      "vn": "Apes run through hangar, weapons drawn, soldiers retreat.",
+      "reference": "Gorillas and chimpanzees gather and interact in a chaotic, tense environment.",
+      "similarity": 0.3954,
+      "word_count_ratio": 0.7273,
+      "gap_fit": true,
+      "overlap_iou": 0.3956
+    },
+    {
+      "timestamp": "00:00:38,500 --> 00:00:41,000",
+      "vn_timestamp": "00:00:33,600 --> 00:00:39,920",
+      "vn": "Apes run through hangar, weapons drawn, soldiers retreat.",
+      "reference": "Gorilla in armor and two other apes engage in a serious conversation.",
+      "similarity": 0.4519,
+      "word_count_ratio": 0.6667,
+      "gap_fit": true,
+      "overlap_iou": 0.1919
+    },
+    {
+      "timestamp": "00:00:41,000 --> 00:00:43,500",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A large, armored ape confronts several other apes in a tense, aggressive standoff.",
+      "similarity": 0.6184,
+      "word_count_ratio": 0.7222,
+      "gap_fit": true,
+      "overlap_iou": 0.0455
+    },
+    {
+      "timestamp": "00:00:43,500 --> 00:00:46,000",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A group of apes stands in a dimly lit room, with one ape kneeling, distressed.",
+      "similarity": 0.4988,
+      "word_count_ratio": 0.8333,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:00:46,000 --> 00:00:48,500",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "The ape leader gestures aggressively, leading an army of apes in a battle stance.",
+      "similarity": 0.5895,
+      "word_count_ratio": 0.7778,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:00:48,500 --> 00:00:51,000",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "Two large apes confront a smaller ape, while a human woman watches nearby.",
+      "similarity": 0.5481,
+      "word_count_ratio": 0.7222,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A large, muscular ape grapples with another ape in a dimly lit room.",
+      "similarity": 0.4804,
+      "word_count_ratio": 0.7222,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A woman with a focused expression aims a gun directly at the viewer.",
+      "similarity": 0.3439,
+      "word_count_ratio": 0.7222,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:00:56,000 --> 00:00:58,500",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A large gorilla wears armor and leads a group of smaller apes in a tense standoff.",
+      "similarity": 0.5602,
+      "word_count_ratio": 0.8889,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:00:58,500 --> 00:01:01,000",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A large chimpanzee holds a smaller chimpanzee while surrounded by other chimpanzees in a dark setting.",
+      "similarity": 0.3786,
+      "word_count_ratio": 0.8889,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:01:01,000 --> 00:01:03,500",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A large, muscular ape with a fur collar looks intently in a dimly lit space.",
+      "similarity": 0.4101,
+      "word_count_ratio": 0.8333,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:01:03,500 --> 00:01:06,000",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "An ape with a muscular build leads a group of smaller apes in movement.",
+      "similarity": 0.4502,
+      "word_count_ratio": 0.7778,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:01:06,000 --> 00:01:08,500",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "Three ape characters, one with a crown, appear serious as they huddle together.",
+      "similarity": 0.4921,
+      "word_count_ratio": 0.7222,
+      "gap_fit": true,
+      "overlap_iou": 0.0945
+    },
+    {
+      "timestamp": "00:01:08,500 --> 00:01:11,000",
+      "vn_timestamp": "00:00:42,240 --> 00:01:08,700",
+      "vn": "Apes advance, weapons drawn, surrounding Proximus Caesar. Tension escalates as they confront him, expressions intense, ready for confrontation.",
+      "reference": "A group of five realistic-looking apes, displaying various expressions of curiosity and concern.",
+      "similarity": 0.4741,
+      "word_count_ratio": 0.7222,
+      "gap_fit": true,
+      "overlap_iou": 0.007
+    },
+    {
+      "timestamp": "00:01:16,000 --> 00:01:18,500",
+      "vn_timestamp": "00:01:17,475 --> 00:01:19,555",
+      "vn": "Noa speaks, mouth open.",
+      "reference": "A chimpanzee with expressive eyes is startled, flanked by another ape in the background.",
+      "similarity": 0.2911,
+      "word_count_ratio": 0.2857,
+      "gap_fit": true,
+      "overlap_iou": 0.2883
+    },
+    {
+      "timestamp": "00:01:18,500 --> 00:01:21,000",
+      "vn_timestamp": "00:01:17,475 --> 00:01:19,555",
+      "vn": "Noa speaks, mouth open.",
+      "reference": "A chimpanzee with expressive eyes and a fur coat reacts in surprise, surrounded by other apes.",
+      "similarity": 0.3082,
+      "word_count_ratio": 0.25,
+      "gap_fit": true,
+      "overlap_iou": 0.2993
+    },
+    {
+      "timestamp": "00:01:23,500 --> 00:01:26,000",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "A startled ape with wide eyes and an open mouth is in focus, surrounded by others.",
+      "similarity": 0.4979,
+      "word_count_ratio": 0.5714,
+      "gap_fit": true,
+      "overlap_iou": 0.1111
+    },
+    {
+      "timestamp": "00:01:26,000 --> 00:01:28,500",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "A group of apes runs swiftly through a large industrial space, some on all fours.",
+      "similarity": 0.463,
+      "word_count_ratio": 0.5357,
+      "gap_fit": true,
+      "overlap_iou": 0.1529
+    },
+    {
+      "timestamp": "00:01:28,500 --> 00:01:31,000",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "A person walks barefoot on a gravel path beside a wooden fence.",
+      "similarity": 0.1303,
+      "word_count_ratio": 0.4286,
+      "gap_fit": true,
+      "overlap_iou": 0.1529
+    },
+    {
+      "timestamp": "00:01:31,000 --> 00:01:33,500",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "Two gorillas run energetically across a gritty landscape, with one wearing a necklace of bones.",
+      "similarity": 0.3693,
+      "word_count_ratio": 0.5357,
+      "gap_fit": true,
+      "overlap_iou": 0.1529
+    },
+    {
+      "timestamp": "00:01:33,500 --> 00:01:36,000",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "A group of apes walks towards a chaotic battlefield filled with smoke and debris.",
+      "similarity": 0.5113,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.1529
+    },
+    {
+      "timestamp": "00:01:36,000 --> 00:01:38,500",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "Four apes with expressive faces stand in a dimly lit environment, appearing tense and alert.",
+      "similarity": 0.5608,
+      "word_count_ratio": 0.5357,
+      "gap_fit": true,
+      "overlap_iou": 0.1529
+    },
+    {
+      "timestamp": "00:01:38,500 --> 00:01:41,000",
+      "vn_timestamp": "00:01:24,115 --> 00:01:40,465",
+      "vn": "Proximus Caesar gestures emphatically, speaking to the apes. The scene shifts to a dimly lit area where Proximus Caesar continues to address the group, maintaining a serious demeanor.",
+      "reference": "A large, realistic-looking ape with intense expression stands in a dimly lit space.",
+      "similarity": 0.5248,
+      "word_count_ratio": 0.4643,
+      "gap_fit": true,
+      "overlap_iou": 0.1164
+    },
+    {
+      "timestamp": "00:01:41,000 --> 00:01:43,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "Two apes stand in a dilapidated industrial setting, one looking away and the other observing intently.",
+      "similarity": 0.5453,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0114
+    },
+    {
+      "timestamp": "00:01:43,500 --> 00:01:46,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes marches towards a dilapidated wooden structure under a cloudy sky.",
+      "similarity": 0.5099,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:01:46,000 --> 00:01:48,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes charges forward, with dust rising behind them in the background.",
+      "similarity": 0.5384,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:01:48,500 --> 00:01:51,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "Waves crash against a wooden structure as people and debris scatter along the shore.",
+      "similarity": 0.1883,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:01:51,000 --> 00:01:53,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes scurry along a sandy shore towards a large wooden structure.",
+      "similarity": 0.4428,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:01:53,500 --> 00:01:56,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes charges forward in a dimly lit, expansive building.",
+      "similarity": 0.6027,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:01:56,000 --> 00:01:58,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A dark, shadowy figure emerges through swirling water and mist.",
+      "similarity": 0.2632,
+      "word_count_ratio": 0.3846,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:01:58,500 --> 00:02:01,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of humanoid figures crawls through dark, flooded water in an industrial setting.",
+      "similarity": 0.3458,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:01,000 --> 00:02:03,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A young person stands on a rocky bank, facing rushing floodwaters amidst debris.",
+      "similarity": 0.2424,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:03,500 --> 00:02:06,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A woman stands on a rocky shore, watching turbulent water surge towards a large structure.",
+      "similarity": 0.2411,
+      "word_count_ratio": 0.5769,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:06,000 --> 00:02:08,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A woman stands with a serious expression, wearing a blue shirt and strap across her chest.",
+      "similarity": 0.2988,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:08,500 --> 00:02:11,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large, shadowy creature emerges from the water, attacking a building structure nearby.",
+      "similarity": 0.2894,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:11,000 --> 00:02:13,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee clings to a metal beam as water rushes around it.",
+      "similarity": 0.3497,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:13,500 --> 00:02:16,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A man struggles in a pile of debris as shadows loom in the background.",
+      "similarity": 0.2941,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:16,000 --> 00:02:18,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A person in a wetsuit reaches out to another struggling in turbulent water.",
+      "similarity": 0.1651,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:18,500 --> 00:02:21,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large wave of water crashes forcefully against metal structures in a dimly lit environment.",
+      "similarity": 0.2984,
+      "word_count_ratio": 0.5769,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:21,000 --> 00:02:23,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large creature emerges from a shadowy cave, splashing water as it moves.",
+      "similarity": 0.2937,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:23,500 --> 00:02:26,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "The camera glides over a wet, abandoned industrial floor, reflecting dim light from above.",
+      "similarity": 0.2562,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:26,000 --> 00:02:28,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A creature violently lunges at another, splattering dark liquid in a dimly lit space.",
+      "similarity": 0.3652,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:28,500 --> 00:02:31,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee struggles in water, while a person reaches out to help it.",
+      "similarity": 0.2865,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:31,000 --> 00:02:33,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A humanoid creature crouches in shallow water, splashing as it moves quickly.",
+      "similarity": 0.2705,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:33,500 --> 00:02:36,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "Monkeys wade through water in a dark, industrial environment, one reaching for another.",
+      "similarity": 0.3663,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:36,000 --> 00:02:38,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "Two chimpanzees dash through a dark, industrial setting, possibly escaping from a threat.",
+      "similarity": 0.4579,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:38,500 --> 00:02:41,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "Multiple figures jump from a high balcony onto a lower level in a dimly lit setting.",
+      "similarity": 0.322,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:41,000 --> 00:02:43,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of armed individuals rushes forward, creating chaos in a dimly lit environment.",
+      "similarity": 0.427,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:43,500 --> 00:02:46,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee crouches while a human leaps over it in a dark, industrial environment.",
+      "similarity": 0.4172,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:46,000 --> 00:02:48,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A figure runs past a dimly lit modern architecture with reflective surfaces and shadows.",
+      "similarity": 0.2555,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:48,500 --> 00:02:51,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A figure struggles in turbulent water near a rusted metal railing in dim lighting.",
+      "similarity": 0.2228,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:51,000 --> 00:02:53,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A man in a dark jacket stands beneath a waterfall in an industrial setting.",
+      "similarity": 0.2496,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:53,500 --> 00:02:56,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A person interacts with three large, dark-furred chimpanzees in a dimly lit enclosure.",
+      "similarity": 0.4762,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:56,000 --> 00:02:58,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large, furry figure swings its arm towards a small, armored character in a dark alley.",
+      "similarity": 0.303,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:02:58,500 --> 00:03:01,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee escapes from a dark, smoky environment, moving quickly towards the exit.",
+      "similarity": 0.3825,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:01,000 --> 00:03:03,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A wet, startled-looking chimpanzee stares with wide eyes in a dimly lit environment.",
+      "similarity": 0.4829,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:03,500 --> 00:03:06,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A dark, swirling mist envelops the screen, creating an eerie, shadowy atmosphere.",
+      "similarity": 0.3037,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:06,000 --> 00:03:08,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A creature climbs out of murky water, reaching for a metal structure above.",
+      "similarity": 0.2075,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:08,500 --> 00:03:11,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A creature climbs upwards through murky water, gripping a metal pole tightly.",
+      "similarity": 0.2569,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:11,000 --> 00:03:13,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee leaps towards a soldier in a dimly lit industrial setting.",
+      "similarity": 0.4509,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:13,500 --> 00:03:16,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A person crouches on a metal platform surrounded by industrial machinery and pipes.",
+      "similarity": 0.2433,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:16,000 --> 00:03:18,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A dark, shadowy figure moves quickly through a dense, foggy forest.",
+      "similarity": 0.2843,
+      "word_count_ratio": 0.4231,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:18,500 --> 00:03:21,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "An underwater scene shows distorted silhouettes and bubbles rising through murky water.",
+      "similarity": 0.3094,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:23,500 --> 00:03:26,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A blurred, reddish background fills the frame, creating an abstract, atmospheric effect.",
+      "similarity": 0.2558,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:26,000 --> 00:03:28,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee struggles through muddy water, with another creature following closely behind.",
+      "similarity": 0.3761,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:28,500 --> 00:03:31,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A dark, shadowy figure moves quickly through a dimly lit, water-filled tunnel.",
+      "similarity": 0.3005,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:31,000 --> 00:03:33,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A massive, chained creature emerges from murky water in a dimly lit underground space.",
+      "similarity": 0.3524,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:33,500 --> 00:03:36,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A dark figure wades through murky water in a dimly lit industrial setting.",
+      "similarity": 0.313,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:36,000 --> 00:03:38,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large humanoid figure bursts through a wall, water cascading around it.",
+      "similarity": 0.2742,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:38,500 --> 00:03:41,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee emerges from murky water, its fur glistening in the dim light.",
+      "similarity": 0.3896,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:41,000 --> 00:03:43,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large, dark creature thrashes in water, creating splashes and rippling waves.",
+      "similarity": 0.2655,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:43,500 --> 00:03:46,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A distressed ape struggles between metal pipes, looking up with fearful eyes.",
+      "similarity": 0.4474,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:46,000 --> 00:03:48,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A gorilla struggles in turbulent water, clinging to a wooden structure.",
+      "similarity": 0.3001,
+      "word_count_ratio": 0.4231,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:48,500 --> 00:03:51,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A wet, expressive chimpanzee stands in a dimly lit environment, appearing contemplative.",
+      "similarity": 0.4907,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:51,000 --> 00:03:53,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "An ape lunges forward, confronting a large reptilian creature in a dark, industrial setting.",
+      "similarity": 0.5115,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:53,500 --> 00:03:56,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A figure jumps into murky water, ripples expanding around them in dark surroundings.",
+      "similarity": 0.2865,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:56,000 --> 00:03:58,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A figure stands near rushing water in a dimly lit industrial setting.",
+      "similarity": 0.3303,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:03:58,500 --> 00:04:01,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A figure stands partially in darkness, their profile illuminated by a faint light.",
+      "similarity": 0.3478,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:01,000 --> 00:04:03,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee stands near a dark entrance, looking thoughtfully into the shadows.",
+      "similarity": 0.4743,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:03,500 --> 00:04:06,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A silhouetted figure stands in front of large circular windows, where two other figures are suspended.",
+      "similarity": 0.3122,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:06,000 --> 00:04:08,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A chimpanzee stands at the entrance of a dark tunnel, looking surprised and alert.",
+      "similarity": 0.4665,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:08,500 --> 00:04:11,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large group of apes gathers on a rocky ledge near a cliffside structure.",
+      "similarity": 0.5088,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:11,000 --> 00:04:13,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large group of monkeys gathers on a rocky cliff near the ocean.",
+      "similarity": 0.3964,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:13,500 --> 00:04:16,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large chimpanzee walks through a dilapidated structure, appearing alert and focused.",
+      "similarity": 0.47,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:16,000 --> 00:04:18,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A gorilla lies on the ground, while other apes approach in the background.",
+      "similarity": 0.4915,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:18,500 --> 00:04:21,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes intensely observe and react to a nearby conflict.",
+      "similarity": 0.6209,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:21,000 --> 00:04:23,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "The large gorilla, wearing a red necklace, shouts while other apes gather around him.",
+      "similarity": 0.5093,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:23,500 --> 00:04:26,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes surrounds and attacks another ape on the ground.",
+      "similarity": 0.546,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:26,000 --> 00:04:28,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A group of apes surrounds a fallen ape on a rocky surface.",
+      "similarity": 0.5134,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:28,500 --> 00:04:31,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A struggling ape claws the ground while a group of apes watches intently.",
+      "similarity": 0.5774,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:31,000 --> 00:04:33,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "An ape kicks another ape on the ground while a crowd of apes watches.",
+      "similarity": 0.5127,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:33,500 --> 00:04:36,000",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A large, fallen ape lies on its side, surrounded by several other apes in the background.",
+      "similarity": 0.469,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0143
+    },
+    {
+      "timestamp": "00:04:36,000 --> 00:04:38,500",
+      "vn_timestamp": "00:01:41,505 --> 00:04:36,465",
+      "vn": "The scene shifts to a dimly lit area. Proximus Caesar continues to address the group, maintaining a serious demeanor. The apes listen intently, some appearing agitated.",
+      "reference": "A wounded, unconscious figure lies on the ground with blood on its face.",
+      "similarity": 0.2361,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0026
+    },
+    {
+      "timestamp": "00:04:53,500 --> 00:04:56,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A large ape stands on a rocky outcrop, gazing thoughtfully over the ocean.",
+      "similarity": 0.2596,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.0148
+    },
+    {
+      "timestamp": "00:04:56,000 --> 00:04:58,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A chimpanzee lies on its side, resting against a rocky surface by water.",
+      "similarity": 0.2477,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:04:58,500 --> 00:05:01,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A wounded ape lowers its head in pain, with blood visible on its fur.",
+      "similarity": 0.2601,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:01,000 --> 00:05:03,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "An ape kneels on the ground, its face close to the surface, with visible scars.",
+      "similarity": 0.3408,
+      "word_count_ratio": 0.625,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:03,500 --> 00:05:06,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A wounded ape gazes down sadly, revealing cuts and scars on its face.",
+      "similarity": 0.269,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:06,000 --> 00:05:08,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A monkey crouches on a rocky surface, focused on digging in the ground.",
+      "similarity": 0.2301,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:08,500 --> 00:05:11,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "Three apes with expressive faces watch intently, showing curiosity and concern.",
+      "similarity": 0.2467,
+      "word_count_ratio": 0.4583,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:11,000 --> 00:05:13,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "Two apes stand facing each other, surrounded by a group of other apes in the background.",
+      "similarity": 0.2227,
+      "word_count_ratio": 0.6667,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:13,500 --> 00:05:16,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A chimpanzee stands with a shocked expression, facing a larger chimp on a rocky cliff.",
+      "similarity": 0.2222,
+      "word_count_ratio": 0.625,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:16,000 --> 00:05:18,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A chimpanzee stares intently at another chimpanzee, both perched on a rocky ledge.",
+      "similarity": 0.1891,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:18,500 --> 00:05:21,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes stands on a rocky ledge, facing a large building entrance.",
+      "similarity": 0.1996,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:21,000 --> 00:05:23,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of chimpanzees gathers around a lone human in a dilapidated setting.",
+      "similarity": 0.1912,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:23,500 --> 00:05:26,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes stands attentively, watching a larger ape in front of them.",
+      "similarity": 0.2492,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:26,000 --> 00:05:28,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes gathers around a large, imposing ape in a tense standoff.",
+      "similarity": 0.2558,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:28,500 --> 00:05:31,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A monkey stands on a rocky ledge, gesturing intently toward another monkey nearby.",
+      "similarity": 0.1886,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:31,000 --> 00:05:33,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes gathers near a stone building, some appearing tense and alert.",
+      "similarity": 0.2146,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:33,500 --> 00:05:36,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A large ape holds an owl up to another imposing ape on a cliffside.",
+      "similarity": 0.1869,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:36,000 --> 00:05:38,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "An orc warrior leaps off a cliff, brandishing a weapon, as a crowd watches below.",
+      "similarity": 0.2786,
+      "word_count_ratio": 0.625,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:38,500 --> 00:05:41,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes stands on a rocky platform, watching a fierce owl swoop overhead.",
+      "similarity": 0.2416,
+      "word_count_ratio": 0.625,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:41,000 --> 00:05:43,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A large bird swoops down towards a group of stunned apes in the foreground.",
+      "similarity": 0.2251,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:43,500 --> 00:05:46,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes watches intently as one ape raises its arm in protest.",
+      "similarity": 0.2447,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:46,000 --> 00:05:48,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes stands together, while large hawks swoop down overhead.",
+      "similarity": 0.1907,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:48,500 --> 00:05:51,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of apes stands in a tense formation, some displaying aggressive postures.",
+      "similarity": 0.2119,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:51,000 --> 00:05:53,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A large bird flies off a cliff, while a crowd watches from a distance.",
+      "similarity": 0.2181,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:53,500 --> 00:05:56,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "Waves crash against rocky cliffs as greenery grows at the top of the cliffs.",
+      "similarity": 0.208,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:56,000 --> 00:05:58,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "Five ape-like creatures watch as one swings its arm, striking a flying eagle.",
+      "similarity": 0.2259,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:05:58,500 --> 00:06:01,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A chimpanzee holds a golden eagle as other apes surround him, watching intently.",
+      "similarity": 0.2117,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:01,000 --> 00:06:03,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A monkey holds a golden eagle while other monkeys observe nearby.",
+      "similarity": 0.1361,
+      "word_count_ratio": 0.4583,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:03,500 --> 00:06:06,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of several apes stands together, while a golden eagle perches nearby.",
+      "similarity": 0.1747,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:06,000 --> 00:06:08,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A group of several apes stands together, observing a larger ape in the center.",
+      "similarity": 0.2141,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:08,500 --> 00:06:11,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A large group of humanoid figures stands on a rocky ledge near a structure.",
+      "similarity": 0.1855,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:11,000 --> 00:06:13,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A red background features text promoting daily movie clips updates from Joblo.",
+      "similarity": 0.5954,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:13,500 --> 00:06:16,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A red background features text promoting movie clips and a subscription call to action.",
+      "similarity": 0.5007,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:16,000 --> 00:06:18,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "Text on a red background promotes subscribing to JoBlo Movie Clips for daily updates.",
+      "similarity": 0.527,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:18,500 --> 00:06:21,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A red background features text promoting subscription to Joblo Movie Clips and daily updates.",
+      "similarity": 0.5866,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:21,000 --> 00:06:23,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "Text on a red background promotes subscribing to movie clips with notification instructions.",
+      "similarity": 0.4564,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:23,500 --> 00:06:26,000",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A red background displays promotional text urging viewers to subscribe for movie clips.",
+      "similarity": 0.5087,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    },
+    {
+      "timestamp": "00:06:26,000 --> 00:06:28,500",
+      "vn_timestamp": "00:04:54,560 --> 00:06:30,792",
+      "vn": "Proximus Caesar lies motionless on the ground. The scene transitions to a red screen with text promoting Joblo Movie Clips subscriptions and daily updates.",
+      "reference": "A red background features text promoting subscription and daily updates for movie clips.",
+      "similarity": 0.5164,
+      "word_count_ratio": 0.5417,
+      "gap_fit": true,
+      "overlap_iou": 0.026
+    }
+  ]
+}

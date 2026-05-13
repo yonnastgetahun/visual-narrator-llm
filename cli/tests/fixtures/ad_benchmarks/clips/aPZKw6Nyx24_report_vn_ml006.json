@@ -1,0 +1,1502 @@
+{
+  "clip": "aPZKw6Nyx24.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 149,
+  "semantic_similarity_mean": 0.3775,
+  "semantic_similarity_median": 0.3745,
+  "word_count_ratio_mean": 0.5907,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "37.8%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:01,000 --> 00:00:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A chef stirs a pot while staff move around a busy restaurant kitchen.",
+      "similarity": 0.4253,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:06,000 --> 00:00:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man swings a frying pan toward another man in a dimly lit kitchen.",
+      "similarity": 0.3889,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:08,500 --> 00:00:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men are grappling each other in a dimly lit kitchen, while other cooks work.",
+      "similarity": 0.4571,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:11,000 --> 00:00:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A person in a dark jacket rushes past, holding a camera in a dimly lit room.",
+      "similarity": 0.3641,
+      "word_count_ratio": 0.8,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:13,500 --> 00:00:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A figure runs through a dimly lit kitchen with equipment and ingredients scattered around.",
+      "similarity": 0.4964,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:16,000 --> 00:00:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man holds another man's leg while sitting on a cluttered kitchen countertop.",
+      "similarity": 0.3389,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:18,500 --> 00:00:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in a black jacket moves quickly through a commercial kitchen, partially obscured.",
+      "similarity": 0.5387,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:21,000 --> 00:00:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in a suit dramatically swings a long coat around him.",
+      "similarity": 0.3284,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:23,500 --> 00:00:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A blurred motion captures a dimly lit room filled with shelves and various objects.",
+      "similarity": 0.2968,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:26,000 --> 00:00:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in black clothes punches another man, who grins in a kitchen setting.",
+      "similarity": 0.4388,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:28,500 --> 00:00:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A figure in a dark coat rushes through a dimly lit kitchen.",
+      "similarity": 0.502,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:31,000 --> 00:00:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man punches a second man, shattering a glass display case behind them.",
+      "similarity": 0.2839,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:33,500 --> 00:00:36,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A person lies on the ground, struggling as two figures loom over them.",
+      "similarity": 0.2443,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:36,000 --> 00:00:38,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in a black outfit stands in a dimly lit kitchen holding a kettle.",
+      "similarity": 0.4313,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:38,500 --> 00:00:41,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in a suit confronts another man in a kitchen, both appearing tense.",
+      "similarity": 0.4773,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:41,000 --> 00:00:43,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in a black suit stands in a dimly lit kitchen, looking tense.",
+      "similarity": 0.5125,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:43,500 --> 00:00:46,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man leans over a red gas canister, inspecting it inside a dimly lit room.",
+      "similarity": 0.2874,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:46,000 --> 00:00:48,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A red gas cylinder stands upright, with flames flickering near its base.",
+      "similarity": 0.1987,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:48,500 --> 00:00:51,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A hand reaches for a large knife resting on a metal countertop.",
+      "similarity": 0.3743,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:51,000 --> 00:00:53,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A person in a dark suit stands over a table in a dimly lit area.",
+      "similarity": 0.291,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:53,500 --> 00:00:56,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A figure in dark clothing rushes past a stainless steel kitchen counter.",
+      "similarity": 0.4885,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:56,000 --> 00:00:58,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man with dark hair swiftly moves through a dimly lit room.",
+      "similarity": 0.52,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:00:58,500 --> 00:01:01,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Three men in dark clothing are forcefully escorting an older man down a corridor.",
+      "similarity": 0.3412,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:01,000 --> 00:01:03,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man in a suit punches another man in an enclosed elevator space.",
+      "similarity": 0.2646,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:03,500 --> 00:01:06,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men struggle against a wooden door, with blood streaked across its surface.",
+      "similarity": 0.421,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:06,000 --> 00:01:08,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A blurred figure lunges forward in a dimly lit, reddish environment.",
+      "similarity": 0.3772,
+      "word_count_ratio": 0.55,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:08,500 --> 00:01:11,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A hand reaches for a small object on a dark surface, illuminated faintly.",
+      "similarity": 0.2528,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:11,000 --> 00:01:13,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man forces another man against the wall while holding a gun in an elevator.",
+      "similarity": 0.2961,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:13,500 --> 00:01:16,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men grapple with a third man in a cramped, dimly lit elevator.",
+      "similarity": 0.3213,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:16,000 --> 00:01:18,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men grapple in a confined space, one attempting to stab the other.",
+      "similarity": 0.325,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:18,500 --> 00:01:21,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man grapples with another, holding a gun in a tense elevator confrontation.",
+      "similarity": 0.3194,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:21,000 --> 00:01:23,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men struggle violently in a narrow space, one holding a knife near the other's throat.",
+      "similarity": 0.3745,
+      "word_count_ratio": 0.8,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:23,500 --> 00:01:26,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man with a knife confronts another man, both displaying intense expressions in a cramped space.",
+      "similarity": 0.4649,
+      "word_count_ratio": 0.8,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:26,000 --> 00:01:28,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man grips a knife, pressing it threateningly against another man's neck in close quarters.",
+      "similarity": 0.3973,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:28,500 --> 00:01:31,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men are face-to-face, one holding a knife, both displaying tense expressions.",
+      "similarity": 0.4022,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:31,000 --> 00:01:33,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man with a gun is pressing it against another man's forehead in a tense confrontation.",
+      "similarity": 0.3096,
+      "word_count_ratio": 0.8,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:33,500 --> 00:01:36,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "Two men grapple closely, one with a shocked expression and the other biting his neck.",
+      "similarity": 0.3743,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:36,000 --> 00:01:38,500",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man with blood on his face grips another man's neck in a tense confrontation.",
+      "similarity": 0.4298,
+      "word_count_ratio": 0.75,
+      "gap_fit": true,
+      "overlap_iou": 0.0248
+    },
+    {
+      "timestamp": "00:01:38,500 --> 00:01:41,000",
+      "vn_timestamp": "00:00:00,000 --> 00:01:40,885",
+      "vn": "A man with curly hair walks purposefully through a busy kitchen, his face splattered with blood, conveying shock and vulnerability.",
+      "reference": "A man with disheveled hair, blood on his face, stands against a blood-splattered wall.",
+      "similarity": 0.6406,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.0236
+    },
+    {
+      "timestamp": "00:01:46,000 --> 00:01:48,500",
+      "vn_timestamp": "00:01:46,325 --> 00:01:48,725",
+      "vn": "A hand with a black wristband presses a button on a brass elevator panel, while a blood-stained man in formal attire stands among concerned onlookers.",
+      "reference": "A hand presses a blood-stained button on an ornate, worn device on a dark surface.",
+      "similarity": 0.6316,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.7982
+    },
+    {
+      "timestamp": "00:01:48,500 --> 00:01:51,000",
+      "vn_timestamp": "00:01:49,525 --> 00:01:51,720",
+      "vn": "A steady hand ignites a fuse with a lighter, unleashing intense sparks and thick smoke in a dark, tense atmosphere.",
+      "reference": "Audience members sit in a dimly lit room, watching a performance with interest.",
+      "similarity": 0.3207,
+      "word_count_ratio": 0.65,
+      "gap_fit": true,
+      "overlap_iou": 0.4581
+    },
+    {
+      "timestamp": "00:01:51,000 --> 00:01:53,500",
+      "vn_timestamp": "00:01:49,525 --> 00:01:51,720",
+      "vn": "A steady hand ignites a fuse with a lighter, unleashing intense sparks and thick smoke in a dark, tense atmosphere.",
+      "reference": "A red gas cylinder sits atop a wooden crate, with flames glowing below it.",
+      "similarity": 0.4452,
+      "word_count_ratio": 0.7,
+      "gap_fit": true,
+      "overlap_iou": 0.1811
+    },
+    {
+      "timestamp": "00:01:56,000 --> 00:01:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A red gas cylinder stands on a metal platform, partially illuminated by overhead light.",
+      "similarity": 0.2187,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0035
+    },
+    {
+      "timestamp": "00:01:58,500 --> 00:02:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in elegant attire claps while seated at a dining table in a crowded restaurant.",
+      "similarity": 0.3449,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:01,000 --> 00:02:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man stands against a wall, illuminated by red lighting, wearing a black outfit.",
+      "similarity": 0.3537,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:03,500 --> 00:02:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A crystal chandelier sparkles, adorned with dangling glass droplets reflecting light.",
+      "similarity": 0.2803,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:06,000 --> 00:02:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A gold elevator button panel is mounted on a wooden wall beside an ornate mirror.",
+      "similarity": 0.2495,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:08,500 --> 00:02:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A hand reaches toward an elevator button illuminated above a engraved surface.",
+      "similarity": 0.2277,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:11,000 --> 00:02:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A crowd of elegantly dressed people sits at tables in a dimly lit restaurant.",
+      "similarity": 0.5283,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:13,500 --> 00:02:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man stands in a dimly lit elevator hallway, smoke swirling around him.",
+      "similarity": 0.4717,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:16,000 --> 00:02:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a black shirt turns away as sparks fly near him.",
+      "similarity": 0.2451,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:18,500 --> 00:02:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with a serious expression stands illuminated, while another man lurks in the background.",
+      "similarity": 0.5509,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:21,000 --> 00:02:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with disheveled hair and a grim expression raises his arm, revealing blood on his face.",
+      "similarity": 0.3774,
+      "word_count_ratio": 0.68,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:23,500 --> 00:02:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a black shirt stands with a tense expression, facing an ornate painting.",
+      "similarity": 0.3623,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:26,000 --> 00:02:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man stands in a dimly lit room, glancing towards the door with concern.",
+      "similarity": 0.4807,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:28,500 --> 00:02:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A group of people gathers around dimly lit tables with plates and drinks.",
+      "similarity": 0.4355,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:31,000 --> 00:02:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A person is being restrained while another figure pulls them back in a dimly lit room.",
+      "similarity": 0.4236,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:33,500 --> 00:02:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A hand holds a firework fuse, igniting sparks against a smoky background.",
+      "similarity": 0.1837,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:36,000 --> 00:02:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men are engaged in a fight in a dimly lit bar, with smoke around them.",
+      "similarity": 0.4567,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:38,500 --> 00:02:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man falls backward while another person stands over him, as chaos unfolds around them.",
+      "similarity": 0.3683,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:41,000 --> 00:02:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a suit suddenly jumps in a dimly lit restaurant, creating tension.",
+      "similarity": 0.5264,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:46,000 --> 00:02:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a dark suit lunges at another man in a dimly lit bar.",
+      "similarity": 0.5313,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:48,500 --> 00:02:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man runs through a dimly lit room, dodging objects and debris.",
+      "similarity": 0.3229,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:51,000 --> 00:02:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a dark suit runs through a dimly lit restaurant, looking anxious.",
+      "similarity": 0.469,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:53,500 --> 00:02:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two figures engage in a frantic fight, throwing punches in a dimly lit room.",
+      "similarity": 0.3932,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:56,000 --> 00:02:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a black coat crouches at a table in a dimly lit restaurant.",
+      "similarity": 0.4212,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:02:58,500 --> 00:03:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A person lies on the ground, partially obscured by shadow, with a bright light overhead.",
+      "similarity": 0.2817,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:01,000 --> 00:03:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in a black dress runs frantically across a dimly lit room.",
+      "similarity": 0.2454,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:03,500 --> 00:03:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a black suit throws a punch in a dimly lit bar.",
+      "similarity": 0.4388,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:06,000 --> 00:03:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with dark hair and a mustache turns to face the camera in a dimly lit bar.",
+      "similarity": 0.5377,
+      "word_count_ratio": 0.72,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:08,500 --> 00:03:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A server approaches a table with a glowing orb and elegantly set place settings.",
+      "similarity": 0.436,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:11,000 --> 00:03:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A blurred figure in a suit swiftly moves through a dimly lit restaurant.",
+      "similarity": 0.4327,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:13,500 --> 00:03:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men in dark clothing engage in a fierce fistfight in a dimly lit room.",
+      "similarity": 0.4803,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:16,000 --> 00:03:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man kicks another man, sending him sliding across the wooden floor.",
+      "similarity": 0.2984,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:18,500 --> 00:03:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men are engaged in an intense fight inside a dimly lit bar.",
+      "similarity": 0.4303,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:21,000 --> 00:03:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men grapple on the floor, one pinning the other down in a fight.",
+      "similarity": 0.2809,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:23,500 --> 00:03:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man crouches beside a table, reaching for a overturned drink.",
+      "similarity": 0.2666,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:26,000 --> 00:03:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a dark coat runs through a dimly lit bar, evading danger.",
+      "similarity": 0.3385,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:28,500 --> 00:03:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men run through a dimly lit bar, evading an unseen threat.",
+      "similarity": 0.3932,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:31,000 --> 00:03:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men struggle on a bar, one holding the other by the throat.",
+      "similarity": 0.2856,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:33,500 --> 00:03:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in dark clothing grapples with another man in a dimly lit bar.",
+      "similarity": 0.481,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:36,000 --> 00:03:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a dark shirt turns abruptly, avoiding an attack from another figure.",
+      "similarity": 0.3098,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:38,500 --> 00:03:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men are physically fighting in a dimly lit bar surrounded by shelves of liquor.",
+      "similarity": 0.411,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:41,000 --> 00:03:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two figures are engaged in a struggle in a dimly lit room filled with bottles.",
+      "similarity": 0.4061,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:43,500 --> 00:03:46,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in black clothing walks through a dimly lit room with golden shelves.",
+      "similarity": 0.4081,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:46,000 --> 00:03:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men engage in a physical confrontation, grappling near a bar with bottles.",
+      "similarity": 0.2961,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:48,500 --> 00:03:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two men struggle violently in a dimly lit bar, one holding a bottle as a weapon.",
+      "similarity": 0.3836,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:51,000 --> 00:03:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with dark hair stands in a dimly lit bar, looking upwards.",
+      "similarity": 0.5532,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:53,500 --> 00:03:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A group of men with intense expressions crowded together in a dimly lit elevator.",
+      "similarity": 0.4992,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:56,000 --> 00:03:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a suit turns, walking through a dimly lit bar with art on the walls.",
+      "similarity": 0.4995,
+      "word_count_ratio": 0.68,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:03:58,500 --> 00:04:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Three men in dark clothing enter a dimly lit bar, approaching a table.",
+      "similarity": 0.5173,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:01,000 --> 00:04:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in dark clothing stands between two men in a dimly lit restaurant.",
+      "similarity": 0.4882,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:03,500 --> 00:04:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with blood on his face looks distressed in a dimly lit room.",
+      "similarity": 0.4821,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:06,000 --> 00:04:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with a mustache leans forward, intensively listening in a dimly lit room.",
+      "similarity": 0.514,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:08,500 --> 00:04:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with messy hair leans forward, looking intently, shadows cast across his face.",
+      "similarity": 0.4421,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:11,000 --> 00:04:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A bloodied man with tousled hair looks upward, tension etched on his face.",
+      "similarity": 0.4109,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:13,500 --> 00:04:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with wet, tousled hair stands solemnly, facing a dimly lit room full of people.",
+      "similarity": 0.686,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:16,000 --> 00:04:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A heavily armored figure stands in an entrance, illuminated by wall sconces.",
+      "similarity": 0.3331,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:18,500 --> 00:04:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Six performers in elaborate costumes and masks stand in a dimly lit room.",
+      "similarity": 0.4912,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:21,000 --> 00:04:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Four women with painted faces stand side by side, adorned in intricate jewelry.",
+      "similarity": 0.269,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:23,500 --> 00:04:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A group of women in ornate costumes stand in a dimly lit room.",
+      "similarity": 0.4431,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:26,000 --> 00:04:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A hand holds a silver chain with a small, detailed car pendant.",
+      "similarity": 0.1352,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:28,500 --> 00:04:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A hand holds a firecracker with a sparkler igniting from it.",
+      "similarity": 0.1452,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:31,000 --> 00:04:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with curly hair and a tense expression gazes over his shoulder in a dimly lit room.",
+      "similarity": 0.5569,
+      "word_count_ratio": 0.72,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:33,500 --> 00:04:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with striking makeup gazes intensely, flanked by two women in traditional attire.",
+      "similarity": 0.3941,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:36,000 --> 00:04:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with a bruised face looks intensely to the side in a dimly lit room.",
+      "similarity": 0.4527,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:38,500 --> 00:04:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A smiling man with dramatic makeup and ornate clothing fills the frame.",
+      "similarity": 0.4989,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:41,000 --> 00:04:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Dancers in ornate costumes perform energetically in a dimly lit, festive room.",
+      "similarity": 0.4193,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:43,500 --> 00:04:46,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A person in dark clothing swings a stick toward another person adorned in colorful attire.",
+      "similarity": 0.2864,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:46,000 --> 00:04:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A cloaked figure moves swiftly through a dimly lit, elegant restaurant.",
+      "similarity": 0.4262,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:48,500 --> 00:04:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A figure in dark clothing lunges forward, partially obscured against a glowing backdrop.",
+      "similarity": 0.3048,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:51,000 --> 00:04:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A silhouetted figure leaps over a bar while a figure lies motionless on the floor.",
+      "similarity": 0.2883,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:53,500 --> 00:04:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two silhouetted figures engage in a standoff on a bar, framed by a lit bottle display.",
+      "similarity": 0.3743,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:56,000 --> 00:04:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A bright explosion erupts from a wooden cabinet, scattering debris across the room.",
+      "similarity": 0.2785,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:04:58,500 --> 00:05:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two silhouetted figures engage in a tense duel against a brightly lit bar backdrop.",
+      "similarity": 0.4194,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:01,000 --> 00:05:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in black clothing falls backward, blurring against a brightly lit bar shelf.",
+      "similarity": 0.3322,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:03,500 --> 00:05:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man is swinging his arm, appearing to strike another figure in a dimly lit bar.",
+      "similarity": 0.4165,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:06,000 --> 00:05:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A figure wearing a hooded coat stands next to a bright explosion of sparks.",
+      "similarity": 0.2496,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:08,500 --> 00:05:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A vibrant, patterned fabric sways as it moves through the frame, capturing attention.",
+      "similarity": 0.2465,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:11,000 --> 00:05:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with long hair stands amidst smoke, his face illuminated by flickering flames.",
+      "similarity": 0.4963,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:13,500 --> 00:05:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A dancer in ornate costume moves gracefully amid dim lighting and decorative surroundings.",
+      "similarity": 0.345,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:16,000 --> 00:05:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A regal portrait of a man wearing a blue garment and a decorative white turban.",
+      "similarity": 0.3463,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:18,500 --> 00:05:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A colorful, ornate tapestry swirls rapidly, revealing intricate patterns and designs.",
+      "similarity": 0.1895,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:21,000 --> 00:05:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A spinning ornate spinner with intricate designs glimmers in the light.",
+      "similarity": 0.2162,
+      "word_count_ratio": 0.44,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:23,500 --> 00:05:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a black shirt runs through a dimly lit bar, looking anxious.",
+      "similarity": 0.3496,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:26,000 --> 00:05:28,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a dark suit walks swiftly across a dimly lit room.",
+      "similarity": 0.5394,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:28,500 --> 00:05:31,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A crystal chandelier hangs above, reflecting light onto the dark floor below.",
+      "similarity": 0.34,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:31,000 --> 00:05:33,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A large chandelier with glowing bulbs hangs above a dimly lit floor.",
+      "similarity": 0.3739,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:33,500 --> 00:05:36,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Two figures engage in a fight on a dimly lit floor surrounded by scattered furniture.",
+      "similarity": 0.3964,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:36,000 --> 00:05:38,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A figure lies on the floor under a dimly lit lamp, surrounded by scattered debris.",
+      "similarity": 0.2988,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:38,500 --> 00:05:41,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man runs away from a dimly lit bar, illuminated by flickering candlelight.",
+      "similarity": 0.3504,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:41,000 --> 00:05:43,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in a dark cloak looks anxiously to her right as confetti falls.",
+      "similarity": 0.2824,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:43,500 --> 00:05:46,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man in a black suit stands tense, while another figure is engaged in a struggle behind him.",
+      "similarity": 0.4791,
+      "word_count_ratio": 0.72,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:46,000 --> 00:05:48,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A blurred figure approaches a golden elevator door illuminated by soft, warm lights.",
+      "similarity": 0.3232,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:48,500 --> 00:05:51,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman aims a handgun forward, shooting while displaying a fierce expression.",
+      "similarity": 0.1294,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:51,000 --> 00:05:53,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A figure runs through a dimly lit bar, with shelves lined with bottles in the background.",
+      "similarity": 0.316,
+      "word_count_ratio": 0.64,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:53,500 --> 00:05:56,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A person aims a handgun towards an unseen target in a dimly lit room.",
+      "similarity": 0.3362,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:56,000 --> 00:05:58,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with dark hair turns towards a dimly lit corner in a room.",
+      "similarity": 0.5828,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:05:58,500 --> 00:06:01,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman points a handgun forward with a determined expression against a dimly lit background.",
+      "similarity": 0.2342,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:01,000 --> 00:06:03,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with curly hair looks upward towards a painting on the wall.",
+      "similarity": 0.377,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:03,500 --> 00:06:06,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man with dark, tousled hair stands close to a wooden door.",
+      "similarity": 0.4492,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:06,000 --> 00:06:08,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in a dark outfit angrily points a handgun towards an unseen person.",
+      "similarity": 0.2298,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:08,500 --> 00:06:11,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in a silver dress stands at a bar, her expression pensive and somber.",
+      "similarity": 0.3422,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:11,000 --> 00:06:13,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A man stands in a dimly lit room, partially turned with a serious expression.",
+      "similarity": 0.5803,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:13,500 --> 00:06:16,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman stands in a dimly lit bar, covered in blood and visibly distressed.",
+      "similarity": 0.3405,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:16,000 --> 00:06:18,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A woman in a purple dress stands bloody and distressed in a dimly lit room.",
+      "similarity": 0.3139,
+      "word_count_ratio": 0.6,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:18,500 --> 00:06:21,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "Abstract shapes, including a tomato and splash, are layered against a blue background.",
+      "similarity": 0.1281,
+      "word_count_ratio": 0.52,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:21,000 --> 00:06:23,500",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A blue background features abstract purple shapes, including a splatter and a tomato silhouette.",
+      "similarity": 0.1171,
+      "word_count_ratio": 0.56,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    },
+    {
+      "timestamp": "00:06:23,500 --> 00:06:26,000",
+      "vn_timestamp": "00:01:57,560 --> 00:06:28,238",
+      "vn": "A man with long hair smiles slightly in a dimly lit room, while another man in a dark suit speaks seriously, surrounded by seated guests.",
+      "reference": "A blue gradient background displays dark purple shapes resembling splatters and tomatoes.",
+      "similarity": 0.1332,
+      "word_count_ratio": 0.48,
+      "gap_fit": true,
+      "overlap_iou": 0.0092
+    }
+  ]
+}

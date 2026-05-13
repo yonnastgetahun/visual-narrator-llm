@@ -1,0 +1,335 @@
+1
+00:00:01,000 --> 00:00:03,500
+A boy in a green shirt swings a blue whip while sitting on hay bales.
+
+2
+00:00:03,500 --> 00:00:06,000
+A child swings a stick at a trash can next to a wall.
+
+3
+00:00:06,000 --> 00:00:08,500
+A child jumps off a hay bale, kicking up dust in the barn.
+
+4
+00:00:08,500 --> 00:00:11,000
+A person wearing a green shirt crouches beside barrels while holding a large flag.
+
+5
+00:00:11,000 --> 00:00:13,500
+A child sits against a wall, visibly distressed, holding onto a colorful toy.
+
+6
+00:00:13,500 --> 00:00:16,000
+A boy in a yellow and green shirt sits against a wall, laughing joyfully.
+
+7
+00:00:16,000 --> 00:00:18,500
+A young man in a green shirt runs past a colorful map on a wall.
+
+8
+00:00:18,500 --> 00:00:21,000
+A giant cartoon character towers over a man wearing a green jersey with "Haywood" on it.
+
+9
+00:00:21,000 --> 00:00:23,500
+A large floating cartoon character hovers above a building, while a boy watches.
+
+10
+00:00:23,500 --> 00:00:26,000
+A large, colorful balloon character floats above a person wearing a green shirt.
+
+11
+00:00:26,000 --> 00:00:28,500
+A large, whale-like creature hovers above a deserted western town at dusk.
+
+12
+00:00:28,500 --> 00:00:31,000
+A young boy in a green jersey with a scarf looks up with a worried expression.
+
+13
+00:00:31,000 --> 00:00:33,500
+A young boy in a green soccer jersey looks up with alarm near a stone well.
+
+14
+00:00:33,500 --> 00:00:36,000
+A hand reaches down to pick up coins scattered on the ground.
+
+15
+00:00:36,000 --> 00:00:38,500
+A person inserts a key into a photo booth lock on a vibrant street.
+
+16
+00:00:38,500 --> 00:00:41,000
+A woman in a green shirt operates a vintage hand-crank machine.
+
+17
+00:00:41,000 --> 00:00:43,500
+A young person in a green shirt grips a rusty wheel, looking intently ahead.
+
+18
+00:00:43,500 --> 00:00:46,000
+A large, swirling cloud looms ominously over a deserted western-style street lined with colorful buildings.
+
+19
+00:00:46,000 --> 00:00:48,500
+A massive, ethereal figure rises above a deserted Western town beneath cloudy skies.
+
+20
+00:00:48,500 --> 00:00:51,000
+A young man in a green and yellow shirt clings to a large wheel.
+
+21
+00:00:51,000 --> 00:00:53,500
+A dimly lit circular chamber features a central pedestal surrounded by glass vials.
+
+22
+00:00:53,500 --> 00:00:56,000
+A small, round object falls down a well, framed by stone walls and a cloudy sky.
+
+23
+00:00:56,000 --> 00:00:58,500
+A boy wearing a green jersey struggles to climb up a tall structure.
+
+24
+00:00:58,500 --> 00:01:01,000
+A dark, empty frame lies on the ground, partially covered in dust.
+
+25
+00:01:01,000 --> 00:01:03,500
+A blank piece of paper lies in a dark frame on a textured surface.
+
+26
+00:01:03,500 --> 00:01:06,000
+A man sits on a hillside, gazing contemplatively at a colorful sky at sunset.
+
+27
+00:01:06,000 --> 00:01:08,500
+A man sits on a hillside, gazing at a large, shadowy figure in the sky.
+
+28
+00:01:08,500 --> 00:01:11,000
+A green hilltop emerges from fluffy, colorful clouds under a vibrant sky.
+
+29
+00:01:11,000 --> 00:01:13,500
+A yellow balloon floats above fluffy clouds illuminated by soft, warm light.
+
+30
+00:01:13,500 --> 00:01:16,000
+A cartoonish character with a green hat peeks out from fluffy, pastel-colored clouds.
+
+31
+00:01:16,000 --> 00:01:18,500
+A cartoon character with a green hat stands on a cloud, waving.
+
+32
+00:01:18,500 --> 00:01:21,000
+A large cartoon character stands on clouds, gazing at a swirling vortex above.
+
+33
+00:01:21,000 --> 00:01:23,500
+A large cartoon farmer stands on a cloud, pointing at a floating structure above.
+
+34
+00:01:23,500 --> 00:01:26,000
+A toy cowboy stands on a cloud, reaching towards a large flower-like structure.
+
+35
+00:01:26,000 --> 00:01:28,500
+A large, cartoonish character in a cowboy hat stands amid swirling clouds, pointing at a glowing, abstract structure.
+
+36
+00:01:28,500 --> 00:01:31,000
+A young boy in a green shirt looks up anxiously while gripping a metal railing.
+
+37
+00:01:31,000 --> 00:01:33,500
+A circular table with a central dark object surrounded by glass containers in dim light.
+
+38
+00:01:33,500 --> 00:01:36,000
+A well with a stone circular opening captures a small object falling towards the bottom.
+
+39
+00:01:36,000 --> 00:01:38,500
+A person turns the crank of a vintage photo booth labeled "Winkin' Well Photos."
+
+40
+00:01:38,500 --> 00:01:41,000
+A downward view of a well, showing a bucket suspended over the water.
+
+41
+00:01:41,000 --> 00:01:43,500
+A large, colorful hot air balloon partially inflates against a foggy background.
+
+42
+00:01:43,500 --> 00:01:46,000
+A large cartoon character looks at a swirling dark vortex emitting yellow light.
+
+43
+00:01:46,000 --> 00:01:48,500
+A large cartoon character in red faces a misty landscape with a hidden structure.
+
+44
+00:01:48,500 --> 00:01:51,000
+A character in a red jacket faces a swirling, vibrant green vortex.
+
+45
+00:01:51,000 --> 00:01:53,500
+A distorted landscape emerges with swirling shapes and soft green and yellow hues.
+
+46
+00:01:53,500 --> 00:01:56,000
+A stone well displays a dark circular opening surrounded by rocky walls and a cloudy sky.
+
+47
+00:01:56,000 --> 00:01:58,500
+A small object falls into a deep well, surrounded by stone walls and cloudy sky.
+
+48
+00:01:58,500 --> 00:02:01,000
+A person in a green shirt leans over a stone well, peering inside.
+
+49
+00:02:01,000 --> 00:02:03,500
+A hand reaches for a vintage photo booth labeled "Winkin' Well Photos."
+
+50
+00:02:03,500 --> 00:02:06,000
+A boy in a green shirt climbs beside a stone well in a dusty area.
+
+51
+00:02:06,000 --> 00:02:08,500
+A green-hatted character watches a winding track with a small wooden block on it.
+
+52
+00:02:08,500 --> 00:02:11,000
+A large, colorful toy character stares intently at a glowing, spinning cube.
+
+53
+00:02:11,000 --> 00:02:13,500
+A colorful hot air balloon partially emerges above fluffy clouds against a sunset sky.
+
+54
+00:02:13,500 --> 00:02:16,000
+A child peeks through tall grass, partially hidden from view.
+
+55
+00:02:16,000 --> 00:02:18,500
+A blurry figure moves through a field of tall, illuminated plants.
+
+56
+00:02:18,500 --> 00:02:21,000
+A green hat partially emerges among tall, blurred blades of grass.
+
+57
+00:02:21,000 --> 00:02:23,500
+A figure is partially obscured by tall green grass in a sunlit field.
+
+58
+00:02:23,500 --> 00:02:26,000
+A person leans over the edge of a stone well, reaching into the darkness below.
+
+59
+00:02:26,000 --> 00:02:28,500
+A circular, dimly lit table featuring a central dark object surrounded by glass domes.
+
+60
+00:02:28,500 --> 00:02:31,000
+A small object falls through a well, surrounded by stone walls and a cloudy sky.
+
+61
+00:02:31,000 --> 00:02:33,500
+A young person in a green shirt hangs onto the edge of a stone well.
+
+62
+00:02:33,500 --> 00:02:36,000
+A spear points upward from the bottom of a stone well, framed by cloudy skies.
+
+63
+00:02:36,000 --> 00:02:38,500
+A boy in a green shirt runs towards a stone well with determination.
+
+64
+00:02:38,500 --> 00:02:41,000
+A young woman in a green jersey looks up with a fearful expression.
+
+65
+00:02:41,000 --> 00:02:43,500
+A boy in a green shirt watches a large flying creature against a cloudy sky.
+
+66
+00:02:43,500 --> 00:02:46,000
+A large, metallic flying saucer hovers above a small town, surrounded by clouds.
+
+67
+00:02:46,000 --> 00:02:48,500
+A flying saucer hovers above a quaint western town under a cloudy sky.
+
+68
+00:02:48,500 --> 00:02:51,000
+A large, shadowy figure looms over a dimly lit landscape, with a flickering light in the distance.
+
+69
+00:02:51,000 --> 00:02:53,500
+A low-angle shot reveals two figures standing closely, shrouded in darkness.
+
+70
+00:02:53,500 --> 00:02:56,000
+A dark scene shows a dimly lit square shape in the center with surrounding light beams.
+
+71
+00:02:56,000 --> 00:02:58,500
+A dark, rocky canyon with steep walls and a faint light illuminating the path below.
+
+72
+00:02:58,500 --> 00:03:01,000
+A white horse gallops across the sky, soaring above a western town at sunset.
+
+73
+00:03:01,000 --> 00:03:03,500
+A large explosion erupts in the sky, creating a massive cloud above a town.
+
+74
+00:03:03,500 --> 00:03:06,000
+A horseman rides through a town as fireworks explode in the sky above.
+
+75
+00:03:06,000 --> 00:03:08,500
+A person in silhouette stands near a western-style town, with dramatic clouds above.
+
+76
+00:03:08,500 --> 00:03:11,000
+A woman in a green shirt looks fearfully at something off-screen during sunset.
+
+77
+00:03:11,000 --> 00:03:13,500
+A woman in a green jacket looks alarmed, standing outside an old building.
+
+78
+00:03:13,500 --> 00:03:16,000
+A young man in a green jersey runs frantically towards a building at sunset.
+
+79
+00:03:16,000 --> 00:03:18,500
+A young woman in a green shirt looks anxiously over her shoulder at dusk.
+
+80
+00:03:18,500 --> 00:03:21,000
+A young boy in a green shirt and yellow bandana runs toward an old building.
+
+81
+00:03:21,000 --> 00:03:23,500
+Two abstract shapes, one resembling a tomato and another like a splash, appear on a blue background.
+
+82
+00:03:23,500 --> 00:03:26,000
+A dark, textured background features blue splatters and a circular shape resembling a tomato.
+
+83
+00:03:26,000 --> 00:03:28,500
+Colorful shapes, including circles and splotches, are featured against a gradient blue background.
+
+84
+00:03:28,500 --> 00:03:31,000
+The background features a gradient of blue with purple shapes resembling tomatoes and splatters.

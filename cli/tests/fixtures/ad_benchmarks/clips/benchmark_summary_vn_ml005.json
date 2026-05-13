@@ -1,0 +1,15 @@
+{
+  "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+  "provider": "OpenRouter",
+  "frames_per_gap": 5,
+  "character_context": true,
+  "clips_tested": 0,
+  "overall_quality_ratio": "0.0%",
+  "overall_semantic_similarity": 0.0,
+  "overall_action_score": null,
+  "overall_critic_score": null,
+  "per_clip": [],
+  "run_date": "2026-05-13",
+  "task": "VN-ML-005",
+  "notes": "Shot-by-Shot + rolling context + narrative context + overlap_iou>=0.05 filter + Action Score + CRITIC"
+}

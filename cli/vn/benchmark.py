@@ -96,6 +96,8 @@ def benchmark_video(
     voice_id: str | None = None,
     character_sheet: Path | None = None,
     auto_detect_names: bool = True,
+    two_stage: bool = False,
+    text_only: bool = True,
 ) -> BenchmarkReport:
     resolved_video_path = video_path.expanduser().resolve()
     resolved_reference_path = reference_path.expanduser().resolve()
@@ -124,6 +126,8 @@ def benchmark_video(
             source_label=resolved_video_path.name,
             output_dir=pipeline_output_dir,
             character_context=character_context,
+            two_stage=two_stage,
+            text_only=text_only,
         )
 
     matched = _match_reference_cues(reference_cues, ad_result)

@@ -491,7 +491,7 @@ def _critic_score(vn_text: str, reference_text: str, character_names: list) -> f
     return 1.0 if vn_has_char else 0.0
 
 
-def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None):
+def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None, two_stage=False):
     """Run vn bench on multiple clips and aggregate into a summary JSON."""
     MIN_OVERLAP_IOU = 0.05
     import argparse
@@ -509,11 +509,13 @@ def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None)
         stem = clip.stem
         characters_file = clips_dir / f"{stem}_characters.txt"
         reference_srt = clips_dir / f"{stem}_professional.srt"
-        report_out = clips_dir / f"{stem}_report_vn_ml003.json"
 
         if not reference_srt.exists():
             log(f"SKIP {clip.name}: no reference SRT at {reference_srt}")
             continue
+
+        report_suffix = "vn_ml006" if two_stage else "vn_ml003"
+        report_out = clips_dir / f"{stem}_report_{report_suffix}.json"
 
         vn_bin = next(
             (p for p in ["/tmp/vn-venv2/bin/vn", "/tmp/vn-venv/bin/vn"] if Path(p).exists()),
@@ -525,6 +527,8 @@ def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None)
             "--reference", str(reference_srt.resolve()),
             "--output", str(report_out.resolve()),
         ]
+        if two_stage:
+            cmd += ["--two-stage"]
         if character_context and characters_file.exists():
             cmd += ["--characters", str(characters_file.resolve())]
 
@@ -532,7 +536,7 @@ def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None)
         env = os.environ.copy()
         result = subprocess.run(cmd, capture_output=True, text=True, env=env)
         if result.returncode != 0:
-            if report_out.exists():
+            if not two_stage and report_out.exists():
                 log(f"  WARNING: CLI failed for {clip.name}, reusing existing report: {result.stderr[-200:]}")
             else:
                 log(f"ERROR for {clip.name}: {result.stderr[-500:]}")
@@ -558,10 +562,11 @@ def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None)
         chars_file = clips_dir / f"{stem}_characters.txt"
         character_names = []
         if chars_file.exists():
-            character_names = [
+            raw_lines = [
                 l.strip() for l in chars_file.read_text(encoding="utf-8").splitlines()
-                if l.strip()
+                if l.strip() and not l.strip().startswith('#')
             ]
+            character_names = [l.split(':')[0].strip() for l in raw_lines]
 
         # Action Score — NLI entailment via GPT-4o mini
         action_scores = []
@@ -618,7 +623,7 @@ def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None)
         "overall_critic_score": round(statistics.fmean(all_critic), 4) if all_critic else None,
         "per_clip": per_clip_results,
         "run_date": datetime.now().strftime("%Y-%m-%d"),
-        "task": "VN-ML-005",
+        "task": "VN-BM-002" if two_stage else "VN-ML-005",
         "notes": (
             "Shot-by-Shot + rolling context + narrative context + "
             f"overlap_iou>={MIN_OVERLAP_IOU} filter + Action Score + CRITIC"
@@ -641,10 +646,12 @@ def main():
     parser.add_argument("--output", help="Output JSON path for multi-clip summary")
     parser.add_argument("--openai-key", default=os.environ.get("OPENAI_API_KEY"),
                         help="OpenAI API key for Action Score computation")
+    parser.add_argument("--two-stage", action="store_true", default=False,
+                        help="Run two-stage pipeline (--two-stage --text-only passed to vn benchmark)")
     args = parser.parse_args()
 
     if args.clips:
-        run_vn_benchmark_cli(args.clips, args.character_context, args.output, openai_key=args.openai_key)
+        run_vn_benchmark_cli(args.clips, args.character_context, args.output, openai_key=args.openai_key, two_stage=args.two_stage)
         return
 
     benchmark = SOTAComparisonBenchmark()
