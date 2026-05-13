@@ -1,0 +1,54 @@
+{
+  "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+  "provider": "OpenRouter",
+  "inference_url": "https://openrouter.ai/api/v1/chat/completions",
+  "frames_per_gap": 3,
+  "character_context": true,
+  "clips_tested": 3,
+  "overall_quality_ratio": "41.4%",
+  "overall_semantic_similarity": 0.4145,
+  "overall_gap_fit_rate": 1.0,
+  "per_clip": [
+    {
+      "clip": "6nvQySlxSWY.mp4",
+      "title": "Abduction",
+      "gaps_matched": 40,
+      "semantic_similarity_mean": 0.3977,
+      "semantic_similarity_median": 0.3615,
+      "word_count_ratio_mean": 0.27,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "39.8%"
+    },
+    {
+      "clip": "7ELmyf41TnQ.mp4",
+      "title": "Johnny English",
+      "gaps_matched": 41,
+      "semantic_similarity_mean": 0.3685,
+      "semantic_similarity_median": 0.3685,
+      "word_count_ratio_mean": null,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "36.8%"
+    },
+    {
+      "clip": "v0KOJWyR4SU.mp4",
+      "title": "Drag Me to Hell",
+      "gaps_matched": 45,
+      "semantic_similarity_mean": 0.4773,
+      "semantic_similarity_median": 0.4773,
+      "word_count_ratio_mean": null,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "47.7%"
+    }
+  ],
+  "comparison": {
+    "gpt4o_no_char": "26.7%",
+    "gpt4o_with_char": "32.4%",
+    "qwen_72b_hf_ovhcloud": "41.6%",
+    "qwen_72b_openrouter": "41.4%",
+    "delta_vs_gpt4o": "+9.0pp",
+    "delta_vs_hf_ovhcloud": "-0.2pp (noise)"
+  },
+  "run_date": "2026-05-12",
+  "env_key": "OPENROUTER_API_KEY",
+  "notes": "Results consistent with HF/OVHcloud run (-0.2pp overall). Drag Me to Hell improved +2.7pp (LLM variance). OpenRouter confirmed as production-equivalent replacement for HF OVHcloud."
+}

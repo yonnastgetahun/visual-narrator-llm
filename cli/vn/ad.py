@@ -44,9 +44,8 @@ ELEVENLABS_MODEL = "eleven_multilingual_v2"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 OPENAI_MODEL = "gpt-4o"
 QWEN_MODEL = "qwen2.5-vl"
-HF_INFERENCE_URL = "https://router.huggingface.co/ovhcloud/v1/chat/completions"
-HF_MODEL_ID = "Qwen/Qwen2.5-VL-72B-Instruct"
-HF_PROVIDER_MODEL_ID = "Qwen2.5-VL-72B-Instruct"
+OPENROUTER_INFERENCE_URL = "https://openrouter.ai/api/v1/chat/completions"
+TOGETHER_MODEL_ID = "Qwen/Qwen2.5-VL-72B-Instruct"
 SUPPORTED_VISION_MODELS = {OPENAI_MODEL, "gpt-4.1-mini", QWEN_MODEL}
 AD_COST_PER_FRAME = 0.0013
 AD_TTS_COST_PER_CHAR = 0.0003
@@ -529,15 +528,15 @@ def build_audio_gap_fit_summary(metrics: Sequence[AudioGapFitMetrics]) -> dict[s
     }
 
 
-def _describe_frame_hf(
+def _describe_frame_together(
     frame_paths: Sequence[Path],
     gap_duration_sec: float,
     max_words: int | None = None,
     system_prompt_prefix: str | None = None,
 ) -> tuple[str, str]:
-    api_key = os.getenv("HF_TOKEN") or os.getenv("HF_TOKEN_VULCAN26") or os.getenv("HUGGINGFACE_API_KEY")
+    api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
-        raise AdDescriptionError("HF_TOKEN is not set. Required for Qwen2.5-VL via HuggingFace.")
+        raise AdDescriptionError("OPENROUTER_API_KEY is not set. Required for Qwen2.5-VL via OpenRouter.")
     if not frame_paths:
         raise AdDescriptionError("At least one frame is required for AD generation.")
 
@@ -563,32 +562,32 @@ def _describe_frame_hf(
     if system_prompt_prefix:
         messages.insert(0, {"role": "system", "content": system_prompt_prefix})
 
-    payload = {"model": HF_PROVIDER_MODEL_ID, "messages": messages, "max_tokens": 150}
+    payload = {"model": TOGETHER_MODEL_ID, "messages": messages, "max_tokens": 150}
 
     try:
         with httpx.Client(timeout=180.0, follow_redirects=True) as client:
             response = client.post(
-                HF_INFERENCE_URL,
+                OPENROUTER_INFERENCE_URL,
                 json=payload,
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             )
         response.raise_for_status()
     except httpx.HTTPStatusError as exc:
         raise AdDescriptionError(
-            f"HuggingFace API error {exc.response.status_code}: {exc.response.text}"
+            f"OpenRouter API error {exc.response.status_code}: {exc.response.text}"
         ) from exc
     except httpx.RequestError as exc:
-        raise AdDescriptionError(f"HuggingFace request failed: {exc}") from exc
+        raise AdDescriptionError(f"OpenRouter request failed: {exc}") from exc
 
     try:
         data = response.json()
     except ValueError as exc:
-        raise AdDescriptionError(f"HuggingFace returned invalid JSON: {response.text[:300]}") from exc
+        raise AdDescriptionError(f"OpenRouter returned invalid JSON: {response.text[:300]}") from exc
 
     description = _assistant_text_from_response(data).strip()
     if not description:
-        raise AdDescriptionError("HuggingFace returned an empty description.")
-    return description, HF_MODEL_ID
+        raise AdDescriptionError("OpenRouter returned an empty description.")
+    return description, "together/Qwen2.5-VL-72B-Instruct"
 
 
 def _describe_frame_for_ad(
@@ -598,7 +597,7 @@ def _describe_frame_for_ad(
     system_prompt_prefix: str | None = None,
 ) -> tuple[str, str]:
     if _vision_model() == QWEN_MODEL:
-        return _describe_frame_hf(frame_paths, gap_duration_sec, max_words=max_words, system_prompt_prefix=system_prompt_prefix)
+        return _describe_frame_together(frame_paths, gap_duration_sec, max_words=max_words, system_prompt_prefix=system_prompt_prefix)
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -690,7 +689,7 @@ def _frame_prompt_prefix(frame_count: int) -> str:
 
 
 def _vision_model() -> str:
-    model = os.getenv("VN_VISION_MODEL", OPENAI_MODEL).strip() or OPENAI_MODEL
+    model = os.getenv("VN_VISION_MODEL", QWEN_MODEL).strip() or QWEN_MODEL
     if model not in SUPPORTED_VISION_MODELS:
         supported = ", ".join(sorted(SUPPORTED_VISION_MODELS))
         raise AdDescriptionError(f"Unsupported VN_VISION_MODEL: {model}. Supported: {supported}")

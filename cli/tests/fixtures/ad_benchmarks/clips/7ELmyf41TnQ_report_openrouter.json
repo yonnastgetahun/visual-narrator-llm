@@ -1,0 +1,422 @@
+{
+  "clip": "7ELmyf41TnQ.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 41,
+  "semantic_similarity_mean": 0.3685,
+  "semantic_similarity_median": 0.3854,
+  "word_count_ratio_mean": 0.5389,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "36.8%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:09,537 --> 00:00:12,465",
+      "vn_timestamp": "00:00:08,800 --> 00:00:12,640",
+      "vn": "Johnny English observes; tow truck lifts blue car.",
+      "reference": "English and Both drive off in the clamping truck, the Aston on the back.",
+      "similarity": 0.5386,
+      "word_count_ratio": 0.5714,
+      "gap_fit": true,
+      "overlap_iou": 0.7625
+    },
+    {
+      "timestamp": "00:00:17,096 --> 00:00:20,735",
+      "vn_timestamp": "00:00:16,475 --> 00:00:26,315",
+      "vn": "A tow truck lifts a blue car. A black taxi drives through a city street.",
+      "reference": "English-looking intrepid swings the unwieldy truck into a cobbled pedestrian alley.",
+      "similarity": 0.3901,
+      "word_count_ratio": 0.7333,
+      "gap_fit": true,
+      "overlap_iou": 0.3698
+    },
+    {
+      "timestamp": "00:00:21,133 --> 00:00:24,814",
+      "vn_timestamp": "00:00:16,475 --> 00:00:26,315",
+      "vn": "A tow truck lifts a blue car. A black taxi drives through a city street.",
+      "reference": "The hearse which round a corner and nearly bowls into a bevy of nuns crossing the road.",
+      "similarity": 0.3143,
+      "word_count_ratio": 0.8824,
+      "gap_fit": true,
+      "overlap_iou": 0.3741
+    },
+    {
+      "timestamp": "00:00:24,420 --> 00:00:26,420",
+      "vn_timestamp": "00:00:16,475 --> 00:00:26,315",
+      "vn": "A tow truck lifts a blue car. A black taxi drives through a city street.",
+      "reference": "The hearse stops.",
+      "similarity": 0.3861,
+      "word_count_ratio": 0.2,
+      "gap_fit": true,
+      "overlap_iou": 0.1905
+    },
+    {
+      "timestamp": "00:00:29,373 --> 00:00:31,861",
+      "vn_timestamp": "00:00:28,715 --> 00:00:32,170",
+      "vn": "A black taxi drives past nuns crossing.",
+      "reference": "The final nun crosses the road and the hearse speeds off again.",
+      "similarity": 0.6181,
+      "word_count_ratio": 0.5833,
+      "gap_fit": true,
+      "overlap_iou": 0.7201
+    },
+    {
+      "timestamp": "00:00:34,015 --> 00:00:36,776",
+      "vn_timestamp": "00:00:33,210 --> 00:00:44,335",
+      "vn": "A tow truck labeled \"City Car Removals\" transports a black car through city streets. Various vehicles, including a blue truck and a black sedan, drive alongside.",
+      "reference": "The truck bounces and bubbles as English flings it round a corner.",
+      "similarity": 0.3674,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.2482
+    },
+    {
+      "timestamp": "00:00:37,278 --> 00:00:39,495",
+      "vn_timestamp": "00:00:33,210 --> 00:00:44,335",
+      "vn": "A tow truck labeled \"City Car Removals\" transports a black car through city streets. Various vehicles, including a blue truck and a black sedan, drive alongside.",
+      "reference": "Both clambers out of the footwell back into his seat.",
+      "similarity": 0.1905,
+      "word_count_ratio": 0.3846,
+      "gap_fit": true,
+      "overlap_iou": 0.1993
+    },
+    {
+      "timestamp": "00:00:40,164 --> 00:00:44,096",
+      "vn_timestamp": "00:00:33,210 --> 00:00:44,335",
+      "vn": "A tow truck labeled \"City Car Removals\" transports a black car through city streets. Various vehicles, including a blue truck and a black sedan, drive alongside.",
+      "reference": "The hearse and the truck dodge in and out of traffic, narrowly missing oncoming vehicles.",
+      "similarity": 0.4934,
+      "word_count_ratio": 0.5769,
+      "gap_fit": true,
+      "overlap_iou": 0.3534
+    },
+    {
+      "timestamp": "00:00:49,931 --> 00:00:53,090",
+      "vn_timestamp": "00:00:49,055 --> 00:00:53,455",
+      "vn": "Tow truck moves. Johnny English and Bough inside vehicle.",
+      "reference": "English opens the driver's door and it's nearly clipped by an oncoming lorry.",
+      "similarity": 0.4729,
+      "word_count_ratio": 0.6923,
+      "gap_fit": true,
+      "overlap_iou": 0.718
+    },
+    {
+      "timestamp": "00:00:57,524 --> 00:01:01,498",
+      "vn_timestamp": "00:00:56,495 --> 00:01:19,435",
+      "vn": "Johnny English leans out of a moving vehicle while Bough climbs onto a tow truck. The scene shifts to Johnny driving a car with a concerned expression.",
+      "reference": "Bough slips into the driver's seat while English struggles over to the passenger door and opens it.",
+      "similarity": 0.6067,
+      "word_count_ratio": 0.6296,
+      "gap_fit": true,
+      "overlap_iou": 0.1732
+    },
+    {
+      "timestamp": "00:01:02,000 --> 00:01:04,468",
+      "vn_timestamp": "00:00:56,495 --> 00:01:19,435",
+      "vn": "Johnny English leans out of a moving vehicle while Bough climbs onto a tow truck. The scene shifts to Johnny driving a car with a concerned expression.",
+      "reference": "Lorna, on her bike, weaves through the traffic behind them.",
+      "similarity": 0.3103,
+      "word_count_ratio": 0.3704,
+      "gap_fit": true,
+      "overlap_iou": 0.1076
+    },
+    {
+      "timestamp": "00:01:04,886 --> 00:01:08,191",
+      "vn_timestamp": "00:00:56,495 --> 00:01:19,435",
+      "vn": "Johnny English leans out of a moving vehicle while Bough climbs onto a tow truck. The scene shifts to Johnny driving a car with a concerned expression.",
+      "reference": "English hangs outside the cab, one foot on the wheel arch and one on the trailer.",
+      "similarity": 0.489,
+      "word_count_ratio": 0.5926,
+      "gap_fit": true,
+      "overlap_iou": 0.1441
+    },
+    {
+      "timestamp": "00:01:09,802 --> 00:01:13,504",
+      "vn_timestamp": "00:00:56,495 --> 00:01:19,435",
+      "vn": "Johnny English leans out of a moving vehicle while Bough climbs onto a tow truck. The scene shifts to Johnny driving a car with a concerned expression.",
+      "reference": "As he shuts the cab door he nearly falls but hangs on and grapples his way onto the trailer.",
+      "similarity": 0.418,
+      "word_count_ratio": 0.7037,
+      "gap_fit": true,
+      "overlap_iou": 0.1614
+    },
+    {
+      "timestamp": "00:01:14,007 --> 00:01:18,315",
+      "vn_timestamp": "00:00:56,495 --> 00:01:19,435",
+      "vn": "Johnny English leans out of a moving vehicle while Bough climbs onto a tow truck. The scene shifts to Johnny driving a car with a concerned expression.",
+      "reference": "Only just managing to keep his balance, he slips into the Aston and talks into his watch.",
+      "similarity": 0.3326,
+      "word_count_ratio": 0.6296,
+      "gap_fit": true,
+      "overlap_iou": 0.1878
+    },
+    {
+      "timestamp": "00:01:21,916 --> 00:01:23,916",
+      "vn_timestamp": "00:01:21,035 --> 00:01:29,820",
+      "vn": "Johnny drives a vehicle, focused ahead. Bough sits in another car, looking serious.",
+      "reference": "Bob presses a button on a remote control.",
+      "similarity": 0.2597,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.2277
+    },
+    {
+      "timestamp": "00:01:24,112 --> 00:01:26,112",
+      "vn_timestamp": "00:01:21,035 --> 00:01:29,820",
+      "vn": "Johnny drives a vehicle, focused ahead. Bough sits in another car, looking serious.",
+      "reference": "The Aston starts to rise in the air on a hoist.",
+      "similarity": 0.2214,
+      "word_count_ratio": 0.8462,
+      "gap_fit": true,
+      "overlap_iou": 0.2277
+    },
+    {
+      "timestamp": "00:01:26,545 --> 00:01:29,390",
+      "vn_timestamp": "00:01:21,035 --> 00:01:29,820",
+      "vn": "Johnny drives a vehicle, focused ahead. Bough sits in another car, looking serious.",
+      "reference": "English fastens his seatbelt and talks into his watch again.",
+      "similarity": 0.3925,
+      "word_count_ratio": 0.7692,
+      "gap_fit": true,
+      "overlap_iou": 0.3238
+    },
+    {
+      "timestamp": "00:01:31,838 --> 00:01:36,880",
+      "vn_timestamp": "00:01:31,180 --> 00:01:39,260",
+      "vn": "Johnny presses buttons on a yellow device. A tow truck lifts a black car. Johnny drives, looking concerned.",
+      "reference": "Bob presses the remote control and the car, held front and rear by two hoists, swings out over the road.",
+      "similarity": 0.5474,
+      "word_count_ratio": 0.9,
+      "gap_fit": true,
+      "overlap_iou": 0.624
+    },
+    {
+      "timestamp": "00:01:41,106 --> 00:01:44,578",
+      "vn_timestamp": "00:01:39,820 --> 00:01:49,925",
+      "vn": "Johnny drives a vehicle, gripping the steering wheel tightly. A tow truck lifts a black car above the street, surrounded by onlookers.",
+      "reference": "Another press of the button and the car is lowered but into oncoming traffic.",
+      "similarity": 0.452,
+      "word_count_ratio": 0.6364,
+      "gap_fit": true,
+      "overlap_iou": 0.3436
+    },
+    {
+      "timestamp": "00:01:47,276 --> 00:01:49,620",
+      "vn_timestamp": "00:01:39,820 --> 00:01:49,925",
+      "vn": "Johnny drives a vehicle, gripping the steering wheel tightly. A tow truck lifts a black car above the street, surrounded by onlookers.",
+      "reference": "The Aston rises just in time to let a car under it.",
+      "similarity": 0.4791,
+      "word_count_ratio": 0.5455,
+      "gap_fit": true,
+      "overlap_iou": 0.232
+    },
+    {
+      "timestamp": "00:01:51,187 --> 00:01:53,187",
+      "vn_timestamp": "00:01:50,405 --> 00:02:02,750",
+      "vn": "Johnny drives, gesturing with his hand. A black car hangs suspended by a tow truck crane against a backdrop of trees.",
+      "reference": "English heaves a sigh of relief.",
+      "similarity": 0.2421,
+      "word_count_ratio": 0.2857,
+      "gap_fit": true,
+      "overlap_iou": 0.162
+    },
+    {
+      "timestamp": "00:01:53,003 --> 00:01:55,431",
+      "vn_timestamp": "00:01:50,405 --> 00:02:02,750",
+      "vn": "Johnny drives, gesturing with his hand. A black car hangs suspended by a tow truck crane against a backdrop of trees.",
+      "reference": "Suddenly he spots the hearse pull out of the line of traffic.",
+      "similarity": 0.4571,
+      "word_count_ratio": 0.5714,
+      "gap_fit": true,
+      "overlap_iou": 0.1967
+    },
+    {
+      "timestamp": "00:01:57,942 --> 00:02:02,526",
+      "vn_timestamp": "00:01:50,405 --> 00:02:02,750",
+      "vn": "Johnny drives, gesturing with his hand. A black car hangs suspended by a tow truck crane against a backdrop of trees.",
+      "reference": "Suspended over the side of the truck, the Aston swings about on the hoists, jolting English around.",
+      "similarity": 0.4871,
+      "word_count_ratio": 0.8095,
+      "gap_fit": true,
+      "overlap_iou": 0.3713
+    },
+    {
+      "timestamp": "00:02:04,493 --> 00:02:06,691",
+      "vn_timestamp": "00:02:04,590 --> 00:02:07,150",
+      "vn": "Johnny looks alarmed inside a car. Outside, a tow truck lifts a black car above a red sedan.",
+      "reference": "The blonde robber in the hearse turns and looks behind him.",
+      "similarity": 0.3896,
+      "word_count_ratio": 0.6111,
+      "gap_fit": true,
+      "overlap_iou": 0.7907
+    },
+    {
+      "timestamp": "00:02:11,079 --> 00:02:16,164",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "The dark-haired driver, wearing shades, guns the engine, cuts across a car and skids the horse round a corner.",
+      "similarity": 0.4626,
+      "word_count_ratio": 0.7037,
+      "gap_fit": true,
+      "overlap_iou": 0.0989
+    },
+    {
+      "timestamp": "00:02:16,770 --> 00:02:20,641",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "Bob follows in the truck, the Aston sticking out from its side like a flying swing.",
+      "similarity": 0.4493,
+      "word_count_ratio": 0.5926,
+      "gap_fit": true,
+      "overlap_iou": 0.0753
+    },
+    {
+      "timestamp": "00:02:21,332 --> 00:02:26,730",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "English, grimacy, sits tight in the car and then gapes as he notices they're approaching a speed camera.",
+      "similarity": 0.4284,
+      "word_count_ratio": 0.6667,
+      "gap_fit": true,
+      "overlap_iou": 0.1049
+    },
+    {
+      "timestamp": "00:02:28,906 --> 00:02:31,145",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "It takes a close-up black and white photo of English.",
+      "similarity": 0.1677,
+      "word_count_ratio": 0.3704,
+      "gap_fit": true,
+      "overlap_iou": 0.0435
+    },
+    {
+      "timestamp": "00:02:31,626 --> 00:02:34,179",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "He presses a rear missile button in the armrest control panel.",
+      "similarity": 0.221,
+      "word_count_ratio": 0.4074,
+      "gap_fit": true,
+      "overlap_iou": 0.0496
+    },
+    {
+      "timestamp": "00:02:37,841 --> 00:02:39,841",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "It takes out the speed camera.",
+      "similarity": 0.2476,
+      "word_count_ratio": 0.2222,
+      "gap_fit": true,
+      "overlap_iou": 0.0389
+    },
+    {
+      "timestamp": "00:02:40,012 --> 00:02:42,334",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "English rubs his hands together and looks pleased with himself.",
+      "similarity": 0.1678,
+      "word_count_ratio": 0.3704,
+      "gap_fit": true,
+      "overlap_iou": 0.0451
+    },
+    {
+      "timestamp": "00:02:42,794 --> 00:02:48,733",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "He scans about him as if he's on a ride in the country, while Boff hangs on tight to the truck steering wheel as he chases the hearse.",
+      "similarity": 0.4884,
+      "word_count_ratio": 0.9643,
+      "gap_fit": true,
+      "overlap_iou": 0.1155
+    },
+    {
+      "timestamp": "00:02:51,749 --> 00:02:53,749",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "The hearse jumps a red light.",
+      "similarity": 0.3854,
+      "word_count_ratio": 0.2222,
+      "gap_fit": true,
+      "overlap_iou": 0.0389
+    },
+    {
+      "timestamp": "00:02:53,014 --> 00:02:55,014",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "Boff gets stuck at them.",
+      "similarity": 0.3502,
+      "word_count_ratio": 0.1852,
+      "gap_fit": true,
+      "overlap_iou": 0.0389
+    },
+    {
+      "timestamp": "00:02:56,848 --> 00:03:00,654",
+      "vn_timestamp": "00:02:09,630 --> 00:03:01,070",
+      "vn": "Johnny drives, wearing sunglasses. A black car hangs suspended by a crane above a street. Bough, in another car, looks up, appearing concerned about the situation unfolding.",
+      "reference": "English spots the Triumph speed triple weaving through cars ahead and zooming on.",
+      "similarity": 0.332,
+      "word_count_ratio": 0.4815,
+      "gap_fit": true,
+      "overlap_iou": 0.074
+    },
+    {
+      "timestamp": "00:03:02,949 --> 00:03:04,949",
+      "vn_timestamp": "00:03:02,110 --> 00:03:09,965",
+      "vn": "Johnny drives while adjusting his hair. A tow truck transports a black car on a trailer alongside him.",
+      "reference": "The car abruptly drops to the ground.",
+      "similarity": 0.3537,
+      "word_count_ratio": 0.3889,
+      "gap_fit": true,
+      "overlap_iou": 0.2546
+    },
+    {
+      "timestamp": "00:03:06,348 --> 00:03:08,348",
+      "vn_timestamp": "00:03:02,110 --> 00:03:09,965",
+      "vn": "Johnny drives while adjusting his hair. A tow truck transports a black car on a trailer alongside him.",
+      "reference": "English is bounced around.",
+      "similarity": 0.1641,
+      "word_count_ratio": 0.2222,
+      "gap_fit": true,
+      "overlap_iou": 0.2546
+    },
+    {
+      "timestamp": "00:03:07,906 --> 00:03:09,906",
+      "vn_timestamp": "00:03:02,110 --> 00:03:09,965",
+      "vn": "Johnny drives while adjusting his hair. A tow truck transports a black car on a trailer alongside him.",
+      "reference": "Suddenly he realizes the Aston is moving.",
+      "similarity": 0.3538,
+      "word_count_ratio": 0.3889,
+      "gap_fit": true,
+      "overlap_iou": 0.2546
+    },
+    {
+      "timestamp": "00:03:14,292 --> 00:03:17,262",
+      "vn_timestamp": "00:03:13,725 --> 00:03:55,799",
+      "vn": "Johnny drives, focused on the road. The scene transitions to a promotional screen for Fandango Movieclips, featuring options to watch more clips and download the app.",
+      "reference": "The Aston has dropped onto a trailer being towed by a 4x4.",
+      "similarity": 0.251,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0706
+    },
+    {
+      "timestamp": "00:03:17,465 --> 00:03:19,465",
+      "vn_timestamp": "00:03:13,725 --> 00:03:55,799",
+      "vn": "Johnny drives, focused on the road. The scene transitions to a promotional screen for Fandango Movieclips, featuring options to watch more clips and download the app.",
+      "reference": "English rams the Aston into reverse.",
+      "similarity": 0.2083,
+      "word_count_ratio": 0.2308,
+      "gap_fit": true,
+      "overlap_iou": 0.0475
+    },
+    {
+      "timestamp": "00:03:21,466 --> 00:03:25,608",
+      "vn_timestamp": "00:03:13,725 --> 00:03:55,799",
+      "vn": "Johnny drives, focused on the road. The scene transitions to a promotional screen for Fandango Movieclips, featuring options to watch more clips and download the app.",
+      "reference": "In a cloud of smoke, it shoots backwards off the cradle, lands, spins and straightens up.",
+      "similarity": 0.2199,
+      "word_count_ratio": 0.6154,
+      "gap_fit": true,
+      "overlap_iou": 0.0984
+    }
+  ]
+}
