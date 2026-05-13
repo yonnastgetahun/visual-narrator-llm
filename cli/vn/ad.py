@@ -194,6 +194,7 @@ def assemble_ad_kit(
     output_dir: Path | None = None,
     character_context: str | None = None,
     narrative_context: str | None = None,
+    two_stage: bool = False,
 ) -> AdResult:
     requested_output_dir = output_dir or Path("./vn-ad-output")
     resolved_output_dir = requested_output_dir.expanduser()
@@ -253,6 +254,7 @@ def assemble_ad_kit(
                     gap.duration_sec,
                     resolved_voice_id,
                     system_prompt_prefix=prefix,
+                    two_stage=two_stage,
                 )
                 if narration.description:
                     scene_context.append(narration.description)
@@ -441,6 +443,7 @@ def generate_gap_aware_ad_narration(
     gap_duration_sec: float,
     voice_id: str,
     system_prompt_prefix: str | None = None,
+    two_stage: bool = False,
 ) -> GeneratedAdNarration:
     attempt_audio_sec: list[float] = []
     attempt_word_limits: list[int] = []
@@ -459,6 +462,7 @@ def generate_gap_aware_ad_narration(
             gap_duration_sec,
             max_words=word_limit,
             system_prompt_prefix=system_prompt_prefix,
+            two_stage=two_stage,
         )
         if model_version:
             model_versions.append(model_version)
@@ -550,11 +554,90 @@ def build_audio_gap_fit_summary(metrics: Sequence[AudioGapFitMetrics]) -> dict[s
     }
 
 
+_OPENAI_API_KEY: str | None = None  # populated from env on first use
+
+
+def _compress_to_ad_gpt4o_mini(stage1_description: str) -> str:
+    """Stage 2: compress dense visual description to AD sentence via GPT-4o mini."""
+    import json as _json
+    import os as _os
+    import urllib.request as _req
+
+    global _OPENAI_API_KEY
+    if _OPENAI_API_KEY is None:
+        _OPENAI_API_KEY = _os.environ.get("OPENAI_API_KEY", "")
+    if not _OPENAI_API_KEY:
+        return stage1_description
+
+    prompt = (
+        "You are writing audio description (AD) for a blind viewer. "
+        "Convert the following visual description into a single AD sentence.\n"
+        "Rules: 15-25 words, present tense, no sound references, no dialogue, "
+        "start with the subject, be specific about actions.\n\n"
+        f"Visual description: {stage1_description}\n\n"
+        "AD sentence:"
+    )
+    payload = _json.dumps({
+        "model": "gpt-4o-mini",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 60,
+        "temperature": 0.3,
+    }).encode()
+    request = _req.Request(
+        "https://api.openai.com/v1/chat/completions",
+        data=payload,
+        headers={"Authorization": f"Bearer {_OPENAI_API_KEY}", "Content-Type": "application/json"},
+    )
+    try:
+        with _req.urlopen(request, timeout=15) as resp:
+            return _json.loads(resp.read())["choices"][0]["message"]["content"].strip()
+    except Exception:
+        return stage1_description
+
+
+def _hallucination_filter_gpt4o_mini(ad_sentence: str, stage1_description: str) -> str:
+    """Stage 3: remove any claim in ad_sentence not supported by stage1_description."""
+    import json as _json
+    import os as _os
+    import urllib.request as _req
+
+    global _OPENAI_API_KEY
+    if _OPENAI_API_KEY is None:
+        _OPENAI_API_KEY = _os.environ.get("OPENAI_API_KEY", "")
+    if not _OPENAI_API_KEY:
+        return ad_sentence
+
+    prompt = (
+        f"Visual evidence: {stage1_description}\n\n"
+        f"Audio description: {ad_sentence}\n\n"
+        "Does the audio description contain any claim not supported by the visual evidence? "
+        "If no: respond with exactly the audio description unchanged. "
+        "If yes: respond with a corrected version that removes the unsupported claim."
+    )
+    payload = _json.dumps({
+        "model": "gpt-4o-mini",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 80,
+        "temperature": 0,
+    }).encode()
+    request = _req.Request(
+        "https://api.openai.com/v1/chat/completions",
+        data=payload,
+        headers={"Authorization": f"Bearer {_OPENAI_API_KEY}", "Content-Type": "application/json"},
+    )
+    try:
+        with _req.urlopen(request, timeout=15) as resp:
+            return _json.loads(resp.read())["choices"][0]["message"]["content"].strip()
+    except Exception:
+        return ad_sentence
+
+
 def _describe_frame_together(
     frame_paths: Sequence[Path],
     gap_duration_sec: float,
     max_words: int | None = None,
     system_prompt_prefix: str | None = None,
+    two_stage: bool = False,
 ) -> tuple[str, str]:
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
@@ -562,15 +645,33 @@ def _describe_frame_together(
     if not frame_paths:
         raise AdDescriptionError("At least one frame is required for AD generation.")
 
-    resolved_word_limit = max_words or target_words(gap_duration_sec)
-    prompt = "\n\n".join(
-        part
-        for part in (
-            _frame_prompt_prefix(len(frame_paths)),
-            AD_PROMPT_TEMPLATE.format(gap_seconds=gap_duration_sec, max_words=resolved_word_limit),
+    if two_stage:
+        prompt = "\n\n".join(
+            part
+            for part in (
+                _frame_prompt_prefix(len(frame_paths)),
+                (
+                    "Describe in detail everything you can see in these frames. "
+                    "Include: all visible people and their actions, facial expressions, "
+                    "body language, spatial relationships, objects, setting details. "
+                    "Be exhaustive. Do not worry about length or format."
+                ),
+            )
+            if part
         )
-        if part
-    )
+        vlm_max_tokens = 500
+    else:
+        resolved_word_limit = max_words or target_words(gap_duration_sec)
+        prompt = "\n\n".join(
+            part
+            for part in (
+                _frame_prompt_prefix(len(frame_paths)),
+                AD_PROMPT_TEMPLATE.format(gap_seconds=gap_duration_sec, max_words=resolved_word_limit),
+            )
+            if part
+        )
+        vlm_max_tokens = 150
+
     content: list[dict[str, Any]] = []
     for frame_path in frame_paths:
         mime_type = mimetypes.guess_type(frame_path.name)[0] or "image/jpeg"
@@ -584,7 +685,7 @@ def _describe_frame_together(
     if system_prompt_prefix:
         messages.insert(0, {"role": "system", "content": system_prompt_prefix})
 
-    payload = {"model": TOGETHER_MODEL_ID, "messages": messages, "max_tokens": 150, "temperature": 0}
+    payload = {"model": TOGETHER_MODEL_ID, "messages": messages, "max_tokens": vlm_max_tokens, "temperature": 0}
 
     try:
         with httpx.Client(timeout=180.0, follow_redirects=True) as client:
@@ -606,10 +707,14 @@ def _describe_frame_together(
     except ValueError as exc:
         raise AdDescriptionError(f"OpenRouter returned invalid JSON: {response.text[:300]}") from exc
 
-    description = _assistant_text_from_response(data).strip()
-    if not description:
+    stage1_result = _assistant_text_from_response(data).strip()
+    if not stage1_result:
         raise AdDescriptionError("OpenRouter returned an empty description.")
-    return description, "together/Qwen2.5-VL-72B-Instruct"
+
+    if two_stage:
+        stage2 = _compress_to_ad_gpt4o_mini(stage1_result)
+        return _hallucination_filter_gpt4o_mini(stage2, stage1_result), "together/Qwen2.5-VL-72B-Instruct+gpt-4o-mini"
+    return stage1_result, "together/Qwen2.5-VL-72B-Instruct"
 
 
 def _describe_frame_for_ad(
@@ -617,9 +722,10 @@ def _describe_frame_for_ad(
     gap_duration_sec: float,
     max_words: int | None = None,
     system_prompt_prefix: str | None = None,
+    two_stage: bool = False,
 ) -> tuple[str, str]:
     if _vision_model() == QWEN_MODEL:
-        return _describe_frame_together(frame_paths, gap_duration_sec, max_words=max_words, system_prompt_prefix=system_prompt_prefix)
+        return _describe_frame_together(frame_paths, gap_duration_sec, max_words=max_words, system_prompt_prefix=system_prompt_prefix, two_stage=two_stage)
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:

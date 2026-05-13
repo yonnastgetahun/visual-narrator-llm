@@ -412,6 +412,15 @@ def ad(
         exists=True,
         dir_okay=False,
     ),
+    two_stage: bool = typer.Option(
+        False,
+        "--two-stage",
+        help=(
+            "Two-stage generation: dense visual description (Stage 1) → "
+            "AD compression via GPT-4o mini (Stage 2) → hallucination filter (Stage 3). "
+            "Requires OPENAI_API_KEY. Marginal cost: ~$0.06/film."
+        ),
+    ),
 ) -> None:
     """Generate a WCAG-compliant Standard AD track with ElevenLabs voicing."""
     output_format = _normalize_format(output_format)
@@ -433,6 +442,7 @@ def ad(
                 source_label=source,
                 output_dir=output_dir,
                 narrative_context=resolved_narrative_context,
+                two_stage=two_stage,
             )
         except (
             GapDetectionError,
