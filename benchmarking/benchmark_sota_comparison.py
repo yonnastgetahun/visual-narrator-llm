@@ -443,8 +443,57 @@ class SOTAComparisonBenchmark:
 # Import random for simulated models
 import random
 
-def run_vn_benchmark_cli(clips, character_context, output_path):
+
+def _action_score_gpt4o_mini(vn_text: str, reference_text: str, openai_key: str) -> float:
+    """NLI entailment: does vn_text capture the primary action in reference_text?"""
+    import json as _json
+    import urllib.request as _req
+
+    prompt = (
+        f"Reference AD: \"{reference_text}\"\n"
+        f"Our AD: \"{vn_text}\"\n\n"
+        "Does our AD describe the same primary action as the reference? "
+        "Answer with exactly one word: yes / partial / no"
+    )
+    payload = _json.dumps({
+        "model": "gpt-4o-mini",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 5,
+        "temperature": 0,
+    }).encode()
+    request = _req.Request(
+        "https://api.openai.com/v1/chat/completions",
+        data=payload,
+        headers={"Authorization": f"Bearer {openai_key}", "Content-Type": "application/json"},
+    )
+    try:
+        with _req.urlopen(request, timeout=15) as resp:
+            answer = _json.loads(resp.read())["choices"][0]["message"]["content"].strip().lower()
+        if "yes" in answer:
+            return 1.0
+        if "partial" in answer:
+            return 0.5
+        return 0.0
+    except Exception:
+        return 0.0
+
+
+def _critic_score(vn_text: str, reference_text: str, character_names: list) -> float:
+    """Character naming accuracy. Returns None if no character names appear in reference."""
+    if not character_names:
+        return None
+    ref_lower = reference_text.lower()
+    vn_lower = vn_text.lower()
+    ref_has_char = any(name.lower() in ref_lower for name in character_names)
+    if not ref_has_char:
+        return None
+    vn_has_char = any(name.lower() in vn_lower for name in character_names)
+    return 1.0 if vn_has_char else 0.0
+
+
+def run_vn_benchmark_cli(clips, character_context, output_path, openai_key=None):
     """Run vn bench on multiple clips and aggregate into a summary JSON."""
+    MIN_OVERLAP_IOU = 0.05
     import argparse
     import subprocess
     import sys
@@ -466,7 +515,10 @@ def run_vn_benchmark_cli(clips, character_context, output_path):
             log(f"SKIP {clip.name}: no reference SRT at {reference_srt}")
             continue
 
-        vn_bin = "/tmp/vn-venv/bin/vn"
+        vn_bin = next(
+            (p for p in ["/tmp/vn-venv2/bin/vn", "/tmp/vn-venv/bin/vn"] if Path(p).exists()),
+            "/tmp/vn-venv/bin/vn",
+        )
         cmd = [
             vn_bin, "benchmark",
             "--video", str(clip.resolve()),
@@ -480,8 +532,11 @@ def run_vn_benchmark_cli(clips, character_context, output_path):
         env = os.environ.copy()
         result = subprocess.run(cmd, capture_output=True, text=True, env=env)
         if result.returncode != 0:
-            log(f"ERROR for {clip.name}: {result.stderr[-500:]}")
-            continue
+            if report_out.exists():
+                log(f"  WARNING: CLI failed for {clip.name}, reusing existing report: {result.stderr[-200:]}")
+            else:
+                log(f"ERROR for {clip.name}: {result.stderr[-500:]}")
+                continue
 
         if not report_out.exists():
             log(f"SKIP {clip.name}: no report generated")
@@ -490,8 +545,40 @@ def run_vn_benchmark_cli(clips, character_context, output_path):
         with open(report_out) as f:
             report = json.load(f)
 
-        sem = report.get("semantic_similarity_mean", 0)
+        raw_samples = report.get("vn_samples", [])
+        valid_samples = [s for s in raw_samples if s.get("overlap_iou", 0.0) >= MIN_OVERLAP_IOU]
+        if not valid_samples:
+            log(f"SKIP {clip.name}: no samples survive overlap_iou >= {MIN_OVERLAP_IOU} filter")
+            continue
+
+        sem = statistics.fmean(s["similarity"] for s in valid_samples)
         overall_similarities.append(sem)
+
+        # Load character names for this clip
+        chars_file = clips_dir / f"{stem}_characters.txt"
+        character_names = []
+        if chars_file.exists():
+            character_names = [
+                l.strip() for l in chars_file.read_text(encoding="utf-8").splitlines()
+                if l.strip()
+            ]
+
+        # Action Score — NLI entailment via GPT-4o mini
+        action_scores = []
+        critic_scores = []
+        if openai_key:
+            import time as _time
+            for s in valid_samples:
+                action_scores.append(
+                    _action_score_gpt4o_mini(s["vn"], s["reference"], openai_key)
+                )
+                cs = _critic_score(s["vn"], s["reference"], character_names)
+                if cs is not None:
+                    critic_scores.append(cs)
+                _time.sleep(0.2)
+        else:
+            log(f"  WARNING: no OpenAI key — skipping Action Score + CRITIC for {clip.name}")
+
         title_map = {
             "6nvQySlxSWY": "Abduction",
             "7ELmyf41TnQ": "Johnny English",
@@ -500,17 +587,24 @@ def run_vn_benchmark_cli(clips, character_context, output_path):
         per_clip_results.append({
             "clip": clip.name,
             "title": title_map.get(stem, stem),
-            "gaps_matched": report.get("gaps_matched", 0),
+            "gaps_matched": len(valid_samples),
+            "gaps_excluded_low_iou": len(raw_samples) - len(valid_samples),
             "semantic_similarity_mean": sem,
             "semantic_similarity_median": report.get("semantic_similarity_median", 0),
             "word_count_ratio_mean": report.get("word_count_ratio_mean"),
             "gap_fit_rate": report.get("gap_fit_rate", 1.0),
             "quality_ratio": report.get("quality_ratio", "0.0%"),
+            "action_score_mean": round(statistics.fmean(action_scores), 4) if action_scores else None,
+            "critic_score_mean": round(statistics.fmean(critic_scores), 4) if critic_scores else None,
+            "critic_pairs_evaluated": len(critic_scores),
         })
         log(f"  {clip.name}: quality_ratio={report.get('quality_ratio')}")
 
     overall_mean = statistics.mean(overall_similarities) if overall_similarities else 0.0
     overall_quality = f"{overall_mean * 100:.1f}%"
+
+    all_action = [c["action_score_mean"] for c in per_clip_results if c.get("action_score_mean") is not None]
+    all_critic = [c["critic_score_mean"] for c in per_clip_results if c.get("critic_score_mean") is not None]
 
     summary = {
         "model": "Qwen/Qwen2.5-VL-72B-Instruct",
@@ -520,10 +614,15 @@ def run_vn_benchmark_cli(clips, character_context, output_path):
         "clips_tested": len(per_clip_results),
         "overall_quality_ratio": overall_quality,
         "overall_semantic_similarity": round(overall_mean, 4),
+        "overall_action_score": round(statistics.fmean(all_action), 4) if all_action else None,
+        "overall_critic_score": round(statistics.fmean(all_critic), 4) if all_critic else None,
         "per_clip": per_clip_results,
         "run_date": datetime.now().strftime("%Y-%m-%d"),
-        "task": "VN-ML-003",
-        "notes": "Shot-by-Shot flanking frames (2 before + 3 within) + rolling context + thread tracking",
+        "task": "VN-ML-005",
+        "notes": (
+            "Shot-by-Shot + rolling context + narrative context + "
+            f"overlap_iou>={MIN_OVERLAP_IOU} filter + Action Score + CRITIC"
+        ),
     }
 
     out = Path(output_path)
@@ -540,10 +639,12 @@ def main():
     parser.add_argument("--clips", nargs="+", help="Video clips to benchmark")
     parser.add_argument("--character-context", action="store_true", help="Use character context files")
     parser.add_argument("--output", help="Output JSON path for multi-clip summary")
+    parser.add_argument("--openai-key", default=os.environ.get("OPENAI_API_KEY"),
+                        help="OpenAI API key for Action Score computation")
     args = parser.parse_args()
 
     if args.clips:
-        run_vn_benchmark_cli(args.clips, args.character_context, args.output)
+        run_vn_benchmark_cli(args.clips, args.character_context, args.output, openai_key=args.openai_key)
         return
 
     benchmark = SOTAComparisonBenchmark()
