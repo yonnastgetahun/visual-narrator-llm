@@ -56,6 +56,7 @@ from vn.youtube import YouTubeDownloadError, download_video, is_url
 
 
 ORIGINS = [
+    "https://app.vnpoverview.com",
     "https://demo.vnpoverview.com",
     "https://adult.vnpoverview.com",
     "http://localhost:3000",
