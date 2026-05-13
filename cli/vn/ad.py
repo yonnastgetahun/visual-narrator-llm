@@ -608,7 +608,8 @@ def _compress_to_ad_gpt4o_mini(stage1_description: str) -> str:
         "You are writing audio description (AD) for a blind viewer. "
         "Convert the following visual description into a single AD sentence.\n"
         "Rules: 15-25 words, present tense, no sound references, no dialogue, "
-        "start with the subject, be specific about actions.\n\n"
+        "start with the subject, use the character's name if mentioned in the description "
+        "(never 'a man' or 'a woman' when a name is known), be specific about actions.\n\n"
         f"Visual description: {stage1_description}\n\n"
         "AD sentence:"
     )
