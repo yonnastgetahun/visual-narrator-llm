@@ -1,12 +1,17 @@
-import requests
 import json
-import time
-import numpy as np
-from datetime import datetime
-import anthropic
-import openai
-from transformers import pipeline
 import os
+import time
+from datetime import datetime
+
+try:
+    import requests
+    import numpy as np
+    import anthropic
+    import openai
+    from transformers import pipeline
+    _HEAVY_DEPS = True
+except ImportError:
+    _HEAVY_DEPS = False
 
 def log(m): print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {m}", flush=True)
 
@@ -438,10 +443,111 @@ class SOTAComparisonBenchmark:
 # Import random for simulated models
 import random
 
+def run_vn_benchmark_cli(clips, character_context, output_path):
+    """Run vn bench on multiple clips and aggregate into a summary JSON."""
+    import argparse
+    import subprocess
+    import sys
+    import statistics
+    from pathlib import Path
+
+    clips_dir = Path(clips[0]).parent
+    per_clip_results = []
+    overall_similarities = []
+
+    for clip_path in clips:
+        clip = Path(clip_path)
+        stem = clip.stem
+        characters_file = clips_dir / f"{stem}_characters.txt"
+        reference_srt = clips_dir / f"{stem}_professional.srt"
+        report_out = clips_dir / f"{stem}_report_vn_ml003.json"
+
+        if not reference_srt.exists():
+            log(f"SKIP {clip.name}: no reference SRT at {reference_srt}")
+            continue
+
+        vn_bin = "/tmp/vn-venv/bin/vn"
+        cmd = [
+            vn_bin, "benchmark",
+            "--video", str(clip.resolve()),
+            "--reference", str(reference_srt.resolve()),
+            "--output", str(report_out.resolve()),
+        ]
+        if character_context and characters_file.exists():
+            cmd += ["--characters", str(characters_file.resolve())]
+
+        log(f"Running: {' '.join(cmd)}")
+        env = os.environ.copy()
+        result = subprocess.run(cmd, capture_output=True, text=True, env=env)
+        if result.returncode != 0:
+            log(f"ERROR for {clip.name}: {result.stderr[-500:]}")
+            continue
+
+        if not report_out.exists():
+            log(f"SKIP {clip.name}: no report generated")
+            continue
+
+        with open(report_out) as f:
+            report = json.load(f)
+
+        sem = report.get("semantic_similarity_mean", 0)
+        overall_similarities.append(sem)
+        title_map = {
+            "6nvQySlxSWY": "Abduction",
+            "7ELmyf41TnQ": "Johnny English",
+            "v0KOJWyR4SU": "Drag Me to Hell",
+        }
+        per_clip_results.append({
+            "clip": clip.name,
+            "title": title_map.get(stem, stem),
+            "gaps_matched": report.get("gaps_matched", 0),
+            "semantic_similarity_mean": sem,
+            "semantic_similarity_median": report.get("semantic_similarity_median", 0),
+            "word_count_ratio_mean": report.get("word_count_ratio_mean"),
+            "gap_fit_rate": report.get("gap_fit_rate", 1.0),
+            "quality_ratio": report.get("quality_ratio", "0.0%"),
+        })
+        log(f"  {clip.name}: quality_ratio={report.get('quality_ratio')}")
+
+    overall_mean = statistics.mean(overall_similarities) if overall_similarities else 0.0
+    overall_quality = f"{overall_mean * 100:.1f}%"
+
+    summary = {
+        "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+        "provider": "OpenRouter",
+        "frames_per_gap": 5,
+        "character_context": character_context,
+        "clips_tested": len(per_clip_results),
+        "overall_quality_ratio": overall_quality,
+        "overall_semantic_similarity": round(overall_mean, 4),
+        "per_clip": per_clip_results,
+        "run_date": datetime.now().strftime("%Y-%m-%d"),
+        "task": "VN-ML-003",
+        "notes": "Shot-by-Shot flanking frames (2 before + 3 within) + rolling context + thread tracking",
+    }
+
+    out = Path(output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(summary, indent=2))
+    log(f"Summary written to {out}")
+    log(f"Overall quality: {overall_quality} (baseline 41.4%)")
+    return summary
+
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="SOTA comparison or VN multi-clip benchmark")
+    parser.add_argument("--clips", nargs="+", help="Video clips to benchmark")
+    parser.add_argument("--character-context", action="store_true", help="Use character context files")
+    parser.add_argument("--output", help="Output JSON path for multi-clip summary")
+    args = parser.parse_args()
+
+    if args.clips:
+        run_vn_benchmark_cli(args.clips, args.character_context, args.output)
+        return
+
     benchmark = SOTAComparisonBenchmark()
     model_metrics, comparative_analysis = benchmark.run_comprehensive_benchmark()
-    
     print("\n🎉 SOTA COMPARISON COMPLETED!")
     print("📈 Now we know exactly how we stack up against the competition!")
 

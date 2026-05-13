@@ -57,6 +57,9 @@ MAX_AUDIO_FIT_RETRIES = 2
 OVERRUN_BUFFER = 0.15
 TRUNCATION_STEP_SEC = 0.05
 MAX_TRUNCATION_ATTEMPTS = 3
+FLANK_BEFORE_SEC = 0.75  # seconds before gap start to sample context frames
+FRAMES_PER_GAP_QWEN = 5  # 2 flanking (before gap) + 3 within gap
+SAME_SCENE_THRESHOLD_SEC = 60.0  # gaps closer than this are treated as same scene
 
 
 class AdDescriptionError(RuntimeError):
@@ -190,6 +193,7 @@ def assemble_ad_kit(
     source_label: str | None = None,
     output_dir: Path | None = None,
     character_context: str | None = None,
+    narrative_context: str | None = None,
 ) -> AdResult:
     requested_output_dir = output_dir or Path("./vn-ad-output")
     resolved_output_dir = requested_output_dir.expanduser()
@@ -209,7 +213,7 @@ def assemble_ad_kit(
     if gaps:
         with tempfile.TemporaryDirectory(prefix="vn-ad-frames-") as tmp:
             frame_dir = Path(tmp)
-            frames_per_gap = 3 if _vision_model() == QWEN_MODEL else 1
+            frames_per_gap = FRAMES_PER_GAP_QWEN if _vision_model() == QWEN_MODEL else 1
             all_timestamps: list[float] = []
             for gap in gaps:
                 all_timestamps.extend(_gap_timestamps(gap, frames_per_gap))
@@ -220,11 +224,29 @@ def assemble_ad_kit(
             ]
             scene_context: list[str] = []
             for index, (gap, frame_group) in enumerate(zip(gaps, frame_groups, strict=True), start=1):
+                prev_gap = gaps[index - 2] if index > 1 else None
+                same_scene = (
+                    prev_gap is not None
+                    and (gap.start_sec - prev_gap.end_sec) < SAME_SCENE_THRESHOLD_SEC
+                )
                 prefix_parts = []
+                if narrative_context:
+                    prefix_parts.append(narrative_context)
                 if character_context:
                     prefix_parts.append(character_context)
                 if scene_context:
-                    prefix_parts.append("Recent descriptions:\n" + "\n".join(scene_context[-5:]))
+                    recent = scene_context[-3:]
+                    start_label = index - len(recent)
+                    context_lines = "\n".join(
+                        f"[Gap {start_label + i}]: {desc}" for i, desc in enumerate(recent, start=1)
+                    )
+                    prefix_parts.append(f"Preceding narrations:\n{context_lines}")
+                if same_scene:
+                    prefix_parts.append(
+                        "This gap continues the same scene as the previous narration. "
+                        "Do not re-introduce the characters or re-describe the setting — "
+                        "continue from where the previous narration left off."
+                    )
                 prefix = "\n\n".join(prefix_parts) or None
                 narration = generate_gap_aware_ad_narration(
                     [f.path for f in frame_group],
@@ -562,7 +584,7 @@ def _describe_frame_together(
     if system_prompt_prefix:
         messages.insert(0, {"role": "system", "content": system_prompt_prefix})
 
-    payload = {"model": TOGETHER_MODEL_ID, "messages": messages, "max_tokens": 150}
+    payload = {"model": TOGETHER_MODEL_ID, "messages": messages, "max_tokens": 150, "temperature": 0}
 
     try:
         with httpx.Client(timeout=180.0, follow_redirects=True) as client:
@@ -675,6 +697,15 @@ def _describe_frame_for_ad(
 
 
 def _frame_prompt_prefix(frame_count: int) -> str:
+    if frame_count == FRAMES_PER_GAP_QWEN:
+        return (
+            "You are viewing 5 frames. "
+            "Frames 1-2 are from the scene IMMEDIATELY BEFORE the narration gap — "
+            "they show what was happening just before the silence started. "
+            "Frames 3-5 are from WITHIN the gap itself. "
+            "Use frames 1-2 for context: who is present, what just happened. "
+            "Write your audio description based on frames 3-5, informed by that context."
+        )
     if frame_count == 3:
         return (
             "You are viewing three frames from a single narration gap. "
@@ -785,6 +816,15 @@ def _gap_timestamps(gap: GapResult, frame_count: int) -> list[float]:
     mid = _gap_midpoint(gap)
     if frame_count == 1:
         return [mid]
+    if frame_count == FRAMES_PER_GAP_QWEN:
+        # 2 context frames from just before the gap + 3 within the gap
+        # Clamp to 0.05 so ffmpeg never receives a negative seek position
+        before_1 = max(0.05, gap.start_sec - FLANK_BEFORE_SEC)
+        before_2 = max(0.05, gap.start_sec - FLANK_BEFORE_SEC / 2)
+        within_start = min(gap.start_sec + 0.5, mid)
+        within_end = max(gap.end_sec - 0.5, mid)
+        return [before_1, before_2, within_start, mid, within_end]
+    # 3-frame fallback (e.g. GPT-4o path at 3 frames, or any other count)
     start = min(gap.start_sec + 0.5, mid)
     end = max(gap.end_sec - 0.5, mid)
     return [start, mid, end]

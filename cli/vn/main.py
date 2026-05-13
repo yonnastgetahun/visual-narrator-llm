@@ -396,9 +396,31 @@ def ad(
         help="ElevenLabs voice ID. Defaults to ELEVENLABS_VOICE_ADAM or Adam.",
     ),
     min_gap: float = typer.Option(2.0, "--min-gap", min=0.001, help="Filter out gaps shorter than this many seconds."),
+    narrative_context: Optional[str] = typer.Option(
+        None,
+        "--narrative-context",
+        help=(
+            "Film-level narrative context injected as a system prompt prefix. "
+            "Include: film title, genre, brief plot summary, character relationships, "
+            "and scene context. Plain text, no special format required."
+        ),
+    ),
+    narrative_context_file: Optional[Path] = typer.Option(
+        None,
+        "--narrative-context-file",
+        help="Path to a plain-text file containing the narrative context.",
+        exists=True,
+        dir_okay=False,
+    ),
 ) -> None:
     """Generate a WCAG-compliant Standard AD track with ElevenLabs voicing."""
     output_format = _normalize_format(output_format)
+
+    resolved_narrative_context = narrative_context
+    if narrative_context_file and not narrative_context:
+        resolved_narrative_context = narrative_context_file.read_text(encoding="utf-8").strip()
+    elif narrative_context_file and narrative_context:
+        typer.echo("Warning: both --narrative-context and --narrative-context-file provided; inline value wins.", err=True)
 
     with tempfile.TemporaryDirectory(prefix="vn-cli-") as tmp:
         tmp_path = Path(tmp)
@@ -410,6 +432,7 @@ def ad(
                 voice_id=voice_id,
                 source_label=source,
                 output_dir=output_dir,
+                narrative_context=resolved_narrative_context,
             )
         except (
             GapDetectionError,

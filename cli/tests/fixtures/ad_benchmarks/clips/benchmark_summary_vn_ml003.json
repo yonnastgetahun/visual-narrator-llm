@@ -1,0 +1,44 @@
+{
+  "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+  "provider": "OpenRouter",
+  "frames_per_gap": 5,
+  "character_context": true,
+  "clips_tested": 3,
+  "overall_quality_ratio": "41.5%",
+  "overall_semantic_similarity": 0.4152,
+  "per_clip": [
+    {
+      "clip": "6nvQySlxSWY.mp4",
+      "title": "Abduction",
+      "gaps_matched": 40,
+      "semantic_similarity_mean": 0.4087,
+      "semantic_similarity_median": 0.3869,
+      "word_count_ratio_mean": 0.2886,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "40.9%"
+    },
+    {
+      "clip": "7ELmyf41TnQ.mp4",
+      "title": "Johnny English",
+      "gaps_matched": 41,
+      "semantic_similarity_mean": 0.3522,
+      "semantic_similarity_median": 0.3741,
+      "word_count_ratio_mean": 0.5214,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "35.2%"
+    },
+    {
+      "clip": "v0KOJWyR4SU.mp4",
+      "title": "Drag Me to Hell",
+      "gaps_matched": 45,
+      "semantic_similarity_mean": 0.4848,
+      "semantic_similarity_median": 0.5048,
+      "word_count_ratio_mean": 0.5024,
+      "gap_fit_rate": 1.0,
+      "quality_ratio": "48.5%"
+    }
+  ],
+  "run_date": "2026-05-12",
+  "task": "VN-ML-003",
+  "notes": "Shot-by-Shot flanking frames (2 before + 3 within) + rolling context + thread tracking"
+}

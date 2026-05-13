@@ -1,0 +1,412 @@
+{
+  "clip": "6nvQySlxSWY.mp4",
+  "reference_source": "CMD-AD / AutoAD III (Oxford VGG)",
+  "gaps_matched": 40,
+  "semantic_similarity_mean": 0.4087,
+  "semantic_similarity_median": 0.3869,
+  "word_count_ratio_mean": 0.2886,
+  "gap_fit_rate": 1.0,
+  "quality_ratio": "40.9%",
+  "vn_samples": [
+    {
+      "timestamp": "00:00:01,671 --> 00:00:03,671",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver tries to open the door.",
+      "similarity": 0.2829,
+      "word_count_ratio": 0.2692,
+      "gap_fit": true,
+      "overlap_iou": 0.0434
+    },
+    {
+      "timestamp": "00:00:04,027 --> 00:00:06,141",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver's hand blocks the door from closing.",
+      "similarity": 0.3471,
+      "word_count_ratio": 0.3077,
+      "gap_fit": true,
+      "overlap_iou": 0.0459
+    },
+    {
+      "timestamp": "00:00:06,587 --> 00:00:08,587",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "Nathan slams the door on his hand.",
+      "similarity": 0.558,
+      "word_count_ratio": 0.2692,
+      "gap_fit": true,
+      "overlap_iou": 0.0434
+    },
+    {
+      "timestamp": "00:00:09,618 --> 00:00:12,470",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver opens the door and punches Nathan in the face.",
+      "similarity": 0.5316,
+      "word_count_ratio": 0.4231,
+      "gap_fit": true,
+      "overlap_iou": 0.0619
+    },
+    {
+      "timestamp": "00:00:14,204 --> 00:00:17,116",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver closes the door and draws the curtains.",
+      "similarity": 0.277,
+      "word_count_ratio": 0.3462,
+      "gap_fit": true,
+      "overlap_iou": 0.0632
+    },
+    {
+      "timestamp": "00:00:17,143 --> 00:00:19,143",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "Nathan puts his hand over his nose.",
+      "similarity": 0.5432,
+      "word_count_ratio": 0.2692,
+      "gap_fit": true,
+      "overlap_iou": 0.0434
+    },
+    {
+      "timestamp": "00:00:19,247 --> 00:00:21,247",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver steps up.",
+      "similarity": 0.2281,
+      "word_count_ratio": 0.1538,
+      "gap_fit": true,
+      "overlap_iou": 0.0434
+    },
+    {
+      "timestamp": "00:00:20,583 --> 00:00:22,583",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "Nathan punches him.",
+      "similarity": 0.5445,
+      "word_count_ratio": 0.1154,
+      "gap_fit": true,
+      "overlap_iou": 0.0434
+    },
+    {
+      "timestamp": "00:00:22,859 --> 00:00:25,372",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver throws him through a wall.",
+      "similarity": 0.282,
+      "word_count_ratio": 0.2692,
+      "gap_fit": true,
+      "overlap_iou": 0.0546
+    },
+    {
+      "timestamp": "00:00:27,945 --> 00:00:31,355",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver slams him to a wall, then drops Nathan with a left hook.",
+      "similarity": 0.5278,
+      "word_count_ratio": 0.5385,
+      "gap_fit": true,
+      "overlap_iou": 0.074
+    },
+    {
+      "timestamp": "00:00:32,492 --> 00:00:35,846",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver grabs his neck and smashes Nathan's head into a window.",
+      "similarity": 0.5301,
+      "word_count_ratio": 0.4615,
+      "gap_fit": true,
+      "overlap_iou": 0.0728
+    },
+    {
+      "timestamp": "00:00:36,704 --> 00:00:39,817",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "In the driver's room, Karen kicks a counter from the floor.",
+      "similarity": 0.301,
+      "word_count_ratio": 0.4231,
+      "gap_fit": true,
+      "overlap_iou": 0.0676
+    },
+    {
+      "timestamp": "00:00:40,456 --> 00:00:43,250",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "The driver grabs Nathan by the neck and lifts him up the wall.",
+      "similarity": 0.5517,
+      "word_count_ratio": 0.5,
+      "gap_fit": true,
+      "overlap_iou": 0.0607
+    },
+    {
+      "timestamp": "00:00:43,538 --> 00:00:45,538",
+      "vn_timestamp": "00:00:00,000 --> 00:00:46,055",
+      "vn": "Nathan leans against a pole, observing. A man in a leather jacket restrains another person against a door. The restrained person appears unconscious, head tilted back.",
+      "reference": "He pinches Nathan's cheek.",
+      "similarity": 0.4559,
+      "word_count_ratio": 0.1538,
+      "gap_fit": true,
+      "overlap_iou": 0.0434
+    },
+    {
+      "timestamp": "00:00:50,198 --> 00:00:52,198",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "Nathan spits on the driver's face.",
+      "similarity": 0.2823,
+      "word_count_ratio": 0.2308,
+      "gap_fit": true,
+      "overlap_iou": 0.1197
+    },
+    {
+      "timestamp": "00:00:52,464 --> 00:00:54,818",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "He closes his eyes and takes off his glasses.",
+      "similarity": 0.2851,
+      "word_count_ratio": 0.3462,
+      "gap_fit": true,
+      "overlap_iou": 0.1409
+    },
+    {
+      "timestamp": "00:00:55,317 --> 00:00:57,890",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "He wipes his face and tosses Nathan to the ground.",
+      "similarity": 0.3933,
+      "word_count_ratio": 0.3846,
+      "gap_fit": true,
+      "overlap_iou": 0.154
+    },
+    {
+      "timestamp": "00:00:58,565 --> 00:01:00,565",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "He stops his foot, but Nathan avoids it.",
+      "similarity": 0.2959,
+      "word_count_ratio": 0.3077,
+      "gap_fit": true,
+      "overlap_iou": 0.1197
+    },
+    {
+      "timestamp": "00:01:01,141 --> 00:01:03,275",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "The driver lunges on Nathan, choking him.",
+      "similarity": 0.3742,
+      "word_count_ratio": 0.2692,
+      "gap_fit": true,
+      "overlap_iou": 0.1277
+    },
+    {
+      "timestamp": "00:01:03,421 --> 00:01:05,421",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "Karen kicks the counter.",
+      "similarity": 0.2977,
+      "word_count_ratio": 0.1538,
+      "gap_fit": true,
+      "overlap_iou": 0.1197
+    },
+    {
+      "timestamp": "00:01:04,937 --> 00:01:06,937",
+      "vn_timestamp": "00:00:50,055 --> 00:01:06,760",
+      "vn": "The restrained person falls backward onto the floor, landing with a thud. Glass shatters nearby as the person in the leather jacket also collapses, legs flailing.",
+      "reference": "A glass falls and breaks.",
+      "similarity": 0.5769,
+      "word_count_ratio": 0.1923,
+      "gap_fit": true,
+      "overlap_iou": 0.108
+    },
+    {
+      "timestamp": "00:01:09,754 --> 00:01:11,754",
+      "vn_timestamp": "00:01:09,720 --> 00:01:18,015",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle.",
+      "reference": "Nathan elbows the driver.",
+      "similarity": 0.5627,
+      "word_count_ratio": 0.2105,
+      "gap_fit": true,
+      "overlap_iou": 0.2411
+    },
+    {
+      "timestamp": "00:01:11,691 --> 00:01:14,404",
+      "vn_timestamp": "00:01:09,720 --> 00:01:18,015",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle.",
+      "reference": "He wraps his leg around his head and arm and squeezes.",
+      "similarity": 0.3918,
+      "word_count_ratio": 0.5789,
+      "gap_fit": true,
+      "overlap_iou": 0.3271
+    },
+    {
+      "timestamp": "00:01:14,982 --> 00:01:18,712",
+      "vn_timestamp": "00:01:09,720 --> 00:01:18,015",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle.",
+      "reference": "Karen brings a shard of glass closer to her with her foot.",
+      "similarity": 0.248,
+      "word_count_ratio": 0.6316,
+      "gap_fit": true,
+      "overlap_iou": 0.3373
+    },
+    {
+      "timestamp": "00:01:20,894 --> 00:01:22,894",
+      "vn_timestamp": "00:01:20,735 --> 00:01:32,070",
+      "vn": "The man in the leather jacket lies motionless. Nathan stands up, breathing heavily, looking around cautiously. No text appears on screen.",
+      "reference": "Nathan punches the driver.",
+      "similarity": 0.4654,
+      "word_count_ratio": 0.1905,
+      "gap_fit": true,
+      "overlap_iou": 0.1764
+    },
+    {
+      "timestamp": "00:01:22,720 --> 00:01:24,720",
+      "vn_timestamp": "00:01:20,735 --> 00:01:32,070",
+      "vn": "The man in the leather jacket lies motionless. Nathan stands up, breathing heavily, looking around cautiously. No text appears on screen.",
+      "reference": "The driver loses consciousness.",
+      "similarity": 0.3604,
+      "word_count_ratio": 0.1905,
+      "gap_fit": true,
+      "overlap_iou": 0.1764
+    },
+    {
+      "timestamp": "00:01:24,924 --> 00:01:26,924",
+      "vn_timestamp": "00:01:20,735 --> 00:01:32,070",
+      "vn": "The man in the leather jacket lies motionless. Nathan stands up, breathing heavily, looking around cautiously. No text appears on screen.",
+      "reference": "Nathan releases his grip.",
+      "similarity": 0.5035,
+      "word_count_ratio": 0.1905,
+      "gap_fit": true,
+      "overlap_iou": 0.1764
+    },
+    {
+      "timestamp": "00:01:27,270 --> 00:01:29,385",
+      "vn_timestamp": "00:01:20,735 --> 00:01:32,070",
+      "vn": "The man in the leather jacket lies motionless. Nathan stands up, breathing heavily, looking around cautiously. No text appears on screen.",
+      "reference": "Karen scoots closer to the broken glass.",
+      "similarity": 0.275,
+      "word_count_ratio": 0.3333,
+      "gap_fit": true,
+      "overlap_iou": 0.1866
+    },
+    {
+      "timestamp": "00:01:40,366 --> 00:01:42,366",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Nathan kicks a gun from the driver's hand.",
+      "similarity": 0.5391,
+      "word_count_ratio": 0.3333,
+      "gap_fit": true,
+      "overlap_iou": 0.0311
+    },
+    {
+      "timestamp": "00:01:43,511 --> 00:01:45,645",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Nathan punches him and does a flying spin.",
+      "similarity": 0.5931,
+      "word_count_ratio": 0.3333,
+      "gap_fit": true,
+      "overlap_iou": 0.0348
+    },
+    {
+      "timestamp": "00:01:45,842 --> 00:01:47,842",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "The driver stumbles.",
+      "similarity": 0.2725,
+      "word_count_ratio": 0.125,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:01:47,659 --> 00:01:49,795",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Nathan lunges and punches him.",
+      "similarity": 0.6019,
+      "word_count_ratio": 0.2083,
+      "gap_fit": true,
+      "overlap_iou": 0.0349
+    },
+    {
+      "timestamp": "00:01:49,742 --> 00:01:51,742",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Nathan winces and shakes his hand.",
+      "similarity": 0.5148,
+      "word_count_ratio": 0.25,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:01:51,866 --> 00:01:53,866",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "He punches the driver, who lies unconscious.",
+      "similarity": 0.3642,
+      "word_count_ratio": 0.2917,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:01:54,151 --> 00:01:56,151",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Nathan steps back.",
+      "similarity": 0.5449,
+      "word_count_ratio": 0.125,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:01:55,268 --> 00:01:57,268",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "The window is cracked.",
+      "similarity": 0.1991,
+      "word_count_ratio": 0.1667,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:02:00,356 --> 00:02:02,356",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "He kicks the window out.",
+      "similarity": 0.2818,
+      "word_count_ratio": 0.2083,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:02:03,207 --> 00:02:05,207",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "He grabs the driver by his collar.",
+      "similarity": 0.382,
+      "word_count_ratio": 0.2917,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:02:05,173 --> 00:02:07,173",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Karen enters the room.",
+      "similarity": 0.2651,
+      "word_count_ratio": 0.1667,
+      "gap_fit": true,
+      "overlap_iou": 0.0326
+    },
+    {
+      "timestamp": "00:02:07,649 --> 00:02:09,684",
+      "vn_timestamp": "00:01:40,455 --> 00:02:41,727",
+      "vn": "Nathan grapples with the man in the leather jacket. They fall to the floor, arms locked in a struggle. The screen briefly displays \"MOVIECLIPS.COM.\"",
+      "reference": "Nathan throws the driver out of the window.",
+      "similarity": 0.5152,
+      "word_count_ratio": 0.3333,
+      "gap_fit": true,
+      "overlap_iou": 0.0332
+    }
+  ]
+}
