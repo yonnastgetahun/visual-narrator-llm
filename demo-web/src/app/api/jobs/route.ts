@@ -35,12 +35,19 @@ export async function POST(request: Request) {
 
   const payload = (await request.json().catch(() => ({}))) as {
     estimatedMinutes?: number;
+    s3Key?: string;
+    source?: string;
+    sourceType?: string;
   };
   const jobId = crypto.randomUUID();
   const usageMinutes = normalizeUsageMinutes(payload.estimatedMinutes);
 
+  const qs = new URLSearchParams({ minutes: String(usageMinutes) });
+  if (typeof payload.s3Key === "string" && payload.s3Key) qs.set("s3Key", payload.s3Key);
+  if (typeof payload.source === "string" && payload.source) qs.set("source", payload.source);
+
   return NextResponse.json({
     jobId,
-    processingUrl: `/processing/${jobId}?minutes=${usageMinutes}`,
+    processingUrl: `/processing/${jobId}?${qs}`,
   });
 }

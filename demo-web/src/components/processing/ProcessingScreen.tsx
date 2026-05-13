@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 const EASE_VN = [0.16, 1, 0.3, 1] as const;
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ??
+  "https://visual-narrator-llm-production.up.railway.app";
 
 type StepKey = "downloading" | "detecting" | "describing" | "generating" | "mixing";
 
@@ -16,11 +19,11 @@ type Step = {
 };
 
 const STEPS: Step[] = [
-  { key: "downloading", label: "Downloading footage",    detail: "Pulling source from URL",           durationMs: 3200  },
+  { key: "downloading", label: "Downloading footage",      detail: "Pulling source from storage",       durationMs: 3200  },
   { key: "detecting",   label: "Detecting narration gaps", detail: "Analysing dialogue and music cues", durationMs: 4800  },
-  { key: "describing",  label: "Describing frames",      detail: "GPT-4o Vision — 47 gaps queued",    durationMs: 7600  },
-  { key: "generating",  label: "Generating audio",       detail: "TTS synthesis — 47 tracks",         durationMs: 5200  },
-  { key: "mixing",      label: "Mixing and exporting",   detail: "Rendering final AD track",          durationMs: 3000  },
+  { key: "describing",  label: "Describing frames",        detail: "GPT-4o Vision — analysing gaps",    durationMs: 7600  },
+  { key: "generating",  label: "Generating audio",         detail: "TTS synthesis in progress",         durationMs: 5200  },
+  { key: "mixing",      label: "Mixing and exporting",     detail: "Rendering final AD track",          durationMs: 3000  },
 ];
 
 // Animated waveform bars — isolated for perf
@@ -176,36 +179,125 @@ function FilmCounter({ currentStep }: { currentStep: number }) {
 export function ProcessingScreen({
   estimatedMinutes,
   jobId,
+  s3Key,
+  source,
 }: {
   estimatedMinutes: number;
   jobId: string;
+  s3Key?: string;
+  source?: string;
 }) {
   const router = useRouter();
   const [activeStepIdx, setActiveStepIdx] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [progress, setProgress] = useState(0);
   const [elapsed, setElapsed] = useState(0);
+  const [railwayError, setRailwayError] = useState<string | null>(null);
   const startRef = useRef(Date.now());
   const completionStartedRef = useRef(false);
+  const esRef = useRef<EventSource | null>(null);
 
-  // Simulate pipeline steps
+  const useRailway = Boolean(source || s3Key);
+
+  // Railway SSE-driven pipeline
   useEffect(() => {
+    if (!useRailway) return;
+
+    const params = new URLSearchParams({ min_gap: "2.0" });
+    if (s3Key) params.set("s3_key", s3Key);
+    else if (source) params.set("source", source);
+
+    const es = new EventSource(`${API_URL}/api/ad?${params}`);
+    esRef.current = es;
+
+    // Track current step to avoid going backwards
+    let currentIdx = -1;
+
+    function advanceTo(idx: number) {
+      if (idx <= currentIdx) return;
+      currentIdx = idx;
+      setActiveStepIdx(idx);
+      setProgress(0);
+      setCompletedSteps((prev) => {
+        const next = new Set(prev);
+        for (let i = 0; i < idx; i++) next.add(i);
+        return next;
+      });
+    }
+
+    es.addEventListener("step", (event: MessageEvent) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data = JSON.parse(event.data) as Record<string, any>;
+      switch (data.step) {
+        case "download":
+          advanceTo(0);
+          break;
+        case "gaps":
+          advanceTo(1);
+          break;
+        case "describing":
+        case "skipping":
+          advanceTo(2);
+          if (data.current && data.total) {
+            setProgress(Math.round((data.current / data.total) * 100));
+          }
+          break;
+        case "synthesizing":
+          advanceTo(3);
+          if (data.current && data.total) {
+            setProgress(Math.round((data.current / data.total) * 100));
+          }
+          break;
+      }
+    });
+
+    es.addEventListener("complete", (event: MessageEvent) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data = JSON.parse(event.data) as { manifest: Record<string, any> };
+      es.close();
+      esRef.current = null;
+
+      setCompletedSteps(new Set([0, 1, 2, 3, 4]));
+      setActiveStepIdx(STEPS.length);
+
+      if (completionStartedRef.current) return;
+      completionStartedRef.current = true;
+
+      void fetch(`/api/jobs/${jobId}/complete`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ estimatedMinutes }),
+      }).finally(() => {
+        setTimeout(() => router.push(`/results/${data.manifest.job_id}`), 800);
+      });
+    });
+
+    es.onerror = () => {
+      es.close();
+      esRef.current = null;
+      setRailwayError("Processing failed. Please go back and try again.");
+    };
+
+    return () => {
+      es.close();
+      esRef.current = null;
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Simulated pipeline steps (fallback when no source/s3Key)
+  useEffect(() => {
+    if (useRailway) return;
+
     let idx = 0;
     function runStep(stepIdx: number) {
       if (stepIdx >= STEPS.length) {
-        if (completionStartedRef.current) {
-          return;
-        }
-
+        if (completionStartedRef.current) return;
         completionStartedRef.current = true;
         void fetch(`/api/jobs/${jobId}/complete`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            estimatedMinutes,
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ estimatedMinutes }),
         }).finally(() => {
           setTimeout(() => router.push(`/results/${jobId}`), 800);
         });
@@ -230,7 +322,7 @@ export function ProcessingScreen({
     }
     const cleanup = runStep(idx);
     return cleanup;
-  }, [estimatedMinutes, jobId, router]);
+  }, [estimatedMinutes, jobId, router, useRailway]);
 
   // Elapsed timer
   useEffect(() => {
@@ -317,17 +409,33 @@ export function ProcessingScreen({
           </AnimatePresence>
         </motion.div>
 
+        {/* Error state (Railway failures) */}
+        {railwayError && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 border border-red-400/30 bg-red-400/5 px-4 py-3"
+          >
+            <p className="text-[0.8125rem] text-red-400">{railwayError}</p>
+            <a href="/upload" className="mt-2 block vn-label text-vn-dim hover:text-vn-mist transition-colors">
+              ← Go back
+            </a>
+          </motion.div>
+        )}
+
         {/* Bottom note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-6 text-center text-[0.8125rem] text-vn-dim leading-relaxed"
-        >
-          You can close this tab. We will email you when the track is ready.
-          <br />
-          <span className="text-vn-amber">Job ID saved to clipboard.</span>
-        </motion.p>
+        {!railwayError && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="mt-6 text-center text-[0.8125rem] text-vn-dim leading-relaxed"
+          >
+            You can close this tab. We will email you when the track is ready.
+            <br />
+            <span className="text-vn-amber">Job ID saved to clipboard.</span>
+          </motion.p>
+        )}
       </div>
     </div>
   );
