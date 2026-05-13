@@ -15,6 +15,8 @@ services:
   cobalt:
     image: ghcr.io/imputnet/cobalt:10
     restart: unless-stopped
+    environment:
+      API_URL: http://cobalt:9000
     networks:
       - vn
 
