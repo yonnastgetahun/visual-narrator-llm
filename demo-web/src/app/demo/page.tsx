@@ -10,9 +10,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { UrlInput } from "@/components/UrlInput";
 import type { Manifest, ScoreReport, StepEvent } from "@/lib/types";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ??
-  "https://visual-narrator-llm-production.up.railway.app";
+const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "https://api.vnpoverview.com").trim();
 
 function isYouTubeUrl(url: string) {
   return url.includes("youtube.com") || url.includes("youtu.be");
@@ -28,6 +26,7 @@ export default function DemoPage() {
   const [report, setReport] = useState<ScoreReport | null>(null);
   const [isComplete, setIsComplete] = useState(false);
   const [showDownloadHint, setShowDownloadHint] = useState(false);
+  const [runError, setRunError] = useState<string | null>(null);
 
   const esRef = useRef<EventSource | null>(null);
   const downloadTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -64,6 +63,7 @@ export default function DemoPage() {
     setSteps([]);
     setIsComplete(false);
     setShowDownloadHint(false);
+    setRunError(null);
   }
 
   function handleSubmit(submittedUrl: string) {
@@ -74,6 +74,7 @@ export default function DemoPage() {
     setScoring(false);
     setSteps([]);
     setIsComplete(false);
+    setRunError(null);
     setProcessing(true);
 
     track("run_started", {
@@ -91,7 +92,8 @@ export default function DemoPage() {
     });
 
     es.addEventListener("complete", (event: MessageEvent) => {
-      const data = JSON.parse(event.data) as Manifest;
+      const payload = JSON.parse(event.data) as Manifest | { manifest: Manifest };
+      const data = "manifest" in payload ? payload.manifest : payload;
       setManifest(data);
       setIsComplete(true);
       setProcessing(false);
@@ -105,10 +107,25 @@ export default function DemoPage() {
       });
     });
 
+    es.addEventListener("error", (event: MessageEvent) => {
+      let message = "Processing failed. Try another URL or use a direct video file.";
+      try {
+        const data = JSON.parse(event.data) as { message?: string };
+        if (data.message) message = data.message;
+      } catch {
+        // Keep friendly fallback copy.
+      }
+      es.close();
+      esRef.current = null;
+      setProcessing(false);
+      setRunError(message);
+    });
+
     es.onerror = () => {
       es.close();
       esRef.current = null;
       setProcessing(false);
+      setRunError("The live stream disconnected before the job completed. Try another URL or direct video file.");
     };
   }
 
@@ -168,6 +185,7 @@ export default function DemoPage() {
     setScoringProgress(null);
     setScoring(false);
     setIsComplete(false);
+    setRunError(null);
   }
 
   return (
@@ -208,6 +226,14 @@ export default function DemoPage() {
                 onChange={setUrl}
                 onSubmit={handleSubmit}
               />
+              {runError ? (
+                <div className="mt-5 border border-red-400/30 bg-red-400/5 px-4 py-3">
+                  <p className="text-sm text-red-300">{runError}</p>
+                  <p className="mt-2 text-xs text-vn-dim">
+                    YouTube may occasionally block server-side downloads. Direct video URLs are the most reliable input.
+                  </p>
+                </div>
+              ) : null}
             </div>
           ) : null}
 

@@ -43,7 +43,8 @@ const TIERS: Array<{
 ];
 
 export default async function PricingPage() {
-  const { userId } = await auth();
+  const clerkEnabled = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY);
+  const { userId } = clerkEnabled ? await auth() : { userId: null };
 
   return (
     <main className="min-h-[100dvh] bg-vn-black px-6 py-20 md:px-[8vw]">

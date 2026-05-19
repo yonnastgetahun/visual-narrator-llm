@@ -77,6 +77,13 @@ function getErrorMessage(error: unknown): string {
   return "Upload failed. Try again.";
 }
 
+function createClientJobId() {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return `vn-${crypto.randomUUID()}`;
+  }
+  return `vn-${Date.now().toString(36)}`;
+}
+
 export function UploadScreen() {
   const router = useRouter();
   const [mode, setMode] = useState<InputMode>("url");
@@ -179,6 +186,15 @@ export function UploadScreen() {
         setUrlError("Enter a valid video URL — YouTube, Vimeo, or direct link.");
         return;
       }
+
+      setSubmitError(null);
+      setSubmitting(true);
+      const qs = new URLSearchParams({
+        minutes: "90",
+        source: url.trim(),
+      });
+      router.push(`/processing/${createClientJobId()}?${qs.toString()}`);
+      return;
     } else if (!s3Key) {
       setFileError(
         uploadStatus === "uploading"
@@ -200,7 +216,7 @@ export function UploadScreen() {
         body: JSON.stringify({
           estimatedMinutes: mode === "file" && fileInfo ? fileInfo.minutes : 90,
           s3Key,
-          source: mode === "url" ? url.trim() : undefined,
+          source: undefined,
           sourceType: mode,
         }),
       });

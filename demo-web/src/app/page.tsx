@@ -6,6 +6,7 @@ import Link from "next/link";
 import { HeroSection } from "@/components/hero/HeroSection";
 
 const EASE_VN = [0.16, 1, 0.3, 1] as const;
+const CLERK_ENABLED = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
 const HOW_IT_WORKS = [
   {
@@ -46,24 +47,35 @@ export default function LandingPage() {
             Visual Narrator
           </Link>
           <div className="flex items-center">
-            <SignedIn>
-              <UserButton
-                afterSignOutUrl="/"
-                appearance={{
-                  elements: {
-                    userButtonAvatarBox: "h-9 w-9",
-                  },
-                }}
-              />
-            </SignedIn>
-            <SignedOut>
+            {CLERK_ENABLED ? (
+              <>
+                <SignedIn>
+                  <UserButton
+                    afterSignOutUrl="/"
+                    appearance={{
+                      elements: {
+                        userButtonAvatarBox: "h-9 w-9",
+                      },
+                    }}
+                  />
+                </SignedIn>
+                <SignedOut>
+                  <Link
+                    href="/sign-in"
+                    className="vn-label text-vn-mist transition-colors hover:text-vn-cream"
+                  >
+                    Sign in
+                  </Link>
+                </SignedOut>
+              </>
+            ) : (
               <Link
-                href="/sign-in"
+                href="/demo"
                 className="vn-label text-vn-mist transition-colors hover:text-vn-cream"
               >
-                Sign in
+                Live demo
               </Link>
-            </SignedOut>
+            )}
           </div>
         </div>
       </header>

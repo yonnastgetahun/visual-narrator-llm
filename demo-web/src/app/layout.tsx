@@ -39,20 +39,28 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const body = (
+    <html
+      className={`${dmSerifDisplay.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+      data-theme="dark"
+      lang="en"
+    >
+      <body>
+        {/* Film grain — fixed overlay, GPU-isolated */}
+        <div aria-hidden="true" className="vn-grain-layer" />
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
+
+  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
+    return body;
+  }
+
   return (
-    <ClerkProvider>
-      <html
-        className={`${dmSerifDisplay.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
-        data-theme="dark"
-        lang="en"
-      >
-        <body>
-          {/* Film grain — fixed overlay, GPU-isolated */}
-          <div aria-hidden="true" className="vn-grain-layer" />
-          {children}
-          <Analytics />
-        </body>
-      </html>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+      {body}
     </ClerkProvider>
   );
 }

@@ -5,9 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 const EASE_VN = [0.16, 1, 0.3, 1] as const;
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ??
-  "https://visual-narrator-llm-production.up.railway.app";
+const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "https://api.vnpoverview.com").trim();
 
 type StepKey = "downloading" | "detecting" | "describing" | "generating" | "mixing";
 
@@ -192,16 +190,19 @@ export function ProcessingScreen({
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [progress, setProgress] = useState(0);
   const [elapsed, setElapsed] = useState(0);
-  const [railwayError, setRailwayError] = useState<string | null>(null);
+  const [processingError, setProcessingError] = useState<string | null>(null);
   const startRef = useRef(Date.now());
   const completionStartedRef = useRef(false);
   const esRef = useRef<EventSource | null>(null);
 
-  const useRailway = Boolean(source || s3Key);
+  const useAppBox = Boolean(source || s3Key);
 
-  // Railway SSE-driven pipeline
+  // App Box SSE-driven pipeline
   useEffect(() => {
-    if (!useRailway) return;
+    if (!useAppBox) {
+      setProcessingError("No video source was provided. Go back and paste a URL or upload a file.");
+      return;
+    }
 
     const params = new URLSearchParams({ min_gap: "2.0" });
     if (s3Key) params.set("s3_key", s3Key);
@@ -253,7 +254,8 @@ export function ProcessingScreen({
 
     es.addEventListener("complete", (event: MessageEvent) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data = JSON.parse(event.data) as { manifest: Record<string, any> };
+      const data = JSON.parse(event.data) as { manifest?: Record<string, any> } | Record<string, any>;
+      const manifest = "manifest" in data && data.manifest ? data.manifest : data;
       es.close();
       esRef.current = null;
 
@@ -263,19 +265,42 @@ export function ProcessingScreen({
       if (completionStartedRef.current) return;
       completionStartedRef.current = true;
 
+      const resultJobId = String(manifest.job_id || jobId);
+      const resultParams = new URLSearchParams();
+      if (manifest.gaps_found != null) resultParams.set("gaps", String(manifest.gaps_found));
+      if (manifest.duration_seconds != null) resultParams.set("duration", String(manifest.duration_seconds));
+      if (manifest.gpt_cost_estimate != null) resultParams.set("gpt", String(manifest.gpt_cost_estimate));
+      if (manifest.tts_cost_estimate != null) resultParams.set("tts", String(manifest.tts_cost_estimate));
+      if (manifest.total_cost_estimate != null) resultParams.set("total", String(manifest.total_cost_estimate));
+      if (manifest.compliance_level != null) resultParams.set("wcag", String(manifest.compliance_level));
+
       void fetch(`/api/jobs/${jobId}/complete`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ estimatedMinutes }),
       }).finally(() => {
-        setTimeout(() => router.push(`/results/${data.manifest.job_id}`), 800);
+        const suffix = resultParams.size ? `?${resultParams.toString()}` : "";
+        setTimeout(() => router.push(`/results/${resultJobId}${suffix}`), 800);
       });
+    });
+
+    es.addEventListener("error", (event: MessageEvent) => {
+      let message = "Processing failed. Try another URL or direct video file.";
+      try {
+        const data = JSON.parse(event.data) as { message?: string };
+        if (data.message) message = data.message;
+      } catch {
+        // Keep fallback message.
+      }
+      es.close();
+      esRef.current = null;
+      setProcessingError(message);
     });
 
     es.onerror = () => {
       es.close();
       esRef.current = null;
-      setRailwayError("Processing failed. Please go back and try again.");
+      setProcessingError("Processing disconnected before completion. Please go back and try another URL.");
     };
 
     return () => {
@@ -283,46 +308,14 @@ export function ProcessingScreen({
       esRef.current = null;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [estimatedMinutes, jobId, router, s3Key, source, useAppBox]);
 
-  // Simulated pipeline steps (fallback when no source/s3Key)
+  // Legacy simulated pipeline is intentionally disabled. Real-output wiring
+  // requires a source URL or uploaded S3 key so downloads point at App Box outputs.
   useEffect(() => {
-    if (useRailway) return;
-
-    let idx = 0;
-    function runStep(stepIdx: number) {
-      if (stepIdx >= STEPS.length) {
-        if (completionStartedRef.current) return;
-        completionStartedRef.current = true;
-        void fetch(`/api/jobs/${jobId}/complete`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ estimatedMinutes }),
-        }).finally(() => {
-          setTimeout(() => router.push(`/results/${jobId}`), 800);
-        });
-        return;
-      }
-      setActiveStepIdx(stepIdx);
-      setProgress(0);
-      const step = STEPS[stepIdx];
-      const progInterval = setInterval(() => {
-        setProgress((p) => Math.min(p + Math.random() * 8 + 4, 92));
-      }, step.durationMs / 16);
-      const timer = setTimeout(() => {
-        clearInterval(progInterval);
-        setProgress(100);
-        setTimeout(() => {
-          setCompletedSteps((prev) => new Set([...prev, stepIdx]));
-          idx = stepIdx + 1;
-          runStep(idx);
-        }, 300);
-      }, step.durationMs);
-      return () => { clearTimeout(timer); clearInterval(progInterval); };
-    }
-    const cleanup = runStep(idx);
-    return cleanup;
-  }, [estimatedMinutes, jobId, router, useRailway]);
+    if (useAppBox) return;
+    setProcessingError("No video source was provided. Go back and paste a URL or upload a file.");
+  }, [useAppBox]);
 
   // Elapsed timer
   useEffect(() => {
@@ -409,14 +402,17 @@ export function ProcessingScreen({
           </AnimatePresence>
         </motion.div>
 
-        {/* Error state (Railway failures) */}
-        {railwayError && (
+        {/* Error state */}
+        {processingError && (
           <motion.div
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-6 border border-red-400/30 bg-red-400/5 px-4 py-3"
           >
-            <p className="text-[0.8125rem] text-red-400">{railwayError}</p>
+            <p className="text-[0.8125rem] text-red-400">{processingError}</p>
+            <p className="mt-2 text-[0.75rem] text-vn-dim">
+              YouTube may occasionally block server-side downloads. Direct video files are the most reliable input.
+            </p>
             <a href="/upload" className="mt-2 block vn-label text-vn-dim hover:text-vn-mist transition-colors">
               ← Go back
             </a>
@@ -424,7 +420,7 @@ export function ProcessingScreen({
         )}
 
         {/* Bottom note */}
-        {!railwayError && (
+        {!processingError && (
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

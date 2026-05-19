@@ -5,9 +5,7 @@ import Link from "next/link";
 import { useState, useRef } from "react";
 
 const EASE_VN = [0.16, 1, 0.3, 1] as const;
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ??
-  "https://visual-narrator-llm-production.up.railway.app";
+const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "https://api.vnpoverview.com").trim();
 
 type DownloadCard = {
   key: string;
@@ -16,6 +14,15 @@ type DownloadCard = {
   ext: string;
   size: string;
   icon: React.ReactNode;
+};
+
+type ResultsSummary = {
+  duration?: string;
+  gaps?: string;
+  gpt?: string;
+  total?: string;
+  tts?: string;
+  wcag?: string;
 };
 
 function filenameFromDisposition(disposition: string | null, fallback: string) {
@@ -33,6 +40,22 @@ function triggerDownload(blob: Blob, filename: string) {
   anchor.click();
   anchor.remove();
   window.URL.revokeObjectURL(objectUrl);
+}
+
+function formatMinutes(seconds?: string) {
+  const parsed = Number(seconds);
+  if (!Number.isFinite(parsed) || parsed <= 0) return "processing complete";
+  const minutes = Math.max(1, Math.round(parsed / 60));
+  if (minutes < 60) return `${minutes} min total`;
+  const hours = Math.floor(minutes / 60);
+  const rem = minutes % 60;
+  return rem ? `${hours}h ${rem}m total` : `${hours}h total`;
+}
+
+function formatMoney(value?: string) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return "—";
+  return `$${parsed.toFixed(3)}`;
 }
 
 function Mp3Icon() {
@@ -111,12 +134,18 @@ function GradeBadge({ grade }: { grade: string }) {
   );
 }
 
-export function ResultsScreen({ jobId }: { jobId: string }) {
+export function ResultsScreen({ jobId, summary }: { jobId: string; summary?: ResultsSummary }) {
   const [playing, setPlaying] = useState(false);
   const [downloadingKey, setDownloadingKey] = useState<string | null>(null);
   const [downloadedKey, setDownloadedKey] = useState<string | null>(null);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
 
   const audioRef = useRef<HTMLAudioElement>(null);
+  const gaps = summary?.gaps && Number.isFinite(Number(summary.gaps)) ? Number(summary.gaps) : null;
+  const wcag = summary?.wcag || "WCAG";
+  const totalCost = formatMoney(summary?.total);
+  const gptCost = formatMoney(summary?.gpt);
+  const ttsCost = formatMoney(summary?.tts);
 
   const downloads: DownloadCard[] = [
     {
@@ -155,6 +184,7 @@ export function ResultsScreen({ jobId }: { jobId: string }) {
     if (!endpoint) return;
 
     setDownloadingKey(key);
+    setDownloadError(null);
     try {
       const response = await fetch(`${API_URL}/api/download/${jobId}/${endpoint.path}`);
       if (!response.ok) {
@@ -176,6 +206,8 @@ export function ResultsScreen({ jobId }: { jobId: string }) {
 
       setDownloadedKey(key);
       setTimeout(() => setDownloadedKey(null), 2200);
+    } catch (error) {
+      setDownloadError(error instanceof Error ? error.message : "Download failed.");
     } finally {
       setDownloadingKey(null);
     }
@@ -201,7 +233,12 @@ export function ResultsScreen({ jobId }: { jobId: string }) {
               Complete
             </span>
             <h1 className="vn-title text-vn-cream">Your AD track is ready.</h1>
-            <p className="mt-2 text-[0.9375rem] text-vn-mist">Job {jobId} · 47 gaps described · 88 min total</p>
+            <p className="mt-2 text-[0.9375rem] text-vn-mist">
+              Job {jobId}
+              {gaps !== null ? ` · ${gaps} gap${gaps === 1 ? "" : "s"} described` : ""}
+              {" · "}
+              {formatMinutes(summary?.duration)}
+            </p>
           </div>
           <GradeBadge grade="A" />
         </motion.div>
@@ -314,6 +351,14 @@ export function ResultsScreen({ jobId }: { jobId: string }) {
             </motion.div>
           ))}
         </motion.div>
+        {downloadError ? (
+          <div className="mt-4 border border-red-400/30 bg-red-400/5 px-4 py-3">
+            <p className="text-[0.8125rem] text-red-300">{downloadError}</p>
+            <p className="mt-1 text-[0.75rem] text-vn-dim">
+              If this was an older mock job, run a new job from Upload so the App Box has real outputs to download.
+            </p>
+          </div>
+        ) : null}
 
         {/* Score summary */}
         <motion.div
@@ -323,11 +368,10 @@ export function ResultsScreen({ jobId }: { jobId: string }) {
           className="mt-5 border border-vn-line px-5 py-4 flex flex-wrap gap-5"
         >
           {[
-            { label: "Accuracy",     val: "91.4%" },
-            { label: "Relevance",    val: "88.7%" },
-            { label: "WCAG AA",      val: "94.2%" },
-            { label: "Conciseness",  val: "86.1%" },
-            { label: "Within limit", val: "47 / 47" },
+            { label: "Status", val: "Ready" },
+            { label: "Compliance", val: wcag },
+            { label: "Outputs", val: "3 files" },
+            { label: "Gaps", val: gaps !== null ? String(gaps) : "—" },
           ].map((s) => (
             <div key={s.label} className="flex flex-col gap-0.5">
               <span className="font-mono text-lg text-vn-cream font-medium">{s.val}</span>
@@ -343,8 +387,8 @@ export function ResultsScreen({ jobId }: { jobId: string }) {
           transition={{ delay: 0.72 }}
           className="mt-3 flex items-center justify-between text-[0.8125rem] font-mono"
         >
-          <span className="text-vn-dim">GPT $0.083 · TTS $0.041 · Total cost to generate</span>
-          <span className="text-vn-mist">$0.124</span>
+          <span className="text-vn-dim">GPT {gptCost} · TTS {ttsCost} · Total cost to generate</span>
+          <span className="text-vn-mist">{totalCost}</span>
         </motion.div>
 
         {/* CTA */}
