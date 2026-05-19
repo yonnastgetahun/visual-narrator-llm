@@ -54,3 +54,6 @@ cli/tests/fixtures/ad_benchmarks/clips/*.mp4
 .vscode/
 .idea/
 package-lock.json.backup
+
+# Vercel local project metadata
+.vercel/
