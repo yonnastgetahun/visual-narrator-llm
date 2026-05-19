@@ -1,4 +1,12 @@
 *
 !demo-web
-!demo-web/**
+!demo-web/src
+!demo-web/src/**
+!demo-web/package.json
+!demo-web/package-lock.json
+!demo-web/next.config.js
+!demo-web/postcss.config.js
+!demo-web/tailwind.config.js
+!demo-web/tsconfig.json
+!demo-web/next-env.d.ts
 !.vercelignore
